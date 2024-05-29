@@ -1,3 +1,5 @@
+
+
 .loginLogo {
   position: absolute;
   top: 37px;
@@ -7,10 +9,9 @@
 .loginForm {
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: 160px;
+  margin-left: 16px;
+  margin-right: 16px;    
   gap: 32px;
   padding: 32px 16px;
   border-radius: 30px;
@@ -21,6 +22,7 @@
 .loginLabel {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 10px;
   padding: 12px 21px;
   border: 1px solid #d1d1d1;
@@ -31,6 +33,7 @@
   border: none;
   outline: none;
   font-size: 20px;
+  width: 100%;
 }
 
 .loginHeader {
@@ -39,19 +42,92 @@
   text-align: center;
   font-weight: 700;
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
   align-items: center;
   gap: 16px;
 }
 
 .headlineUnderline {
   width: 88px;
-  border: 3px solid #29ABE2;
+  border: 3px solid #29abe2;
   display: inline-block;
-  border-radius: 3px;  
+  border-radius: 3px;
 }
 
-.customCheckbox{
-    appearance: none;
-    background-image: url(/img/Mobile/);
+.customCheckbox {
+  appearance: none;
+  background-image: url(/img/Mobile/LogIn/checkbox.png);
+  height: 24px;
+  width: 24px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.customCheckbox:checked {
+  background-image: url(/img/Mobile/LogIn/checkboxChecked.png);
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+}
+
+.loginBtnContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 21px;
+}
+
+.primaryBtn{
+    padding: 4px 0;
+    height: 51px;
+    width: 180px;
+    font-weight: 700;
+}
+
+.secondaryBtn{
+    padding: 4px 0;
+    height: 51px;
+    width: 180px;
+    font-weight: 700;    
+}
+
+.registerContainer{
+    display: flex;
+    align-items: center;
+    margin-top: 57px;
+    gap: 35px;
+    justify-content: center;
+
+}
+
+.registerContainer p{
+    font-size: 20px;
+}
+
+.signUpBtn{
+    width: 104px;
+}
+
+.footerLogin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 42px;    
+}
+
+.footerLogin a{
+    color: #A8A8A8;
+    padding: 8px;
+    text-decoration: none;
+}
+
+.footerLogin a:active{
+    color: #29abe2;
+    font-weight: 700;
 }
