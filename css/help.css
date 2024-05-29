@@ -1,6 +1,5 @@
 .help-content {
-    margin-left: 16px;
-    margin-right: 16px;
+    margin: 0 16px 96px 16px;
 }
 
 .link-join {
@@ -8,11 +7,22 @@
     color: #43B5E4;
 }
 
-.header {
-    font-size: 47px;
-    font-weight: 700;
+.head-section {
     margin-bottom: 32px;
     margin-top: 48px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.arrow-left {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.headline {
+    font-size: 47px;
+    font-weight: 700;
 }
 
 .subheader {
