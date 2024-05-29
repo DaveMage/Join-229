@@ -1,7 +1,13 @@
-function displayTemplateMobileHtml() {
-    document.getElementById('template').innerHTML = '';
-    document.getElementById('template').innerHTML = templateMobileHtml();
-}
+
 function onloadInit() {
-    displayTemplateMobileHtml();    
+    displayHeader();
+    displayMenu();
+}
+
+function displayHeader(){
+    document.getElementById("header").innerHTML = headerMobileHtml();
+}
+
+function displayMenu(){
+    document.getElementById("menu").innerHTML = menuMobileHtml();
 }

@@ -1,15 +1,15 @@
 function headerMobileHtml(){
-   return `<header class="header-menu">
+   return `
    <img src="/img/Mobile/generalElements/joinLogoMobile.png" alt="Join Logo">
    <div class="profileIcon">
        <span>SM</span> 
         </div>
-        </header>` 
+        ` 
 }
 
 
 function menuMobileHtml(){
-   return `<footer>
+   return `
    <a class="menuMobile" href="/summary.html">
        <img src="/img/Mobile/generalElements/summaryIconGray.png" alt="Summary Icon" id="summaryMobileIcon">
        <p>Summary</p>
@@ -26,12 +26,6 @@ function menuMobileHtml(){
        <img src="/img/Mobile/generalElements/contactsIconGray.png" alt="Contacs Icon" id="contactsMobileIcon">
        <p>Contacts</p>
    </a>
-</footer>`;
+`;
 }
 
-function templateMobileHtml(){
-    return `
-    ${headerMobileHtml()}
-    ${menuMobileHtml()}
-    `
-}
