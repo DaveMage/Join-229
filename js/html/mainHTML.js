@@ -10,22 +10,22 @@ function headerMobileHtml(){
 
 function menuMobileHtml(){
    return `<footer>
-   <div class="menuMobile">
+   <a class="menuMobile" href="/summary.html">
        <img src="/img/Mobile/generalElements/summaryIconGray.png" alt="Summary Icon" id="summaryMobileIcon">
        <p>Summary</p>
-   </div>
-   <div class="menuMobile">
+   </a>
+   <a class="menuMobile" href="/addTask.html">
        <img src="/img/Mobile/generalElements/addTaskIconGray.png" alt="Add Task Icon" id="addTaskMobileIcon">
        <p>Add Task</p>
-   </div>
-   <div class="menuMobile">
+   </a>
+   <a class="menuMobile" href="/board.html">
        <img src="/img/Mobile/generalElements/boardIconGray.png" alt="Board Icon" id="boardMobileIcon">
        <p>Board</p>
-   </div>
-   <div class="menuMobile">
+   </a>
+   <a class="menuMobile" href="/contacts.html">
        <img src="/img/Mobile/generalElements/contactsIconGray.png" alt="Contacs Icon" id="contactsMobileIcon">
        <p>Contacts</p>
-   </div>
+   </a>
 </footer>`;
 }
 

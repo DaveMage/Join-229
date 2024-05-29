@@ -56,6 +56,8 @@ footer {
     height: 76px;
     width: 76px;
     cursor: pointer;
+    text-decoration: none;
+    color: #CDCDCD;
 }
 
 .menuMobile p {
