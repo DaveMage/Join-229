@@ -1,0 +1,33 @@
+.legal-notice-content {
+    margin: 0 16px 96px 16px;
+}
+
+.link-join {
+    text-decoration: none;
+    color: #43B5E4;
+}
+
+.head-section {
+    margin-bottom: 32px;
+    margin-top: 48px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.arrow-left {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.headline {
+    font-size: 47px;
+    font-weight: 700;
+}
+
+.subheader {
+    font-size: 27px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
