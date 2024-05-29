@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join</title>
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="../css/login.css">
-    
-</head>
-<body>    
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="../css/login.css" />
+  </head>
+  <body>
     <header>
-        <img src="/img/Mobile/generalElements/joinLogoMobile.png" class="loginLogo" alt="Join Logo">
+      <img
+        src="/img/Mobile/LogIn/logoIconLogIn.png"
+        class="loginLogo"
+        alt="Join Logo"
+      />
     </header>
- </body>
+    <main>
+      <form autocomplete="off" class="loginForm">
+        <h1 class="loginHeader">Log in
+            <span class="headlineUnderline"></span>
+        </h1>
+        <label for="loginEmail" class="loginLabel">
+            <input type="email" placeholder="Email" id="loginEmail" />
+            <img src="/img/Mobile/LogIn/mailIconLogIn.png" alt="Email Icon" />
+        </label>
+        <label for="loginPassword" class="loginLabel">
+          <input type="password" placeholder="Password" id="loginPassword" />
+          <img src="/img/Mobile/LogIn/lockIconLogIn.png" alt="Lock Icon" />
+        </label>
+        <label for="checkboxRemember" class="checkboxLabel">
+            <input type="checkbox" id="checkboxRemember" class="customCheckbox">
+            Remember me
+        </label>
+      </form>
+    </main>
+  </body>
 </html>
