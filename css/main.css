@@ -1,15 +1,14 @@
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: var(--font-family-inter);
   font-size: 16px;
-  font-weight: 400;  
+  font-weight: 400;
 }
 
-:root{
-    --font-family-inter: 'Inter', sans-serif;    
+:root {
+  --font-family-inter: "Inter", sans-serif;
 }
 
 body {
@@ -19,10 +18,8 @@ body {
 
 @font-face {
   font-family: inter;
-  src: url(../fonts/Inter-VariableFont_slnt\,wght.ttf);
+  src: url(../fonts/Inter-VariableFont_slnt\wght.ttf);
 }
-
-
 
 .profileIcon {
   width: 40px;
@@ -33,6 +30,11 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #ffffff;
+}
+
+.profileIcon:hover{
+    background-color: #0C2E621F;
+    
 }
 
 .profileIcon span {
@@ -61,18 +63,18 @@ footer {
   height: 80px;
 }
 
-.menuMobile{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px 0;   
-    border-radius: 8px;
-    gap: 4px;
-    height: 76px;
-    width: 76px;
-    cursor: pointer;
-    text-decoration: none;
-    color: #CDCDCD;
+.menuMobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 0;
+  border-radius: 8px;
+  gap: 4px;
+  height: 76px;
+  width: 76px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #cdcdcd;
 }
 
 .menuMobile p {
@@ -94,11 +96,9 @@ footer {
   content: url("/img/Mobile/generalElements/addTaskIconWhite.png");
 }
 
-
 .menuMobile:hover #boardMobileIcon {
   content: url("/img/Mobile/generalElements/boardIconWhite.png");
 }
-
 
 .menuMobile:hover #contactsMobileIcon {
   content: url("/img/Mobile/generalElements/contactsIconWhite.png");
@@ -117,10 +117,13 @@ footer {
   right: 8px;
 }
 
-
 .logoutContainer a {
   color: #cdcdcd;
   font-size: 16px;
   padding: 8px 16px;
   text-decoration: none;
+}
+
+.logoutContainer a:hover {
+  background-color: #2A3D59;
 }
