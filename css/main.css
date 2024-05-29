@@ -74,19 +74,6 @@ footer {
     text-decoration: none;
     color: #CDCDCD;
 }
-.menuMobile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 15px 0;
-  border-radius: 8px;
-  gap: 4px;
-  height: 76px;
-  width: 76px;
-  cursor: pointer;
-  text-decoration: none;
-  color: #cdcdcd;
-}
 
 .menuMobile p {
   font-size: 14px;
@@ -103,25 +90,15 @@ footer {
 .menuMobile:hover #summaryMobileIcon {
   content: url("/img/Mobile/generalElements/summaryIconWhite.png");
 }
-.menuMobile:hover #summaryMobileIcon {
-  content: url("/img/Mobile/generalElements/summaryIconWhite.png");
+.menuMobile:hover #addTaskMobileIcon {
+  content: url("/img/Mobile/generalElements/addTaskIconWhite.png");
 }
 
-.menuMobile:hover #addTaskMobileIcon {
-  content: url("/img/Mobile/generalElements/addTaskIconWhite.png");
-}
-.menuMobile:hover #addTaskMobileIcon {
-  content: url("/img/Mobile/generalElements/addTaskIconWhite.png");
-}
+
 .menuMobile:hover #boardMobileIcon {
   content: url("/img/Mobile/generalElements/boardIconWhite.png");
 }
-.menuMobile:hover #boardMobileIcon {
-  content: url("/img/Mobile/generalElements/boardIconWhite.png");
-}
-.menuMobile:hover #contactsMobileIcon {
-  content: url("/img/Mobile/generalElements/contactsIconWhite.png");
-}
+
 
 .menuMobile:hover #contactsMobileIcon {
   content: url("/img/Mobile/generalElements/contactsIconWhite.png");
