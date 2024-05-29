@@ -1,10 +1,10 @@
 function headerMobileHtml(){
    return `
    <img src="/img/Mobile/generalElements/joinLogoMobile.png" alt="Join Logo">
-   <div class="profileIcon">
+   <div class="profileIcon" onclick="displayLogout()">
        <span>SM</span> 
-        </div>
-        ` 
+    </div>
+    ${logoutMobileHtml()}`; 
 }
 
 
@@ -26,6 +26,17 @@ function menuMobileHtml(){
        <img src="/img/Mobile/generalElements/contactsIconGray.png" alt="Contacs Icon" id="contactsMobileIcon">
        <p>Contacts</p>
    </a>
+`;
+}
+
+function logoutMobileHtml(){
+   return `
+   <div class="logoutContainer" id="logout">
+      <a href="/help.html">Help</a>
+      <a href="/legalNotice.html">Legal Notice</a>
+      <a href="/privacyPolice.html">Privacy Policy</a>
+      <a href="login.html">Log out</a>
+    </div>
 `;
 }
 
