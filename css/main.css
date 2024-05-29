@@ -4,9 +4,19 @@
   box-sizing: border-box;
 }
 
-body{
-    height: 100vh;
-    overflow: hidden;
+body {
+  margin: 0;
+  font-family: inter;
+}
+
+@font-face {
+  font-family: inter;
+  src: url(../fonts/Inter-VariableFont_slnt\,wght.ttf);
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
 }
 
 .profileIcon {
@@ -46,18 +56,18 @@ footer {
   height: 80px;
 }
 
-.menuMobile{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px 0;   
-    border-radius: 8px;
-    gap: 4px;
-    height: 76px;
-    width: 76px;
-    cursor: pointer;
-    text-decoration: none;
-    color: #CDCDCD;
+.menuMobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 0;
+  border-radius: 8px;
+  gap: 4px;
+  height: 76px;
+  width: 76px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #CDCDCD;
 }
 
 .menuMobile p {
@@ -65,33 +75,35 @@ footer {
 }
 
 .menuMobile:hover {
-    background-color: #091931;
+  background-color: #091931;
 }
 
 .menuMobile:hover p {
-    color: #FFFFFF;
+  color: #FFFFFF;
 }
 
-.menuMobile:hover #summaryMobileIcon{
-    content: url("/img/Mobile/generalElements/summaryIconWhite.png");
+.menuMobile:hover #summaryMobileIcon {
+  content: url("/img/Mobile/generalElements/summaryIconWhite.png");
 }
 
-.menuMobile:hover #addTaskMobileIcon{
-    content: url("/img/Mobile/generalElements/addTaskIconWhite.png");
-}
-.menuMobile:hover #boardMobileIcon{
-    content: url("/img/Mobile/generalElements/boardIconWhite.png");
-}
-.menuMobile:hover #contactsMobileIcon{
-    content: url("/img/Mobile/generalElements/contactsIconWhite.png");
+.menuMobile:hover #addTaskMobileIcon {
+  content: url("/img/Mobile/generalElements/addTaskIconWhite.png");
 }
 
-.logoutContainer{
-    display: flex;
-    flex-direction: column;
-    background-color: #2A3647;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    border-radius: 20px 0 20px 20px;
+.menuMobile:hover #boardMobileIcon {
+  content: url("/img/Mobile/generalElements/boardIconWhite.png");
+}
+
+.menuMobile:hover #contactsMobileIcon {
+  content: url("/img/Mobile/generalElements/contactsIconWhite.png");
+}
+
+.logoutContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #2A3647;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 20px 0 20px 20px;
 
 }
