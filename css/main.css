@@ -41,7 +41,7 @@ body {
   color: #29abe2;
 }
 
-header {
+.header-menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
