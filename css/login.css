@@ -1,6 +1,57 @@
-.loginLogo{
-    height: 78px;
-    position: absolute;
-    top: 37px;
-    left: 38px;
+.loginLogo {
+  position: absolute;
+  top: 37px;
+  left: 38px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 32px;
+  padding: 32px 16px;
+  border-radius: 30px;
+  background-color: #ffffff;
+  box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.04);
+}
+
+.loginLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 21px;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+}
+
+.loginLabel input {
+  border: none;
+  outline: none;
+  font-size: 20px;
+}
+
+.loginHeader {
+  font-size: 47px;
+  text-underline-offset: 16px;
+  text-align: center;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  gap: 16px;
+}
+
+.headlineUnderline {
+  width: 88px;
+  border: 3px solid #29ABE2;
+  display: inline-block;
+  border-radius: 3px;  
+}
+
+.customCheckbox{
+    appearance: none;
+    background-image: url(/img/Mobile/);
 }
