@@ -7,9 +7,51 @@
     <link rel="stylesheet" href="./css/main.css" />
     <script src="/js/main.js"></script>
     <script src="/js/html/mainHTML.js"></script>
+    <link rel="stylesheet" href="./css/addTask.css">
   </head>
   <body id="template" onload="onloadInit()">
     <header id="header" class="header-menu"></header>
+    <main class="mainContainer">
+      <h1 class="cardTitleH1">Add Task</h1>
+      <div class="labelSection">
+        <label for="addTaskTitle">
+          Title<span class="requiredStar">*</span> <br>
+          <input type="text" placeholder="Enter a title" class="inputFieldAddTask
+          ">
+        </label>
+        <label for="addTaskDescription">
+          Description <br>
+          <input type="text" placeholder="Enter a Description" class="inputFieldAddTask
+          ">
+        </label>
+        <label for="addTaskAssigned">
+          Assigned to <br>
+        <input type="text" placeholder="" class="inputFieldAddTask
+        ">
+        </label>
+        <label for="addTaskDueDate">
+          Due date<span class="requiredStar">*</span> <br>
+          <input type="text" placeholder="dd/mm/yyyy" class="inputFieldAddTask
+          ">
+        </label>
+        <label for="addTaskPrio">
+          Prio <br>
+          <input type="text">
+          <input type="text">
+          <input type="text">
+        </label>
+        <label for="addTaskCategory">
+          Catrgory<span class="requiredStar">*</span> <br>
+          <input type="text" class="inputFieldAddTask
+          ">
+        </label>
+        <label for="AddTaskSubtasks">
+          Subtasks <br>
+          <input type="text" placeholder="Add new subtask" class="inputFieldAddTask
+          ">
+        </label>
+      </div>
+    </main>
     
     <footer id="menu" class="footer"></footer>
   </body>
