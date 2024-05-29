@@ -90,6 +90,7 @@ footer {
 .menuMobile:hover #summaryMobileIcon {
   content: url("/img/Mobile/generalElements/summaryIconWhite.png");
 }
+
 .menuMobile:hover #addTaskMobileIcon {
   content: url("/img/Mobile/generalElements/addTaskIconWhite.png");
 }
