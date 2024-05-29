@@ -1,12 +1,20 @@
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: var(--font-family-inter);
+  font-size: 16px;
+  font-weight: 400;  
+}
+
+:root{
+    --font-family-inter: 'Inter', sans-serif;    
 }
 
 body {
-  margin: 0;
-  font-family: inter;
+  height: 100vh;
+  overflow: hidden;
 }
 
 @font-face {
@@ -14,10 +22,7 @@ body {
   src: url(../fonts/Inter-VariableFont_slnt\,wght.ttf);
 }
 
-body {
-  height: 100vh;
-  overflow: hidden;
-}
+
 
 .profileIcon {
   width: 40px;
@@ -56,6 +61,19 @@ footer {
   height: 80px;
 }
 
+.menuMobile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;   
+    border-radius: 8px;
+    gap: 4px;
+    height: 76px;
+    width: 76px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #CDCDCD;
+}
 .menuMobile {
   display: flex;
   flex-direction: column;
@@ -67,7 +85,7 @@ footer {
   width: 76px;
   cursor: pointer;
   text-decoration: none;
-  color: #CDCDCD;
+  color: #cdcdcd;
 }
 
 .menuMobile p {
@@ -79,9 +97,12 @@ footer {
 }
 
 .menuMobile:hover p {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
+.menuMobile:hover #summaryMobileIcon {
+  content: url("/img/Mobile/generalElements/summaryIconWhite.png");
+}
 .menuMobile:hover #summaryMobileIcon {
   content: url("/img/Mobile/generalElements/summaryIconWhite.png");
 }
@@ -89,9 +110,17 @@ footer {
 .menuMobile:hover #addTaskMobileIcon {
   content: url("/img/Mobile/generalElements/addTaskIconWhite.png");
 }
-
+.menuMobile:hover #addTaskMobileIcon {
+  content: url("/img/Mobile/generalElements/addTaskIconWhite.png");
+}
 .menuMobile:hover #boardMobileIcon {
   content: url("/img/Mobile/generalElements/boardIconWhite.png");
+}
+.menuMobile:hover #boardMobileIcon {
+  content: url("/img/Mobile/generalElements/boardIconWhite.png");
+}
+.menuMobile:hover #contactsMobileIcon {
+  content: url("/img/Mobile/generalElements/contactsIconWhite.png");
 }
 
 .menuMobile:hover #contactsMobileIcon {
@@ -99,11 +128,22 @@ footer {
 }
 
 .logoutContainer {
-  display: flex;
+  display: none;
   flex-direction: column;
-  background-color: #2A3647;
+  background-color: #2a3647;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
   padding: 10px;
   border-radius: 20px 0 20px 20px;
+  width: fit-content;
+  position: absolute;
+  top: 60px;
+  right: 8px;
+}
 
+
+.logoutContainer a {
+  color: #cdcdcd;
+  font-size: 16px;
+  padding: 8px 16px;
+  text-decoration: none;
 }
