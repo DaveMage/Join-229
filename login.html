@@ -21,12 +21,12 @@
         <h1 class="loginHeader">Log in
             <span class="headlineUnderline"></span>
         </h1>
-        <label for="loginEmail" class="loginLabel">
-            <input type="email" placeholder="Email" id="loginEmail" />
+        <label for="loginEmail" class="loginLabel" id="loginLabelEmail">
+            <input type="email" placeholder="Email" id="loginEmail" onfocus="focusInput('loginLabelEmail')" onblur="resetFocus('loginLabelEmail')" />
             <img src="/img/Mobile/LogIn/mailIconLogIn.png" alt="Email Icon" />
         </label>
-        <label for="loginPassword" class="loginLabel">
-          <input type="password" placeholder="Password" id="loginPassword" />
+        <label for="loginPassword" class="loginLabel" id="loginLabelPassword" >
+          <input type="password" placeholder="Password" id="loginPassword" onfocus="focusInput('loginLabelPassword')" onblur="resetFocus('loginLabelPassword')" />
           <img src="/img/Mobile/LogIn/lockIconLogIn.png" alt="Lock Icon" />
         </label>
         <label for="checkboxRemember" class="checkboxLabel">
