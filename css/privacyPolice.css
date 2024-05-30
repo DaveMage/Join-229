@@ -1,0 +1,62 @@
+.privacyPoliceContent {
+    margin: 0 16px 96px 16px;
+}
+
+.headSection {
+    margin-bottom: 32px;
+    margin-top: 48px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.headline {
+    font-size: 47px;
+    font-weight: 700;
+}
+
+.arrowLeft {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.head {
+    margin-top: 12px;
+    font-size: 18px;
+}
+
+.paraHead {
+    margin-top: 12px;
+}
+
+.subheader {
+    font-size: 27px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+.subSubheader {
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.textHeader {
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.list {
+    margin: 8px 0 12px 24px;
+}
+
+.list > li {
+    font-size: 14px;
+}
+
+.links {
+    text-decoration: none;
+    color: #43B5E4;
+}
