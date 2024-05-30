@@ -1,0 +1,121 @@
+.joinLogo {
+  margin-top: 38px;
+  margin-left: 37px;
+  margin-bottom: 50px;
+}
+
+.signUpForm {
+  display: flex;
+  flex-direction: column;
+  margin-left: 16px;
+  margin-right: 16px;
+  gap: 24px;
+  position: relative;
+  padding: 32px 16px;
+  box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.04);
+  border-radius: 30px;
+}
+
+.arrowBack {
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  left: 24px;
+  top: 40px;
+  cursor: pointer;
+}
+
+.headlineUnderline {
+  width: 88px;
+  border: 3px solid #29abe2;
+  display: inline-block;
+  border-radius: 3px;
+}
+
+.signUpHeadline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  font-size: 47px;
+  font-weight: 700;
+}
+
+.signUpLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 21px;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+}
+
+.signUpLabel input {
+  border: none;
+  outline: none;
+  font-size: 20px;
+  width: 100%;
+}
+
+.signUpLabel:focus {
+  border-color: #29abe2;
+}
+
+.signUpCheckboxLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.signUpCheckboxLabel a {
+  color: #29abe2;
+  text-decoration: none;
+}
+
+.customCheckbox {
+  appearance: none;
+  margin-right: 4px;
+  background-image: url(/img/Mobile/LogIn/checkbox.png);
+  height: 24px;
+  width: 24px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.customCheckbox:checked {
+  background-image: url(/img/Mobile/LogIn/checkboxChecked.png);
+}
+
+.signUpBtnContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.primaryBtn {
+  width: 180px;
+  height: 51px;
+  padding: 4px 0;
+}
+
+.footerLogin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 42px;
+}
+
+.footerLogin a {
+  color: #a8a8a8;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.footerLogin a:active {
+  color: #29abe2;
+  font-weight: 700;
+}

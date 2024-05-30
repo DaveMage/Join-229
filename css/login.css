@@ -1,15 +1,14 @@
 
 
 .loginLogo {
-  position: absolute;
-  top: 37px;
-  left: 38px;
+  margin-top: 38px;
+    margin-left: 37px;
+    margin-bottom: 50px;
 }
 
 .loginForm {
   display: flex;
-  flex-direction: column;
-  margin-top: 160px;
+  flex-direction: column;  
   margin-left: 16px;
   margin-right: 16px;    
   gap: 32px;

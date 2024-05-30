@@ -5,46 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join</title>
     <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/signUp.css" />
   </head>
   <body>
     <header>
       <img
         src="/img/Mobile/LogIn/logoIconLogIn.png"
-        class="loginLogo"
+        class="joinLogo"
         alt="Join Logo"
       />
     </header>
     <main>
-      <form autocomplete="off" class="loginForm">
-        <h1 class="loginHeader">Log in
+      <form autocomplete="off" class="signUpForm">
+        <img class="arrowBack" src="/img/Mobile/LogIn/arrowBlue.png" alt="Arrow Back" onclick="goToLogin()">
+        <h1 class="signUpHeadline">Sign up
             <span class="headlineUnderline"></span>
         </h1>
-        <label for="loginEmail" class="loginLabel">
-            <input type="email" placeholder="Email" id="loginEmail" />
-            <img src="/img/Mobile/LogIn/mailIconLogIn.png" alt="Email Icon" />
+        <label for="signUpName" class="signUpLabel" id="signUpLabelName">
+            <input type="text" id="signUpName" placeholder="Name" onfocus="focusInputName()">
+            <img src="../img/Mobile/LogIn/personIconLogIn.png" alt="Profile Icon">
         </label>
-        <label for="loginPassword" class="loginLabel">
-          <input type="password" placeholder="Password" id="loginPassword" />
-          <img src="/img/Mobile/LogIn/lockIconLogIn.png" alt="Lock Icon" />
+        <label for="signUpEmail" class="signUpLabel" id="signUpLabelEmail">
+            <input type="email" id="signUpEmail" placeholder="Email" onfocus="focusInputEmail()">
+            <img src="../img/Mobile/LogIn/mailIconLogIn.png" alt="Mail Icon">
         </label>
-        <label for="checkboxRemember" class="checkboxLabel">
-            <input type="checkbox" id="checkboxRemember" class="customCheckbox">
-            Remember me
+        <label for="signUpPassword" class="signUpLabel" id="signUpLabelPassword">
+            <input type="password" id="signUpPassword" placeholder="Password" onfocus="focusInputPassword()">
+            <img src="../img/Mobile/LogIn/lockIconLogIn.png" alt="Profile Icon">
         </label>
-        <div class="loginBtnContainer">
-            <button class="primaryBtn">Log in</button>
-            <button class="secondaryBtn">Guest Log in</button>
-        </div>
-      </form>
-      <div class="registerContainer">
-        <p>Not a Join user?</p>
-        <button class="primaryBtn signUpBtn">Sign up</button>
-      </div>
+        <label for="signUpConfirmPassword" class="signUpLabel" id="signUpLabelConfirmPassword" >
+            <input type="password" id="signUpConfirmPassword" placeholder="Confrim Password" onfocus="focusInputPasswordConfirm()">
+            <img src="../img/Mobile/LogIn/lockIconLogIn.png" alt="Profile Icon">
+        </label>
+        <label for="checkboxPrivacyPolicy" class="signUpCheckboxLabel">
+           <input type="checkbox" class="customCheckbox" id="checkboxPrivacyPolicy">
+           I accept the<a href="../privacyPolice.html"> Privacy Policy</a>
+        </label>
+        <div class="signUpBtnContainer"><button class="primaryBtn">Sign up</button></div>
+
+    </form>
+
+       
+
+
+
+
+
+      
     </main>
     <footer class="footerLogin">
         <a href="/privacyPolice.html">Privacy Policy</a>
         <a href="/legalNotice.html">Legal notice</a>
     </footer>
+
+    <script src="/js/singUp.js"></script>
   </body>
 </html>
