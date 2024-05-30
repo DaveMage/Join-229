@@ -1,20 +1,20 @@
-.legal-notice-content {
+.legalNoticeContent {
     margin: 0 16px 96px 16px;
 }
 
-.link-join {
+.linkJoin {
     text-decoration: none;
     color: #43B5E4;
 }
 
-.head-section {
+.headSection {
     margin-bottom: 32px;
     margin-top: 48px;
     display: flex;
     justify-content: space-between;
 }
 
-.arrow-left {
+.arrowLeft {
     width: 32px;
     height: 32px;
     cursor: pointer;
@@ -29,5 +29,19 @@
     font-size: 27px;
     font-weight: 700;
     margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+.subSubheader {
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 16px;
+}
+
+.imprintItems {
+    margin-left: 24px;
+}
+
+.secondPart {
     margin-top: 16px;
 }

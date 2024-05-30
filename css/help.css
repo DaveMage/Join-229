@@ -1,20 +1,20 @@
-.help-content {
+.helpContent {
     margin: 0 16px 96px 16px;
 }
 
-.link-join {
+.linkJoin {
     text-decoration: none;
     color: #43B5E4;
 }
 
-.head-section {
+.headSection {
     margin-bottom: 32px;
     margin-top: 48px;
     display: flex;
     justify-content: space-between;
 }
 
-.arrow-left {
+.arrowLeft {
     width: 32px;
     height: 32px;
     cursor: pointer;
@@ -32,11 +32,11 @@
     margin-top: 16px;
 }
 
-.help-text {
+.helpText {
     margin-top: 16px;
 }
 
-.step-by-step {
+.stepByStep {
     display: flex;
     margin-top: 16px;
 }
@@ -47,7 +47,7 @@
     margin-right: 35px;
 }
 
-.step-header {
+.stepHeader {
     font-size: 20px;
     font-weight: 700;
 }
