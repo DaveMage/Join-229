@@ -1,67 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Join</title>
-    <link rel="stylesheet" href="./css/main.css" />
-    <link rel="icon" href="./img/favicon/favicon_with_bg.png" type="image/x-icon">
-    <script src="/js/main.js"></script>
-    <script src="/js/html/mainHTML.js"></script>
-    <link rel="stylesheet" href="./css/addTask.css">
-  </head>
-  <body id="template" onload="onloadInit()">
-    <header id="header" class="header-menu positionStickyOnTop"></header>
-    <main class="mainContainer">
-      <h1 class="cardTitleH1">Add Task</h1>
-      <div class="labelSection">
-        <label for="addTaskTitle">
-          Title<span class="requiredStar">*</span> <br>
-          <input type="text" placeholder="Enter a title" class="inputFieldAddTask
-          ">
-        </label>
-        <label for="addTaskDescription">
-          Description <br>
-          <input type="text" placeholder="Enter a Description" class="inputFieldAddTask
-          ">
-        </label>
-        <label for="addTaskAssigned">
-          Assigned to <br>
-        <input type="text" placeholder="" class="inputFieldAddTask
-        ">
-        </label>
-        <label for="addTaskDueDate">
-          Due date<span class="requiredStar">*</span> <br>
-          <input type="text" placeholder="dd/mm/yyyy" class="inputFieldAddTask
-          ">
-        </label>
-        <label for="addTaskPrio">
-          Prio <br>
-          <input type="text">
-          <input type="text">
-          <input type="text">
-        </label>
-        <label for="addTaskCategory">
-          Catrgory<span class="requiredStar">*</span> <br>
-          <input type="text" class="inputFieldAddTask
-          ">
-        </label>
-        <label for="AddTaskSubtasks">
-          Subtasks <br>
-          <input type="text" placeholder="Add new subtask" class="inputFieldAddTask">
-        </label>
-      </div>
-      <div>
-        <span class="createTaskSection">
-          <span>
-            <span class="requiredStar">*</span>
-            This field is required
-          </span>
-          <button class="createTaskBtn primaryBtn">Create Task <img src="./img/Mobile/AddTask/checkMarkIconAddTask.png" alt="checkMark"></button>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join</title>
+  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="icon" href="./img/favicon/favicon_with_bg.png" type="image/x-icon">
+  <script src="/js/main.js"></script>
+  <script src="/js/html/mainHTML.js"></script>
+  <link rel="stylesheet" href="./css/addTask.css">
+</head>
+
+<body id="template" onload="onloadInit()">
+  <header id="header" class="header-menu positionStickyOnTop"></header>
+  <main class="mainContainer">
+    <h1 class="cardTitleH1">Add Task</h1>
+    <div class="labelSection">
+      <label for="addTaskTitle">
+        Title<span class="requiredStar">*</span> <br>
+        <input type="text" placeholder="Enter a title" class="inputFieldAddTask">
+      </label>
+      <label for="addTaskDescription">
+        Description <br>
+        <textarea type="text" placeholder="Enter a Description" class="inputFieldAddTaskDescrition"></textarea>
+      </label>
+      <label for="addTaskAssigned">
+        Assigned to <br>
+        <!-- <input type="text" placeholder="Select contacts to assign" class="inputFieldAddTask"> -->
+          <select name="Contacts" id="dropDownContacts" class="inputFieldAddTask">
+            <option value="contact1">Herr A</option>
+            <option value="contact2">Herr B</option>
+            <option value="contact3">Frau C</option>
+            <option value="contact4">Frau D</option>
+            <option value="contact5">Herr E</option>
+            <option value="contact6">Frau F</option>
+          </select>
+      </label>
+      <label for="addTaskDueDate">
+        Due date<span class="requiredStar">*</span> <br>
+        <input type="text" placeholder="dd/mm/yyyy" class="inputFieldAddTask">
+      </label>
+      <label for="addTaskPrio">
+        Prio <br>
+        <input type="text">
+        <input type="text">
+        <input type="text">
+      </label>
+      <label for="addTaskCategory">
+        Catrgory<span class="requiredStar">*</span> <br>
+        <input type="text" class="inputFieldAddTask">
+      </label>
+      <label for="AddTaskSubtasks">
+        Subtasks <br>
+        <input type="text" placeholder="Add new subtask" class="inputFieldAddTask">
+      </label>
+    </div>
+    <div>
+      <span class="createTaskSection">
+        <span class="requiredText">
+          <span class="requiredStar">*</span>
+          This field is required
         </span>
-      </div>
-    </main>
-    
-    <footer id="menu" class="footer"></footer>
-  </body>
+        <button class="createTaskBtn primaryBtn">Create Task <img src="./img/Mobile/AddTask/checkMarkIconAddTask.png"
+            alt="checkMark"></button>
+      </span>
+    </div>
+  </main>
+
+  <footer id="menu" class="footer"></footer>
+</body>
+
 </html>

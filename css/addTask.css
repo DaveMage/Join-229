@@ -14,7 +14,6 @@
     padding-top: 48px;
     display: flex;
     top: 80px;
-    z-index: 999;
     background-color: #F6F7F8;
 }
 
@@ -30,6 +29,7 @@
 }
 
 .inputFieldAddTask {
+    height: 40px;
     width: 100%;
     display: flex;
     border-radius: 10px;
@@ -38,7 +38,7 @@
     border-color: #D1D1D1;
     gap: 10px;
     margin-top: 8px;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
 }
 
 ::placeholder {
@@ -76,4 +76,27 @@
     width: 183px;
     font-weight: 700;
     font-size: 21px;
+}
+
+.requiredText {
+    display: flex;
+}
+
+.inputFieldAddTaskDescrition::placeholder {
+    position: absolute;
+    top: 18px;
+    left: 21px;   
+}
+
+.inputFieldAddTaskDescrition {
+    height: 88px;
+    width: 100%;
+    display: flex;
+    border-radius: 10px;
+    border: 1px;
+    padding: 10px 21px;
+    border-color: #D1D1D1;
+    gap: 10px;
+    margin-top: 8px;
+    margin-bottom: 16px;
 }
