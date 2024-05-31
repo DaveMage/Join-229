@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./css/addTask.css">
   </head>
   <body id="template" onload="onloadInit()">
-    <header id="header" class="header-menu"></header>
+    <header id="header" class="header-menu positionStickyOnTop"></header>
     <main class="mainContainer">
       <h1 class="cardTitleH1">Add Task</h1>
       <div class="labelSection">
@@ -50,6 +50,15 @@
           Subtasks <br>
           <input type="text" placeholder="Add new subtask" class="inputFieldAddTask">
         </label>
+      </div>
+      <div>
+        <span class="createTaskSection">
+          <span>
+            <span class="requiredStar">*</span>
+            This field is required
+          </span>
+          <button class="createTaskBtn primaryBtn">Create Task <img src="./img/Mobile/AddTask/checkMarkIconAddTask.png" alt="checkMark"></button>
+        </span>
       </div>
     </main>
     

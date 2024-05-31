@@ -7,11 +7,15 @@
 
 .cardTitleH1 {
     font-size: 47px;
+    position: sticky;
     font-weight: 700;
     gap: 1px;
     padding-left: 16px;
     padding-top: 48px;
     display: flex;
+    top: 80px;
+    z-index: 999;
+    background-color: #F6F7F8;
 }
 
 .labelSection {
@@ -39,4 +43,37 @@
 
 ::placeholder {
     color: #D1D1D1;
+}
+
+.positionStickyOnTop {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: white;
+}
+
+.createTaskSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 90px;
+    padding: 16px;
+}
+
+.createTaskBtn {
+    background-color: #2a3647;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    gap: 10px;
+    color: #ffffff;
+    border: none;
+}
+
+.primaryBtn {
+    height: 56px;
+    width: 183px;
+    font-weight: 700;
+    font-size: 21px;
 }
