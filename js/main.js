@@ -22,3 +22,7 @@ function displayLogout() {
         logout.style.display = "flex";
     }
 }
+
+function back() {
+    window.history.back();
+}
