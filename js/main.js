@@ -1,20 +1,21 @@
 function onloadInit() {
-    displayHeader();
-    displayMenu();
+    displayMobileHeader();
+    displayMobileMenu();
+    loadGuestLogin();
 }
 
 
-function displayHeader() {
+function displayMobileHeader() {
     document.getElementById("header").innerHTML = headerMobileHtml();
 }
 
 
-function displayMenu() {
+function displayMobileMenu() {
     document.getElementById("menu").innerHTML = menuMobileHtml();
 }
 
 
-function displayLogout() {
+function displayMobileLogout() {
     let logout = document.getElementById("logout");
     if (logout.style.display === "flex") {
         logout.style.display = "none";
@@ -25,4 +26,11 @@ function displayLogout() {
 
 function back() {
     window.history.back();
+}
+
+function loadGuestLogin(){
+    if(localStorage.getItem('guestLoggedIn') === 'true'){
+        document.getElementById('profileInitial').innerHTML = 'G';
+
+    }
 }

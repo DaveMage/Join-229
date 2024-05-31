@@ -17,7 +17,7 @@
       />
     </header>
     <main>
-      <form autocomplete="off" class="loginForm">
+      <form autocomplete="off" class="loginForm" onsubmit="return false;">
         <h1 class="loginHeader">Log in
             <span class="headlineUnderline"></span>
         </h1>
@@ -35,7 +35,7 @@
         </label>
         <div class="loginBtnContainer">
             <button class="primaryBtn">Log in</button>
-            <button class="secondaryBtn">Guest Log in</button>
+            <button class="secondaryBtn" onclick="guestLogin()">Guest Log in</button>
         </div>
       </form>
       <div class="registerContainer">

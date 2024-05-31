@@ -14,3 +14,9 @@ function resetFocus() {
         document.getElementById(id).style.borderColor = "#D1D1D1";
     });
 }
+
+function guestLogin(){
+    window.location.href = "/summary.html";
+    localStorage.setItem('guestLoggedIn', 'true');
+}
+
