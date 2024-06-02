@@ -2,6 +2,7 @@ function onloadInit() {
     displayMobileHeader();
     displayMobileMenu();
     loadGuestLogin();
+    checkGuestLogin();
 }
 
 /**
@@ -49,6 +50,12 @@ function loadGuestLogin() {
     if (localStorage.getItem('guestLoggedIn') === 'true') {
         document.getElementById('profileInitial').innerHTML = 'G';
 
+    }
+}
+
+function checkGuestLogin() {
+    if (localStorage.getItem('guestLoggedIn') === null) {
+        document.getElementById('menu').style.display = 'none';
     }
 }
 
