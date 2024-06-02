@@ -195,8 +195,7 @@
 .contactNameEmailContaciner {
  display: flex;
   flex-direction: column;
-  gap: 5px;
-  
+  gap: 5px;  
 }
 
 body{
@@ -217,4 +216,8 @@ body{
   height: calc(100vh - 160px);
   overflow: auto;
   scrollbar-width: none;
+}
+
+span {
+  display: inline-block;
 }
