@@ -52,13 +52,7 @@
     background-color: white;
 }
 
-.createTaskSection {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 90px;
-    padding: 16px;
-}
+
 
 .createTaskBtn {
     background-color: #2a3647;
@@ -147,3 +141,19 @@
     border-color: #D1D1D1;
     gap: 10px;
 }
+
+.addTaskBtnContainer{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    bottom: 80px;
+    justify-content: space-between;
+    padding: 16px;
+    background-color: #F6F7F8;
+}
+
+.addTaskForm{
+    height: calc(100vh - 160px - 103px - 88px);
+    overflow: auto;
+  }
