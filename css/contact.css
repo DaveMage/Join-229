@@ -13,7 +13,7 @@
   right: 16px;
 }
 
-.background{
+.background {
   position: absolute;
   top: 0;
   left: 0;
@@ -29,12 +29,11 @@
 .addContactContainer {
   border-radius: 30px;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
-  position: relative;  
+  position: relative;
   height: calc(100vh - 160px);
-  overflow: auto; 
+  overflow: auto;
   margin: 0 16px;
   scrollbar-width: none;
-  
 }
 
 .addContainerTopContainer {
@@ -45,7 +44,6 @@
   flex-direction: column;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-  
 }
 
 .contactHeadline {
@@ -73,7 +71,7 @@
 .addContactContainerBottom {
   padding: 0 16px;
   padding-bottom: 80px;
-  background-color: #ffffff; 
+  background-color: #ffffff;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
 }
@@ -138,11 +136,86 @@
   margin-top: -60px;
 }
 
-.headlineUnderline{
+.headlineUnderline {
   width: 90px;
   height: 3px;
   background-color: #29abe2;
   border-radius: 45px;
   margin-bottom: 3px;
+}
+
+.contactAlphabet {
+  font-size: 20px;
+  color: #000000;
+  padding: 17px 36px;
+}
+
+.contactSeperator {
+  background-color: #d1d1d1;
+  height: 1px;
+}
+
+.contactsListContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 8px;
+}
+
+.contactProfileContainer {
+  display: flex;
+  border-radius: 10px;
+  padding: 15px 24px;
+  gap: 35px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.contactProfileContainer:hover{
+  background: linear-gradient(0deg, rgba(249,249,249,1) 100%, rgba(240,240,240,1) 100%);
+}
+
+.contactProfileContainer:active {
+  background: #2a3647 !important;
+  color: #ffffff;
+}
+
+.profileIcon {
+  min-height: 42px;
+  min-width: 42px;
+  border-radius: 100%;
+  background-color: orange;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ffffff;
+  font-size: 12px;
+}
+
+.contactNameEmailContaciner {
+ display: flex;
+  flex-direction: column;
+  gap: 5px;
   
+}
+
+body{
+  overflow: hidden;
+}
+
+.contactName {
+  font-size: 20px;
+}
+
+.contactEmail {
+  font-size: 16px;
+  color: #007cee;
+  padding: 2px 0;
+}
+
+.contactsListContainer{
+  height: calc(100vh - 160px);
+  overflow: auto;
+  scrollbar-width: none;
 }
