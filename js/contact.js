@@ -22,7 +22,7 @@ async function getContacts() {
     let container = document.getElementById('contacts');
     let response = await fetch(BASE_URL + '/contacts.json');
     let responseToJson = await response.json();
-    let contacts = [];
+    let contacts = [];    
     container.innerHTML = '';
 
     for (const key in responseToJson) {
@@ -35,6 +35,12 @@ async function getContacts() {
 }
 
 
+/**
+ * Displays the contacts in the provided array in alphabetical order.
+ * Each contact is displayed under the corresponding letter section.
+ * 
+ * @param {Array} contacts - The array of contacts to be displayed.
+ */
 function displayContacts(contacts) {
     let container = document.getElementById('contacts');
     
