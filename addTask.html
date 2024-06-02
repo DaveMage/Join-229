@@ -25,21 +25,23 @@
         Description <br>
         <textarea type="text" placeholder="Enter a Description" class="inputFieldAddTaskDescrition"></textarea>
       </label>
-      <label for="addTaskAssigned">
+      <label for="addTaskAssigned">      <!-- liegt erstmal auf eis -->
         Assigned to <br>
-        <!-- <input type="text" placeholder="Select contacts to assign" class="inputFieldAddTask"> -->
-          <select name="Contacts" id="dropDownContacts" class="inputFieldAddTask">
-            <option value="contact1">Herr A</option>
-            <option value="contact2">Herr B</option>
-            <option value="contact3">Frau C</option>
-            <option value="contact4">Frau D</option>
-            <option value="contact5">Herr E</option>
-            <option value="contact6">Frau F</option>
-          </select>
+            <select name="Contacts" id="dropDownContacts" class="contactSelector">
+              <option value="" selected disabled hidden>Select contacts to assign</option>
+              <option value="contact2">Herr B</option>
+              <option value="contact3">Frau C</option>
+              <option value="contact4">Frau D</option>
+              <option value="contact5">Herr E</option>
+              <option value="contact6">Frau F</option>
+            </select>
       </label>
-      <label for="addTaskDueDate">
+      <label for="addTaskDueDate" >
         Due date<span class="requiredStar">*</span> <br>
-        <input type="text" placeholder="dd/mm/yyyy" class="inputFieldAddTask">
+        <label class="dueDateLabel">
+          <input type="text" placeholder="dd/mm/yyyy" class="inputFieldDueDate">
+          <img src="./img/Mobile/AddTask/eventIconAddTask.png" alt="Calendar">
+        </label>
       </label>
       <label for="addTaskPrio">
         Prio <br>
