@@ -14,7 +14,7 @@ function addContactHtml() {
                             <img src="/img/Mobile/Contacts/personProfileIcon.png">
                         </div>
                         <label for="contactName" class="contactLabel">
-                            <input type="text" id="contactName" placeholder="Name">
+                            <input type="text" id="contactName" placeholder="Name" pattern="^[A-Za-zÄäÖöÜüß]+(?:\s[A-Za-zÄäÖöÜüß]+)+$" required>
                             <img src="/img/Mobile/Contacts/personIconContacts.png">
                         </label>
                         <label for="contactEmail" class="contactLabel">
