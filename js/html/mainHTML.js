@@ -1,7 +1,7 @@
 function headerMobileHtml(){
    return `
    <img src="/img/Mobile/generalElements/joinLogoMobile.png" alt="Join Logo">
-   <div class="profileIcon" onclick="displayMobileLogout()">
+   <div class="headerProfileIcon" onclick="displayMobileLogout()">
        <span id="profileInitial"></span> 
     </div>
     ${logoutMobileHtml()}`; 
