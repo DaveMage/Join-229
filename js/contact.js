@@ -24,27 +24,42 @@ async function getContacts() {
     let responseToJson = await response.json();
     let contacts = [];
     container.innerHTML = '';
-    
+
     for (const key in responseToJson) {
         let contact = responseToJson[key];
         contact.id = key;
         contacts.push(contact);
     }
-    displayContacts(contacts); 
-    return contacts;   
+    displayContacts(contacts);
+    return contacts;
 }
 
 
-function displayContacts(contacts){
+function displayContacts(contacts) {
     let container = document.getElementById('contacts');
 
-    for (let i = 0; i < contacts.length; i++) {
-        let contact = contacts[i];
-        let contactHtml = contactListItemHtml(contact);
-        container.innerHTML += contactHtml;
-    }    
-}
+    if (container) {
+        container.innerHTML = '';
+        contacts.sort((a, b) => a.name.localeCompare(b.name));
 
+        let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+        for (let i = 0; i < alphabet.length; i++) {
+            let letter = alphabet[i];
+
+            let contactsByLetter = contacts.filter(contact => contact.name.toUpperCase().startsWith(letter));
+
+            if (contactsByLetter.length > 0) {
+                container.innerHTML += `<div class="contactAlphabet">${letter}</div><div class="contactSeperator"></div>`;
+
+                for (let j = 0; j < contactsByLetter.length; j++) { 
+                    let contact = contactsByLetter[j]; 
+                    container.innerHTML += contactListItemHtml(contact);
+                }
+            }
+        }
+    }
+}
 
 /**
  * Saves a contact by retrieving the contact name, email, and phone from the input fields,
@@ -53,6 +68,11 @@ function displayContacts(contacts){
  */
 function saveContact() {
     let contactName = document.getElementById('contactName').value;
+    const namePattern = /^[A-Za-zÄäÖöÜüß]+(?:\s[A-Za-zÄäÖöÜüß]+)+$/;
+    if (!namePattern.test(contactName)) {
+        alert('Please enter a valid name');
+        return;
+    }
     let contactEmail = document.getElementById('contactEmail').value;
     let contactPhone = document.getElementById('contactPhone').value;
     let randomColor = profileColor[Math.floor(Math.random() * profileColor.length)];
@@ -61,6 +81,8 @@ function saveContact() {
     closeAddContact();
     getContacts();
 }
+
+
 
 
 
