@@ -85,7 +85,7 @@
 .inputFieldAddTaskDescrition::placeholder {
     position: absolute;
     top: 18px;
-    left: 21px;   
+    left: 21px;
 }
 
 .inputFieldAddTaskDescrition {
@@ -99,4 +99,51 @@
     gap: 10px;
     margin-top: 8px;
     margin-bottom: 16px;
+}
+
+.contactSelector {
+    appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    background: url('../img/Mobile/AddTask/arrowDropDownAddTask.png') no-repeat right center;
+    background-position: calc(100% - 15px) center;
+    background-color: white;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    border-radius: 10px;
+    border: 1px;
+    padding: 10px 21px;
+    border-color: #D1D1D1;
+    gap: 10px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+}
+
+.dueDateLabel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    border: 1px;
+    gap: 10px;
+    border-color: #D1D1D1;
+    background-color: rgb(193, 40, 40);
+    margin-top: 8px;
+    margin-bottom: 32px;
+}
+
+.dueDateLabel input {
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.inputFieldDueDate {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    padding: 10px 21px;
+    border-color: #D1D1D1;
+    gap: 10px;
 }
