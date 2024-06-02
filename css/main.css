@@ -4,8 +4,7 @@
   box-sizing: border-box;
   font-family: var(--font-family-inter);
   font-size: 16px;
-  font-weight: 400;
-  
+  font-weight: 400;  
 }
 
 body{
@@ -22,7 +21,7 @@ body{
   src: url(../fonts/Inter-VariableFont_slnt\wght.ttf);
 }
 
-.profileIcon {
+.headerProfileIcon {
   width: 40px;
   height: 40px;
   border: 2px solid #2a3647;
@@ -33,11 +32,11 @@ body{
   background-color: #ffffff;
 }
 
-.profileIcon:hover {
+.headerProfileIcon:hover {
   background-color: #0c2e621f;
 }
 
-.profileIcon span {
+.headerProfileIcon span {
   color: #29abe2;
 }
 
