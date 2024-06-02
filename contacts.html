@@ -15,15 +15,22 @@
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="/css/contact.css" />
   </head>
-  <body id="template" onload="onloadInit()">
+  <body id="template" onload="contactInit()">
     <header id="header" class="header-menu"></header>
     <main id="contactMain">
+
+      <section class="contactsListContainer" id="contacts">    
+        
+        
+        
+      </section>
       <button class="primaryBtn addContactBtn" onclick="openAddContact()">
         <img src="/img/Mobile/Contacts/personAddIconContacts.png" />
       </button>
     </main>
     <footer id="menu" class="footer"></footer>
 
+    <script src="/js/storage.js"></script>
     <script src="/js/html/contactHTML.js"></script>
     <script src="/js/contact.js"></script>
   </body>
