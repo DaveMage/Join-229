@@ -30,15 +30,11 @@ async function getContacts() {
         contact.id = key;
         contacts.push(contact);
     }
-    displayContacts(contacts);    
+    displayContacts(contacts); 
+    return contacts;   
 }
 
-/**
- * Displays the contacts in the provided array on the webpage.
- * 
- * @param {Array} contacts - The array of contacts to be displayed.
- * @returns {Array} - The same array of contacts.
- */
+
 function displayContacts(contacts){
     let container = document.getElementById('contacts');
 
@@ -46,8 +42,7 @@ function displayContacts(contacts){
         let contact = contacts[i];
         let contactHtml = contactListItemHtml(contact);
         container.innerHTML += contactHtml;
-    }
-    return contacts;
+    }    
 }
 
 
