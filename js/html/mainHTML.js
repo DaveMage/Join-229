@@ -35,7 +35,7 @@ function logoutMobileHtml(){
       <a href="/help.html">Help</a>
       <a href="/legalNotice.html">Legal Notice</a>
       <a href="/privacyPolice.html">Privacy Policy</a>
-      <a href="login.html">Log out</a>
+      <a href="#" onclick="logout()">Log out</a>
     </div>
 `;
 }

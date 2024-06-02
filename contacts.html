@@ -1,50 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join</title>
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="icon" href="./img/favicon/favicon_with_bg.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/main.css" />
+    <link
+      rel="icon"
+      href="./img/favicon/favicon_with_bg.png"
+      type="image/x-icon"
+    />
     <script src="/js/main.js"></script>
     <script src="/js/html/mainHTML.js"></script>
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/contact.css">
-</head>
-<body id="template" onload="onloadInit()">
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/contact.css" />
+  </head>
+  <body id="template" onload="onloadInit()">
     <header id="header" class="header-menu"></header>
-    <main>
-        <div class="addContactContainer">
-            <div class="addContainerTopContainer">
-                <img class="closeBtn" src="/img/Mobile/Contacts/closeWhite.png">
-                <h1 class="contactHeadline">Add Contact</h1>
-                <span class="contactText">Tasks are bette with a team</span>
-                <span class=""></span>
-            </div>
-            <div class="contactProfileIcon">
-                <img src="/img/Mobile/Contacts/personProfileIcon.png">
-            </div>
-            <div class="addContactContainerBottom">
-                <form onsubmit="return false;">
-                    <label for="contactName" class="contactLabel">
-                        <input type="text" id="contactName" placeholder="Name">
-                        <img src="/img/Mobile/Contacts/personIconContacts.png">
-                    </label>
-                    <label for="contactEmail" class="contactLabel">
-                        <input type="email" id="contactEmail" placeholder="Email">
-                        <img src="/img/Mobile/Contacts/mailIconContacts.png">
-                    </label>
-                    <label for="contactPhone" class="contactLabel"> 
-                        <input type="tel" id="contactPhone" placeholder="Phone">
-                        <img src="/img/Mobile/Contacts/callIconContacts.png" >
-                    </label>
-                    <button class="primaryBtn createContactBtn">Create contact <img src="/img/Mobile/Contacts/checkWhite.png"></button>
-                </form>
-            </div>
-        </div>
-        <button class="primaryBtn addContactBtn"><img src="/img/Mobile/Contacts/personAddIconContacts.png"></button>
+    <main id="contactMain">
+      <button class="primaryBtn addContactBtn" onclick="openAddContact()">
+        <img src="/img/Mobile/Contacts/personAddIconContacts.png" />
+      </button>
     </main>
     <footer id="menu" class="footer"></footer>
-    
-    </body>
+
+    <script src="/js/html/contactHTML.js"></script>
+    <script src="/js/contact.js"></script>
+  </body>
 </html>

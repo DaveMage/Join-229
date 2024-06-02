@@ -13,21 +13,39 @@
   right: 16px;
 }
 
+.background{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
 .addContactContainer {
   border-radius: 30px;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
-  position: relative;
-  z-index: 10;
+  position: relative;  
+  height: calc(100vh - 160px);
+  overflow: auto; 
+  margin: 0 16px;
+  scrollbar-width: none;
+  
 }
 
 .addContainerTopContainer {
-  padding: 66px 24px;
+  padding: 124px 16px;
   display: flex;
   gap: 12px;
   background-color: #2a3647;
   flex-direction: column;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
+  
 }
 
 .contactHeadline {
@@ -55,6 +73,9 @@
 .addContactContainerBottom {
   padding: 0 16px;
   padding-bottom: 80px;
+  background-color: #ffffff; 
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .addContactContainerBottom form {
@@ -63,6 +84,7 @@
   gap: 15px;
   justify-content: center;
   align-items: center;
+  background-color: #ffffff;
 }
 
 .closeBtn {
@@ -86,6 +108,7 @@
   padding: 13px 21px;
   gap: 10px;
   height: 41px;
+  cursor: pointer;
 }
 
 .contactLabel input {
@@ -94,6 +117,7 @@
   font-size: 20px;
   width: 100%;
   outline: none;
+  cursor: pointer;
 }
 
 .contactLabel input::placeholder {
@@ -110,5 +134,15 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  margin-bottom: 17px;
   margin-top: -60px;
+}
+
+.headlineUnderline{
+  width: 90px;
+  height: 3px;
+  background-color: #29abe2;
+  border-radius: 45px;
+  margin-bottom: 3px;
+  
 }
