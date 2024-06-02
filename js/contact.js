@@ -37,7 +37,7 @@ async function getContacts() {
 
 function displayContacts(contacts) {
     let container = document.getElementById('contacts');
-
+    
     if (container) {
         container.innerHTML = '';
         contacts.sort((a, b) => a.name.localeCompare(b.name));
@@ -59,6 +59,7 @@ function displayContacts(contacts) {
             }
         }
     }
+    
 }
 
 /**
