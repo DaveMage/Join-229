@@ -150,9 +150,8 @@
   padding: 17px 36px;
 }
 
-.contactSeperator {
-  background-color: #d1d1d1;
-  height: 1px;
+.contactSeperator {  
+  border-top: 1px solid #d1d1d1;
 }
 
 .contactsListContainer {
