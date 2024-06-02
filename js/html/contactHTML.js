@@ -25,10 +25,22 @@ function addContactHtml() {
                             <input type="tel" id="contactPhone" placeholder="Phone">
                             <img src="/img/Mobile/Contacts/callIconContacts.png" >
                         </label>
-                        <button class="primaryBtn createContactBtn" onclick="addContact()">Create contact <img src="/img/Mobile/Contacts/checkWhite.png"></button>
+                        <button type="submit" class="primaryBtn createContactBtn" onclick="saveContact()" >Create contact <img src="/img/Mobile/Contacts/checkWhite.png"></button>
                     </form>
                 </div>
             </div>
         </div>
+    `;
+}
+
+function contactListItemHtml(contact) {
+    return `    
+    <div class="contactProfileContainer" >
+      <div class="profileIcon" style="background-color: ${contact.profileColor};">${contact.initials}</div>
+      <div class="contactNameEmailContainer">
+        <p class="contactName">${contact.name}</p>
+        <p class="contactEmail">${contact.email}</p>
+      </div>
+    </div>
     `;
 }
