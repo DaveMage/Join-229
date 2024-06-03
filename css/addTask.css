@@ -1,4 +1,105 @@
-.addTaskHeadline{
-    font-size: 48px;
-    margin-top: 48px;
+.addTaskHeadline {
+  font-size: 48px;
+  margin-top: 48px;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 0 16px;
+  background-color: #f6f7f8;
+}
+
+.required {
+  color: #ff8190;
+}
+
+.addTaskInput {
+  padding: 10px 21px;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  outline: none;
+}
+
+.addTaskInput::placeholder {
+  color: #d1d1d1;
+}
+
+.addTaskForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.addTaskLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.addTaskDescription {
+  resize: none;
+}
+
+.addTaskAssignedInput::placeholder {
+  color: #000000;
+}
+
+.addTaskAssignedInput {
+  background-image: url(/img/Mobile/AddTask/arrowDropDownaa.png);
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+
+.customDropdownContainer {
+  background-color: #ffffff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;  
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: -16px;
+}
+
+.assigendItem{
+    padding: 7px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+
+}
+
+.assignedProfileIcon{
+    min-height: 42px;
+    min-width: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    border: 2px solid #ffffff;
+    background-color: #ff8190;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.assignedProfileIconName{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.customCheckboxAssigned{
+    appearance: none;
+    background-image: url(/img/Mobile/AddTask/ceckboxOpenAddTask.png);
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+
+.customCheckboxAssigned:checked{
+    background-image: url(/img/Mobile/AddTask/ceckboxCloseAddTask.png);
 }
