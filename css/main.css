@@ -44,6 +44,7 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   background-color: #ffffff;
 }
 
@@ -152,6 +153,7 @@ body{
   gap: 10px;
   color: #ffffff;
   border: none;
+  cursor: pointer;
 }
 
 .primaryBtn:active {
