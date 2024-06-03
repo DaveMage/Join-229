@@ -56,7 +56,7 @@ body{
   color: #29abe2;
 }
 
-.header-menu {
+.headerMenu {
   display: flex;
   justify-content: space-between;
   align-items: center;
