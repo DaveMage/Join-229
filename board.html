@@ -5,13 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>   
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/board.css">
     <link rel="icon" href="./img/favicon/favicon_with_bg.png" type="image/x-icon">
     <script src="/js/main.js"></script>
+    <script src="/js/board.js"></script>
     <script src="/js/html/mainHTML.js"></script>
 </head>
 <body id="template" onload="onloadInit()">
     <header id="header" class="headerMenu"></header>
-    <footer id="menu" class="footer"></footer>
     
+    <main class="boardContent">
+        <div class="boardHeader">
+            <h1 class="headline">Board</h1>
+            <img id="addTask" src="./img/Mobile/Board/plusAddTaskMobile.png" alt="add Task Button">
+        </div>
+
+        <div class="searchBar">
+            <div class="search">
+                <input id="findTask" type="text" placeholder="Find Task">
+            </div>
+            <div class="pressSearch">
+                <img src="./img/Mobile/Board/bar.png" class="bar">
+                <img src="./img/Mobile/Board/search.png" onclick="changeImg()" id="magGlassImg" class="magnifyingGlass">
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="columnToDo column">
+                <div class="columnHeader">
+                    <h2 class="subheadline">To do</h2>
+                    <img id="addTaskToDo" class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
+                </div>
+                <div class="tasks">
+                    <div class="noTasksToDo">
+                        <p class="noTasksText">No tasks To do</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columnInProgress column">
+                <div class="columnHeader">
+                    <h2 class="subheadline">In progress</h2>
+                    <img id="addTaskInProgress" class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
+                </div>
+                <div class="tasks">
+                    <div class="taskCard">
+                        <div class="cardBody">
+                            <p class="userStory">User Story</p>
+                            <div class="taskHeadline">
+                                Kochwelt Page & Recipe Recommender
+                            </div>
+                            <div class="taskDescr">
+                                Build start page with recipe recommendation...
+                            </div>
+                            <div class="subtasks">
+                                <div class="progressBar"></div>
+                                <div class="progressText">
+                                    <span id="complTasks">1</span>/<span id="totalNumOfTasks">2</span>
+                                     Subtasks
+                                </div>
+                            </div>
+                            <div class="taskFooter">
+                                <div class="profiles">
+                                    <div class="profileIcon" id="profileIcon" style="background-color:#FFBB2B;">AM</div>
+                                    <div class="profileIcon" id="profileIcon" style="background-color:#FFA35E;">TM</div>
+                                    <div class="profileIcon" id="profileIcon" style="background-color:#1FD7C1;">DM</div>
+                                </div>
+                                <img class="prioritySymbol" src="./img/Mobile/Board/priorityNormal.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columnAwaitFeedback column">
+                <div class="columnHeader">
+                    <h2 class="subheadline">Await feedback</h2>
+                    <img id="addTaskInProgress" class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
+                </div>
+                <div class="tasks">
+                    
+                </div>
+            </div>
+
+            <div class="columnDone column">
+                <div class="columnHeader">
+                    <h2 class="subheadline">Done</h2>
+                    <img id="addTaskInProgress" class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
+                </div>
+                <div class="tasks">
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="menu" class="footer"></footer>
     </body>
 </html>

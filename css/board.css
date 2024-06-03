@@ -1,0 +1,208 @@
+.boardContent {
+    margin: 0 16px 0 16px;
+    background-color: #F6F7F8;
+}
+
+.boardHeader {
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headline {
+    font-size: 47px;
+    font-weight: 700;
+}
+
+#addTask {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.searchBar {
+    width: 100%;
+    height: 48px;
+    margin-top: 40px;
+    border-radius: 10px;
+    border: 1px solid #A8A8A8;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px 8px 16px;
+}
+
+.search {
+    height: 32px;
+    display: flex;   
+    align-items: center;
+}
+
+#findTask {
+    border: none;
+    height: 24px;
+    font-size: 20px;
+}
+
+#findTask::placeholder {
+    color: #d1d1d1;
+}
+
+#findTask:focus-visible {
+    outline: none;
+}
+
+.pressSearch {
+    width: 48px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.magnifyingGlass {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.magnifyingGlass:hover {
+    background-color: #eeeeee;
+    border-radius: 50%;
+}
+
+.bar {
+    height: 31px;
+    width: 1px;
+}
+
+.columns {
+    margin-top: 24px;
+}
+
+.column {
+    margin-top: 26px;
+}
+
+.columnHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.subheadline {
+    font-size: 27px;
+    font-weight: 700;
+    color: #2A3647;
+}
+
+.addTaskColumn {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.tasks {
+    margin-top: 16px;
+}
+
+.noTasksToDo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E7E7E7;
+    border: 1px dashed #A8A8A8;
+    border-radius: 10px;
+    height: 48px;
+}
+
+.noTasksText {
+    color: #A8A8A8;
+    font-size: 16px;
+}
+
+.taskCard {
+    background-color: #ffffff;
+    max-width: 252px;
+    border-radius: 24px;
+    cursor: pointer;
+}
+
+.cardBody {
+    padding: 16px;
+}
+
+.userStory {
+    background-color: #0038FF;
+    color: #ffffff;
+    width: 113px;
+    height: 27px;
+    border-radius: 8px;
+    padding: 4px 16px 4px 16px;
+    margin-bottom: 24px;
+}
+
+.taskHeadline {
+    font-weight: 700;
+    color: #2A3647;
+    margin-bottom: 8px;
+}
+
+.taskDescr {
+    color: #A8A8A8;
+    margin-bottom: 24px;
+}
+
+.subtasks {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.progressBar {
+    width: 128px;
+    height: 8px;
+    background-color: #4589FF;
+    border-radius: 8px;
+}
+
+.progressText {
+    max-width: 92px;
+    font-size: 12px;
+}
+
+.progressText > * {
+    font-size: 12px;
+}
+
+.taskFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profiles {
+    display: flex;
+    flex-direction: row;
+}
+
+.profileIcon {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: orange;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ffffff;
+    font-size: 12px;
+}
+
+.prioritySymbol {
+    width: 32px;
+    height: 32px;
+}
