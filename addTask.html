@@ -19,10 +19,32 @@
     <header id="header" class="headerMenu"></header>
     <main class="mainContainer">
       <h1 class="addTaskHeadline">Add Task</h1>
-      <form>
-        <label for="addTaskTitle">
-          Title<span class="">*</span>
+      <form class="addTaskForm">
+
+        <label for="addTaskTitle" class="addTaskLabel">
+          <p>Title<span class="required">*</span></p>
+          <input type="text" placeholder="Enter a Title" class="addTaskInput" id="addTaskTitle">          
         </label>
+
+        <label for="addTaskDescription" class="addTaskLabel">
+          Description
+          <textarea placeholder="Enter a Description" class="addTaskInput addTaskDescription" id="addTaskDescription" rows="4"></textarea>
+        </label>
+        
+        <label for="addTaskAssigned" class="addTaskLabel">
+          Assigned to
+          <input type="text" placeholder="Select contacts to assign" class="addTaskInput addTaskAssignedInput" id="addTaskAssigned">          
+        </label>
+        <div class="customDropdownContainer">
+          <label class="assigendItem" for="assigendItem">
+            <div class="assignedProfileIconName">
+              <div class="assignedProfileIcon">Tg</div>
+              <div>Tameofjvosirdhgff gergerdge</div>
+            </div>
+            <input type="checkbox" id="assigendItem" class="customCheckboxAssigned">
+          </label>
+        </div>
+
       </form>
     </main>
     
