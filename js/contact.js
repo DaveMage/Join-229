@@ -109,8 +109,7 @@ async function saveContact() {
         closeAddContact();// ersetzen durch openView des contactes
 
         // Fetch and display the updated contacts list
-        getContacts();
-        displayContacts(contacts);
+        contactInit()
     } catch (error) {
         console.error('Error adding contact:', error);
     }
