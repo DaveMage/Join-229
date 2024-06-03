@@ -1,7 +1,7 @@
 function addContactHtml() {
     return `
-    <div class="background" id="contactWindowBackground">
-            <div class="addContactContainer">
+    <div class="background " id="contactAddFormBackground">
+            <div class="addContactContainer slideInBottom" id="addContactContainer">
                 <div class="addContainerTopContainer">
                     <img class="closeBtn" src="/img/Mobile/Contacts/closeWhite.png" onclick="closeAddContact()">
                     <h1 class="contactHeadline">Add Contact</h1>
@@ -14,7 +14,7 @@ function addContactHtml() {
                             <img src="/img/Mobile/Contacts/personProfileIcon.png">
                         </div>
                         <label for="contactName" class="contactLabel">
-                            <input type="text" id="contactName" placeholder="Name" pattern="^[A-Za-zÄäÖöÜüß]+(?:\s[A-Za-zÄäÖöÜüß]+)+$" required>
+                            <input type="text" id="contactName" placeholder="Name" required>
                             <img src="/img/Mobile/Contacts/personIconContacts.png">
                         </label>
                         <label for="contactEmail" class="contactLabel">
@@ -35,7 +35,7 @@ function addContactHtml() {
 
 function contactListItemHtml(contact) {
     return `    
-    <div class="contactProfileContainer" >
+    <div class="contactProfileContainer" onclick="openContactView('${contact.id}')">
       <div class="profileIcon" style="background-color: ${contact.profileColor};">${contact.initials}</div>
       <div class="contactNameEmailContainer">
         <p class="contactName">${contact.name}</p>
@@ -44,3 +44,56 @@ function contactListItemHtml(contact) {
     </div>
     `;
 }
+
+function contactViewHtml(contact) {
+    return `
+    <section class="contactView" onclick="closeOption()">
+    <img class="arrowBack" src="/img/Mobile/Contacts/arrowLeftBlue.png" onclick="goToContacts()"/>
+    <div class="ContactViewHeader">
+      <span class="contactViewHeadline">Contacts</span>
+      <span class="contactViewTxt">Better with a team</span>
+      <span class="headlineUnderline"></span>
+    </div>
+    <div class="contactViewBody">
+      <div class="contactViewProfileIconName">
+        <div class="contactViewProfileIcon"
+        style="background-color: ${contact.profileColor};">${contact.initials}</div>
+        <div class="contactViewName">${contact.name}</div>
+      </div>
+      <span class="contactViewSubheadline">Contact Information</span>
+      <div class="contactViewInfo">
+        <div class="contactViewSubContainer">
+          <span class="contactViewLabel">Email</span>
+          <a href="mailto:${contact.email}" class="contactViewLink" id="contactViewEmail">${contact.email}</a>
+        </div>
+        <div class="contactViewSubContainer">
+          <span class="contactViewLabel">Phone</span>
+          <a href="tel:${contact.phone}" class="contactViewLink" id="contactViewPhone">${contact.phone}</a>
+        </div>
+      </div>
+    </div>
+    </section>
+    <button  class="primaryBtn addContactBtn" onclick="openOption('${contact.id}')">
+        <img id="contactBtnImg" src="/img/Mobile/Contacts/contactViewOption.png" />
+    </button>
+    ${optionHtml(contact)}
+    `;
+}
+
+
+
+function optionHtml(contact){
+    return `<div class="optionContainer" id="optionContainer">
+    <button><img src="/img/Mobile/Contacts/editGrey.png" class="editBtn">Edit</button>
+    <button onclick="deleteContact('${contact.id}')"><img src="/img/Mobile/Contacts/trashGrey.png" class="deleteBtn" >Delete</button>
+  </div>`;
+}
+
+function successfullyHtml(){
+    return `
+    <div class="backgroundSuccessfullyMessage">
+    <div id="conctactSuccessfully" class="successfullyMessage slideInBottom">
+    Contact successfully created
+    </div>
+    </div>
+    `;}
