@@ -150,7 +150,7 @@
   padding: 17px 36px;
 }
 
-.contactSeperator {  
+.contactSeperator {
   border-top: 1px solid #d1d1d1;
 }
 
@@ -170,8 +170,12 @@
   cursor: pointer;
 }
 
-.contactProfileContainer:hover{
-  background: linear-gradient(0deg, rgba(249,249,249,1) 100%, rgba(240,240,240,1) 100%);
+.contactProfileContainer:hover {
+  background: linear-gradient(
+    0deg,
+    rgba(249, 249, 249, 1) 100%,
+    rgba(240, 240, 240, 1) 100%
+  );
 }
 
 .contactProfileContainer:active {
@@ -193,12 +197,12 @@
 }
 
 .contactNameEmailContaciner {
- display: flex;
+  display: flex;
   flex-direction: column;
-  gap: 5px;  
+  gap: 5px;
 }
 
-body{
+body {
   overflow: hidden;
 }
 
@@ -212,7 +216,7 @@ body{
   padding: 2px 0;
 }
 
-.contactsListContainer{
+.contactsListContainer {
   height: calc(100vh - 160px);
   overflow: auto;
   scrollbar-width: none;
@@ -220,4 +224,218 @@ body{
 
 span {
   display: inline-block;
+}
+
+.contactView {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 48px 16px;
+  height: calc(100vh - 160px);
+  width: 100%;
+}
+
+.ContactViewHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.arrowBack {
+  position: absolute;
+  right: 16px;
+  cursor: pointer;
+}
+
+.arrowBack:hover, .arrowBack:active {
+  background-color: #F6F7F8;
+  border-radius: 100%;
+}
+
+.contactViewHeadline {
+  font-size: 47px;
+  font-weight: 700;
+}
+
+.contactViewTxt {
+  font-size: 20px;
+  color: #2a3647;
+}
+
+.contactViewBody {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}
+
+.contactViewProfileIconName {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.contactViewProfileIcon {
+  min-height: 80px;
+  min-width: 80px;
+  border: 3px solid #ffffff;
+  border-radius: 100%;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d1d1d1;
+  color: #ffffff;
+  font-size: 27px;
+}
+
+.contactViewName {
+  font-weight: 700;
+  font-size: 36px;
+}
+
+.contactViewSubheadline {
+  font-size: 20px;
+}
+
+.contactViewInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.contactViewSubContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contactViewLabel {
+  font-weight: 700;
+}
+
+.contactViewLink {
+  text-decoration: none;
+  color: #000000;
+}
+
+#contactViewEmail {
+  color: #007cee;
+}
+
+.optionContainer {
+  display: none;
+  flex-direction: column;
+  background-color: #ffffff;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 20px 20px 0 20px;
+  padding: 10px;
+  width: 116px;
+  position: absolute;
+  bottom: 100px;
+  right: 8px;
+  z-index: 10;
+}
+
+.optionContainer button {
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  color: #2a3647;
+  cursor: pointer;
+}
+
+.optionContainer button:hover {
+  background-color: #eeeeee;
+  border-radius: 8px;
+  color: #29abe2;
+  font-weight: 700;
+}
+
+.optionContainer button:hover .editBtn {
+  content: url(/img/Mobile/Contacts/editBlue.png);
+}
+
+.optionContainer button:hover .deleteBtn {
+  content: url(/img/Mobile/Contacts/trashBlue.png);
+}
+
+.successfullyMessage {
+  background-color: #2a3647;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
+  position: absolute;
+  bottom: 240px;
+  z-index: 10;
+  width: 326px;
+  height: 76px;
+}
+
+.backgroundSuccessfullyMessage {
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes slideInBottom {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.slideInBottom {
+  animation: slideInBottom 300ms ease-out 0s 1 normal forwards;
+}
+
+@keyframes slideOutBottom {
+  0% {
+    transform: translateY(-80px);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.slideOutBottom {
+  animation: slideOutBottom 300ms ease-out 0s 1 normal forwards;
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.slideInRight {
+  animation: slideInRight 300ms ease-out 0s 1 normal forwards;
+}
+
+@keyframes slideOutRight {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.slideOutRight {
+  animation: slideOutRight 300ms ease-out 0s 1 normal forwards;
 }
