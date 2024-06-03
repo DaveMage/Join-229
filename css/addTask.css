@@ -1,20 +1,16 @@
 .mainContainer {
     background-color: #F6F7F8;
-    gap: 16px;
+    gap: 32px;
     display: flex;
     flex-direction: column;
+    padding: 0 16px;
 }
 
-.cardTitleH1 {
-    font-size: 47px;
-    position: sticky;
-    font-weight: 700;
-    gap: 1px;
-    padding-left: 16px;
-    padding-top: 48px;
+.formHeadline {
+    font-size: 47px;    
+    font-weight: 700;         
     display: flex;
-    top: 80px;
-    background-color: #F6F7F8;
+    margin-top: 48px;
 }
 
 .labelSection {
@@ -28,6 +24,13 @@
     color: #FF8190;
 }
 
+.customDropdown{
+    appearance: none;
+    background-image: url('../img/Mobile/AddTask/arrowDropDownAddTask.png');    
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+}
+
 .inputFieldAddTask {
     height: 40px;
     width: 100%;
@@ -37,8 +40,7 @@
     padding: 10px 21px;
     border-color: #D1D1D1;
     gap: 10px;
-    margin-top: 8px;
-    margin-bottom: 16px;
+    margin-top: 8px;   
 }
 
 ::placeholder {
@@ -157,3 +159,49 @@
     height: calc(100vh - 160px - 103px - 88px);
     overflow: auto;
   }
+
+  .dropdownContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background-color: white;
+    border: 0 0 1px 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+.assingedItem{
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    padding: 7px 16px;
+    justify-content: space-between;
+
+}
+
+.assignedIconNameContainer{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+}
+
+.assignedProfileIcon{
+    min-height: 42px;
+    min-width: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    background-color: orange;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.customCheckbox{
+    appearance: none;
+    background-image: url('/img/Mobile/AddTask/customCheckboxGrey.png');
+    height: 24px;
+    width: 24px;
+}
