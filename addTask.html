@@ -15,28 +15,34 @@
 <body id="template" onload="onloadInit()">
   <header id="header" class="header-menu positionStickyOnTop"></header>
   <main class="mainContainer">
-    <h1 class="cardTitleH1">Add Task</h1>
-    <form class="addTaskForm">
-      <div class="labelSection">
-        <label for="addTaskTitle">
-          Title<span class="requiredStar">*</span> <br>
-          <input type="text" placeholder="Enter a title" class="inputFieldAddTask">
+    <h1 class="formHeadline">Add Task</h1>
+    <div class="addTaskForm">
+
+        <label for="formAddTaskTitle">
+          Title<span class="requiredStar">*</span> 
+          <input type="text" placeholder="Enter a title" class="inputFieldAddTask" id="formAddTaskTitle">
         </label>
-        <label for="addTaskDescription">
-          Description <br>
-          <textarea type="text" placeholder="Enter a Description" class="inputFieldAddTaskDescrition"></textarea>
+        
+        <label for="formAddTaskDescription">
+          Description
+          <textarea id="formAddTaskDescription" type="text" placeholder="Enter a Description" class="inputFieldAddTaskDescrition"></textarea>
         </label>
-        <label for="addTaskAssigned">      <!-- liegt erstmal auf eis -->
-          Assigned to <br>
-              <select name="Contacts" id="dropDownContacts" class="contactSelector">
-                <option value="" selected disabled hidden>Select contacts to assign</option>
-                <option value="contact2">Herr B</option>
-                <option value="contact3">Frau C</option>
-                <option value="contact4">Frau D</option>
-                <option value="contact5">Herr E</option>
-                <option value="contact6">Frau F</option>
-              </select>
+
+        <label for="formAddTaskAssigned">
+          Assigned to 
+          <input type="text" id="formAddTaskAssigned" placeholder="Select contacts to assign" class="inputFieldAddTask customDropdown">            
         </label>
+        <div class="dropdownContainer">
+          <label class="assingedItem" for="assignedItem">
+            <div class="assignedIconNameContainer">
+              <div class="assignedProfileIcon">TM</div>
+              <span>Toabafc fujsdhbfkjsdn</span>
+            </div>
+            <input type="checkbox" class="customCheckbox" id="assignedItem">
+          </label>
+        </div>
+
+
         <label for="addTaskDueDate" >
           Due date<span class="requiredStar">*</span> <br>
           <label class="dueDateLabel">
@@ -58,7 +64,7 @@
           Subtasks <br>
           <input type="text" placeholder="Add new subtask" class="inputFieldAddTask">
         </label>
-      </div>
+      
       
     </form>
     <div class="addTaskBtnContainer">
