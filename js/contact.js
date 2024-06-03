@@ -163,4 +163,57 @@ function closeOption() {
     
 }
 
+function openEditContact(contactId) {
+   let container = document.getElementById('contactViewContainer' + contactId);
+   closeOption();
+   contactId = contacts.find(contact => contact.id === contactId);
+    container.innerHTML += contactEditForm(contactId);
+}
 
+function closeEditContact() {
+    document.getElementById('editContactContainer').classList.remove('slideInBottom');
+    document.getElementById('editContactContainer').classList.add('slideOutBottom');
+    setTimeout(() => {
+        document.getElementById('contactEditFormBackground').remove();
+    }, 300);
+}
+
+async function getContactById(contactId) {
+    if (contacts.length === 0) {
+        await getContacts(); // Fetch contacts if not already fetched
+    }
+    return contacts.find(contact => contact.id === contactId);
+}
+
+async function saveEditContact(contactId) {
+    let contact = await getContactById(contactId); // Fetch the contact details
+    let contactName = document.getElementById('contactName' + contactId).value;
+    let contactEmail = document.getElementById('contactEmail' + contactId).value;
+    let contactPhone = document.getElementById('contactPhone' + contactId).value;    
+    let initials = contactName.split(' ').map((n) => n[0]).join('');
+    
+    try {
+        await putData('/contacts/' + contactId, {
+            'name': contactName,
+            'email': contactEmail,
+            'phone': contactPhone,
+            'initials': initials,
+            'profileColor': contact.profileColor 
+        });
+
+        // Update the contact details in the contact view
+        let contactViewEmail = document.getElementById('contactViewEmail');
+        let contactViewPhone = document.getElementById('contactViewPhone');
+        let contactViewName = document.getElementById('contactViewName');
+        let contactViewProfileIcon = document.getElementById('contactViewProfileIcon');
+        contactViewEmail.innerHTML = contactEmail;
+        contactViewPhone.innerHTML = contactPhone;
+        contactViewName.innerHTML = contactName;        
+        contactViewProfileIcon.style.backgroundColor = contact.profileColor;
+        contactViewProfileIcon.innerHTML = initials;
+
+        closeEditContact();
+    } catch (error) {
+        console.error('Error editing contact:', error);
+    }
+}
