@@ -1,16 +1,24 @@
+async function contactInit() {
+    displayMobileHeader();
+    displayMobileMenu();
+    loadGuestLogin();
+    await getContacts();
+    displayContacts(contacts);
+}
+
+
 function openAddContact() {
     document.getElementById('contactMain').innerHTML += addContactHtml();
 }
 
-function closeAddContact() {
-    document.getElementById('contactWindowBackground').remove();
-}
 
-function contactInit() {
-    displayMobileHeader();
-    displayMobileMenu();
-    loadGuestLogin();
-    getContacts();
+function closeAddContact() {
+    document.getElementById('addContactContainer').classList.remove('slideInBottom');
+    document.getElementById('addContactContainer').classList.add('slideOutBottom');
+    setTimeout(() => {
+        document.getElementById('contactAddFormBackground').remove();
+    }, 300);
+
 }
 
 
@@ -19,20 +27,20 @@ function contactInit() {
  * @returns {Array} An array of contact objects.
  */
 async function getContacts() {
-    let container = document.getElementById('contacts');
     let response = await fetch(BASE_URL + '/contacts.json');
     let responseToJson = await response.json();
-    let contacts = [];    
-    container.innerHTML = '';
+    let fetchedContacts = [];
 
     for (const key in responseToJson) {
         let contact = responseToJson[key];
         contact.id = key;
-        contacts.push(contact);
+        fetchedContacts.push(contact);
     }
-    displayContacts(contacts);
+
+    contacts = fetchedContacts; // Store fetched contacts in a global variable
     return contacts;
 }
+
 
 
 /**
@@ -43,7 +51,7 @@ async function getContacts() {
  */
 function displayContacts(contacts) {
     let container = document.getElementById('contacts');
-    
+
     if (container) {
         container.innerHTML = '';
         contacts.sort((a, b) => a.name.localeCompare(b.name));
@@ -58,14 +66,13 @@ function displayContacts(contacts) {
             if (contactsByLetter.length > 0) {
                 container.innerHTML += `<div class="contactAlphabet">${letter}</div><div class="contactSeperator"></div>`;
 
-                for (let j = 0; j < contactsByLetter.length; j++) { 
-                    let contact = contactsByLetter[j]; 
+                for (let j = 0; j < contactsByLetter.length; j++) {
+                    let contact = contactsByLetter[j];
                     container.innerHTML += contactListItemHtml(contact);
                 }
             }
         }
     }
-    
 }
 
 /**
@@ -73,23 +80,88 @@ function displayContacts(contacts) {
  * generates a random profile color, and sends a POST request to the '/contacts' endpoint
  * with the contact details. Then, it closes the add contact form and updates the contacts list.
  */
-function saveContact() {
+async function saveContact() {
     let contactName = document.getElementById('contactName').value;
     const namePattern = /^[A-Za-zÄäÖöÜüß]+(?:\s[A-Za-zÄäÖöÜüß]+)+$/;
     if (!namePattern.test(contactName)) {
         alert('Please enter a valid name');
         return;
     }
+
     let contactEmail = document.getElementById('contactEmail').value;
     let contactPhone = document.getElementById('contactPhone').value;
     let randomColor = profileColor[Math.floor(Math.random() * profileColor.length)];
     let initials = contactName.split(' ').map((n) => n[0]).join('');
-    postData('/contacts', { 'name': contactName, 'email': contactEmail, 'phone': contactPhone, 'initials': initials, 'profileColor': randomColor });
-    closeAddContact();
-    getContacts();
+
+    try {
+        await postData('/contacts', {
+            'name': contactName,
+            'email': contactEmail,
+            'phone': contactPhone,
+            'initials': initials,
+            'profileColor': randomColor
+        });
+
+        document.getElementById('contactMain').innerHTML += successfullyHtml();
+        setTimeout(() => {
+            document.getElementById('conctactSuccessfully').remove();
+        }, 800);
+        closeAddContact();// ersetzen durch openView des contactes
+
+        // Fetch and display the updated contacts list
+        getContacts();
+        displayContacts(contacts);
+    } catch (error) {
+        console.error('Error adding contact:', error);
+    }
 }
 
 
 
+async function openContactView(contactId) {
+    // Make sure the contacts are loaded
+    if (!contacts) {
+        await getContacts();
+    }
+
+    // Find the contact with the given id
+    let contact = contacts.find(contact => contact.id === contactId);
+
+    // If the contact was found, update the HTML
+    if (contact) {
+        document.getElementById('contactMain').innerHTML = contactViewHtml(contact);
+    } else {
+        console.log('Contact with id ' + contactId + ' not found');
+    }
+}
+
+async function deleteContact(contactId) {
+    try {
+        await deleteData('/contacts/' + contactId);
+        window.location.href = 'contacts.html';
+    } catch (error) {
+        console.error('Error deleting contact:', error);
+    }
+}
+
+function goToContacts() {
+    window.location.href = 'contacts.html';
+}
+
+function openOption() {
+    document.getElementById('optionContainer').classList.remove('slideOutRight');
+    document.getElementById('optionContainer').classList.add('slideInRight');
+    document.getElementById('optionContainer').style.display = 'flex';
+    
+}
+
+function closeOption() {
+    document.getElementById('optionContainer').classList.remove('slideInRight');    
+    document.getElementById('optionContainer').classList.add('slideOutRight');
+    setTimeout(() => {
+        document.getElementById('optionContainer').style.display = 'none';
+    }, 300);
+    
+}
 
 
