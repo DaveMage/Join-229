@@ -151,22 +151,22 @@ function openOption() {
     document.getElementById('optionContainer').classList.remove('slideOutRight');
     document.getElementById('optionContainer').classList.add('slideInRight');
     document.getElementById('optionContainer').style.display = 'flex';
-    
+
 }
 
 function closeOption() {
-    document.getElementById('optionContainer').classList.remove('slideInRight');    
+    document.getElementById('optionContainer').classList.remove('slideInRight');
     document.getElementById('optionContainer').classList.add('slideOutRight');
     setTimeout(() => {
         document.getElementById('optionContainer').style.display = 'none';
     }, 300);
-    
+
 }
 
 function openEditContact(contactId) {
-   let container = document.getElementById('contactViewContainer' + contactId);
-   closeOption();
-   contactId = contacts.find(contact => contact.id === contactId);
+    let container = document.getElementById('contactViewContainer' + contactId);
+    closeOption();
+    contactId = contacts.find(contact => contact.id === contactId);
     container.innerHTML += contactEditForm(contactId);
 }
 
@@ -189,16 +189,16 @@ async function saveEditContact(contactId) {
     let contact = await getContactById(contactId); // Fetch the contact details
     let contactName = document.getElementById('contactName' + contactId).value;
     let contactEmail = document.getElementById('contactEmail' + contactId).value;
-    let contactPhone = document.getElementById('contactPhone' + contactId).value;    
+    let contactPhone = document.getElementById('contactPhone' + contactId).value;
     let initials = contactName.split(' ').map((n) => n[0]).join('');
-    
+
     try {
         await putData('/contacts/' + contactId, {
             'name': contactName,
             'email': contactEmail,
             'phone': contactPhone,
             'initials': initials,
-            'profileColor': contact.profileColor 
+            'profileColor': contact.profileColor
         });
 
         // Update the contact details in the contact view
@@ -208,7 +208,7 @@ async function saveEditContact(contactId) {
         let contactViewProfileIcon = document.getElementById('contactViewProfileIcon');
         contactViewEmail.innerHTML = contactEmail;
         contactViewPhone.innerHTML = contactPhone;
-        contactViewName.innerHTML = contactName;        
+        contactViewName.innerHTML = contactName;
         contactViewProfileIcon.style.backgroundColor = contact.profileColor;
         contactViewProfileIcon.innerHTML = initials;
 
