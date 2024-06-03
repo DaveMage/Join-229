@@ -1,5 +1,8 @@
 .helpContent {
-    margin: 0 16px 96px 16px;
+    margin: 0 16px;
+    padding-bottom: 16px;
+    height: calc(100vh - 160px);
+    overflow: auto;
 }
 
 .linkJoin {
@@ -52,7 +55,3 @@
     font-weight: 700;
 }
 
-.mainContainer {
-    height: calc(100vh - 80px);
-    overflow: auto;
-}
