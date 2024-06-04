@@ -20,6 +20,7 @@
   border-radius: 10px;
   border: 1px solid #d1d1d1;
   outline: none;
+  width: 100%;
 }
 
 .addTaskInput::placeholder {
@@ -42,64 +43,84 @@
   resize: none;
 }
 
-.addTaskAssignedInput::placeholder {
-  color: #000000;
-}
-
-.addTaskAssignedInput {
-  background-image: url(/img/Mobile/AddTask/arrowDropDownaa.png);
-  background-repeat: no-repeat;
-  background-position: right 16px center;
-}
-
-.customDropdownContainer {
-  background-color: #ffffff;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;  
+.addTaskInputIconContainer {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.dropdownIcon {
+  cursor: pointer;
+  position: absolute;
+  right: 16px;
+  z-index: 100;
+}
+
+.dropdownIcon:hover {
+  background-color: #d2e3ff;
+  border-radius: 100%;
+}
+
+.customDropdownBox {
+  display: none;
   flex-direction: column;
   gap: 2px;
-  margin-top: -16px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+  margin-top: -8px;
 }
 
-.assigendItem{
-    padding: 7px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 10px;
-
+.assignedItemWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.assignedProfileIcon{
-    min-height: 42px;
-    min-width: 42px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-    border: 2px solid #ffffff;
-    background-color: #ff8190;
-    font-size: 12px;
-    color: #ffffff;
+.checkboxAssigned {
+  appearance: none;
+  background-image: url(/img/Mobile/AddTask/ceckboxOpenAddTask.png);
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  position: absolute;
+  right: 16px;
+  top: 18px;
 }
 
-.assignedProfileIconName{
-    display: flex;
-    align-items: center;
-    gap: 16px;
+.checkboxAssigned:checked {
+  background-image: url(/img/Mobile/AddTask/checkboxDoneAddTask.png);
 }
 
-.customCheckboxAssigned{
-    appearance: none;
-    background-image: url(/img/Mobile/AddTask/ceckboxOpenAddTask.png);
-    width: 24px;
-    height: 24px;
-    background-repeat: no-repeat;
-    background-position: center;
-    
+.checkboxAssigned:checked + .dropdownItemAssigned {
+  background-color: #2a3647 !important;
+  color: #ffffff;
 }
 
-.customCheckboxAssigned:checked{
-    background-image: url(/img/Mobile/AddTask/ceckboxCloseAddTask.png);
+.dropdownItemAssigned {
+  width: 100%;
+  border-radius: 10px;
+  padding: 7px 16px;
+  cursor: pointer;
+}
+
+.profileIconAssigned {
+  min-height: 42px;
+  min-width: 42px;
+  border-radius: 100%;
+  border: 2px solid #ffffff;
+  background-color: #ff8190;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.profileNameContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
