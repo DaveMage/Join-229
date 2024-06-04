@@ -31,19 +31,49 @@
           <textarea placeholder="Enter a Description" class="addTaskInput addTaskDescription" id="addTaskDescription" rows="4"></textarea>
         </label>
         
-        <label for="addTaskAssigned" class="addTaskLabel">
-          Assigned to
-          <input type="text" placeholder="Select contacts to assign" class="addTaskInput addTaskAssignedInput" id="addTaskAssigned">          
-        </label>
-        <div class="customDropdownContainer">
-          <label class="assigendItem" for="assigendItem">
-            <div class="assignedProfileIconName">
-              <div class="assignedProfileIcon">Tg</div>
-              <div>Tameofjvosirdhgff gergerdge</div>
+        
+
+
+
+        <label for="addTaskFormAssignedInput" class="addTaskLabel">
+          Assigned To (optional)
+          <div class="addTaskInputIconContainer">
+          <input id="addTaskFormAssignedInput" type="text"
+          placeholder="Select contacts to assign" class="addTaskInput" readonly onclick="toggleAssignedDropdown()"
+          />
+          <img 
+          class="dropdownIcon" id="assignedDropdownArrow"
+          src="/img/Mobile/AddTask/arrowDropDownaa.png"
+          onclick="toggleAssignedDropdown()"
+          />
+          </div>
+          <div class="customDropdownAssigned customDropdownBox" id="dropdownAssigned">
+
+            <div class="assignedItemWrap">
+              <input id="addTaskFromAssignedCheckbox" type="checkbox" class="checkboxAssigned" />
+              <label for="addTaskFromAssignedCheckbox" class="dropdownItemAssigned">
+              <div class="profileNameContainer">
+                <div class="profileIconAssigned">HA</div>
+                <span class="assignedName">Hallo ADD</span>
+              </div>
+              </label>
             </div>
-            <input type="checkbox" id="assigendItem" class="customCheckboxAssigned">
-          </label>
-        </div>
+    
+            <div class="assignedItemWrap">
+              <input id="addTaskFromAssignedCheckbox1" type="checkbox" class="checkboxAssigned" />
+              <label for="addTaskFromAssignedCheckbox1" class="dropdownItemAssigned">
+              <div class="profileNameContainer">
+                <div class="profileIconAssigned">HA</div>
+                <span class="assignedName">Hallo ADD</span>
+              </div>
+              </label>
+            </div>
+
+
+      </div>
+        </label>
+
+        
 
       </form>
     </main>
@@ -51,5 +81,7 @@
 
 
     <footer id="menu" class="footer"></footer>
+
+    <script src="js/board.js"></script>
   </body>
 </html>
