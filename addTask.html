@@ -115,23 +115,77 @@
           Priority     
         </label>
 
-        <div class="prioContainer"> 
-          <label for="urgent">
-            <input type="checkbox" id="urgent" class="prioCheckbox" hidden>
+        <!-- Prio input Radio als btn -->
+        <div class="prioContainer" >
+          <!-- Prio input Radio Urgent -->
+          <input type="radio" id="urgent" name="priority" value="urgent" hidden> 
+          <label for="urgent" class="prioLabel" id="prioUrgent">            
             Urgent
             <img src="/img/Mobile/AddTask/urgentIconAddTask.png">
           </label>
-          <label for="medium">
-            <input type="checkbox" id="medium">
+
+          <!-- Prio input Radio Medium -->
+          <input type="radio" id="medium" name="priority" value="medium" hidden>
+          <label for="medium" class="prioLabel" id="prioMedium">
             Medium
-            <img src="/img/Mobile/AddTask/mediumIconAddTask.png">
+            <img  src="/img/Mobile/AddTask/mediumIconAddTask.png">
           </label>
-          <label for="low">
-            <input type="checkbox" id="low">
+
+          <!-- Prio input Radio Low -->
+          <input type="radio" id="low" name="priority" value="low" hidden >
+          <label for="low" class="prioLabel" id="prioLow">
             Low
-            <img src="/img/Mobile/AddTask/lowIconAddTask.png">
+            <img  src="/img/Mobile/AddTask/lowIconAddTask.png">
           </label>
         </div>
+
+        <!-- Category -->
+        <label for="addTaskCategory" class="addTaskLabel">
+          Category
+          <div class="addTaskInputIconContainer">
+            <input
+              id="addTaskCategory"
+              type="text"
+              placeholder="Select a Category"
+              class="addTaskInput"
+              readonly
+              onclick="toggleCategoryDropdown()"
+            />
+            <img
+              
+              class="dropdownIcon"
+              id="categoryDropdownArrow"
+              src="/img/Mobile/AddTask/arrowDropDownaa.png"
+            />
+          </div>
+          <div
+            class="customDropdownCategory customDropdownBox"
+            id="dropdownCategory"
+          >
+            <div class="dropdownItemCategory">Category 1</div>
+            <div class="dropdownItemCategory">Category 2</div>
+            <div class="dropdownItemCategory">Category 3</div>
+          </div>
+        </label>
+
+        <!-- Subtasks -->
+        <label for="addTaskSubtask" class="addTaskLabel">
+          Subtasks
+          <div class="addTaskInputIconContainer">
+            <input
+              id="addTaskSubtask"
+              type="text"
+              placeholder="Add Subtasks"
+              class="addTaskInput"
+            />
+            <img
+              onclick="addSubtask()"
+              class="dropdownIcon"
+              id="addSubtaskIcon"
+              src="/img/Mobile/AddTask/addIcon.png"
+            />
+          </div>
+          <div class="subtaskContainer" id="subtaskContainer"></div>
           
       </form>
     </main>
