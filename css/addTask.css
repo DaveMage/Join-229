@@ -124,3 +124,14 @@
   align-items: center;
   gap: 16px;
 }
+
+.addTaskLabel input[type="date"] {
+  background-image: url(/img/Mobile/AddTask/calendarIcon.png);
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+
+.addTaskLabel input[type="date"]::-webkit-calendar-picker-indicator{
+  opacity: 0;
+  cursor: pointer;
+}
