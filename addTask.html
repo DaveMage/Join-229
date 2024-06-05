@@ -49,10 +49,11 @@
               type="text"
               placeholder="Select contacts to assign"
               class="addTaskInput"
+              onclick="toggleAssignedDropdown()"
               readonly
             />
             <img
-              onclick="toggleAssignedDropdown()"
+              
               class="dropdownIcon"
               id="assignedDropdownArrow"
               src="/img/Mobile/AddTask/arrowDropDownaa.png"
@@ -162,9 +163,9 @@
             class="customDropdownCategory customDropdownBox"
             id="dropdownCategory"
           >
-            <div class="dropdownItemCategory">Category 1</div>
-            <div class="dropdownItemCategory">Category 2</div>
-            <div class="dropdownItemCategory">Category 3</div>
+            <div class="dropdownItemCategory">Tecchnical Task</div>
+            <div class="dropdownItemCategory">User Story</div>
+            
           </div>
         </label>
 
@@ -182,11 +183,17 @@
               onclick="addSubtask()"
               class="dropdownIcon"
               id="addSubtaskIcon"
-              src="/img/Mobile/AddTask/addIcon.png"
+              src="/img/Mobile/AddTask/addIconAddTask.png"
             />
           </div>
           <div class="subtaskContainer" id="subtaskContainer"></div>
-          
+          <div class="addTaskBtnContainer">
+            <p><span class="required">*</span>This field is required</p>
+            <button type="button" class="primaryBtn createTaskBtn">
+              Create Task <img src="/img/Mobile/AddTask/checkMarkIconAddTask.png" alt="">
+            </button>
+              
+          </div>
       </form>
     </main>
 
