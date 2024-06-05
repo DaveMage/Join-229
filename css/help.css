@@ -1,6 +1,6 @@
 .helpContent {
-    margin: 0 16px;
-    padding-bottom: 16px;
+    
+    padding: 0 16px 16px;
     height: calc(100vh - 160px);
     overflow: auto;
 }
