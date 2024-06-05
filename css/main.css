@@ -61,7 +61,8 @@ body{
   justify-content: space-between;
   align-items: center;
   padding: 20px 16px;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);  
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 }
 
 .footer {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join</title>   
+    <title>Join - Board</title>   
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/board.css">
     <link rel="icon" href="./img/favicon/favicon_with_bg.png" type="image/x-icon">
@@ -14,6 +14,19 @@
 <body id="template" onload="onloadInit()">
     <header id="header" class="headerMenu"></header>
     
+    <section class="overlay dNone">
+        <div class="overlayTask">
+            <div class="overlayHeader">
+                <p class="userStory userStoryOverlay">User Story</p>
+                <img class="closeTask" src="./img/Mobile/Board/closeTask.png" alt="close Task">
+            </div>
+            <h1 class="overlayHeadline">Kochwelt Page & Recipe Recommender</h1>
+            <p class="overlayDescription">
+                Build start page with recipe recommendation.
+            </p>
+        </div>
+    </section>
+
     <main class="boardContent">
         <div class="boardHeader">
             <h1 class="headline">Board</h1>
@@ -34,7 +47,7 @@
             <div class="columnToDo column">
                 <div class="columnHeader">
                     <h2 class="subheadline">To do</h2>
-                    <img id="addTaskToDo" class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
+                    <img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
                 </div>
                 <div class="tasks">
                     <div class="noTasksToDo">
@@ -46,8 +59,9 @@
             <div class="columnInProgress column">
                 <div class="columnHeader">
                     <h2 class="subheadline">In progress</h2>
-                    <img id="addTaskInProgress" class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
+                    <img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
                 </div>
+
                 <div class="tasks">
                     <div class="taskCard">
                         <div class="cardBody">
@@ -61,17 +75,41 @@
                             <div class="subtasks">
                                 <div class="progressBar"></div>
                                 <div class="progressText">
-                                    <span id="complTasks">1</span>/<span id="totalNumOfTasks">2</span>
-                                     Subtasks
+                                    <span class="complTasks">2</span>/<span class="totalNumOfTasks">2</span>Subtasks</div>
+                            </div>
+                            <div class="taskFooter">
+                                <div class="profiles">
+                                    <div class="profileIcon" style="background-color:#FFBB2B;">AM</div>
+                                    <div class="profileIcon" style="background-color:#FFA35E;">TM</div>
+                                    <div class="profileIcon" style="background-color:#1FD7C1;">DM</div>
+                                </div>
+                                <img class="prioritySymbol" src="./img/Mobile/Board/priorityNormal.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="taskCard">
+                        <div class="cardBody">
+                            <p class="technicalTask">Technical Task</p>
+                            <div class="taskHeadline">
+                                HTML Base Template Creation
+                            </div>
+                            <div class="taskDescr">
+                                Create reusable HTML base templates...
+                            </div>
+                            <div class="subtasks">
+                                <div class="progressBar"></div>
+                                <div class="progressText">
+                                    <span class="complTasks">2</span>/<span class="totalNumOfTasks">2</span>Subtasks
                                 </div>
                             </div>
                             <div class="taskFooter">
                                 <div class="profiles">
-                                    <div class="profileIcon" id="profileIcon" style="background-color:#FFBB2B;">AM</div>
-                                    <div class="profileIcon" id="profileIcon" style="background-color:#FFA35E;">TM</div>
-                                    <div class="profileIcon" id="profileIcon" style="background-color:#1FD7C1;">DM</div>
+                                    <div class="profileIcon" style="background-color:#FFBB2B;">AM</div>
+                                    <div class="profileIcon" style="background-color:#FFA35E;">TM</div>
+                                    <div class="profileIcon" style="background-color:#1FD7C1;">DM</div>
                                 </div>
-                                <img class="prioritySymbol" src="./img/Mobile/Board/priorityNormal.png" alt="">
+                                <img class="prioritySymbol" src="./img/Mobile/Board/priorityImportant.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -81,20 +119,24 @@
             <div class="columnAwaitFeedback column">
                 <div class="columnHeader">
                     <h2 class="subheadline">Await feedback</h2>
-                    <img id="addTaskInProgress" class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
+                    <img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
                 </div>
                 <div class="tasks">
-                    
+                    <div class="noTasksToDo">
+                        <p class="noTasksText">No tasks waiting for feedback</p>
+                    </div>
                 </div>
             </div>
 
             <div class="columnDone column">
                 <div class="columnHeader">
                     <h2 class="subheadline">Done</h2>
-                    <img id="addTaskInProgress" class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
+                    <img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
                 </div>
                 <div class="tasks">
-                    
+                    <div class="noTasksToDo">
+                        <p class="noTasksText">No tasks completed yet</p>
+                    </div>
                 </div>
             </div>
         </div>
