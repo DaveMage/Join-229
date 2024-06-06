@@ -236,7 +236,7 @@ body{
   right: 0;
   padding: 16px;
   background-color: #f6f7f8;
-  
+  z-index: 100;
 
 }
 
