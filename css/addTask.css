@@ -4,17 +4,16 @@
   padding: 0 16px;
 }
 
-body{
+body {
   height: 100vh;
   overflow: hidden;
 }
-
 
 .mainContainer {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  
+
   background-color: #f6f7f8;
   scrollbar-width: none;
 }
@@ -40,7 +39,7 @@ body{
   flex-direction: column;
   gap: 16px;
   height: calc(100vh - 160px);
-  overflow: auto;  
+  overflow: auto;
   scrollbar-width: none;
   padding: 0 16px;
   padding-bottom: 240px;
@@ -80,7 +79,6 @@ body{
   border-radius: 100%;
 }
 
-
 .customDropdownBox {
   display: none;
   flex-direction: column;
@@ -91,8 +89,6 @@ body{
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
   padding-top: 8px;
   margin-top: -16px;
-
- 
 }
 
 .assignedItemWrap {
@@ -154,18 +150,17 @@ body{
   background-position: right 16px center;
 }
 
-.addTaskLabel input[type="date"]::-webkit-calendar-picker-indicator{
- opacity: 0;
+.addTaskLabel input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
   cursor: pointer;
 }
 
-.prioContainer{
+.prioContainer {
   display: flex;
   gap: 16px;
-  
 }
 
-.prioLabel{
+.prioLabel {
   height: 41px;
   width: 121px;
   padding: 18px 10px;
@@ -179,51 +174,43 @@ body{
   background-color: #ffffff;
 }
 
-#medium:checked + #prioMedium{
-  background-color: #FFA800;
+#medium:checked + #prioMedium {
+  background-color: #ffa800;
   color: #ffffff;
   font-weight: 700;
-
 }
 
-#medium:checked + #prioMedium img{
+#medium:checked + #prioMedium img {
   content: url(/img/Mobile/AddTask/hoverMediumIconAddTask.png);
-
 }
 
-#urgent:checked + #prioUrgent{
-  background-color: #FF3D00;
+#urgent:checked + #prioUrgent {
+  background-color: #ff3d00;
   color: #ffffff;
   font-weight: 700;
-
 }
 
-#urgent:checked + #prioUrgent img{
+#urgent:checked + #prioUrgent img {
   content: url(/img/Mobile/AddTask/hoverUrgentIconAdTask.png);
-
 }
 
-#low:checked + #prioLow{
-  background-color: #7AE229;
+#low:checked + #prioLow {
+  background-color: #7ae229;
   color: #ffffff;
   font-weight: 700;
-
 }
 
-#low:checked + #prioLow img{
+#low:checked + #prioLow img {
   content: url(/img/Mobile/AddTask/hoverLowIconAddTask.png);
-
 }
 
-
-.dropdownItemCategory{
+.dropdownItemCategory {
   border-radius: 10px;
   padding: 12px 16px;
   cursor: pointer;
-
 }
 
-.createTaskBtn{
+.createTaskBtn {
   padding: 16px;
   display: flex;
   align-items: center;
@@ -232,7 +219,7 @@ body{
   font-size: 21px;
 }
 
-.addTaskBtnContainer{
+.addTaskBtnContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -243,30 +230,29 @@ body{
   padding: 16px;
   background-color: #f6f7f8;
   z-index: 100;
-
 }
 
-.addTaskBtnContainer p, .addTaskBtnContainer span{
+.addTaskBtnContainer p,
+.addTaskBtnContainer span {
   font-size: 20px;
 }
 
-.subtaskIcon{
+.subtaskIcon {
   cursor: pointer;
   border-radius: 100%;
   position: absolute;
   right: 16px;
   padding: 4px;
-
 }
 
-.subtaskIcon:hover{
+.subtaskIcon:hover {
   background-color: #d2e3ff;
 }
 
-.subtaskIcon:active{
+.subtaskIcon:active {
   background-color: #d2e3ff;
 }
 
-.addTaskInput{
+.addTaskInput {
   position: relative;
 }
