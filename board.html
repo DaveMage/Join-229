@@ -14,133 +14,176 @@
 <body id="template" onload="onloadInit()">
     <header id="header" class="headerMenu"></header>
     
-    <section class="overlay dNone">
-        <div class="overlayTask">
-            <div class="overlayHeader">
-                <p class="userStory userStoryOverlay">User Story</p>
-                <img class="closeTask" src="./img/Mobile/Board/closeTask.png" alt="close Task">
-            </div>
-            <h1 class="overlayHeadline">Kochwelt Page & Recipe Recommender</h1>
-            <p class="overlayDescription">
-                Build start page with recipe recommendation.
-            </p>
-        </div>
-    </section>
-
-    <main class="boardContent">
-        <div class="boardHeader">
-            <h1 class="headline">Board</h1>
-            <img id="addTask" src="./img/Mobile/Board/plusAddTaskMobile.png" alt="add Task Button">
-        </div>
-
-        <div class="searchBar">
-            <div class="search">
-                <input id="findTask" type="text" placeholder="Find Task">
-            </div>
-            <div class="pressSearch">
-                <img src="./img/Mobile/Board/bar.png" class="bar">
-                <img src="./img/Mobile/Board/search.png" onclick="changeImg()" id="magGlassImg" class="magnifyingGlass">
-            </div>
-        </div>
-
-        <div class="columns">
-            <div class="columnToDo column">
-                <div class="columnHeader">
-                    <h2 class="subheadline">To do</h2>
-                    <img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
+    <div class="wholeContent">
+        <section class="overlay dNone">
+            <div class="overlayTask">
+                <div class="overlayHeader">
+                    <p class="userStory userStoryOverlay">User Story</p>
+                    <img class="closeTask" src="./img/Mobile/Board/closeTask.png" alt="close Task">
                 </div>
-                <div class="tasks">
-                    <div class="noTasksToDo">
-                        <p class="noTasksText">No tasks To do</p>
+                <h1 class="overlayHeadline">Kochwelt Page & Recipe Recommender</h1>
+                <p class="overlayDescription">
+                    Build start page with recipe recommendation.
+                </p>
+                <div class="taskBody">
+                    <div class="dueDateSection bodySection">
+                        <span class="dueDate spanDatePriorityAssigned">Due date:</span>
+                        <span class="date">10/05/2023</span>
                     </div>
-                </div>
-            </div>
-
-            <div class="columnInProgress column">
-                <div class="columnHeader">
-                    <h2 class="subheadline">In progress</h2>
-                    <img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
-                </div>
-
-                <div class="tasks">
-                    <div class="taskCard">
-                        <div class="cardBody">
-                            <p class="userStory">User Story</p>
-                            <div class="taskHeadline">
-                                Kochwelt Page & Recipe Recommender
+                    <div class="prioritySection bodySection">
+                        <span class="priority spanDatePriorityAssigned">Priority:</span>
+                        <span class="priorityLevel">Medium <img src="./img/Mobile/Board/priorityNormal.png" alt="priority Level"></span>
+                    </div>
+                    <div class="assignedToSection bodySection">
+                        <span class="assignedTo spanDatePriorityAssigned">Assigned To:</span>
+                        <div class="assignedToProfiles">
+                            <div class="taskProfile">
+                                <div class="profileIcon taskProfileIcon" style="background-color:#1FD7C1;">EM</div>
+                                <span>Emmanuel Mauer</span>
                             </div>
-                            <div class="taskDescr">
-                                Build start page with recipe recommendation...
+                            <div class="taskProfile">
+                                <div class="profileIcon taskProfileIcon" style="background-color:#462F8A;">MB</div>
+                                <span>Marcel Bauer</span>
                             </div>
-                            <div class="subtasks">
-                                <div class="progressBar"></div>
-                                <div class="progressText">
-                                    <span class="complTasks">2</span>/<span class="totalNumOfTasks">2</span>Subtasks</div>
-                            </div>
-                            <div class="taskFooter">
-                                <div class="profiles">
-                                    <div class="profileIcon" style="background-color:#FFBB2B;">AM</div>
-                                    <div class="profileIcon" style="background-color:#FFA35E;">TM</div>
-                                    <div class="profileIcon" style="background-color:#1FD7C1;">DM</div>
-                                </div>
-                                <img class="prioritySymbol" src="./img/Mobile/Board/priorityNormal.png" alt="">
+                            <div class="taskProfile">
+                                <div class="profileIcon taskProfileIcon" style="background-color:#FFBB2B;">AM</div>
+                                <span>Anton Mayer</span>
                             </div>
                         </div>
                     </div>
-
-                    <div class="taskCard">
-                        <div class="cardBody">
-                            <p class="technicalTask">Technical Task</p>
-                            <div class="taskHeadline">
-                                HTML Base Template Creation
-                            </div>
-                            <div class="taskDescr">
-                                Create reusable HTML base templates...
-                            </div>
-                            <div class="subtasks">
-                                <div class="progressBar"></div>
-                                <div class="progressText">
-                                    <span class="complTasks">2</span>/<span class="totalNumOfTasks">2</span>Subtasks
+                    <div class="taskSubtask">
+                        <h3 class="subtasksHeadline spanDatePriorityAssigned">Subtasks</h3>
+                        <div class="taskSubtasks">
+                            <input class="checkboxSubtasks" type="checkbox" checked>
+                            <span>Implement Recipe Recommendation</span>
+                        </div>
+                        <div class="taskSubtasks">
+                            <input class="checkboxSubtasks" type="checkbox">
+                            <span>Start Page Layout</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="showTaskFooter">
+                    <div class="deleteEditTask">
+                        <img class="taskFooterIcon" src="./img/Mobile/Board/delete.png" alt="">
+                        <span>Delete</span>
+                    </div>
+                    <img class="barFooter" src="./img/Mobile/Board/bar.png">
+                    <div class="deleteEditTask">
+                        <img class="taskFooterIcon" src="./img/Mobile/Board/editTask.png" alt="">
+                        <span>Edit</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <main class="boardContent">
+            <div class="boardHeader">
+                <h1 class="headline">Board</h1>
+                <img id="addTask" src="./img/Mobile/Board/plusAddTaskMobile.png" alt="add Task Button">
+            </div>
+            <div class="searchBar">
+                <div class="search">
+                    <input id="findTask" type="text" placeholder="Find Task">
+                </div>
+                <div class="pressSearch">
+                    <img src="./img/Mobile/Board/bar.png" class="bar">
+                    <img src="./img/Mobile/Board/search.png" onclick="changeImg()" id="magGlassImg" class="magnifyingGlass">
+                </div>
+            </div>
+            <div class="columns">
+                <div class="columnToDo column">
+                    <div class="columnHeader">
+                        <h2 class="subheadline">To do</h2>
+                        <img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
+                    </div>
+                    <div class="tasks">
+                        <div class="noTasksToDo">
+                            <p class="noTasksText">No tasks To do</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="columnInProgress column">
+                    <div class="columnHeader">
+                        <h2 class="subheadline">In progress</h2>
+                        <img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
+                    </div>
+                    <div class="tasks">
+                        <div class="taskCard">
+                            <div class="cardBody">
+                                <p class="userStory">User Story</p>
+                                <div class="taskHeadline">
+                                    Kochwelt Page & Recipe Recommender
+                                </div>
+                                <div class="taskDescr">
+                                    Build start page with recipe recommendation...
+                                </div>
+                                <div class="subtasks">
+                                    <div class="progressBar"></div>
+                                    <div class="progressText">
+                                        <span class="complTasks">2</span>/<span class="totalNumOfTasks">2</span>Subtasks</div>
+                                </div>
+                                <div class="taskFooter">
+                                    <div class="profiles">
+                                        <div class="profileIcon" style="background-color:#FFBB2B;">AM</div>
+                                        <div class="profileIcon" style="background-color:#FFA35E;">TM</div>
+                                        <div class="profileIcon" style="background-color:#1FD7C1;">DM</div>
+                                    </div>
+                                    <img class="prioritySymbol" src="./img/Mobile/Board/priorityNormal.png" alt="priority Level">
                                 </div>
                             </div>
-                            <div class="taskFooter">
-                                <div class="profiles">
-                                    <div class="profileIcon" style="background-color:#FFBB2B;">AM</div>
-                                    <div class="profileIcon" style="background-color:#FFA35E;">TM</div>
-                                    <div class="profileIcon" style="background-color:#1FD7C1;">DM</div>
+                        </div>
+                        <div class="taskCard">
+                            <div class="cardBody">
+                                <p class="technicalTask">Technical Task</p>
+                                <div class="taskHeadline">
+                                    HTML Base Template Creation
                                 </div>
-                                <img class="prioritySymbol" src="./img/Mobile/Board/priorityImportant.png" alt="">
+                                <div class="taskDescr">
+                                    Create reusable HTML base templates...
+                                </div>
+                                <div class="subtasks">
+                                    <div class="progressBar"></div>
+                                    <div class="progressText">
+                                        <span class="complTasks">2</span>/<span class="totalNumOfTasks">2</span>Subtasks
+                                    </div>
+                                </div>
+                                <div class="taskFooter">
+                                    <div class="profiles">
+                                        <div class="profileIcon" style="background-color:#FFBB2B;">AM</div>
+                                        <div class="profileIcon" style="background-color:#FFA35E;">TM</div>
+                                        <div class="profileIcon" style="background-color:#1FD7C1;">DM</div>
+                                    </div>
+                                    <img class="prioritySymbol" src="./img/Mobile/Board/priorityImportant.png" alt="">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="columnAwaitFeedback column">
-                <div class="columnHeader">
-                    <h2 class="subheadline">Await feedback</h2>
-                    <img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
+                <div class="columnAwaitFeedback column">
+                    <div class="columnHeader">
+                        <h2 class="subheadline">Await feedback</h2>
+                        <img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
+                    </div>
+                    <div class="tasks">
+                        <div class="noTasksToDo">
+                            <p class="noTasksText">No tasks waiting for feedback</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="tasks">
-                    <div class="noTasksToDo">
-                        <p class="noTasksText">No tasks waiting for feedback</p>
+                <div class="columnDone column">
+                    <div class="columnHeader">
+                        <h2 class="subheadline">Done</h2>
+                        <img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
+                    </div>
+                    <div class="tasks">
+                        <div class="noTasksToDo">
+                            <p class="noTasksText">No tasks Done</p>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="columnDone column">
-                <div class="columnHeader">
-                    <h2 class="subheadline">Done</h2>
-                    <img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
-                </div>
-                <div class="tasks">
-                    <div class="noTasksToDo">
-                        <p class="noTasksText">No tasks completed yet</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+        </main>
+    </div>
 
     <footer id="menu" class="footer"></footer>
     </body>

@@ -2,8 +2,13 @@ body {
     background-color: #F6F7F8;
 }
 
+.wholeContent {
+    height: calc(100vh - 80px);
+    overflow: auto;
+}
+
 .boardContent {
-    margin: 0 16px 96px 16px;
+    margin: 0 16px 96px 16px;   
     z-index: 1;
 }
 
@@ -225,6 +230,7 @@ body {
     align-items: center;
     border: 1px solid #ffffff;
     font-size: 12px;
+    margin-left: -8px;
 }
 
 .prioritySymbol {
@@ -239,20 +245,27 @@ body {
 }
 
 .overlay {
-    background-color: rgba(244, 40, 240, 0.7);
-    z-index: 2;
+    height: 100vh;
+    background-color: rgba(109, 109, 109, 0.431);
 }
 
 .overlayTask {
     background-color: #ffffff;
     margin: 16px;
+    padding: 16px;
     position: fixed;
+    border-radius: 30px;
 }
 
 .overlayHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 8px;
+}
+
+.userStoryOverlay {
+    margin: 0;
 }
 
 .closeTask {
@@ -270,4 +283,89 @@ body {
 .overlayDescription {
     margin-top: 16px;
     margin-bottom: 16px;
+}
+
+.spanDatePriorityAssigned {
+    color: #42526E;
+    margin-right: 25px;
+}
+
+.bodySection {
+    margin-bottom: 16px;
+}
+
+.prioritySection {
+    display: flex;
+    align-items: center;
+}
+
+.priority {
+    margin-right: 46px;
+}
+
+.priorityLevel {
+    display: flex;
+    align-items: center;
+}
+
+.assignedToProfiles {
+    margin-top: 7px;
+}
+
+.taskProfile {
+    display: flex;
+    align-items: center;
+    padding: 7px 16px 7px 16px;
+    margin-bottom: 4px;
+}
+
+.taskProfileIcon {
+    margin-right: 16px;
+    margin-left: 8px;
+    width: 42px;
+    height: 42px;
+    font-size: 12px;
+}
+
+.subtasksHeadline {
+    margin-bottom: 12px;
+}
+
+.taskSubtasks {
+    margin: 0 24px 4px 24px;
+    height: 32px;
+    width: 100%;
+}
+
+.checkboxSubtasks {
+    margin: 0 16px 0 0;
+    cursor: pointer;
+}
+
+.showTaskFooter {
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.deleteEditTask {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.taskFooterIcon {
+    width: 24px;
+    height: 24px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.barFooter {
+    margin-left: 8px;
+    height: 24px;
 }
