@@ -75,6 +75,12 @@ body{
   border-radius: 100%;
 }
 
+.dropdownIcon:active {
+  background-color: #d2e3ff;
+  border-radius: 100%;
+}
+
+
 .customDropdownBox {
   display: none;
   flex-direction: column;
@@ -149,7 +155,7 @@ body{
 }
 
 .addTaskLabel input[type="date"]::-webkit-calendar-picker-indicator{
-  opacity: 0;
+ opacity: 0;
   cursor: pointer;
 }
 
@@ -244,3 +250,23 @@ body{
   font-size: 20px;
 }
 
+.subtaskIcon{
+  cursor: pointer;
+  border-radius: 100%;
+  position: absolute;
+  right: 16px;
+  padding: 4px;
+
+}
+
+.subtaskIcon:hover{
+  background-color: #d2e3ff;
+}
+
+.subtaskIcon:active{
+  background-color: #d2e3ff;
+}
+
+.addTaskInput{
+  position: relative;
+}
