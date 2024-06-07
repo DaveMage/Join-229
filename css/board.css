@@ -8,8 +8,8 @@ body {
 }
 
 .boardContent {
-    margin: 0 16px 96px 16px;   
-    z-index: 1;
+    margin: 0 16px 96px 16px;
+    position: relative;
 }
 
 .boardHeader {
@@ -28,6 +28,10 @@ body {
     width: 40px;
     height: 40px;
     cursor: pointer;
+}
+
+#addTask:active {
+    content: url('../img/Mobile/Board/plusAddTaskMobileBlue.png');
 }
 
 .searchBar {
@@ -111,6 +115,10 @@ body {
     width: 30px;
     height: 30px;
     cursor: pointer;
+}
+
+.addTaskColumn:active {
+    content: url('../img/Mobile/Board/plusButtonMobileBlue.png');
 }
 
 .tasks {
@@ -244,17 +252,26 @@ body {
     display: none;
 }
 
+.overflowHidden {
+    overflow: hidden;
+}
+
 .overlay {
-    height: 100vh;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 900;
     background-color: rgba(109, 109, 109, 0.431);
 }
 
 .overlayTask {
     background-color: #ffffff;
     margin: 16px;
-    padding: 16px;
-    position: fixed;
+    padding: 24px;
+    position: absolute;
     border-radius: 30px;
+    z-index: 999;
+    animation: slide-in 0.17s both;
 }
 
 .overlayHeader {
@@ -272,6 +289,10 @@ body {
     width: 32px;
     height: 32px;
     cursor: pointer;
+}
+
+.closeTask:active {
+    content: url('../img/Mobile/Board/closeTaskActive.png');
 }
 
 .overlayHeadline {
@@ -315,13 +336,14 @@ body {
 .taskProfile {
     display: flex;
     align-items: center;
-    padding: 7px 16px 7px 16px;
+    padding: 7px 16px 7px 0;
+    margin-left: 15px;
     margin-bottom: 4px;
 }
 
 .taskProfileIcon {
     margin-right: 16px;
-    margin-left: 8px;
+    margin-left: 0;
     width: 42px;
     height: 42px;
     font-size: 12px;
@@ -332,14 +354,14 @@ body {
 }
 
 .taskSubtasks {
-    margin: 0 24px 4px 24px;
+    margin: 0 0 4px 0;
     height: 32px;
-    width: 100%;
 }
 
 .checkboxSubtasks {
-    margin: 0 16px 0 0;
+    margin: 0 16px 0 16px;
     cursor: pointer;
+    border: 6px solid grey;
 }
 
 .showTaskFooter {
@@ -369,3 +391,15 @@ body {
     margin-left: 8px;
     height: 24px;
 }
+
+/* Animation */
+
+@keyframes slide-in {
+    from {
+      transform: translateX(100%);
+    }
+    
+    to {
+      transform: translateX(0);
+    }
+  }

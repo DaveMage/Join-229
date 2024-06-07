@@ -14,12 +14,12 @@
 <body id="template" onload="onloadInit()">
     <header id="header" class="headerMenu"></header>
     
-    <div class="wholeContent">
-        <section class="overlay dNone">
+    <div id="wholeContent" class="wholeContent">
+        <section id="taskOverlay" class="overlay dNone">
             <div class="overlayTask">
                 <div class="overlayHeader">
                     <p class="userStory userStoryOverlay">User Story</p>
-                    <img class="closeTask" src="./img/Mobile/Board/closeTask.png" alt="close Task">
+                    <img onclick="closeTask()" class="closeTask" src="./img/Mobile/Board/closeTask.png" alt="close Task">
                 </div>
                 <h1 class="overlayHeadline">Kochwelt Page & Recipe Recommender</h1>
                 <p class="overlayDescription">
@@ -79,7 +79,7 @@
         <main class="boardContent">
             <div class="boardHeader">
                 <h1 class="headline">Board</h1>
-                <img id="addTask" src="./img/Mobile/Board/plusAddTaskMobile.png" alt="add Task Button">
+                <a href="./addTask.html"><img id="addTask" src="./img/Mobile/Board/plusAddTaskMobile.png" alt="add Task Button"></a>
             </div>
             <div class="searchBar">
                 <div class="search">
@@ -94,7 +94,7 @@
                 <div class="columnToDo column">
                     <div class="columnHeader">
                         <h2 class="subheadline">To do</h2>
-                        <img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
+                        <a href="./addTask.html"><img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button"></a>
                     </div>
                     <div class="tasks">
                         <div class="noTasksToDo">
@@ -105,10 +105,10 @@
                 <div class="columnInProgress column">
                     <div class="columnHeader">
                         <h2 class="subheadline">In progress</h2>
-                        <img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
+                        <a href="./addTask.html"><img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button"></a>
                     </div>
                     <div class="tasks">
-                        <div class="taskCard">
+                        <div class="taskCard" onclick="openTask()">
                             <div class="cardBody">
                                 <p class="userStory">User Story</p>
                                 <div class="taskHeadline">
@@ -132,7 +132,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="taskCard">
+                        <div class="taskCard" onclick="openTask()">
                             <div class="cardBody">
                                 <p class="technicalTask">Technical Task</p>
                                 <div class="taskHeadline">
@@ -162,7 +162,7 @@
                 <div class="columnAwaitFeedback column">
                     <div class="columnHeader">
                         <h2 class="subheadline">Await feedback</h2>
-                        <img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
+                        <a href="./addTask.html"><img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button"></a>
                     </div>
                     <div class="tasks">
                         <div class="noTasksToDo">
@@ -173,7 +173,7 @@
                 <div class="columnDone column">
                     <div class="columnHeader">
                         <h2 class="subheadline">Done</h2>
-                        <img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button">
+                        <a href="./addTask.html"><img class="addTaskColumn" src="./img/Mobile/Board/plusButtonMobile.png" alt="add Task Button"></a>
                     </div>
                     <div class="tasks">
                         <div class="noTasksToDo">
