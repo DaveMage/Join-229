@@ -260,7 +260,7 @@ body {
     height: 100%;
     width: 100%;
     position: absolute;
-    z-index: 900;
+    z-index: 9999;
     background-color: rgba(109, 109, 109, 0.431);
 }
 
@@ -271,7 +271,7 @@ body {
     position: absolute;
     border-radius: 30px;
     z-index: 999;
-    animation: slide-in 0.17s both;
+    animation: slideIn 0.17s both;
 }
 
 .overlayHeader {
@@ -394,7 +394,7 @@ body {
 
 /* Animation */
 
-@keyframes slide-in {
+@keyframes slideIn {
     from {
       transform: translateX(100%);
     }
