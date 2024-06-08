@@ -18,7 +18,7 @@ body{
 
 @font-face {
   font-family: inter;
-  src: url(../fonts/Inter-VariableFont_slnt\wght.ttf);
+  src: url(/fonts/Inter-VariableFont_slnt\,wght.ttf);
 }
 
 /* Scrollbar */
