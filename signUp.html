@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join</title>
-    <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="../css/signUp.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/signUp.css" />
   </head>
   <body>
     <header>
@@ -16,8 +16,8 @@
       />
     </header>
     <main>
-      <form autocomplete="off" class="signUpForm" onsubmit="signUp()">
-        <img class="arrowBack" src="/img/Mobile/LogIn/arrowBlue.png" alt="Arrow Back" onclick="goToLogin()">
+      <form autocomplete="off" class="signUpForm" onsubmit="signUp(); return false; ">
+        <img class="arrowBack" src="/img/Mobile/LogIn/arrowBlue.png" alt="Arrow Back">
         <h1 class="signUpHeadline">Sign up
             <span class="headlineUnderline"></span>
         </h1>
