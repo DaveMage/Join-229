@@ -180,3 +180,12 @@ body{
   color: #29ABE2;
 }
 
+.arrowBack:active{
+  border-radius: 100%;
+  background-color: #29abe2;
+}
+
+.arrowBack:hover{
+  background-color: #0c2e621f;
+  border-radius: 100%;
+}
