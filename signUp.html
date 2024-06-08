@@ -16,7 +16,7 @@
       />
     </header>
     <main>
-      <form autocomplete="off" class="signUpForm">
+      <form autocomplete="off" class="signUpForm" onsubmit="signUp()">
         <img class="arrowBack" src="/img/Mobile/LogIn/arrowBlue.png" alt="Arrow Back" onclick="goToLogin()">
         <h1 class="signUpHeadline">Sign up
             <span class="headlineUnderline"></span>
@@ -38,10 +38,10 @@
             <img src="../img/Mobile/LogIn/lockIconLogIn.png" alt="Profile Icon">
         </label>
         <label for="checkboxPrivacyPolicy" class="signUpCheckboxLabel">
-           <input type="checkbox" class="customCheckbox" id="checkboxPrivacyPolicy">
+           <input type="checkbox" class="customCheckbox" id="checkboxPrivacyPolicy" required>
            I accept the<a href="../privacyPolice.html"> Privacy Policy</a>
         </label>
-        <div class="signUpBtnContainer"><button class="primaryBtn">Sign up</button></div>
+        <div class="signUpBtnContainer"><button class="primaryBtn" type="submit">Sign up</button></div>
 
     </form>
 
@@ -58,6 +58,8 @@
         <a href="/legalNotice.html">Legal notice</a>
     </footer>
 
-    <script src="/js/singUp.js"></script>
+    <script src="/js/storage.js"></script>
+    <script src="/js/signUp.js"></script>
+    
   </body>
 </html>
