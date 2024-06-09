@@ -84,7 +84,7 @@ async function saveContact() {
     let contactName = document.getElementById('contactName').value;
     const namePattern = /^[A-Za-zÄäÖöÜüß]+(?:\s[A-Za-zÄäÖöÜüß]+)+$/;
     if (!namePattern.test(contactName)) {
-        alert('Please enter a valid name');
+        alert('Please enter a valid name');//auslagern und als onchange event setzen
         return;
     }
 
