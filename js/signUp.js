@@ -1,4 +1,5 @@
 
+
 function focusInput(inputId) {
     const ids = ["signUpLabelName", "signUpLabelEmail", "signUpLabelPassword", "signUpLabelConfirmPassword"];
     ids.forEach(id => {
@@ -23,7 +24,7 @@ function signUp() {
     let password = document.getElementById('signUpPassword').value;
     let confirmPassword = document.getElementById('signUpConfirmPassword').value;
     console.log(name, email, password, confirmPassword);
-    
+
     if (name === "" || email === "" || password === "" || confirmPassword === "") {
         alert("Please fill in all fields.");
         return;
@@ -51,6 +52,7 @@ function fullnameValidation() {
         errorSpan.style.display = "block";
         return;
     }
+
     signUpLabelName.classList.remove("errorInput");
     errorSpan.style.display = "none";
 }
@@ -58,7 +60,7 @@ function fullnameValidation() {
 function passwordValidation() {
     let signUpPassword = document.getElementById('signUpPassword').value;
     let signUpConfirmPassword = document.getElementById('signUpConfirmPassword').value;
-    let signUpLabelConfirmPassword = document.getElementById('signUpLabelConfirmPassword');    
+    let signUpLabelConfirmPassword = document.getElementById('signUpLabelConfirmPassword');
     let errorSpan = document.getElementById('passwordErrorSpan');
 
     if (signUpPassword !== signUpConfirmPassword) {
@@ -67,6 +69,8 @@ function passwordValidation() {
         errorSpan.style.display = "block";
         return;
     }
+
+
     signUpConfirmPassword.classList.remove("errorInput");
     errorSpan.style.display = "none";
 }
