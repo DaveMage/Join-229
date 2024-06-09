@@ -16,50 +16,96 @@
       />
     </header>
     <main>
-      <form autocomplete="off" class="signUpForm" onsubmit="signUp(); return false; ">
-        <img class="arrowBack" src="/img/Mobile/LogIn/arrowBlue.png" alt="Arrow Back" onclick="goToLogin()">
-        <h1 class="signUpHeadline">Sign up
-            <span class="headlineUnderline"></span>
+      <form
+        autocomplete="off"
+        class="signUpForm"
+        onsubmit="signUp(); return false; "
+      >
+        <img
+          class="arrowBack"
+          src="/img/Mobile/LogIn/arrowBlue.png"
+          alt="Arrow Back"
+          onclick="goToLogin()"
+        />
+        <h1 class="signUpHeadline">
+          Sign up
+          <span class="headlineUnderline"></span>
         </h1>
         <label for="signUpName" class="signUpLabel" id="signUpLabelName">
-            <input type="text" id="signUpName" placeholder="Name" onfocus="focusInput('signUpLabelName')" onblur="resetFocus('signUpLabelName')">
-            <img src="../img/Mobile/LogIn/personIconLogIn.png" alt="Profile Icon">
+          <input
+            type="text"
+            id="signUpName"
+            placeholder="Name"
+            onfocus="focusInput('signUpLabelName')"
+            onblur="resetFocus('signUpLabelName')"
+            onchange="fullnameValidation()"
+          />
+          <img
+            src="../img/Mobile/LogIn/personIconLogIn.png"
+            alt="Profile Icon"
+          />
         </label>
+        <span id="nameErrorSpan" class="errorMessage"></span>
         <label for="signUpEmail" class="signUpLabel" id="signUpLabelEmail">
-            <input type="email" id="signUpEmail" placeholder="Email" onfocus="focusInput('signUpLabelEmail')" onblur="resetFocus('signUpLabelEmail')">
-            <img src="../img/Mobile/LogIn/mailIconLogIn.png" alt="Mail Icon">
+          <input
+            type="email"
+            id="signUpEmail"
+            placeholder="Email"
+            onfocus="focusInput('signUpLabelEmail')"
+            onblur="resetFocus('signUpLabelEmail')"
+          />
+          <img src="../img/Mobile/LogIn/mailIconLogIn.png" alt="Mail Icon" />
         </label>
-        <label for="signUpPassword" class="signUpLabel" id="signUpLabelPassword">
-            <input type="password" id="signUpPassword" placeholder="Password" onfocus="focusInput('signUpLabelPassword')" onblur="resetFocus('signUpLabelPassword')">
-            <img src="../img/Mobile/LogIn/lockIconLogIn.png" alt="Profile Icon">
+        <label
+          for="signUpPassword"
+          class="signUpLabel"
+          id="signUpLabelPassword"
+        >
+          <input
+            type="password"
+            id="signUpPassword"
+            placeholder="Password"
+            onfocus="focusInput('signUpLabelPassword')"
+            onblur="resetFocus('signUpLabelPassword')"
+          />
+          <img src="../img/Mobile/LogIn/lockIconLogIn.png" alt="Profile Icon" />
         </label>
-        <label for="signUpConfirmPassword" class="signUpLabel" id="signUpLabelConfirmPassword" >
-            <input type="password" id="signUpConfirmPassword" placeholder="Confrim Password" onfocus="focusInput('signUpLabelConfirmPassword')" onblur="resetFocus('signUpLabelConfirmPassword')">
-            <img src="../img/Mobile/LogIn/lockIconLogIn.png" alt="Profile Icon">
+        <label
+          for="signUpConfirmPassword"
+          class="signUpLabel"
+          id="signUpLabelConfirmPassword"
+        >
+          <input
+            type="password"
+            id="signUpConfirmPassword"
+            placeholder="Confrim Password"
+            onchange="passwordValidation()"
+            onfocus="focusInput('signUpLabelConfirmPassword')"
+            onblur="resetFocus('signUpLabelConfirmPassword')"
+          />
+          <img src="../img/Mobile/LogIn/lockIconLogIn.png" alt="Profile Icon" />
         </label>
+        <span id="passwordErrorSpan" class="errorMessage"></span>
         <label for="checkboxPrivacyPolicy" class="signUpCheckboxLabel">
-           <input type="checkbox" class="customCheckbox" id="checkboxPrivacyPolicy" required>
-           I accept the<a href="../privacyPolice.html"> Privacy Policy</a>
+          <input
+            type="checkbox"
+            class="customCheckbox"
+            id="checkboxPrivacyPolicy"
+            required
+          />
+          I accept the<a href="../privacyPolice.html"> Privacy Policy</a>
         </label>
-        <div class="signUpBtnContainer"><button class="primaryBtn" type="submit">Sign up</button></div>
-
-    </form>
-
-       
-
-
-
-
-
-      
+        <div class="signUpBtnContainer">
+          <button class="primaryBtn" type="submit">Sign up</button>
+        </div>
+      </form>
     </main>
     <footer class="footerLogin">
-        <a href="/privacyPolice.html">Privacy Policy</a>
-        <a href="/legalNotice.html">Legal notice</a>
+      <a href="/privacyPolice.html">Privacy Policy</a>
+      <a href="/legalNotice.html">Legal notice</a>
     </footer>
 
     <script src="/js/storage.js"></script>
     <script src="/js/signUp.js"></script>
-    
   </body>
 </html>
