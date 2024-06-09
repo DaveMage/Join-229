@@ -2,10 +2,54 @@
 
 function focusInput(inputId) {
     const ids = ["signUpLabelName", "signUpLabelEmail", "signUpLabelPassword", "signUpLabelConfirmPassword"];
+    let passwortImg = document.getElementById('signUpPasswortImg');
+    let passwortConfirmImg = document.getElementById('signUpPasswortConfirmImg');
+
     ids.forEach(id => {
         document.getElementById(id).style.borderColor = id === inputId ? "#29ABE2" : "#D1D1D1";
     });
+
+    if (inputId === 'signUpLabelPassword') {
+        passwortImg.src = "/img/Mobile/LogIn/visibilityOffIconLogIn.png";
+    } else {
+        passwortImg.src = "../img/Mobile/LogIn/lockIconLogIn.png";
+    }
+
+    if (inputId === 'signUpLabelConfirmPassword') {
+        passwortConfirmImg.src = "../img/Mobile/LogIn/visibilityOffIconLogIn.png";
+    } else {
+        passwortConfirmImg.src = "../img/Mobile/LogIn/lockIconLogIn.png";
+    }
 }
+
+function showPassword() {
+    let passwordInput = document.getElementById('signUpPassword');
+    let passwordImg = document.getElementById('signUpPasswortImg');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        passwordImg.classList.add('showPasswordImg');
+    } else {
+        passwordInput.type = 'password';
+        passwordImg.classList.remove('showPasswordImg');
+    }
+}
+
+function showConfirmPassword() {
+    let passwortConfirmInput = document.getElementById('signUpConfirmPassword');
+    let passwortConfirmImg = document.getElementById('signUpPasswortConfirmImg');
+
+    if (passwortConfirmInput.type === 'password') {
+        passwortConfirmInput.type = 'text';
+        passwortConfirmImg.classList.add('showPasswordImg');
+    } else {
+        passwortConfirmInput.type = 'password';
+        passwortConfirmImg.classList.remove('showPasswordImg');
+    }
+}
+
+
+
 function resetFocus() {
     const ids = ["signUpLabelName", "signUpLabelEmail", "signUpLabelPassword", "signUpLabelConfirmPassword"];
     ids.forEach(id => {
@@ -34,10 +78,19 @@ function signUp() {
         alert("Passwords do not match.");
         return;
     }
+    document.getElementById('signUpMain').innerHTML += successfullyMessageHTML();
+    setTimeout(() => {
+        window.location.href = "/login.html";
+    }, 800);
 
-    alert("Sign up successful!");
+}
 
-    // window.location.href = "/login.html";
+function successfullyMessageHTML() {
+    return `<div class="backgroundSuccessfullyMessage">
+    <div id="SignUpSuccessfully" class="successfullyMessage slideInBottom">
+    You Signed Up successfully
+    </div>
+    </div>`;
 }
 
 function fullnameValidation() {
@@ -70,6 +123,10 @@ function passwordValidation() {
         return;
     }
 
+    if (signUpPassword === signUpConfirmPassword) {
+        signUpLabelConfirmPassword.classList.remove("errorInput");
+        errorSpan.style.display = "none";
+    }
 
     signUpConfirmPassword.classList.remove("errorInput");
     errorSpan.style.display = "none";
