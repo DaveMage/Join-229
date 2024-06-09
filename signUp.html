@@ -15,7 +15,7 @@
         alt="Join Logo"
       />
     </header>
-    <main>
+    <main id="signUpMain">
       <form
         autocomplete="off"
         class="signUpForm"
@@ -68,7 +68,12 @@
             onfocus="focusInput('signUpLabelPassword')"
             onblur="resetFocus('signUpLabelPassword')"
           />
-          <img src="../img/Mobile/LogIn/lockIconLogIn.png" alt="Profile Icon" />
+          <img
+            src="../img/Mobile/LogIn/lockIconLogIn.png"
+            alt="Profile Icon"
+            id="signUpPasswortImg"
+            onclick="showPassword()"
+          />
         </label>
         <label
           for="signUpConfirmPassword"
@@ -83,8 +88,14 @@
             onfocus="focusInput('signUpLabelConfirmPassword')"
             onblur="resetFocus('signUpLabelConfirmPassword')"
           />
-          <img src="../img/Mobile/LogIn/lockIconLogIn.png" alt="Profile Icon" />
+          <img
+            src="../img/Mobile/LogIn/lockIconLogIn.png"
+            id="signUpPasswortConfirmImg"
+            alt="Profile Icon"
+            onclick="showConfirmPassword()"
+          />
         </label>
+
         <span id="passwordErrorSpan" class="errorMessage"></span>
         <label for="checkboxPrivacyPolicy" class="signUpCheckboxLabel">
           <input
@@ -99,6 +110,8 @@
           <button class="primaryBtn" type="submit">Sign up</button>
         </div>
       </form>
+
+      
     </main>
     <footer class="footerLogin">
       <a href="/privacyPolice.html">Privacy Policy</a>
