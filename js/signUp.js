@@ -62,22 +62,32 @@ function goToLogin() {
 }
 
 function signUp() {
-
+    let initials = document.getElementById('signUpName').value.split(' ').map((n) => n[0]).join('');
     let name = document.getElementById('signUpName').value;
     let email = document.getElementById('signUpEmail').value;
     let password = document.getElementById('signUpPassword').value;
     let confirmPassword = document.getElementById('signUpConfirmPassword').value;
     console.log(name, email, password, confirmPassword);
 
-    if (name === "" || email === "" || password === "" || confirmPassword === "") {
-        alert("Please fill in all fields.");
+    if (name === "" || email === "" || password === "" || confirmPassword === "") {        
         return;
     }
 
-    if (password !== confirmPassword) {
-        alert("Passwords do not match.");
+    if (password !== confirmPassword) {        
         return;
     }
+
+    try {
+        postData('/users', {
+            'initials': initials,
+            'name': name,
+            'email': email,
+            'password': password,
+        });
+    } catch (error) {
+        console.error('Error creating user:', error);
+    }
+    
     document.getElementById('signUpMain').innerHTML += successfullyMessageHTML();
     setTimeout(() => {
         window.location.href = "/login.html";
