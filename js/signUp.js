@@ -9,17 +9,8 @@ function focusInput(inputId) {
         document.getElementById(id).style.borderColor = id === inputId ? "#29ABE2" : "#D1D1D1";
     });
 
-    if (inputId === 'signUpLabelPassword') {
-        passwortImg.src = "/img/Mobile/LogIn/visibilityOffIconLogIn.png";
-    } else {
-        passwortImg.src = "../img/Mobile/LogIn/lockIconLogIn.png";
-    }
-
-    if (inputId === 'signUpLabelConfirmPassword') {
-        passwortConfirmImg.src = "../img/Mobile/LogIn/visibilityOffIconLogIn.png";
-    } else {
-        passwortConfirmImg.src = "../img/Mobile/LogIn/lockIconLogIn.png";
-    }
+    passwortImg.src = inputId === 'signUpLabelPassword' ? "/img/Mobile/LogIn/visibilityOffIconLogIn.png" : "../img/Mobile/LogIn/lockIconLogIn.png";
+    passwortConfirmImg.src = inputId === 'signUpLabelConfirmPassword' ? "../img/Mobile/LogIn/visibilityOffIconLogIn.png" : "../img/Mobile/LogIn/lockIconLogIn.png";
 }
 
 function showPassword() {
@@ -61,39 +52,28 @@ function goToLogin() {
     window.location.href = "/login.html";
 }
 
-function signUp() {
-    let initials = document.getElementById('signUpName').value.split(' ').map((n) => n[0]).join('');
-    let name = document.getElementById('signUpName').value;
-    let email = document.getElementById('signUpEmail').value;
-    let password = document.getElementById('signUpPassword').value;
-    let confirmPassword = document.getElementById('signUpConfirmPassword').value;
-    console.log(name, email, password, confirmPassword);
-
-    if (name === "" || email === "" || password === "" || confirmPassword === "") {        
-        return;
-    }
-
-    if (password !== confirmPassword) {        
-        return;
-    }
-
+async function checkEmailAvailability(email) {
     try {
-        postData('/users', {
-            'initials': initials,
-            'name': name,
-            'email': email,
-            'password': password,
-        });
-    } catch (error) {
-        console.error('Error creating user:', error);
-    }
-    
-    document.getElementById('signUpMain').innerHTML += successfullyMessageHTML();
-    setTimeout(() => {
-        window.location.href = "/login.html";
-    }, 800);
+        const response = await fetch(BASE_URL + '/users.json');
+        const data = await response.json();
+        const users = Object.values(data);
 
+        // Überprüfen Sie, ob ein Benutzer mit der gleichen E-Mail gefunden wurde
+        const emailExists = users.some(user => user.email === email);
+        console.log('Email exists:', emailExists);
+        return emailExists;
+    } catch (error) {
+        console.error('Error checking email availability:', error);
+        return false;
+    }
 }
+
+
+
+
+
+
+
 
 function successfullyMessageHTML() {
     return `<div class="backgroundSuccessfullyMessage">
@@ -103,41 +83,93 @@ function successfullyMessageHTML() {
     </div>`;
 }
 
-function fullnameValidation() {
-    let signUpName = document.getElementById('signUpName').value;
-    const namePattern = /^[A-Za-zÄäÖöÜüß]+(?:\s[A-Za-zÄäÖöÜüß]+)+$/;
-    let signUpLabelName = document.getElementById('signUpLabelName');
-    let errorSpan = document.getElementById('nameErrorSpan');
 
-    if (!namePattern.test(signUpName)) {
-        signUpLabelName.classList.add("errorInput");
-        errorSpan.textContent = "Please enter your full name";
-        errorSpan.style.display = "block";
-        return;
+async function signUp() {
+    let initials = getInitials();
+    let name = document.getElementById('signUpName').value;
+    let email = document.getElementById('signUpEmail').value;
+    let password = document.getElementById('signUpPassword').value;
+    let confirmPassword = document.getElementById('signUpConfirmPassword').value;
+
+    let isEmailAvailable = await checkEmail(email);
+    let isNameValid = validateName(name);
+    let arePasswordsValid = validatePasswords(password, confirmPassword);
+
+    if (isEmailAvailable && isNameValid && arePasswordsValid) {
+        await createUser({ initials, name, email, password });
     }
-
-    signUpLabelName.classList.remove("errorInput");
-    errorSpan.style.display = "none";
 }
 
-function passwordValidation() {
-    let signUpPassword = document.getElementById('signUpPassword').value;
-    let signUpConfirmPassword = document.getElementById('signUpConfirmPassword').value;
-    let signUpLabelConfirmPassword = document.getElementById('signUpLabelConfirmPassword');
-    let errorSpan = document.getElementById('passwordErrorSpan');
 
-    if (signUpPassword !== signUpConfirmPassword) {
-        signUpLabelConfirmPassword.classList.add("errorInput");
-        errorSpan.textContent = "Ups! yopur password dont´t match";
-        errorSpan.style.display = "block";
-        return;
+function getInitials() {
+    return document.getElementById('signUpName').value.split(' ').map((n) => n[0]).join('').toUpperCase();
+}
+
+
+async function checkEmail(email) {
+    let isEmailAvailable = await checkEmailAvailability(email);
+    if (isEmailAvailable) {
+        showError('signUpLabelEmail', 'emailErrorSpan', "This email is already taken");
+        return false;
     }
+    clearError('signUpLabelEmail', 'emailErrorSpan');
+    return true;
+}
 
-    if (signUpPassword === signUpConfirmPassword) {
-        signUpLabelConfirmPassword.classList.remove("errorInput");
-        errorSpan.style.display = "none";
+
+function validateName(name) {
+    const namePattern = /^[A-Za-zÄäÖöÜüß]+(?:\s[A-Za-zÄäÖöÜüß]+)+$/;
+    if (!namePattern.test(name)) {
+        showError('signUpLabelName', 'nameErrorSpan', "Please enter your full name");
+        return false;
     }
+    clearError('signUpLabelName', 'nameErrorSpan');
+    return true;
+}
 
-    signUpConfirmPassword.classList.remove("errorInput");
-    errorSpan.style.display = "none";
+
+function validatePasswords(password, confirmPassword) {
+    if (password !== confirmPassword) {
+        showError('signUpLabelConfirmPassword', 'passwordErrorSpan', "Ups! your password don't match");
+        return false;
+    }
+    clearError('signUpLabelConfirmPassword', 'passwordErrorSpan');
+    return true;
+}
+
+
+function showError(labelId, errorSpanId, message) {
+    document.getElementById(labelId).classList.add("errorInput");
+    let errorSpan = document.getElementById(errorSpanId);
+    errorSpan.textContent = message;
+    errorSpan.style.display = "block";
+}
+
+function clearError(labelId, errorSpanId) {
+    document.getElementById(labelId).classList.remove("errorInput");
+    document.getElementById(errorSpanId).style.display = "none";
+}
+
+
+async function postData(path = '', data = {}) {
+    let response = await fetch(BASE_URL + path + '.json', {
+        method: 'POST',
+        header: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+    return responseToJson = await response.json();
+}
+
+async function createUser(user) {
+
+    try {
+
+        await postData('/users', user);
+        document.getElementById('signUpMain').innerHTML += successfullyMessageHTML();
+        setTimeout(() => { window.location.href = "/login.html"; }, 800);
+    } catch (error) {
+        console.error('Error creating user:', error);
+    }
 }
