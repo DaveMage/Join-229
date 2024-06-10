@@ -22,21 +22,35 @@ function guestLogin() {
 
 
 
-/**
- * Retrieves contacts from the server and displays them on the webpage.
- * @returns {Array} An array of contact objects.
- */
-async function getContacts() {
-    let response = await fetch(BASE_URL + '/users.json');
-    let responseToJson = await response.json();
-    let fetchedUsers = [];
 
-    for (const key in responseToJson) {
-        let user = responseToJson[key];
-        user.id = key;
-        fetchedUsers.push(user);
+
+async function login() {
+    let email = document.getElementById('loginEmail').value;
+    let password = document.getElementById('loginPassword').value;
+
+    try {
+        const response = await fetch(BASE_URL + '/users.json');
+        const data = await response.json();
+        const users = Object.values(data);
+
+        const user = users.find(user => user.email === email && user.password === password);
+
+        if (user) {
+            loginSuccess(user)
+        } else {
+            showError('loginLabelEmail', 'loginErrorSpan', "Invalid email or password");
+        }
+    } catch (error) {
+        console.error('Error during login:', error);
+        showError('loginLabelEmail', 'loginErrorSpan', "An error occurred. Please try again.");
     }
-
-    user = fetchedUsers; // Store fetched contacts in a global variable
-    return user;
 }
+
+function loginSuccess(user) {
+    // Here you can set the user data in the session or local storage
+    localStorage.setItem('user', JSON.stringify(user));
+
+    // Redirect to the dashboard or another page after successful login
+    window.location.href = "/summary.html";
+}
+
