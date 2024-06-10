@@ -10,6 +10,7 @@
       href="./img/favicon/favicon_with_bg.png"
       type="image/x-icon"
     />
+    <script src="/js/addTask.js"></script>
     <script src="/js/main.js"></script>
     <script src="/js/html/mainHTML.js"></script>
     <link rel="stylesheet" href="./css/addTask.css" />
@@ -19,10 +20,11 @@
     <header id="header" class="headerMenu"></header>
     <main class="mainContainer">
       <h1 class="addTaskHeadline">Add Task</h1>
-      <form class="addTaskForm">
+      <form onsubmit="" class="addTaskForm">
         <label for="addTaskTitle" class="addTaskLabel">
           <p>Title<span class="required">*</span></p>
           <input
+            required
             type="text"
             placeholder="Enter a Title"
             class="addTaskInput"
@@ -104,6 +106,7 @@
         <label for="addTaskDueDate" class="addTaskLabel">
           <p>Due Date<span class="required">*</span></p>
           <input
+            required
             type="date"
             class="addTaskInput"
             id="addTaskDueDate"
@@ -189,7 +192,7 @@
           <div class="subtaskContainer" id="subtaskContainer"></div>
           <div class="addTaskBtnContainer">
             <p><span class="required">*</span>This field is required</p>
-            <button type="button" class="primaryBtn createTaskBtn">
+            <button type="submit" class="primaryBtn createTaskBtn">
               Create Task <img src="/img/Mobile/AddTask/checkMarkIconAddTask.png">
             </button>
               

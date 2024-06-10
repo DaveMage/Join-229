@@ -4,6 +4,7 @@ function onloadInit() {
     loadGuestLogin();
     checkGuestLogin();
     loadUserInitial();
+    dateTreshhold();
 }
 
 /**
