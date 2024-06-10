@@ -57,6 +57,7 @@ body {
     border: none;
     height: 24px;
     font-size: 20px;
+    max-width: 200px;
 }
 
 #findTask::placeholder {
@@ -392,6 +393,26 @@ body {
     height: 24px;
 }
 
+/* Overlay (edit Task) */
+
+.editOverlay {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 9999;
+    background-color: rgba(109, 109, 109, 0.431);
+}
+
+.editTaskOverlay {
+    background-color: #ffffff;
+    min-width: 270px;
+    margin: 16px;
+    padding: 24px;
+    position: absolute;
+    border-radius: 30px;
+    z-index: 999;
+}
+
 /* Animation */
 
 @keyframes slideIn {
@@ -402,4 +423,4 @@ body {
     to {
       transform: translateX(0);
     }
-  }
+}
