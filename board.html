@@ -77,6 +77,59 @@
             </div>
         </section>
 
+        <section class="editOverlay">
+            <div class="editTaskOverlay">
+                <div class="editTaskHeader">
+                    <h4>Title</h4>
+                    <textarea>Kochwelt Page & Recipe Recommender</textarea>
+                </div>
+                <div class="edtiTaskDescription">
+                    <h4>Description</h4>
+                    <textarea>Build start page with recipe recommendation.</textarea>
+                </div>
+                <div class="edtiTaskDueDate">
+                    <label for="addTaskDueDate" class="addTaskLabel">
+                        <p>Due Date<span class="required">*</span></p>
+                        <input
+                          type="date"
+                          class="addTaskInput"
+                          id="addTaskDueDate"
+                          placeholder="Select a Date"
+                        />
+                      </label>
+                </div>
+                <div class="priority">
+                    <label for="addTaskPriority" class="addTaskLabel">
+                        Priority
+                    </label>
+                    <!-- Prio input Radio als btn -->
+                    <div class="prioContainer" >
+                        <!-- Prio input Radio Urgent -->
+                        <input type="radio" id="urgent" name="priority" value="urgent" hidden> 
+                        <label for="urgent" class="prioLabel" id="prioUrgent">            
+                        Urgent
+                        <img src="/img/Mobile/AddTask/urgentIconAddTask.png">
+                        </label>
+            
+                        <!-- Prio input Radio Medium -->
+                        <input type="radio" id="medium" name="priority" value="medium" hidden>
+                        <label for="medium" class="prioLabel" id="prioMedium">
+                        Medium
+                        <img  src="/img/Mobile/AddTask/mediumIconAddTask.png">
+                        </label>
+            
+                        <!-- Prio input Radio Low -->
+                        <input type="radio" id="low" name="priority" value="low" hidden >
+                        <label for="low" class="prioLabel" id="prioLow">
+                        Low
+                        <img  src="/img/Mobile/AddTask/lowIconAddTask.png">
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
         <main class="boardContent">
             <div class="boardHeader">
                 <h1 class="headline">Board</h1>
