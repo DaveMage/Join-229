@@ -4,6 +4,7 @@ async function contactInit() {
     loadGuestLogin();
     await getContacts();
     displayContacts(contacts);
+    loadUserInitial();
 }
 
 
