@@ -55,10 +55,10 @@
   color: #ff8190;
   font-size: 12px;
   display: none;
-  margin: -16px 0;
+  margin: -20px 0;
 }
 
-#signUpLabelConfirmPassword:focus + img{
+#signUpLabelConfirmPassword:focus + img {
   content: none;
 }
 
@@ -135,21 +135,19 @@
   font-weight: 700;
 }
 
-
-.showPasswordImg{
+.showPasswordImg {
   content: url(/img/Mobile/LogIn/visibilityIconLogIn.png) !important;
 }
 
-.hidePasswordImg{
+.hidePasswordImg {
   content: url(/img/Mobile/LogIn/visibilityOffIconLogIn.png) !important;
 }
 
-#signUpPasswortConfirmImg{
+#signUpPasswortConfirmImg {
   cursor: pointer;
-
 }
 
-#signUpPasswortImg{
+#signUpPasswortImg {
   cursor: pointer;
 }
 
