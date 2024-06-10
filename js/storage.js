@@ -41,7 +41,24 @@ async function putData(path = '', data = {}) {
 let profileColor = ['#FF7A00', '#FF5EB3', '#6E52FF', '#9327FF', '#00BEE8', '#1FD7C1', '#FF745E', '#FFA35E', '#FC71FF', '#FFC701', '#0038FF', '#C3FF2B', '#FFE62B', '#FF4646', '#FFBB2B']
 
 
+/**
+ * Retrieves users from the server and displays them on the webpage.
+ * @returns {Array} An array of user objects.
+ */
+async function getUsers() {
+    let response = await fetch(BASE_URL + '/users.json');
+    let responseToJson = await response.json();
+    let fetchedUsers = [];
 
+    for (const key in responseToJson) {
+        let user = responseToJson[key];
+        user.id = key;
+        fetchedUsers.push(user);
+    }
+
+    users = fetchedUsers; // Store fetched contacts in a global variable
+    return users;
+}
 
 
 
