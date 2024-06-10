@@ -38,7 +38,7 @@
             placeholder="Name"
             onfocus="focusInput('signUpLabelName')"
             onblur="resetFocus('signUpLabelName')"
-            onchange="fullnameValidation()"
+            
           />
           <img
             src="../img/Mobile/LogIn/personIconLogIn.png"
@@ -53,9 +53,11 @@
             placeholder="Email"
             onfocus="focusInput('signUpLabelEmail')"
             onblur="resetFocus('signUpLabelEmail')"
+            
           />
           <img src="../img/Mobile/LogIn/mailIconLogIn.png" alt="Mail Icon" />
         </label>
+        <span id="emailErrorSpan" class="errorMessage"></span>
         <label
           for="signUpPassword"
           class="signUpLabel"
@@ -67,6 +69,8 @@
             placeholder="Password"
             onfocus="focusInput('signUpLabelPassword')"
             onblur="resetFocus('signUpLabelPassword')"
+            
+
           />
           <img
             src="../img/Mobile/LogIn/lockIconLogIn.png"
@@ -84,7 +88,7 @@
             type="password"
             id="signUpConfirmPassword"
             placeholder="Confrim Password"
-            onchange="passwordValidation()"
+            
             onfocus="focusInput('signUpLabelConfirmPassword')"
             onblur="resetFocus('signUpLabelConfirmPassword')"
           />
