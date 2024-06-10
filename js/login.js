@@ -27,6 +27,7 @@ function guestLogin() {
 async function login() {
     let email = document.getElementById('loginEmail').value;
     let password = document.getElementById('loginPassword').value;
+    let rememberMe = document.getElementById('checkboxRemember').checked;
 
     try {
         const response = await fetch(BASE_URL + '/users.json');
@@ -36,7 +37,7 @@ async function login() {
         const user = users.find(user => user.email === email && user.password === password);
 
         if (user) {
-            loginSuccess(user)
+            loginSuccess(user, rememberMe);
         } else {
             showError('loginLabelEmail', 'loginErrorSpan', "Invalid email or password");
         }
@@ -46,11 +47,20 @@ async function login() {
     }
 }
 
-function loginSuccess(user) {
-    // Here you can set the user data in the session or local storage
-    localStorage.setItem('user', JSON.stringify(user));
 
+function loginSuccess(user, rememberMe) {
+    if (rememberMe) {
+        localStorage.setItem('userEmail', user.email);
+        localStorage.setItem('userPassword', user.password);
+    } else {
+        sessionStorage.setItem('userEmail', user.email);
+        sessionStorage.setItem('userPassword', user.password);
+    }
+    localStorage.setItem('user', JSON.stringify(user));
     // Redirect to the dashboard or another page after successful login
     window.location.href = "/summary.html";
 }
+
+
+
 
