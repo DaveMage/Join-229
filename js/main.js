@@ -3,6 +3,7 @@ function onloadInit() {
     displayMobileMenu();
     loadGuestLogin();
     checkGuestLogin();
+    loadUserInitial();
 }
 
 /**
@@ -53,10 +54,20 @@ function loadGuestLogin() {
     }
 }
 
+
+
 function checkGuestLogin() {
     if (localStorage.getItem('guestLoggedIn') === null) {
         document.getElementById('menu').style.display = 'none';
     }
+}
+
+function loadUserInitial() {
+    if (localStorage.getItem('user') !== null) {
+        let user = JSON.parse(localStorage.getItem('user'));
+        document.getElementById('profileInitial').innerHTML = user.initials;
+    }
+
 }
 
 
