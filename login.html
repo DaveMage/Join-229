@@ -6,7 +6,11 @@
     <title>Join</title>
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="../css/login.css" />
-    <link rel="icon" href="./img/favicon/favicon_with_bg.png" type="image/x-icon">
+    <link
+      rel="icon"
+      href="./img/favicon/favicon_with_bg.png"
+      type="image/x-icon"
+    />
   </head>
   <body>
     <header>
@@ -18,36 +22,53 @@
     </header>
     <main>
       <form autocomplete="off" class="loginForm" onsubmit="return false;">
-        <h1 class="loginHeader">Log in
-            <span class="headlineUnderline"></span>
+        <h1 class="loginHeader">
+          Log in
+          <span class="headlineUnderline"></span>
         </h1>
         <label for="loginEmail" class="loginLabel" id="loginLabelEmail">
-            <input type="email" placeholder="Email" id="loginEmail" onfocus="focusInput('loginLabelEmail')" onblur="resetFocus('loginLabelEmail')" />
-            <img src="/img/Mobile/LogIn/mailIconLogIn.png" alt="Email Icon" />
+          <input
+            type="email"
+            placeholder="Email"
+            id="loginEmail"
+            onfocus="focusInput('loginLabelEmail')"
+            onblur="resetFocus('loginLabelEmail')"
+          />
+          <img src="/img/Mobile/LogIn/mailIconLogIn.png" alt="Email Icon" />
         </label>
-        <label for="loginPassword" class="loginLabel" id="loginLabelPassword" >
-          <input type="password" placeholder="Password" id="loginPassword" onfocus="focusInput('loginLabelPassword')" onblur="resetFocus('loginLabelPassword')" />
+        <label for="loginPassword" class="loginLabel" id="loginLabelPassword">
+          <input
+            type="password"
+            placeholder="Password"
+            id="loginPassword"
+            onfocus="focusInput('loginLabelPassword')"
+            onblur="resetFocus('loginLabelPassword')"
+          />
           <img src="/img/Mobile/LogIn/lockIconLogIn.png" alt="Lock Icon" />
         </label>
         <label for="checkboxRemember" class="checkboxLabel">
-            <input type="checkbox" id="checkboxRemember" class="customCheckbox">
-            Remember me
+          <input type="checkbox" id="checkboxRemember" class="customCheckbox" />
+          Remember me
         </label>
         <div class="loginBtnContainer">
-            <button class="primaryBtn">Log in</button>
-            <button class="secondaryBtn" onclick="guestLogin()">Guest Log in</button>
+          <button class="primaryBtn" onclick="login()">Log in</button>
+          <button class="secondaryBtn" onclick="guestLogin()">
+            Guest Log in
+          </button>
         </div>
       </form>
       <div class="registerContainer">
         <p>Not a Join user?</p>
-        <button class="primaryBtn signUpBtn" onclick="goToSighUp()">Sign up</button>
+        <button class="primaryBtn signUpBtn" onclick="goToSighUp()">
+          Sign up
+        </button>
       </div>
     </main>
     <footer class="footerLogin">
-        <a href="/privacyPolice.html">Privacy Policy</a>
-        <a href="/legalNotice.html">Legal notice</a>
+      <a href="/privacyPolice.html">Privacy Policy</a>
+      <a href="/legalNotice.html">Legal notice</a>
     </footer>
-
+    <script src="/js/storage.js"></script>
     <script src="/js/login.js"></script>
   </body>
 </html>
