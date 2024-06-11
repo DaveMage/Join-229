@@ -2,6 +2,11 @@
     margin: 0 16px 96px 16px;
 }
 
+body{
+    height: 100vh;
+    overflow: hidden;
+}
+
 .linkJoin {
     text-decoration: none;
     color: #43B5E4;
