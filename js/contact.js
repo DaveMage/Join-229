@@ -213,9 +213,15 @@ async function saveEditContact(contactId) {
     let contactEmail = document.getElementById('contactEmail' + contactId).value;
     let contactPhone = document.getElementById('contactPhone' + contactId).value;
     let initials = contactName.split(' ').map((n) => n[0]).join('');
+    let userId = await getUserIdByEmail(); // Wait for the user ID
+
+    if (!userId) {
+        console.error('User not found');
+        return;
+    }
 
     try {
-        await putData('/contacts/' + contactId, {
+        await putData('/users/' + userId + '/contacts/' + contactId, {
             'name': contactName,
             'email': contactEmail,
             'phone': contactPhone,
