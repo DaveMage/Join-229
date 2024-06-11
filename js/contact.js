@@ -5,6 +5,7 @@ async function contactInit() {
     await getContacts();
     displayContacts(contacts);
     loadUserInitial();
+
 }
 
 
@@ -23,12 +24,19 @@ function closeAddContact() {
 }
 
 
+
 /**
  * Retrieves contacts from the server and displays them on the webpage.
  * @returns {Array} An array of contact objects.
  */
 async function getContacts() {
-    let response = await fetch(BASE_URL + '/contacts.json');
+    let userId = await getUserIdByEmail(); // Wait for the user ID
+
+    if (!userId) {
+        console.error('User not found');
+        return;
+    }
+    let response = await fetch(BASE_URL + '/users/' + userId + '/contacts.json');
     let responseToJson = await response.json();
     let fetchedContacts = [];
 
@@ -39,6 +47,7 @@ async function getContacts() {
     }
 
     contacts = fetchedContacts; // Store fetched contacts in a global variable
+    console.log(contacts);
     return contacts;
 }
 
@@ -75,6 +84,10 @@ function displayContacts(contacts) {
     }
 }
 
+
+
+
+
 /**
  * Saves a contact by retrieving the contact name, email, and phone from the input fields,
  * generates a random profile color, and sends a POST request to the '/contacts' endpoint
@@ -92,14 +105,22 @@ async function saveContact() {
     let contactPhone = document.getElementById('contactPhone').value;
     let randomColor = profileColor[Math.floor(Math.random() * profileColor.length)];
     let initials = contactName.split(' ').map((n) => n[0]).join('');
+    let userId = await getUserIdByEmail(); // Wait for the user ID
+
+    if (!userId) {
+        console.error('User not found');
+        return;
+    }
+
 
     try {
-        await postData('/contacts', {
+        await postData('/users/' + userId + '/contacts',  {
             'name': contactName,
             'email': contactEmail,
             'phone': contactPhone,
             'initials': initials,
             'profileColor': randomColor
+
         });
 
         document.getElementById('contactMain').innerHTML += successfullyHtml();
@@ -181,6 +202,7 @@ function closeEditContact() {
 async function getContactById(contactId) {
     if (contacts.length === 0) {
         await getContacts(); // Fetch contacts if not already fetched
+
     }
     return contacts.find(contact => contact.id === contactId);
 }
