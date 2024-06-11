@@ -68,13 +68,6 @@ async function checkEmailAvailability(email) {
     }
 }
 
-
-
-
-
-
-
-
 function successfullyMessageHTML() {
     return `<div class="backgroundSuccessfullyMessage">
     <div id="SignUpSuccessfully" class="successfullyMessage slideInBottom">
@@ -172,4 +165,22 @@ async function createUser(user) {
     } catch (error) {
         console.error('Error creating user:', error);
     }
+}
+
+
+function focusInput(inputId) {
+    const ids = ["signUpLabelName", "signUpLabelEmail", "signUpLabelPassword", "signUpLabelConfirmPassword"];
+    ids.forEach(id => {
+        document.getElementById(id).style.borderColor = id === inputId ? "#29ABE2" : "#D1D1D1";
+    });
+}
+function resetFocus() {
+    const ids = ["signUpLabelName", "signUpLabelEmail", "signUpLabelPassword", "signUpLabelConfirmPassword"];
+    ids.forEach(id => {
+        document.getElementById(id).style.borderColor = "#D1D1D1";
+    });
+}
+
+function goToLogin() {
+    window.location.href = "/login.html";
 }
