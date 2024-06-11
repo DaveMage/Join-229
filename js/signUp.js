@@ -83,6 +83,7 @@ async function signUp() {
     let email = document.getElementById('signUpEmail').value;
     let password = document.getElementById('signUpPassword').value;
     let confirmPassword = document.getElementById('signUpConfirmPassword').value;
+    
 
     let isEmailAvailable = await checkEmail(email);
     let isNameValid = validateName(name);
