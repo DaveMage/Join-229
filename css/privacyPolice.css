@@ -2,6 +2,11 @@
     margin: 0 16px 96px 16px;
 }
 
+body{
+    height: 100vh;
+    overflow: hidden;
+}
+
 .headSection {
     margin-bottom: 32px;
     margin-top: 48px;
