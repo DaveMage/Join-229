@@ -11,7 +11,7 @@ function headerMobileHtml(){
 function menuMobileHtml(){
    return `
    <a class="menuMobile" href="/summary.html">
-       <img src="/img/Mobile/generalElements/summaryIconGray.png" alt="Summary Icon" id="summaryMobileIcon">
+       <img src="/img/Mobile/generalElements/summaryIconGray.png" alt="Summary Icon" id="summaryMobileIcon}">
        <p>Summary</p>
    </a>   
    <a class="menuMobile" href="/board.html">
