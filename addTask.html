@@ -20,16 +20,16 @@
     <header id="header" class="headerMenu"></header>
     <main class="mainContainer">
       <h1 class="addTaskHeadline">Add Task</h1>
-      <form onsubmit="" class="addTaskForm">
+      <form onsubmit="saveTask(); return false;" class="addTaskForm">
         <label for="addTaskTitle" class="addTaskLabel">
           <p>Title<span class="required">*</span></p>
-          <input
-            required
+          <input            
             type="text"
             placeholder="Enter a Title"
             class="addTaskInput"
             id="addTaskTitle"
           />
+          <span id="errorSpanTitle" class="errorSpan">Your Title forgotten</span>
         </label>
 
         <label for="addTaskDescription" class="addTaskLabel">
@@ -106,7 +106,7 @@
         <label for="addTaskDueDate" class="addTaskLabel">
           <p>Due Date<span class="required">*</span></p>
           <input
-            required
+            
             type="date"
             class="addTaskInput"
             id="addTaskDueDate"
