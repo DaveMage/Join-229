@@ -7,6 +7,7 @@ function onloadInit() {
     dateTreshhold();
 }
 
+
 /**
  * Sets the innerHTML of the element with id "header" to the result of the headerMobileHtml function.
  */
@@ -56,12 +57,13 @@ function loadGuestLogin() {
 }
 
 
-
 function checkGuestLogin() {
     if (localStorage.getItem('guestLoggedIn') === null) {
         document.getElementById('menu').style.display = 'none';
+        document.getElementById('mainPolicy').style.height = '100vh';
     }
 }
+
 
 function loadUserInitial() {
     if (localStorage.getItem('user') !== null) {
@@ -69,7 +71,6 @@ function loadUserInitial() {
         document.getElementById('profileInitial').innerHTML = user.initials;
         document.getElementById('menu').style.display = 'flex';
     }
-
 }
 
 
