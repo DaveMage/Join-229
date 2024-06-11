@@ -156,8 +156,14 @@ async function openContactView(contactId) {
 }
 
 async function deleteContact(contactId) {
+    let userId = await getUserIdByEmail(); // Wait for the user ID
+
+    if (!userId) {
+        console.error('User not found');
+        return;
+    } 
     try {
-        await deleteData('/contacts/' + contactId);
+        await deleteData('/users/' + userId + '/contacts/' + contactId);
         window.location.href = 'contacts.html';
     } catch (error) {
         console.error('Error deleting contact:', error);
