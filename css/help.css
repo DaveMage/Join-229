@@ -1,57 +1,60 @@
 .helpContent {
-    
-    padding: 0 16px 16px;
-    height: calc(100vh - 160px);
-    overflow: auto;
+  padding: 0 16px 16px;
+  height: calc(100vh - 160px);
+  overflow: auto;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
 }
 
 .linkJoin {
-    text-decoration: none;
-    color: #43B5E4;
+  text-decoration: none;
+  color: #43b5e4;
 }
 
 .headSection {
-    margin-bottom: 32px;
-    margin-top: 48px;
-    display: flex;
-    justify-content: space-between;
+  margin-bottom: 32px;
+  margin-top: 48px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .arrowLeft {
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
 }
 
 .headline {
-    font-size: 47px;
-    font-weight: 700;
+  font-size: 47px;
+  font-weight: 700;
 }
 
 .subheader {
-    font-size: 27px;
-    font-weight: 700;
-    margin-bottom: 16px;
-    margin-top: 16px;
+  font-size: 27px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  margin-top: 16px;
 }
 
 .helpText {
-    margin-top: 16px;
+  margin-top: 16px;
 }
 
 .stepByStep {
-    display: flex;
-    margin-top: 16px;
+  display: flex;
+  margin-top: 16px;
 }
 
 .step {
-    font-size: 27px;
-    font-weight: 700;
-    margin-right: 35px;
+  font-size: 27px;
+  font-weight: 700;
+  margin-right: 35px;
 }
 
 .stepHeader {
-    font-size: 20px;
-    font-weight: 700;
+  font-size: 20px;
+  font-weight: 700;
 }
-
