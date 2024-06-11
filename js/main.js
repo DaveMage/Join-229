@@ -58,15 +58,18 @@ function loadGuestLogin() {
 
 
 function checkGuestLogin() {
-    if (localStorage.getItem('guestLoggedIn') === null) {
-        document.getElementById('menu').style.display = 'none';
-        document.getElementById('mainPolicy').style.height = '100vh';
+    if (document.getElementById('menu')) {
+        if (localStorage.getItem('guestLoggedIn') === !true || localStorage.getItem('user') === null) {
+            document.getElementById('menu').style.display = 'none';
+            document.getElementById('mainPolicy').style.height = '100vh';
+        }
     }
 }
 
 
 function loadUserInitial() {
     if (localStorage.getItem('user') !== null) {
+        
         let user = JSON.parse(localStorage.getItem('user'));
         document.getElementById('profileInitial').innerHTML = user.initials;
         document.getElementById('menu').style.display = 'flex';
