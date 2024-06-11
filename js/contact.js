@@ -43,7 +43,6 @@ async function getContacts() {
 }
 
 
-
 /**
  * Displays the contacts in the provided array in alphabetical order.
  * Each contact is displayed under the corresponding letter section.
