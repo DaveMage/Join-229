@@ -21,13 +21,11 @@ function guestLogin() {
 }
 
 
-
-
-
 async function login() {
     let email = document.getElementById('loginEmail').value;
     let password = document.getElementById('loginPassword').value;
     let rememberMe = document.getElementById('checkboxRemember').checked;
+
 
     try {
         const response = await fetch(BASE_URL + '/users.json');
@@ -35,6 +33,8 @@ async function login() {
         const users = Object.values(data);
 
         const user = users.find(user => user.email === email && user.password === password);
+
+
 
         if (user) {
             loginSuccess(user, rememberMe);
@@ -49,12 +49,14 @@ async function login() {
 
 
 function loginSuccess(user, rememberMe) {
+    
+
     if (rememberMe) {
-        localStorage.setItem('userEmail', user.email);
-        localStorage.setItem('userPassword', user.password);
+        localStorage.setItem('userEmail', user.email);        
     } else {
-        sessionStorage.setItem('userEmail', user.email);
-        sessionStorage.setItem('userPassword', user.password);
+        localStorage.setItem('userEmail', user.email);
+        
+        
     }
     localStorage.setItem('user', JSON.stringify(user));
     // Redirect to the dashboard or another page after successful login
