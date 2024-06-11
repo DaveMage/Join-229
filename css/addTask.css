@@ -256,3 +256,12 @@ body {
 .addTaskInput {
   position: relative;
 }
+
+
+.errorLabel{  
+  border: 1px solid #ff8190;
+}
+
+.errorSpan{
+  display: none;
+}
