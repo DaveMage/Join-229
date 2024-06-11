@@ -4,6 +4,7 @@ function onloadInit() {
     loadGuestLogin();
     checkGuestLogin();
     loadUserInitial();
+    getUserIdByEmail();
     dateTreshhold();
 }
 
@@ -82,6 +83,7 @@ function loadUserInitial() {
  */
 function logout() {
     localStorage.clear();
+    currentUser = [];
     window.location.href = "/login.html";
 }
 
