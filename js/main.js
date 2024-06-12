@@ -80,8 +80,7 @@ function loadUserInitial() {
 /**
  * Clears the localStorage and redirects the user to the login page.
  */
-function logout() {
-    localStorage.clear();
+function logout() {    
     currentUser = [];
     window.location.href = "/login.html";
 }
