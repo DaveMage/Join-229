@@ -3,7 +3,7 @@ function onloadInit() {
     displayMobileMenu();
     loadGuestLogin();
     checkGuestLogin();
-    loadUserInitial();    
+    loadUserInitial();
     dateTreshhold();
 }
 
@@ -58,9 +58,10 @@ function loadGuestLogin() {
 
 
 function checkGuestLogin() {
-    if (document.getElementById('menu')) {
-        if (localStorage.getItem('guestLoggedIn') === !true || localStorage.getItem('user') === null) {
-            document.getElementById('menu').style.display = 'none';
+    let notLoggedIn = document.getElementById('profileInitial');
+    if (notLoggedIn.innerHTML === '') {
+        document.getElementById('menu').style.display = 'none';
+        if (document.getElementById('mainPolicy')) {
             document.getElementById('mainPolicy').style.height = '100vh';
         }
     }
@@ -69,7 +70,6 @@ function checkGuestLogin() {
 
 function loadUserInitial() {
     if (localStorage.getItem('user') !== null) {
-        
         let user = JSON.parse(localStorage.getItem('user'));
         document.getElementById('profileInitial').innerHTML = user.initials;
         document.getElementById('menu').style.display = 'flex';
