@@ -42,8 +42,7 @@ async function getContacts() {
         fetchedContacts.push(contact); // Add the contact to the fetchedContacts array
     }
 
-    contacts = fetchedContacts; // Store fetched contacts in a global variable
-    console.log(contacts); // Log the fetched contacts to the console
+    contacts = fetchedContacts; // Store fetched contacts in a global variable   
     return contacts; // Return the fetched contacts array
 }
 
