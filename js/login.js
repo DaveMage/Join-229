@@ -49,20 +49,26 @@ async function login() {
 
 
 function loginSuccess(user, rememberMe) {
-    
-
     if (rememberMe) {
-        localStorage.setItem('userEmail', user.email);        
-    } else {
         localStorage.setItem('userEmail', user.email);
-        
-        
+        localStorage.setItem('userPassword', user.password);
+    } else {
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('userPassword');
     }
     localStorage.setItem('user', JSON.stringify(user));
     // Redirect to the dashboard or another page after successful login
     window.location.href = "/summary.html";
 }
 
+function displayUserEmailPassword(){
+    let email = localStorage.getItem('userEmail');
+    let password = localStorage.getItem('userPassword');
+    if(email && password){
+        document.getElementById('loginEmail').value = email;
+        document.getElementById('loginPassword').value = password;
+    }
+}
 
 
 
