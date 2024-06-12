@@ -316,13 +316,13 @@ body {
     margin-bottom: 16px;
 }
 
+.priorityTask {
+    margin-right: 44px;
+}
+
 .prioritySection {
     display: flex;
     align-items: center;
-}
-
-.priority {
-    margin-right: 46px;
 }
 
 .priorityLevel {
@@ -401,6 +401,7 @@ body {
     position: absolute;
     z-index: 9999;
     background-color: rgba(109, 109, 109, 0.431);
+    overflow-y: scroll;
 }
 
 .editTaskOverlay {
@@ -411,6 +412,209 @@ body {
     position: absolute;
     border-radius: 30px;
     z-index: 999;
+}
+
+.closeEditTask {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 8px;
+}
+
+.addTaskLabel {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.addTaskLabel input[type="date"] {
+    background-image: url(/img/Mobile/AddTask/calendarIcon.png);
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+}
+  
+.addTaskLabel input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    cursor: pointer;
+}
+
+.required {
+    color: #ff8190;
+}
+
+.addTaskInput {
+    padding: 10px 21px;
+    border-radius: 10px;
+    border: 1px solid #d1d1d1;
+    outline: none;
+    width: 100%;
+    position: relative;
+}
+  
+.addTaskInput::placeholder {
+    color: #d1d1d1;
+}
+
+.prioContainer {
+    display: flex;
+    gap: 16px;
+}
+
+.prioLabel {
+    height: 41px;
+    width: 121px;
+    padding: 18px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+  
+#medium:checked + #prioMedium {
+    background-color: #ffa800;
+    color: #ffffff;
+    font-weight: 700;
+}
+  
+#medium:checked + #prioMedium img {
+    content: url(/img/Mobile/AddTask/hoverMediumIconAddTask.png);
+}
+  
+#urgent:checked + #prioUrgent {
+    background-color: #ff3d00;
+    color: #ffffff;
+    font-weight: 700;
+}
+  
+#urgent:checked + #prioUrgent img {
+    content: url(/img/Mobile/AddTask/hoverUrgentIconAdTask.png);
+}
+  
+#low:checked + #prioLow {
+    background-color: #7ae229;
+    color: #ffffff;
+    font-weight: 700;
+}
+  
+#low:checked + #prioLow img {
+    content: url(/img/Mobile/AddTask/hoverLowIconAddTask.png);
+}
+
+.addTaskInputIconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.dropdownIcon {
+    cursor: pointer;
+    position: absolute;
+    right: 16px;
+    z-index: 100;
+}
+  
+.dropdownIcon:hover {
+    background-color: #d2e3ff;
+    border-radius: 100%;
+}
+  
+.dropdownIcon:active {
+    background-color: #d2e3ff;
+    border-radius: 100%;
+}
+
+.customDropdownBox {
+    display: none;
+    flex-direction: column;
+    gap: 2px;
+    background-color: #ffffff;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+    padding-top: 8px;
+    margin-top: -16px;
+}
+
+.dropdownItemCategory {
+    border-radius: 10px;
+    padding: 12px 16px;
+    cursor: pointer;
+}
+
+.contactDropdown {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contactDropout {
+    display: flex;
+    align-items: center;
+}
+
+.editTitle {
+    height: 42px;
+    padding: 10px 21px 10px 21px;
+}
+
+.editTaskDescription {
+    margin-top: 24px;
+}
+
+.editDescription {
+    height: 88px;
+    padding: 18px 21px 32px 21px;
+}
+
+.editTaskField {
+    resize: none;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    margin-top: 8px;
+}
+
+.editTaskField::placeholder {
+    color: #D4D1D4;
+}
+
+.editTaskDueDate {
+    margin-top: 24px;
+}
+
+.priority {
+    margin-top: 24px;
+    margin-right: 0;
+}
+
+.edtiTaskCategory {
+    margin-top: 24px;
+}
+
+.editSubtasks {
+    margin-top: 24px;
+}
+
+.addAndEditSubtask {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+}
+
+.subtaskField {
+    resize: none;
+    border: none;
+}
+
+.subtaskField::placeholder {
+    color: #d1d1d1;
 }
 
 /* Animation */
