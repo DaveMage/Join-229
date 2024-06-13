@@ -52,7 +52,7 @@ function back() {
 function loadGuestLogin() {
     if (localStorage.getItem('guestLoggedIn') === 'true') {
         document.getElementById('profileInitial').innerHTML = 'G';
-
+        document.getElementById('menu').style.display = 'flex';
     }
 }
 
