@@ -31,7 +31,7 @@
                         <span class="date">10/05/2023</span>
                     </div>
                     <div class="prioritySection bodySection">
-                        <span class="priority spanDatePriorityAssigned">Priority:</span>
+                        <span class="priorityTask spanDatePriorityAssigned">Priority:</span>
                         <span class="priorityLevel">Medium <img src="./img/Mobile/Board/priorityNormal.png" alt="priority Level"></span>
                     </div>
                     <div class="assignedToSection bodySection">
@@ -69,7 +69,7 @@
                         <span>Delete</span>
                     </div>
                     <img class="barFooter" src="./img/Mobile/Board/bar.png">
-                    <div class="deleteEditTask">
+                    <div class="deleteEditTask" onclick="openEditTask()">
                         <img class="taskFooterIcon" src="./img/Mobile/Board/editTask.png" alt="">
                         <span>Edit</span>
                     </div>
@@ -77,19 +77,24 @@
             </div>
         </section>
 
-        <section class="editOverlay">
+        <section id="editTaskOverlay" class="editOverlay">
             <div class="editTaskOverlay">
+                <div class="closeEditTask">
+                    <img onclick="closeEditTask()" class="closeTask" src="./img/Mobile/Board/closeTask.png" alt="close Task">
+                </div>
                 <div class="editTaskHeader">
                     <h4>Title</h4>
-                    <textarea>Kochwelt Page & Recipe Recommender</textarea>
+                    <textarea class="editTaskField editTitle" rows="1">Kochwelt Page & Recipe Recommender</textarea>
                 </div>
-                <div class="edtiTaskDescription">
+                <div class="editTaskDescription">
                     <h4>Description</h4>
-                    <textarea>Build start page with recipe recommendation.</textarea>
+                    <textarea class="editTaskField editDescription" rows="4">Build start page with recipe recommendation.</textarea>
                 </div>
-                <div class="edtiTaskDueDate">
+
+                <!-- edit Date -->
+                <div class="editTaskDueDate">
                     <label for="addTaskDueDate" class="addTaskLabel">
-                        <p>Due Date<span class="required">*</span></p>
+                        <p>Due Date</p>
                         <input
                           type="date"
                           class="addTaskInput"
@@ -98,6 +103,8 @@
                         />
                       </label>
                 </div>
+
+                <!-- edit Priority -->
                 <div class="priority">
                     <label for="addTaskPriority" class="addTaskLabel">
                         Priority
@@ -126,8 +133,68 @@
                         </label>
                     </div>
                 </div>
-            </div>
 
+                <!-- edit Contacts -->
+                <div class="edtiTaskCategory">
+                    <label for="addTaskCategory" class="addTaskLabel">
+                        Category
+                        <div class="addTaskInputIconContainer">
+                            <input
+                                id="addTaskCategory"
+                                type="text"
+                                placeholder="Select contacts to assign"
+                                class="addTaskInput"
+                                readonly
+                                onclick="toggleCategoryDropdown()"
+                            />
+                            <img
+                        
+                                class="dropdownIcon"
+                                id="categoryDropdownArrow"
+                                src="/img/Mobile/AddTask/arrowDropDownaa.png"
+                            />
+                        </div>
+                        <div
+                            class="customDropdownCategory customDropdownBox"
+                            id="dropdownCategory"
+                            >
+                            <div class="dropdownItemCategory contactDropdown">
+                                <div class="contactDropout">
+                                    <div class="profileIcon taskProfileIcon" style="background-color:#1FD7C1;">EM</div>
+                                    Emmanuel Mauer
+                                </div>
+                                <img src="./img/Mobile/Board/checkButtonMobile.png" alt="">
+                            </div>
+                            <div class="dropdownItemCategory contactDropdown">
+                                <div class="contactDropout">
+                                    <div class="profileIcon taskProfileIcon" style="background-color:#462F8A;">MB</div>
+                                        Marcel Bauer
+                                </div>
+                                <img src="./img/Mobile/Board/checkButtonMobile.png" alt="">
+                            </div>
+                            <div class="dropdownItemCategory contactDropdown">
+                                <div class="contactDropout">
+                                    <div class="profileIcon taskProfileIcon" style="background-color:#FFBB2B;">AM</div>
+                                    Anton Mayer
+                                </div>
+                                <img src="./img/Mobile/Board/checkButtonMobile.png" alt="">
+                            </div>
+                    
+                        </div>
+                    </label>
+                </div>
+
+                <!-- edit Subtasks -->
+                <div class="editSubtasks">
+                    <p>Subtasks</p>
+                    <div class="addSubtasks editTaskField">
+                        <div class="addAndEditSubtask">
+                            <textarea class="subtaskField" placeholder="Add new subtask"></textarea>
+                            <img src="./img/Mobile/Board/addSubtask.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <main class="boardContent">
