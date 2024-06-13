@@ -265,4 +265,6 @@ body {
 .errorSpan{
   display: none;
   font-size: 12px;
+  margin-top: -4px;
+  color: #ff8190;
 }

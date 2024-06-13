@@ -5,16 +5,33 @@ function dateTreshhold() {
     document.getElementById("addTaskDueDate").setAttribute('min', today);
 };
 
-function saveTask(){
+function saveTask() {
+    titlequery();
+    datequery();
+}
+
+function titlequery() {
     let title = document.getElementById("addTaskTitle");
 
-    if(title.value === ""){
+    if (title.value === "") {
         title.classList.add('errorLabel');
-        document.getElementById('errorSpanTitle').style.display = 'block';        
+        document.getElementById('errorSpanTitle').style.display = 'block';
         return;
     } else {
         title.classList.remove('errorLabel');
         document.getElementById('errorSpanTitle').style.display = 'none';
-        document.getElementById('errorSpanTitle').textContent = 'ne';
+    }
+}
+
+function datequery() {
+    let date = document.getElementById("addTaskDueDate");
+
+    if (date.value === "") {
+        date.classList.add('errorLabel');
+        document.getElementById('errorSpanDate').style.display = 'block';
+        return;
+    } else {
+        title.classList.remove('errorLabel');
+        document.getElementById('errorSpanDate').style.display = 'none';
     }
 }
