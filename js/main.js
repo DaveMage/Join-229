@@ -82,6 +82,7 @@ function loadUserInitial() {
  */
 function logout() {    
     currentUser = [];
+    localStorage.clear();
     window.location.href = "/login.html";
 }
 
