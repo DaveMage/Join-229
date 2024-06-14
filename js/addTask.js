@@ -6,8 +6,15 @@ function dateTreshhold() {
 };
 
 function saveTask() {
-    titlequery();
-    datequery();
+    let title = document.getElementById('addTaskTitle').value;
+    let date = document.getElementById('addTaskDueDate').value;
+
+    if( title === '' || date === ''){
+        titlequery();
+        datequery();
+        console.log("error")
+        return;
+    } 
 }
 
 function titlequery() {
@@ -16,7 +23,7 @@ function titlequery() {
     if (title.value === "") {
         title.classList.add('errorLabel');
         document.getElementById('errorSpanTitle').style.display = 'block';
-        return;
+        return false;
     } else {
         title.classList.remove('errorLabel');
         document.getElementById('errorSpanTitle').style.display = 'none';
@@ -29,9 +36,10 @@ function datequery() {
     if (date.value === "") {
         date.classList.add('errorLabel');
         document.getElementById('errorSpanDate').style.display = 'block';
-        return;
+        return false;
     } else {
-        title.classList.remove('errorLabel');
+        date.classList.remove('errorLabel');
         document.getElementById('errorSpanDate').style.display = 'none';
     }
 }
+

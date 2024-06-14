@@ -20,7 +20,7 @@
     <header id="header" class="headerMenu"></header>
     <main class="mainContainer">
       <h1 class="addTaskHeadline">Add Task</h1>
-      <form onsubmit="saveTask(); return false;" class="addTaskForm">
+      <form onsubmit="return false;" class="addTaskForm">
         <label for="addTaskTitle" class="addTaskLabel">
           <p>Title<span class="required">*</span></p>
           <input            
@@ -28,6 +28,7 @@
             placeholder="Enter a Title"
             class="addTaskInput"
             id="addTaskTitle"
+            onblur="titlequery()"
           />
           <span id="errorSpanTitle" class="errorSpan">This field is required</span>
         </label>
@@ -110,6 +111,7 @@
             class="addTaskInput"
             id="addTaskDueDate"
             placeholder="Select a Date"
+            onblur="datequery()"
           />
           <span id="errorSpanDate" class="errorSpan">This field is required</span>
         </label>
@@ -192,7 +194,7 @@
           <div class="subtaskContainer" id="subtaskContainer"></div>
           <div class="addTaskBtnContainer">
             <p><span class="required">*</span>This field is required</p>
-            <button type="submit" class="primaryBtn createTaskBtn">
+            <button onclick="saveTask()" class="primaryBtn createTaskBtn">
               Create Task <img src="/img/Mobile/AddTask/checkMarkIconAddTask.png">
             </button>
               
