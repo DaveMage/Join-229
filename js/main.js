@@ -3,8 +3,8 @@ function onloadInit() {
     displayMobileMenu();
     loadGuestLogin();
     checkGuestLogin();
-    loadUserInitial();
-    dateTreshhold();
+    loadUserInitial();    
+    dateTreshhold();    
 }
 
 
@@ -67,6 +67,12 @@ function checkGuestLogin() {
     }
 }
 
+function loadUserInitial() {
+
+
+}
+
+
 
 function loadUserInitial() {
     if (localStorage.getItem('user') !== null) {
@@ -80,11 +86,26 @@ function loadUserInitial() {
 /**
  * Clears the localStorage and redirects the user to the login page.
  */
-function logout() {    
-    currentUser = [];
+function logout() {
+    // Store the tokens before clearing local storage
+    const emailToken = localStorage.getItem('emailToken');
+    const passwordToken = localStorage.getItem('passwordToken');
+
+    // Clear all local storage
     localStorage.clear();
+
+    // Restore the tokens
+    if (emailToken) {
+        localStorage.setItem('emailToken', emailToken);
+    }
+    if (passwordToken) {
+        localStorage.setItem('passwordToken', passwordToken);
+    }
+
+    // Redirect to the login page
     window.location.href = "/login.html";
 }
+
 
 
 //Summary Content
