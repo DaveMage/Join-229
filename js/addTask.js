@@ -10,7 +10,7 @@ async function saveTask() {
     let date = document.getElementById('addTaskDueDate').value;
     let userId = await getUserIdByEmail(); // Wait for the user ID
     let description = document.getElementById('addTaskDescription').value;
-
+    let prio = getSelectedPriority();
     if( title === '' || date === ''){
         titlequery();
         datequery();
@@ -23,8 +23,7 @@ async function saveTask() {
             'title': title,
             'date': date,
             'description': description,
-             
-        
+            'Priority': prio        
         });
    } catch (error) {
        console.error('Error saving task:', error);
@@ -32,6 +31,35 @@ async function saveTask() {
 
 
 
+}
+
+// Funktion, um die ausgewählte Priorität zu ermitteln
+function getSelectedPriority() {
+    // Holt alle Radio-Buttons mit dem Namen 'priority'
+    const priorities = document.getElementsByName('priority');
+    let selectedPriority = null; // Variable zur Speicherung des ausgewählten Radio-Buttons
+
+    // Schleife durch alle Prioritäten (Radio-Buttons)
+    for (const priority of priorities) {
+        // Überprüfen, ob der aktuelle Radio-Button ausgewählt ist
+        if (priority.checked) {
+            selectedPriority = priority; // Speichere den ausgewählten Radio-Button
+            break; // Schleife abbrechen, da wir die Auswahl gefunden haben
+        }
+    }
+
+    // Überprüfen, ob eine Priorität ausgewählt wurde
+    if (selectedPriority) {
+        const priorityValue = selectedPriority.value; // Wert des ausgewählten Radio-Buttons
+        const priorityLabel = document.querySelector(`label[for=${selectedPriority.id}]`); // Holt das zugehörige Label-Element
+        const priorityImgSrc = priorityLabel.querySelector('img').src; // Holt den Bildpfad des Bildes innerhalb des Labels
+
+        // Rückgabe eines Objekts mit dem Wert und dem Bildpfad
+        return {
+            value: priorityValue,
+            imgSrc: priorityImgSrc
+        };
+    }
 }
 
 function titlequery() {
