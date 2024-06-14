@@ -62,6 +62,15 @@ function getSelectedPriority() {
     }
 }
 
+
+// Funktion zum Auswählen einer Kategorie und Übertragen in das Eingabefeld
+function selectCategory(element) {
+    const categoryInput = document.getElementById('addTaskCategory');
+    categoryInput.value = element.textContent.trim(); // Setzt den Text des ausgewählten Elements in das Eingabefeld
+    toggleCategoryDropdown(); // Schließt das Dropdown-Menü nach Auswahl
+}
+
+
 function titlequery() {
     let title = document.getElementById("addTaskTitle");
 
