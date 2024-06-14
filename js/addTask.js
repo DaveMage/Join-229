@@ -5,9 +5,11 @@ function dateTreshhold() {
     document.getElementById("addTaskDueDate").setAttribute('min', today);
 };
 
-function saveTask() {
+async function saveTask() {
     let title = document.getElementById('addTaskTitle').value;
     let date = document.getElementById('addTaskDueDate').value;
+    let userId = await getUserIdByEmail(); // Wait for the user ID
+    let description = document.getElementById('addTaskDescription').value;
 
     if( title === '' || date === ''){
         titlequery();
@@ -15,6 +17,21 @@ function saveTask() {
         console.log("error")
         return;
     } 
+
+   try {
+        await postData('/users/' + userId + '/tasks', { 
+            'title': title,
+            'date': date,
+            'description': description,
+             
+        
+        });
+   } catch (error) {
+       console.error('Error saving task:', error);
+   }    
+
+
+
 }
 
 function titlequery() {
