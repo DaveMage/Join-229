@@ -1,9 +1,51 @@
 addTaskToArray = [];
 
+function addTaskInit() {
+    dateTreshhold();
+    getContacts();
+    displayMobileHeader();
+    displayMobileMenu();
+    loadUserInitial();
+
+}
+
+function toggleAssignedDropdown() {
+    const dropdown = document.getElementById('dropdownAssigned');
+    let icon = document.getElementById('assignedDropdownArrow');
+
+    if (dropdown.style.display === 'flex') {
+        dropdown.style.display = 'none';
+        icon.style.transform = 'rotate(0deg)';
+
+    } else {
+        dropdown.style.display = 'flex';
+        icon.style.transform = 'rotate(180deg)';
+
+    }
+    displayAssignedTo();
+}
+
+function toggleCategoryDropdown() {
+    const dropdown = document.getElementById('dropdownCategory');
+    let icon = document.getElementById('categoryDropdownArrow');
+
+    if (dropdown.style.display === 'flex') {
+        dropdown.style.display = 'none';
+        icon.style.transform = 'rotate(0deg)';
+    } else {
+        dropdown.style.display = 'flex';
+        icon.style.transform = 'rotate(180deg)';
+
+    }
+
+}
+
 function dateTreshhold() {
     let today = new Date().toISOString().split('T')[0];
     document.getElementById("addTaskDueDate").setAttribute('min', today);
 };
+
+
 
 async function saveTask() {
     let title = document.getElementById('addTaskTitle').value;
@@ -11,24 +53,23 @@ async function saveTask() {
     let userId = await getUserIdByEmail(); // Wait for the user ID
     let description = document.getElementById('addTaskDescription').value;
     let prio = getSelectedPriority();
-    if( title === '' || date === ''){
+    if (title === '' || date === '') {
         titlequery();
         datequery();
         console.log("error")
         return;
-    } 
+    }
 
-   try {
-        await postData('/users/' + userId + '/tasks', { 
+    try {
+        await postData('/users/' + userId + '/tasks', {
             'title': title,
             'date': date,
             'description': description,
-            'Priority': prio        
+            'Priority': prio
         });
-   } catch (error) {
-       console.error('Error saving task:', error);
-   }    
-
+    } catch (error) {
+        console.error('Error saving task:', error);
+    }
 
 
 }
@@ -67,8 +108,47 @@ function getSelectedPriority() {
 function selectCategory(element) {
     const categoryInput = document.getElementById('addTaskCategory');
     categoryInput.value = element.textContent.trim(); // Setzt den Text des ausgewählten Elements in das Eingabefeld
-    toggleCategoryDropdown(); // Schließt das Dropdown-Menü nach Auswahl
+
 }
+
+function displayAssignedTo() {
+    let container = document.getElementById('dropdownAssigned');
+
+    container.innerHTML = '';
+    for (let i = 0; i < contacts.length; i++) {
+
+        container.innerHTML += assignedItemHtml(contacts[i]);
+    }
+}
+
+function assignedItemHtml(contact) {
+    return /*html*/ `                
+        <label class="dropdownItemAssigned" id="label${contact.id}">
+            <div class="profileNameContainer">
+                <div class="profileIconAssigned" style="background-color: ${contact.profileColor};">${contact.initials}</div>
+                <span id="name${contact.id}" class="assignedName">${contact.name}</span>
+            </div>
+            <input
+                id="addTaskFromAssignedCheckbox${contact.id}"
+                type="checkbox"
+                class="checkboxAssigned"
+                onchange="assignedItemChackBackgroundColor.call(this, 'name${contact.id}')"/>  
+        </label>`;
+}
+
+function assignedItemChackBackgroundColor(nameId){
+    const label = this.closest('.dropdownItemAssigned');
+    const name = document.getElementById(nameId);
+    if (this.checked) {
+        label.style.backgroundColor = '#2A3647';
+        name.classList.add('nameWhite');
+    } else {
+        label.style.backgroundColor = 'white';
+        name.classList.remove('nameWhite');
+    }
+}
+
+
 
 
 function titlequery() {
