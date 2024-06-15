@@ -53,6 +53,7 @@ async function saveTask() {
     let userId = await getUserIdByEmail(); // Wait for the user ID
     let description = document.getElementById('addTaskDescription').value;
     let prio = getSelectedPriority();
+    let category = document.getElementById('addTaskCategory').value; 
     if (title === '' || date === '') {
         titlequery();
         datequery();
@@ -65,8 +66,12 @@ async function saveTask() {
             'title': title,
             'date': date,
             'description': description,
-            'Priority': prio
+            'Priority': prio,
+            'Assigned': selectedAssigned,
+            'Category': category,
         });
+        selectedAssigned = [];
+        document.getElementById('addTaskFormAssignedInput').value = '';
     } catch (error) {
         console.error('Error saving task:', error);
     }
@@ -148,9 +153,10 @@ function assignedItemChackBackgroundColor(nameId){
     }
 }
 
+let selectedAssigned = [];
 function selectAssigned() {
     // Initialize an array to hold the selected assigned contacts
-    let selectedAssigned = [];
+    
     // Get the input element where the selected contacts will be displayed
     let inputAssigned = document.getElementById('addTaskFormAssignedInput');
     // Get all the checkboxes that indicate assigned contacts
@@ -168,15 +174,13 @@ function selectAssigned() {
         // Add the contact object to the selectedAssigned array
         if (contact) {
           selectedAssigned.push(contact);
+          console.log(selectedAssigned);
         }
       }
     });
   
     // Set the value of the inputAssigned element to the names of the selected contacts
-    inputAssigned.value = selectedAssigned.length > 0 ? 'An: ' + selectedAssigned.map(c => c.name).join(', ') : '';
-  
-    // Log the selected contacts to the console
-    console.log('Selected contacts:', selectedAssigned);
+    inputAssigned.value = selectedAssigned.length > 0 ? 'An: ' + selectedAssigned.map(c => c.name).join(', ') : '';  
   
     // Return the array of selected assigned contacts
     return selectedAssigned;
