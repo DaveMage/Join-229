@@ -25,26 +25,7 @@ function closeAddContact() {
 
 
 
-/**
- * Retrieves contacts from the server and displays them on the webpage.
- * @returns {Array} An array of contact objects.
- */
-async function getContacts() {
-    let userId = await getUserIdByEmail(); // Wait for the user ID   
 
-    let response = await fetch(BASE_URL + '/users/' + userId + '/contacts.json'); // Fetch contacts from the server
-    let responseToJson = await response.json(); // Convert the response to JSON format
-    let fetchedContacts = [];
-
-    for (const key in responseToJson) { // Iterate through each key in the response JSON object
-        let contact = responseToJson[key]; // Get the contact object
-        contact.id = key; // Assign the key as the contact ID
-        fetchedContacts.push(contact); // Add the contact to the fetchedContacts array
-    }
-
-    contacts = fetchedContacts; // Store fetched contacts in a global variable   
-    return contacts; // Return the fetched contacts array
-}
 
 
 /**
