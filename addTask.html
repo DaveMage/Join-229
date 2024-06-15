@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="./css/addTask.css" />
   </head>
 
-  <body id="template" onload="onloadInit()">
+  <body id="template" onload="addTaskInit()">
     <header id="header" class="headerMenu"></header>
     <main class="mainContainer">
       <h1 class="addTaskHeadline">Add Task</h1>
@@ -68,39 +68,8 @@
             id="dropdownAssigned"
           >
           <!-- Assigend Item with Checkbox -->
-            <div class="assignedItemWrap">
-              <input
-                id="addTaskFromAssignedCheckbox"
-                type="checkbox"
-                class="checkboxAssigned"
-              />
-              <label
-                for="addTaskFromAssignedCheckbox"
-                class="dropdownItemAssigned"
-              >
-                <div class="profileNameContainer">
-                  <div class="profileIconAssigned">HA</div>
-                  <span class="assignedName">Hallo ADD</span>
-                </div>
-              </label>
-            </div>
-            <!-- Assigend Item with Checkbox -->
-            <div class="assignedItemWrap">
-              <input
-                id="addTaskFromAssignedCheckbox1"
-                type="checkbox"
-                class="checkboxAssigned"
-              />
-              <label
-                for="addTaskFromAssignedCheckbox1"
-                class="dropdownItemAssigned"
-              >
-                <div class="profileNameContainer">
-                  <div class="profileIconAssigned">HA</div>
-                  <span class="assignedName">Hallo ADD</span>
-                </div>
-              </label>
-            </div>
+            
+            
           </div>
         </label>
 
@@ -169,7 +138,7 @@
             class="customDropdownCategory customDropdownBox"
             id="dropdownCategory"
           >
-            <div class="dropdownItemCategory" onclick="selectCategory(this)">Tecchnical Task</div>
+            <div class="dropdownItemCategory" onclick="selectCategory(this)">Technical Task</div>
             <div class="dropdownItemCategory" onclick="selectCategory(this)">User Story</div>
             
           </div>
@@ -205,6 +174,6 @@
 
     <footer id="menu" class="footer"></footer>
 
-    <script src="js/board.js"></script>
+    
   </body>
 </html>
