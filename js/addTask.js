@@ -6,8 +6,13 @@ function addTaskInit() {
     loadUserInitial();
     dateTreshhold();
     getContacts();
+<<<<<<< Updated upstream
     
     
+=======
+
+
+>>>>>>> Stashed changes
 }
 
 function toggleAssignedDropdown() {
@@ -54,7 +59,7 @@ async function saveTask() {
     let userId = await getUserIdByEmail(); // Wait for the user ID
     let description = document.getElementById('addTaskDescription').value;
     let prio = getSelectedPriority();
-    let category = document.getElementById('addTaskCategory').value; 
+    let category = document.getElementById('addTaskCategory').value;
     if (title === '' || date === '') {
         titlequery();
         datequery();
@@ -142,7 +147,7 @@ function assignedItemHtml(contact) {
         </label>`;
 }
 
-function assignedItemChackBackgroundColor(nameId){
+function assignedItemChackBackgroundColor(nameId) {
     const label = this.closest('.dropdownItemAssigned');
     const name = document.getElementById(nameId);
     if (this.checked) {
@@ -157,42 +162,42 @@ function assignedItemChackBackgroundColor(nameId){
 let selectedAssigned = [];
 function selectAssigned() {
     // Initialize an array to hold the selected assigned contacts
-    
+
     // Get the input element where the selected contacts will be displayed
     let inputAssigned = document.getElementById('addTaskFormAssignedInput');
     // Get all the checkboxes that indicate assigned contacts
     let checkboxes = document.querySelectorAll('.checkboxAssigned');
-  
+
     // Iterate over each checkbox
     checkboxes.forEach(checkbox => {
-      // Get the name of the contact from the data-value attribute of the assigned-name element
-      let contactName = checkbox.parentNode.querySelector('.assignedName').getAttribute('data-value');
-      
-      // Check if the checkbox is checked
-      if (checkbox.checked) {
-        // Find the contact object in the contacts array that matches the contact name
-        let contact = contacts.find(c => c.name === contactName);
-        // Add the contact object to the selectedAssigned array
-        if (contact) {
-          selectedAssigned.push(contact);
-          console.log(selectedAssigned);
+        // Get the name of the contact from the data-value attribute of the assigned-name element
+        let contactName = checkbox.parentNode.querySelector('.assignedName').getAttribute('data-value');
+
+        // Check if the checkbox is checked
+        if (checkbox.checked) {
+            // Find the contact object in the contacts array that matches the contact name
+            let contact = contacts.find(c => c.name === contactName);
+            // Add the contact object to the selectedAssigned array
+            if (contact) {
+                selectedAssigned.push(contact);
+                console.log(selectedAssigned);
+            }
         }
-      }
     });
-  
+
     // Set the value of the inputAssigned element to the names of the selected contacts
-    inputAssigned.value = selectedAssigned.length > 0 ? 'An: ' + selectedAssigned.map(c => c.name).join(', ') : '';  
-  
+    inputAssigned.value = selectedAssigned.length > 0 ? 'An: ' + selectedAssigned.map(c => c.name).join(', ') : '';
+
     // Return the array of selected assigned contacts
     return selectedAssigned;
-  }
+}
 
 
 
 
 
-    function titlequery() {
-        let title = document.getElementById("addTaskTitle");
+function titlequery() {
+    let title = document.getElementById("addTaskTitle");
 
     if (title.value === "") {
         title.classList.add('errorLabel');
