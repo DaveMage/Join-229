@@ -5,14 +5,7 @@ function addTaskInit() {
     displayMobileMenu();
     loadUserInitial();
     dateTreshhold();
-    getContacts();
-<<<<<<< Updated upstream
-    
-    
-=======
-
-
->>>>>>> Stashed changes
+    getContacts();  
 }
 
 function toggleAssignedDropdown() {
