@@ -3,8 +3,8 @@ function onloadInit() {
     displayMobileMenu();
     loadGuestLogin();
     checkGuestLogin();
-    loadUserInitial();    
-    dateTreshhold();    
+    loadUserInitial();   
+       
 }
 
 
