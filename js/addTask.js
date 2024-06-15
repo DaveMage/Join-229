@@ -1,11 +1,12 @@
 addTaskToArray = [];
 
 function addTaskInit() {
-    dateTreshhold();
-    getContacts();
     displayMobileHeader();
     displayMobileMenu();
     loadUserInitial();
+    dateTreshhold();
+    getContacts();
+    
     
 }
 
