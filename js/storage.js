@@ -56,8 +56,7 @@ async function getUser(){
         let user = responseToJson[key]; // Benutzerobjekt für den aktuellen Schlüssel erhalten
         user.id = key; // Benutzer-ID zum Benutzerobjekt hinzufügen
         fetchedUser.push({id: user.id, email: user.email, initial: user.initials}); // Benutzerobjekt mit ID und E-Mail-Adresse zum Array hinzufügen
-    }
-    console.log(fetchedUser);
+    }    
     return fetchedUser; // Abgerufene Benutzerdaten zurückgeben
 }
  
@@ -88,17 +87,46 @@ function loginSuccess(user, rememberMe) {
 // Funktion, um die Benutzer-ID anhand der E-Mail-Adresse zu erhalten
 async function getUserIdByEmail() {
     let users = await getUser(); // Benutzerdaten abrufen
-    let userEmail = localStorage.getItem('userEmail'); // E-Mail-Adresse des Benutzers aus dem lokalen Speicher abrufen
-    let user = users.find(user => user.email === userEmail); // Benutzer anhand der E-Mail-Adresse finden
-    if (user) {
-        let userId = user.id; // Benutzer-ID erhalten       
-        currentUser.push(userId); // Benutzer-ID zum aktuellen Benutzer hinzufügen 
-        console.log(currentUser);      
-        return userId; // Benutzer-ID zurückgeben
+    let emailToken = localStorage.getItem('emailToken'); // E-Mail-Token aus dem lokalen Speicher abrufen
+    
+    if (emailToken) {
+        const userEmail = atob(emailToken); // E-Mail-Adresse decodieren
+        
+        let user = users.find(user => user.email === userEmail); // Benutzer anhand der E-Mail-Adresse finden
+        if (user) {
+            let userId = user.id; // Benutzer-ID erhalten       
+            currentUser.push(userId); // Benutzer-ID zum aktuellen Benutzer hinzufügen                  
+            return userId; // Benutzer-ID zurückgeben
+        } else {
+            console.log('User not found'); // Benutzer nicht gefunden
+            return null; // Null zurückgeben
+        }
     } else {
-        console.log('User not found'); // Benutzer nicht gefunden
-        return null; // Null zurückgeben
+        console.log('Email token not found in local storage');
+        return null;
     }
+}
+
+
+/**
+ * Retrieves contacts from the server and displays them on the webpage.
+ * @returns {Array} An array of contact objects.
+ */
+async function getContacts() {
+    let userId = await getUserIdByEmail(); // Wait for the user ID   
+
+    let response = await fetch(BASE_URL + '/users/' + userId + '/contacts.json'); // Fetch contacts from the server
+    let responseToJson = await response.json(); // Convert the response to JSON format
+    let fetchedContacts = [];
+
+    for (const key in responseToJson) { // Iterate through each key in the response JSON object
+        let contact = responseToJson[key]; // Get the contact object
+        contact.id = key; // Assign the key as the contact ID
+        fetchedContacts.push(contact); // Add the contact to the fetchedContacts array
+    }
+
+    contacts = fetchedContacts; // Store fetched contacts in a global variable   
+    return contacts; // Return the fetched contacts array
 }
 
 
