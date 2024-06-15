@@ -401,7 +401,7 @@ body {
     position: absolute;
     z-index: 9999;
     background-color: rgba(109, 109, 109, 0.431);
-    overflow-y: scroll;
+    overflow: scroll;
 }
 
 .editTaskOverlay {
