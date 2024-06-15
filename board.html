@@ -77,7 +77,7 @@
             </div>
         </section>
 
-        <section id="editTaskOverlay" class="editOverlay">
+        <section id="editTaskOverlay" class="editOverlay dNone">
             <div class="editTaskOverlay">
                 <div class="closeEditTask">
                     <img onclick="closeEditTask()" class="closeTask" src="./img/Mobile/Board/closeTask.png" alt="close Task">
@@ -187,13 +187,17 @@
                 <!-- edit Subtasks -->
                 <div class="editSubtasks">
                     <p>Subtasks</p>
-                    <div class="addSubtasks editTaskField">
-                        <div class="addAndEditSubtask">
-                            <textarea class="subtaskField" placeholder="Add new subtask"></textarea>
-                            <img src="./img/Mobile/Board/addSubtask.png" alt="">
-                        </div>
+                    <input type="text" class="subtaskField" placeholder="Add new Subtask" rows="1">
+                </div>
+
+                <!-- accept changes -->
+                <div class="acceptChanges">
+                    <div class="saveChanges" onclick="closeEditTask()">
+                        <p class="acceptOK">Ok</p>
+                        <img src="./img/Mobile/Board/check.png">
                     </div>
                 </div>
+
             </div>
         </section>
 
