@@ -61,3 +61,15 @@ function closeEditTask() {
     let body = document.getElementById('template');
     body.classList.remove('overflowHidden');
 }
+
+function filterTasks() {
+    let search = document.getElementById('findTask').value;
+    search = search.toLowerCase();
+
+    console.log('Tasks müssen erst im Array vorhanden sein');
+
+    // let columns = document.getElementById('columns');
+    // columns.innerHTML = '';
+
+    // Tasks müssen erst im Array vorhanden sein
+}

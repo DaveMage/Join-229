@@ -208,14 +208,14 @@
             </div>
             <div class="searchBar">
                 <div class="search">
-                    <input id="findTask" type="text" placeholder="Find Task">
+                    <input id="findTask" type="text" placeholder="Find Task" onkeydown="filterTasks()">
                 </div>
                 <div class="pressSearch">
                     <img src="./img/Mobile/Board/bar.png" class="bar">
                     <img src="./img/Mobile/Board/search.png" onclick="changeImg()" id="magGlassImg" class="magnifyingGlass">
                 </div>
             </div>
-            <div class="columns">
+            <div class="columns" id="columns">
                 <div class="columnToDo column">
                     <div class="columnHeader">
                         <h2 class="subheadline">To do</h2>
