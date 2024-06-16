@@ -239,3 +239,27 @@ function datequery() {
     }
 }
 
+
+// Funktion zum Wechseln der Bilder und Entfernen des readonly-Attributs
+function activateSubtaskInput() {
+    let subtaskInput = document.getElementById('addTaskSubtask');
+    let firstSubtaskIcon = document.getElementById('firstSubtaskIcon');
+    let secondSubtaskIcon = document.getElementById('secondSubtaskIcon');
+
+    // Entferne das readonly-Attribut
+    subtaskInput.removeAttribute('readonly');
+
+    // Ändere das Bild
+    firstSubtaskIcon.src = '/img/Mobile/AddTask/editIconAddTask.png';
+    
+    secondSubtaskIcon.style.display = 'flex';
+
+    secondSubtaskIcon.src = '/img/Mobile/AddTask/editIconAddTask.png';
+
+    
+
+   
+}
+
+
+
