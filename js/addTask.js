@@ -359,6 +359,6 @@ function clearFrom(){
     document.getElementById('addTaskSubtask').value = '';
     document.getElementById('addTaskFormAssignedInput').value = '';
     subtasks = [];
-    document.getElementById('subtaskContainer').innerHTML = '';
-
+    document.getElementById('subtaskContainer').innerHTML = '';    
+    document.getElementById('medium').checked = true;
 }
