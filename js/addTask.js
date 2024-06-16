@@ -271,3 +271,19 @@ function onBlurSubtask() {
     secondSubtaskIcon.style.display = 'none';
 }
 
+function addSubtaskItem(){
+    let subtaskInput = document.getElementById('addTaskSubtask');
+    let subtasks = [];
+    
+    if (subtaskInput.value === '') {
+        return;
+    }
+
+    subtasks.push(subtaskInput.value);
+    console.log(subtasks);
+    
+    for (let i = 0; i < subtasks.length; i++) {
+        document.getElementById('subtaskContainer').innerHTML += `<div>${subtasks[i]}</div>`;
+    }
+    subtaskInput.value = '';
+}
