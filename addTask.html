@@ -168,15 +168,15 @@
               type="text"
               placeholder="Add Subtasks"
               class="addTaskInput"
-              readonly
-              onfocus="activateSubtaskInput()"
-              onblur="onBlurSubtask()"
+              
+              
             />
             <div
               class="addTaskSubtaskIconContainer"
               id="addTaskSubtaskIconContainer"
             >
               <img
+              onclick="addSubtaskItem()"
                 class="subtaskIcon"
                 id="firstSubtaskIcon"
                 src="/img/Mobile/AddTask/addIconAddTask.png"
@@ -190,7 +190,7 @@
             </div>
           </div>
         </label>
-        <div class="subtaskContainer" id="subtaskContainer"></div>
+        <ul class="subtaskContainer" id="subtaskContainer"></ul>
 
         <!-- Buttons-->
         <div class="addTaskBtnContainer">
