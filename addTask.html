@@ -145,8 +145,9 @@
         </label>
 
         <!-- Subtasks -->
-        <label for="addTaskSubtask" class="addTaskLabel">
+        <label class="addTaskLabel">
           Subtasks
+        </label>
           <div class="addTaskInputIconContainer">
             <input
               id="addTaskSubtask"
@@ -154,7 +155,8 @@
               placeholder="Add Subtasks"
               class="addTaskInput"
               readonly
-              onclick="activateSubtaskInput()"
+              onfocus="activateSubtaskInput()"
+              onblur="onBlurSubtask()"
             />
             <div class="addTaskSubtaskIconContainer" id="addTaskSubtaskIconContainer">
               <img
