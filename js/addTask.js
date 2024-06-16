@@ -275,8 +275,7 @@ function onBlurSubtask() {
 
 function addSubtaskItem() {
     let subtaskInput = document.getElementById('addTaskSubtask');
-
-
+    
     if (subtaskInput.value === '') {
         return;
     }
@@ -339,7 +338,7 @@ function saveSubtaskItem(event) {
         subtasks[subtaskIndex] = subtaskItemInput.value;
     }
     console.log(subtasks);
-
+    
     // Setzen des Inputs auf "readonly"
     subtaskItemInput.setAttribute('readonly', 'readonly');
 
@@ -359,7 +358,6 @@ function clearFrom(){
     document.getElementById('addTaskCategory').value = '';
     document.getElementById('addTaskSubtask').value = '';
     document.getElementById('addTaskFormAssignedInput').value = '';
-
     subtasks = [];
     document.getElementById('subtaskContainer').innerHTML = '';
 
