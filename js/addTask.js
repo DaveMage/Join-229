@@ -66,12 +66,13 @@ async function saveTask() {
 
         await postData('/users/' + userId + '/tasks', {
             'title': title,
-            'date': date,
             'description': description,
-            'Priority': prio,
             'Assigned': selectedAssigned,
+            'date': date,
+            'Priority': prio,
             'Category': category,
             'Subtasks': subtasks
+
         });
 
         document.getElementById('addTaskFormAssignedInput').value = '';
@@ -286,11 +287,11 @@ function addSubtaskItem() {
     for (let i = 0; i < subtasks.length; i++) {
 
         document.getElementById('subtaskContainer').innerHTML +=
-        `<li class="addTaskSubtaskItem"><input type="text" class="subtaskItemInput" value="${subtasks[i]}" readonly>            
+            `<li class="addTaskSubtaskItem"><input type="text" class="subtaskItemInput" value="${subtasks[i]}" readonly>            
             <div class="subtaskItemIconContainer">
-            <img src="/img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemLeftIcon" onclick="editSubtaskItem()">
+            <img src="/img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemLeftIcon" onclick="editSubtaskItem(event)">
             <span class="subtaskSeperator"></span>
-            <img src="/img/Mobile/AddTask/trashIcon.png" alt="Edit Icon" class="subtaskItemIcon" onclick="deleteSubtaskItem()"
+            <img src="/img/Mobile/AddTask/trashIcon.png" alt="Edit Icon" class="subtaskItemIcon" onclick="deleteSubtaskItem(event)"
             id="subtaskItemRightIcon"
             >
             </div>
@@ -299,7 +300,7 @@ function addSubtaskItem() {
     subtaskInput.value = '';
 }
 
-function deleteSubtaskItem() {    
+function deleteSubtaskItem(event) {
     let subtaskItem = event.target.closest('.addTaskSubtaskItem');
     let subtaskItemValue = subtaskItem.querySelector('.subtaskItemInput').value;
 
@@ -307,29 +308,45 @@ function deleteSubtaskItem() {
     subtaskItem.remove();
 }
 
-function editSubtaskItem() {
-    let subtaskItem = event.target.closest('.addTaskSubtaskItem');
-    let leftIcon = subtaskItem.querySelector('#subtaskItemLeftIcon');
-    let rightIcon = subtaskItem.querySelector('#subtaskItemRightIcon');
-    let subtaskItemInput = subtaskItem.querySelector('.subtaskItemInput');    
-    subtaskItemInput.removeAttribute('readonly');
-    subtaskItemInput.focus();
-
-    leftIcon.src = '/img/Mobile/AddTask/TrashIcon.png';
-    leftIcon.setAttribute('onclick', 'deleteSubtaskItem()');
-    rightIcon.src = '/img/Mobile/AddTask/CheckIcon.png';
-    rightIcon.setAttribute('onclick', 'saveSubtaskItem()');
-}
-
-function saveSubtaskItem() {
+function editSubtaskItem(event) {
     let subtaskItem = event.target.closest('.addTaskSubtaskItem');
     let leftIcon = subtaskItem.querySelector('#subtaskItemLeftIcon');
     let rightIcon = subtaskItem.querySelector('#subtaskItemRightIcon');
     let subtaskItemInput = subtaskItem.querySelector('.subtaskItemInput');
+    subtaskItemInput.removeAttribute('readonly');
+    subtaskItemInput.focus();
+    subtasks = subtasks.filter(subtask => subtask !== subtaskItemInput.value);
+
+    subtasks.splice(0, 0, subtaskItemInput.value);
+    leftIcon.src = '/img/Mobile/AddTask/TrashIcon.png';
+    leftIcon.setAttribute('onclick', 'deleteSubtaskItem(event)');
+    rightIcon.src = '/img/Mobile/AddTask/CheckIcon.png';
+    rightIcon.setAttribute('onclick', 'saveSubtaskItem(event)');
+
+}
+
+function saveSubtaskItem(event) {
+    const subtaskItem = event.target.closest('.addTaskSubtaskItem');
+    const leftIcon = subtaskItem.querySelector('#subtaskItemLeftIcon');
+    const rightIcon = subtaskItem.querySelector('#subtaskItemRightIcon');
+    const subtaskItemInput = subtaskItem.querySelector('.subtaskItemInput');
+    const subtaskId = subtaskItem.dataset.id; // Angenommen, jedes Subtask-Item hat eine eindeutige ID
+
+    // Prüfen, ob das Subtask bereits im Array ist und aktualisieren
+    const subtaskIndex = subtasks.findIndex(subtask => subtask.id === subtaskId);
+
+    if (subtaskIndex !== -1) {
+        subtasks[subtaskIndex] = subtaskItemInput.value;
+    }
+    console.log(subtasks);
+
+    // Setzen des Inputs auf "readonly"
     subtaskItemInput.setAttribute('readonly', 'readonly');
 
+    // Anpassen der Icons und deren Click-Handler
     leftIcon.src = '/img/Mobile/AddTask/EditIcon.png';
-    leftIcon.setAttribute('onclick', 'editSubtaskItem()');
+    leftIcon.setAttribute('onclick', 'editSubtaskItem(event)');
     rightIcon.src = '/img/Mobile/AddTask/TrashIcon.png';
-    rightIcon.setAttribute('onclick', 'deleteSubtaskItem()');
+    rightIcon.setAttribute('onclick', 'deleteSubtaskItem(event)');
 }
+
