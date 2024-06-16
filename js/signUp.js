@@ -83,7 +83,7 @@ async function signUp() {
     let email = document.getElementById('signUpEmail').value;
     let password = document.getElementById('signUpPassword').value;
     let confirmPassword = document.getElementById('signUpConfirmPassword').value;
-    
+
 
     let isEmailAvailable = await checkEmail(email);
     let isNameValid = validateName(name);
@@ -159,7 +159,6 @@ async function postData(path = '', data = {}) {
 async function createUser(user) {
 
     try {
-
         await postData('/users', user);
         document.getElementById('signUpMain').innerHTML += successfullyMessageHTML();
         setTimeout(() => { window.location.href = "/login.html"; }, 800);
@@ -167,3 +166,4 @@ async function createUser(user) {
         console.error('Error creating user:', error);
     }
 }
+
