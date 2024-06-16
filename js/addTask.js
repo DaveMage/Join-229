@@ -251,15 +251,23 @@ function activateSubtaskInput() {
 
     // Ändere das Bild
     firstSubtaskIcon.src = '/img/Mobile/AddTask/editIconAddTask.png';
-    
+
     secondSubtaskIcon.style.display = 'flex';
 
-    secondSubtaskIcon.src = '/img/Mobile/AddTask/editIconAddTask.png';
-
-    
-
-   
+    secondSubtaskIcon.src = '/img/Mobile/AddTask/editIconAddTask.png';   
 }
 
+function onBlurSubtask() {
+    let subtaskInput = document.getElementById('addTaskSubtask');
+    let firstSubtaskIcon = document.getElementById('firstSubtaskIcon');
+    let secondSubtaskIcon = document.getElementById('secondSubtaskIcon');
 
+    // Füge das readonly-Attribut hinzu
+    subtaskInput.setAttribute('readonly', 'readonly');
+
+    // Ändere das Bild
+    firstSubtaskIcon.src = '/img/Mobile/AddTask/addIconAddTask.png';
+
+    secondSubtaskIcon.style.display = 'none';
+}
 
