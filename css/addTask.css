@@ -287,17 +287,17 @@ body {
 }
 
 .addTaskSubtaskItem{
-  padding: 4px 16px;
-  border-radius: 10px;
-  margin-left: 48px;
+  padding: 4px  16px 4px 0;
   position: relative;
+  margin-left: 36px;
   margin-bottom: 4px;
 }
+
 
 .subtaskItemIconContainer{
   position: absolute;
   right: 16px;
-  top: 4px;
+  top: 2px;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -311,8 +311,18 @@ body {
 }
 
 .subtaskItemIcon{
-  cursor: pointer;
-  
+  cursor: pointer;  
   height: 24px;
   width: 24px;
+}
+
+.subtaskItemIcon:active{
+  background-color: #d1d1d1;
+  border-radius: 100%;  
+}
+
+.subtaskItemInput{
+  outline: none;
+  border: none;
+  background-color: transparent;
 }
