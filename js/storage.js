@@ -5,6 +5,7 @@ let tasks = [];
 let users = []; 
 let currentUser = [];
 let selectedAssigned = [];
+let subtasks = [];
 
 async function loadData(path = '') {
     let response = await fetch(BASE_URL + path + '.json');
