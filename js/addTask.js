@@ -288,9 +288,11 @@ function addSubtaskItem() {
         document.getElementById('subtaskContainer').innerHTML +=
         `<li class="addTaskSubtaskItem"><input type="text" class="subtaskItemInput" value="${subtasks[i]}" readonly>            
             <div class="subtaskItemIconContainer">
-            <img src="/img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" onclick="editSubtaskItem()">
+            <img src="/img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemLeftIcon" onclick="editSubtaskItem()">
             <span class="subtaskSeperator"></span>
-            <img src="/img/Mobile/AddTask/trashIcon.png" alt="Edit Icon" class="subtaskItemIcon" onclick="deleteSubtaskItem()">
+            <img src="/img/Mobile/AddTask/trashIcon.png" alt="Edit Icon" class="subtaskItemIcon" onclick="deleteSubtaskItem()"
+            id="subtaskItemRightIcon"
+            >
             </div>
             </li>`;
     }
@@ -307,8 +309,27 @@ function deleteSubtaskItem() {
 
 function editSubtaskItem() {
     let subtaskItem = event.target.closest('.addTaskSubtaskItem');
+    let leftIcon = subtaskItem.querySelector('#subtaskItemLeftIcon');
+    let rightIcon = subtaskItem.querySelector('#subtaskItemRightIcon');
     let subtaskItemInput = subtaskItem.querySelector('.subtaskItemInput');    
     subtaskItemInput.removeAttribute('readonly');
-    subtaskItemInput.focus();   
-    
+    subtaskItemInput.focus();
+
+    leftIcon.src = '/img/Mobile/AddTask/TrashIcon.png';
+    leftIcon.setAttribute('onclick', 'deleteSubtaskItem()');
+    rightIcon.src = '/img/Mobile/AddTask/CheckIcon.png';
+    rightIcon.setAttribute('onclick', 'saveSubtaskItem()');
+}
+
+function saveSubtaskItem() {
+    let subtaskItem = event.target.closest('.addTaskSubtaskItem');
+    let leftIcon = subtaskItem.querySelector('#subtaskItemLeftIcon');
+    let rightIcon = subtaskItem.querySelector('#subtaskItemRightIcon');
+    let subtaskItemInput = subtaskItem.querySelector('.subtaskItemInput');
+    subtaskItemInput.setAttribute('readonly', 'readonly');
+
+    leftIcon.src = '/img/Mobile/AddTask/EditIcon.png';
+    leftIcon.setAttribute('onclick', 'editSubtaskItem()');
+    rightIcon.src = '/img/Mobile/AddTask/TrashIcon.png';
+    rightIcon.setAttribute('onclick', 'deleteSubtaskItem()');
 }
