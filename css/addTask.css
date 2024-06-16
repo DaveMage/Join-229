@@ -124,8 +124,7 @@ body {
 .addTaskSubtaskIconContainer{
   display: flex;
   align-items: center;
-  gap: 8px;
-
+  gap: 4px;
 }
 
 .dropdownItemAssigned {
@@ -258,8 +257,8 @@ body {
 
 .subtaskIcon {
   cursor: pointer;
-  border-radius: 100%;    
-  padding: 4px;
+  border-radius: 100%;  
+  
 }
 
 .subtaskIcon:hover {
