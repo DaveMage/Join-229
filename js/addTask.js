@@ -71,6 +71,7 @@ async function saveTask() {
             'Priority': prio,
             'Assigned': selectedAssigned,
             'Category': category,
+            'Subtasks': subtasks
         });
         
         document.getElementById('addTaskFormAssignedInput').value = '';
@@ -273,17 +274,22 @@ function onBlurSubtask() {
 
 function addSubtaskItem(){
     let subtaskInput = document.getElementById('addTaskSubtask');
-    let subtasks = [];
+    
     
     if (subtaskInput.value === '') {
         return;
     }
 
     subtasks.push(subtaskInput.value);
-    console.log(subtasks);
+    document.getElementById('subtaskContainer').innerHTML = '';
     
     for (let i = 0; i < subtasks.length; i++) {
-        document.getElementById('subtaskContainer').innerHTML += `<div>${subtasks[i]}</div>`;
-    }
-    subtaskInput.value = '';
+        
+        document.getElementById('subtaskContainer').innerHTML += `<li class="addTaskSubtaskItem">${subtasks[i]}
+        <div class="subtaskItemIconContainer">
+            <img src="/img/Mobile/AddTask/editIconAddTask.png" alt="Edit Icon" class="subtaskItemIcon" onclick="editSubtaskItem(${i})">
+        </div>
+        </li>`;
+        
+    }        
 }
