@@ -5,13 +5,13 @@ function addTaskInit() {
     displayMobileMenu();
     loadUserInitial();
     dateTreshhold();
-    getContacts();  
+    getContacts();
 }
 
 function toggleAssignedDropdown() {
     const dropdown = document.getElementById('dropdownAssigned');
     let icon = document.getElementById('assignedDropdownArrow');
-    
+
     if (dropdown.style.display === 'flex') {
         dropdown.style.display = 'none';
         icon.style.transform = 'rotate(0deg)';
@@ -53,7 +53,7 @@ async function saveTask() {
     let userId = await getUserIdByEmail(); // Wait for the user ID
     let description = document.getElementById('addTaskDescription').value;
     let prio = getSelectedPriority();
-    let category = document.getElementById('addTaskCategory').value;    
+    let category = document.getElementById('addTaskCategory').value;
 
     if (title === '' || date === '') {
         titlequery();
@@ -63,7 +63,7 @@ async function saveTask() {
     }
 
     try {
-        
+
         await postData('/users/' + userId + '/tasks', {
             'title': title,
             'date': date,
@@ -73,7 +73,7 @@ async function saveTask() {
             'Category': category,
             'Subtasks': subtasks
         });
-        
+
         document.getElementById('addTaskFormAssignedInput').value = '';
     } catch (error) {
         console.error('Error saving task:', error);
@@ -255,7 +255,7 @@ function activateSubtaskInput() {
 
     secondSubtaskIcon.style.display = 'flex';
 
-    secondSubtaskIcon.src = '/img/Mobile/AddTask/editIconAddTask.png';   
+    secondSubtaskIcon.src = '/img/Mobile/AddTask/editIconAddTask.png';
 }
 
 function onBlurSubtask() {
@@ -272,42 +272,43 @@ function onBlurSubtask() {
     secondSubtaskIcon.style.display = 'none';
 }
 
-function addSubtaskItem(){
+function addSubtaskItem() {
     let subtaskInput = document.getElementById('addTaskSubtask');
-    
-    
+
+
     if (subtaskInput.value === '') {
         return;
     }
 
     subtasks.push(subtaskInput.value);
     document.getElementById('subtaskContainer').innerHTML = '';
-    
+
     for (let i = 0; i < subtasks.length; i++) {
-        
-        document.getElementById('subtaskContainer').innerHTML += `<li class="addTaskSubtaskItem">${subtasks[i]}
-        <div class="subtaskItemIconContainer">
-            <img src="/img/Mobile/AddTask/editIconAddTask.png" alt="Edit Icon" class="subtaskItemIcon" onclick="editSubtaskItem(${i})">
+
+        document.getElementById('subtaskContainer').innerHTML +=
+        `<li class="addTaskSubtaskItem"><input type="text" class="subtaskItemInput" value="${subtasks[i]}" readonly>            
+            <div class="subtaskItemIconContainer">
+            <img src="/img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" onclick="editSubtaskItem()">
             <span class="subtaskSeperator"></span>
-            <img src="/img/Mobile/AddTask/deleteIconAddTask.png" alt="Edit Icon" class="subtaskItemIcon" onclick="editSubtaskItem(${i})">
-        </div>
-        </li>`;
-        
-    }        
+            <img src="/img/Mobile/AddTask/trashIcon.png" alt="Edit Icon" class="subtaskItemIcon" onclick="deleteSubtaskItem()">
+            </div>
+            </li>`;
+    }
+    subtaskInput.value = '';
+}
+
+function deleteSubtaskItem() {    
+    let subtaskItem = event.target.closest('.addTaskSubtaskItem');
+    let subtaskItemValue = subtaskItem.querySelector('.subtaskItemInput').value;
+
+    subtasks = subtasks.filter(subtask => subtask !== subtaskItemValue);
+    subtaskItem.remove();
 }
 
 function editSubtaskItem() {
-    let subtaskInput = document.getElementById('addTaskSubtask');
-    subtaskInput.value = subtasks[index];
-    subtasks.splice(index, 1);
-    document.getElementById('subtaskContainer').innerHTML = '';
-    for (let i = 0; i < subtasks.length; i++) {
-        document.getElementById('subtaskContainer').innerHTML += `<li class="addTaskSubtaskItem">${subtasks[i]}
-        <div class="subtaskItemIconContainer">
-            <img src="/img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" onclick="editSubtaskItem(${i})">
-            <span class="subtaskSeperator"></span>
-            <img src="/img/Mobile/AddTask/trashIcon.png" class="subtaskItemIcon" onclick="editSubtaskItem(${i})">
-        </div>
-        </li>`;
-    }
+    let subtaskItem = event.target.closest('.addTaskSubtaskItem');
+    let subtaskItemInput = subtaskItem.querySelector('.subtaskItemInput');    
+    subtaskItemInput.removeAttribute('readonly');
+    subtaskItemInput.focus();   
+    
 }
