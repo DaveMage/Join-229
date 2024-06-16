@@ -24,14 +24,16 @@
       <form onsubmit="return false;" class="addTaskForm">
         <label for="addTaskTitle" class="addTaskLabel">
           <p>Title<span class="required">*</span></p>
-          <input            
+          <input
             type="text"
             placeholder="Enter a Title"
             class="addTaskInput"
             id="addTaskTitle"
             onblur="titlequery()"
           />
-          <span id="errorSpanTitle" class="errorSpan">This field is required</span>
+          <span id="errorSpanTitle" class="errorSpan"
+            >This field is required</span
+          >
         </label>
 
         <label for="addTaskDescription" class="addTaskLabel">
@@ -48,7 +50,7 @@
         <label for="addTaskFormAssignedInput" class="addTaskLabel">
           Assigned To
           <div class="addTaskInputIconContainer">
-            <input            
+            <input
               id="addTaskFormAssignedInput"
               type="text"
               placeholder="Select contacts to assign"
@@ -57,7 +59,6 @@
               readonly
             />
             <img
-              
               class="dropdownIcon"
               id="assignedDropdownArrow"
               src="/img/Mobile/AddTask/arrowDropDownaa.png"
@@ -67,9 +68,7 @@
             class="customDropdownAssigned customDropdownBox"
             id="dropdownAssigned"
           >
-          <!-- Assigend Item with Checkbox -->
-            
-            
+            <!-- Assigend Item with Checkbox -->
           </div>
         </label>
 
@@ -83,35 +82,48 @@
             placeholder="Select a Date"
             onblur="datequery()"
           />
-          <span id="errorSpanDate" class="errorSpan">This field is required</span>
+          <span id="errorSpanDate" class="errorSpan"
+            >This field is required</span
+          >
         </label>
 
         <!-- Priority -->
-        <label for="addTaskPriority" class="addTaskLabel">
-          Priority     
-        </label>
+        <label for="addTaskPriority" class="addTaskLabel"> Priority </label>
 
         <!-- Prio input Radio als btn -->
-        <div class="prioContainer" >
+        <div class="prioContainer">
           <!-- Prio input Radio Urgent -->
-          <input type="radio" id="urgent" name="priority" value="Urgent" hidden> 
-          <label for="urgent" class="prioLabel" id="prioUrgent">            
+          <input
+            type="radio"
+            id="urgent"
+            name="priority"
+            value="Urgent"
+            hidden
+          />
+          <label for="urgent" class="prioLabel" id="prioUrgent">
             Urgent
-            <img src="/img/Mobile/AddTask/urgentIconAddTask.png">
+            <img src="/img/Mobile/AddTask/urgentIconAddTask.png" />
           </label>
 
           <!-- Prio input Radio Medium -->
-          <input type="radio" id="medium" name="priority" value="Medium" hidden checked>
+          <input
+            type="radio"
+            id="medium"
+            name="priority"
+            value="Medium"
+            hidden
+            checked
+          />
           <label for="medium" class="prioLabel" id="prioMedium">
             Medium
-            <img  src="/img/Mobile/AddTask/mediumIconAddTask.png">
+            <img src="/img/Mobile/AddTask/mediumIconAddTask.png" />
           </label>
 
           <!-- Prio input Radio Low -->
-          <input type="radio" id="low" name="priority" value="Low" hidden >
+          <input type="radio" id="low" name="priority" value="Low" hidden />
           <label for="low" class="prioLabel" id="prioLow">
             Low
-            <img  src="/img/Mobile/AddTask/lowIconAddTask.png">
+            <img src="/img/Mobile/AddTask/lowIconAddTask.png" />
           </label>
         </div>
 
@@ -128,7 +140,6 @@
               onclick="toggleCategoryDropdown()"
             />
             <img
-              
               class="dropdownIcon"
               id="categoryDropdownArrow"
               src="/img/Mobile/AddTask/arrowDropDownaa.png"
@@ -138,16 +149,19 @@
             class="customDropdownCategory customDropdownBox"
             id="dropdownCategory"
           >
-            <div class="dropdownItemCategory" onclick="selectCategory(this)">Technical Task</div>
-            <div class="dropdownItemCategory" onclick="selectCategory(this)">User Story</div>
-            
+            <div class="dropdownItemCategory" onclick="selectCategory(this)">
+              Technical Task
+            </div>
+            <div class="dropdownItemCategory" onclick="selectCategory(this)">
+              User Story
+            </div>
           </div>
         </label>
 
         <!-- Subtasks -->
         <label class="addTaskLabel">
           Subtasks
-        </label>
+
           <div class="addTaskInputIconContainer">
             <input
               id="addTaskSubtask"
@@ -158,30 +172,37 @@
               onfocus="activateSubtaskInput()"
               onblur="onBlurSubtask()"
             />
-            <div class="addTaskSubtaskIconContainer" id="addTaskSubtaskIconContainer">
+            <div
+              class="addTaskSubtaskIconContainer"
+              id="addTaskSubtaskIconContainer"
+            >
               <img
                 class="subtaskIcon"
                 id="firstSubtaskIcon"
                 src="/img/Mobile/AddTask/addIconAddTask.png"
               />
-              <img src="#" id="secondSubtaskIcon" style="display: none;" class="subtaskIcon">
+              <img
+                src="#"
+                id="secondSubtaskIcon"
+                style="display: none"
+                class="subtaskIcon"
+              />
             </div>
           </div>
-          <div class="subtaskContainer" id="subtaskContainer"></div>
+        </label>
+        <div class="subtaskContainer" id="subtaskContainer"></div>
 
-          <!-- Buttons-->
-          <div class="addTaskBtnContainer">
-            <p><span class="required">*</span>This field is required</p>
-            <button onclick="saveTask()" class="primaryBtn createTaskBtn">
-              Create Task <img src="/img/Mobile/AddTask/checkMarkIconAddTask.png">
-            </button>
-              
-          </div>
+        <!-- Buttons-->
+        <div class="addTaskBtnContainer">
+          <p><span class="required">*</span>This field is required</p>
+          <button onclick="saveTask()" class="primaryBtn createTaskBtn">
+            Create Task
+            <img src="/img/Mobile/AddTask/checkMarkIconAddTask.png" />
+          </button>
+        </div>
       </form>
     </main>
 
     <footer id="menu" class="footer"></footer>
-
-    
   </body>
 </html>
