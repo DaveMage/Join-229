@@ -291,11 +291,21 @@ body {
   border-radius: 10px;
   margin-left: 48px;
   position: relative;
-  
+  margin-bottom: 4px;
 }
 
 .subtaskItemIconContainer{
   position: absolute;
   right: 16px;
   top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.subtaskSeperator{
+  width: 1px;
+  height: 24px;
+  background-color: #d1d1d1;
+   
 }
