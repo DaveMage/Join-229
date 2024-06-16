@@ -285,3 +285,17 @@ body {
   margin-top: -4px;
   color: #ff8190;
 }
+
+.addTaskSubtaskItem{
+  padding: 4px 16px;
+  border-radius: 10px;
+  margin-left: 48px;
+  position: relative;
+  
+}
+
+.subtaskItemIconContainer{
+  position: absolute;
+  right: 16px;
+  top: 4px;
+}
