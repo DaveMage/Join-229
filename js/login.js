@@ -15,9 +15,26 @@ function resetFocus() {
     });
 }
 
+async function createUser(user) {
+
+    try {
+
+        await postData('/users', user);
+        document.getElementById('signUpMain').innerHTML += successfullyMessageHTML();
+        setTimeout(() => { window.location.href = "/login.html"; }, 800);
+    } catch (error) {
+        console.error('Error creating user:', error);
+    }
+}
+
 function guestLogin() {
+    let initials = 'G';
+    let name = 'Guest';
+    let email = 'guest@mail.com';
+
+    createUser({ initials, name, email});
+
     window.location.href = "/summary.html";
-    localStorage.setItem('guestLoggedIn', 'true');
 }
 
 
@@ -26,49 +43,53 @@ async function login() {
     let password = document.getElementById('loginPassword').value;
     let rememberMe = document.getElementById('checkboxRemember').checked;
 
-
     try {
         const response = await fetch(BASE_URL + '/users.json');
         const data = await response.json();
-        const users = Object.values(data);
-
-        const user = users.find(user => user.email === email && user.password === password);
-
-
+        
+        // Check for user authentication separately
+        const user = Object.values(data).find(user => user.email === email && user.password === password);
 
         if (user) {
-            loginSuccess(user, rememberMe);
+            if (rememberMe) {
+                storeTokens(email, password); // Store email and password separately as tokens
+            }
+            loginSuccess(user);
         } else {
-            showError('loginLabelEmail', 'loginErrorSpan', "Invalid email or password");
+            console.error('Invalid email or password');
         }
     } catch (error) {
         console.error('Error during login:', error);
-        showError('loginLabelEmail', 'loginErrorSpan', "An error occurred. Please try again.");
     }
 }
 
+function storeTokens(email, password) {
+    // Basic token generation using Base64 encoding
+    const emailToken = btoa(email);
+    console.log(emailToken);
+    const passwordToken = btoa(password);
+    localStorage.setItem('emailToken', emailToken);
+    localStorage.setItem('passwordToken', passwordToken);
+}
 
-function loginSuccess(user, rememberMe) {
-    if (rememberMe) {
-        localStorage.setItem('userEmail', user.email);
-        localStorage.setItem('userPassword', user.password);
-    } else {
-        localStorage.removeItem('userEmail');
-        localStorage.removeItem('userPassword');
-    }
+function loginSuccess(user) {
     localStorage.setItem('user', JSON.stringify(user));
     // Redirect to the dashboard or another page after successful login
     window.location.href = "/summary.html";
 }
 
-function displayUserEmailPassword(){
-    let email = localStorage.getItem('userEmail');
-    let password = localStorage.getItem('userPassword');
-    if(email && password){
+function displayUserEmailPassword() {
+    let emailToken = localStorage.getItem('emailToken');
+    let passwordToken = localStorage.getItem('passwordToken');
+    if (emailToken && passwordToken) {
+        const email = atob(emailToken);
+        const password = atob(passwordToken);
         document.getElementById('loginEmail').value = email;
         document.getElementById('loginPassword').value = password;
     }
 }
+
+
 
 
 
