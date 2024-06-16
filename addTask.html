@@ -153,15 +153,21 @@
               type="text"
               placeholder="Add Subtasks"
               class="addTaskInput"
+              readonly
+              onclick="activateSubtaskInput()"
             />
-            <img
-              onclick="addSubtask()"
-              class="subtaskIcon"
-              id="addSubtaskIcon"
-              src="/img/Mobile/AddTask/addIconAddTask.png"
-            />
+            <div class="addTaskSubtaskIconContainer" id="addTaskSubtaskIconContainer">
+              <img
+                class="subtaskIcon"
+                id="firstSubtaskIcon"
+                src="/img/Mobile/AddTask/addIconAddTask.png"
+              />
+              <img src="#" id="secondSubtaskIcon" style="display: none;" class="subtaskIcon">
+            </div>
           </div>
           <div class="subtaskContainer" id="subtaskContainer"></div>
+
+          <!-- Buttons-->
           <div class="addTaskBtnContainer">
             <p><span class="required">*</span>This field is required</p>
             <button onclick="saveTask()" class="primaryBtn createTaskBtn">
