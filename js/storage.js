@@ -4,6 +4,7 @@ let contacts = [];
 let tasks = [];
 let users = []; 
 let currentUser = [];
+let selectedAssigned = [];
 
 async function loadData(path = '') {
     let response = await fetch(BASE_URL + path + '.json');
@@ -59,6 +60,9 @@ async function getUser(){
     }    
     return fetchedUser; // Abgerufene Benutzerdaten zurückgeben
 }
+
+
+
  
 
 // Funktion, die aufgerufen wird, wenn der Login erfolgreich ist
