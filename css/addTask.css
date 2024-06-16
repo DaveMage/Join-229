@@ -309,3 +309,10 @@ body {
   background-color: #d1d1d1;
    
 }
+
+.subtaskItemIcon{
+  cursor: pointer;
+  
+  height: 24px;
+  width: 24px;
+}
