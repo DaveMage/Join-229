@@ -249,15 +249,15 @@ function activateSubtaskInput() {
     let secondSubtaskIcon = document.getElementById('secondSubtaskIcon');
 
     // Entferne das readonly-Attribut
-    subtaskInput.removeAttribute('readonly', 'readonly');
+    subtaskInput.removeAttribute('readonly');    
     subtaskInput.focus();
     // Ändere das Bild
     firstSubtaskIcon.src = '/img/Mobile/AddTask/closeIcon.png';
-    firstSubtaskIcon.setAttribute('onclick', 'deleteValueSubtask()');
-    subtaskInput.setAttribute('readonly', 'readonly');
+    firstSubtaskIcon.setAttribute('onclick', 'deleteValueSubtask()');    
     secondSubtaskIcon.style.display = 'flex';
     document.getElementById('subtaskInputSeperator').style.display = 'flex';
     secondSubtaskIcon.src = '/img/Mobile/AddTask/checkIcon.png';
+    secondSubtaskIcon.setAttribute('onclick', 'addSubtaskItem()');
 }
 
 
@@ -273,6 +273,7 @@ function deleteValueSubtask() {
     secondSubtaskIcon.style.display = 'none';
     document.getElementById('subtaskInputSeperator').style.display = 'none';
     firstSubtaskIcon.setAttribute('onclick', 'activateSubtaskInput()');
+    
 
 
 }
