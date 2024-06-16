@@ -75,7 +75,7 @@ async function saveTask() {
 
         });
 
-        document.getElementById('addTaskFormAssignedInput').value = '';
+        clearFrom();
     } catch (error) {
         console.error('Error saving task:', error);
     }
@@ -350,3 +350,17 @@ function saveSubtaskItem(event) {
     rightIcon.setAttribute('onclick', 'deleteSubtaskItem(event)');
 }
 
+function clearFrom(){
+    document.getElementById('addTaskFormAssignedInput').value = '';
+    selectedAssigned = [];
+    document.getElementById('addTaskTitle').value = '';
+    document.getElementById('addTaskDueDate').value = '';
+    document.getElementById('addTaskDescription').value = '';
+    document.getElementById('addTaskCategory').value = '';
+    document.getElementById('addTaskSubtask').value = '';
+    document.getElementById('addTaskFormAssignedInput').value = '';
+
+    subtasks = [];
+    document.getElementById('subtaskContainer').innerHTML = '';
+
+}
