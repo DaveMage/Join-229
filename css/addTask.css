@@ -121,6 +121,13 @@ body {
   color: #ffffff;
 }
 
+.addTaskSubtaskIconContainer{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+}
+
 .dropdownItemAssigned {
   width: 100%;
   border-radius: 10px;
@@ -244,11 +251,14 @@ body {
   font-size: 20px;
 }
 
-.subtaskIcon {
-  cursor: pointer;
-  border-radius: 100%;
+.addTaskSubtaskIconContainer{
   position: absolute;
   right: 16px;
+}
+
+.subtaskIcon {
+  cursor: pointer;
+  border-radius: 100%;    
   padding: 4px;
 }
 
