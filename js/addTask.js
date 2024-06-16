@@ -304,9 +304,9 @@ function editSubtaskItem() {
     for (let i = 0; i < subtasks.length; i++) {
         document.getElementById('subtaskContainer').innerHTML += `<li class="addTaskSubtaskItem">${subtasks[i]}
         <div class="subtaskItemIconContainer">
-            <img src="/img/Mobile/AddTask/editIconAddTask.png" alt="Edit Icon" class="subtaskItemIcon" onclick="editSubtaskItem(${i})">
+            <img src="/img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" onclick="editSubtaskItem(${i})">
             <span class="subtaskSeperator"></span>
-            <img src="/img/Mobile/AddTask/deleteIconAddTask.png" alt="Edit Icon" class="subtaskItemIcon" onclick="editSubtaskItem(${i})">
+            <img src="/img/Mobile/AddTask/trashIcon.png" class="subtaskItemIcon" onclick="editSubtaskItem(${i})">
         </div>
         </li>`;
     }
