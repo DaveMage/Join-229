@@ -7,10 +7,8 @@ function toggleAssignedDropdown() {
             icon.style.transform = 'rotate(0deg)';        
         } else {
             dropdown.style.display = 'flex';            
-            icon.style.transform = 'rotate(180deg)';
-            
+            icon.style.transform = 'rotate(180deg)';   
         }
-    
 }
 
 function toggleCategoryDropdown() {
@@ -23,9 +21,7 @@ function toggleCategoryDropdown() {
         } else {
             dropdown.style.display = 'flex';            
             icon.style.transform = 'rotate(180deg)';
-            
         }
-    
 }
 
 function openTask() {
@@ -72,4 +68,44 @@ function filterTasks() {
     // columns.innerHTML = '';
 
     // Tasks müssen erst im Array vorhanden sein
+}
+
+// Drag & Drop
+
+let taskCards = document.getElementsByClassName('taskCard');
+
+let tasks = [];
+
+function initBoard() {
+    loadTasks();
+    emptyTaskColumns(); // vorübergehende Funktion
+}
+
+function loadTasks() {
+    let inProgressColumn = document.getElementById('tasksInProgress');
+    inProgressColumn.innerHTML += loadTasksHTML();
+}
+
+function emptyTaskColumns() {
+    let toDoColumn = document.getElementById('tasksToDo');
+    let awaitFeedbackColumn = document.getElementById('tasksAwaitFeedback');
+    let doneColumn = document.getElementById('tasksDone');
+
+    if (tasks[0] == null) {
+        toDoColumn.innerHTML += loadEmptyToDoColumn();
+    } else {
+        console.log('test');
+    }
+    
+    if (tasks[0] == null) {
+        awaitFeedbackColumn.innerHTML += loadEmptyAwaitFeedbackColumn();
+    } else {
+        console.log('test');
+    }
+
+    if (tasks[0] == null) {
+        doneColumn.innerHTML += loadEmptyDoneColumn();
+    } else {
+        console.log('test');
+    }
 }
