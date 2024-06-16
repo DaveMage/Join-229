@@ -1,103 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join</title>
+
+    <link rel="icon" href="./img/favicon/favicon_with_bg.png" type="image/x-icon">
+    
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/summary.css">
-    <link rel="icon" href="./img/favicon/favicon_with_bg.png" type="image/x-icon">
+
     <script src="/js/main.js"></script>
     <script src="/js/summary.js"></script>
-    <script src="/js/storage.js"></script>
     <script src="/js/html/mainHTML.js"></script>
+
+    <title>Join</title>
 </head>
 <body id="template" onload="onloadInit()">
   <header id="header" class="headerMenu"></header>
-        <section class="mainContainer">
-          <div class="headlineContainer dFlexdirectionR dFlexCC">
-            <div class="dFlexCC">
-              <h1>JOIN 360</h1>
-            </div>
-            <div class="line" id="lineInHeadLine"></div>
-            <div class="textHeadline">Key Metrics at a Glance</div>
-          </div>
-          <div class="dFlexdirectionR">
-            <div class="mainContent">
-              <div class="dFdColumnSb">
-                <div class="dFlexdirectionRSb">
-                  <div class="aboveContentTodo">
-                    <div class="dFlexCC" onclick="goToBoardUsual('to-do-content')">
-                      <div class="dFlexdirectionCR">
-                        <div class="dFlexCC circle">
-                          <img class="editIcon" src="../img/icons/edit.svg"></img>
-                        </div>
-                        <div class="dFdColumnC">
-                          <div class="numberContent" id="number-to-do"></div>
-                          <div class="nameBox">To-do</div>
-                        </div>
-                      </div>
+    <section class="mainContainer">
+      <div class="headlineContainer summaryMainContent">
+        <div class="summaryContent">
+          <h1>Join 360</h1>
+        </div>
+        <div class="blueLine"></div>
+        <div class="textHeadline">Key Metrics at a Glance</div>
+        <div class="blueLineResponsiveContainer">
+          <div class="blueLineResponsive"></div>
+        </div>
+      </div>
+
+      <div class="summaryMainContent">
+        <div class="mainContent">
+          <div class="mainContentBox">
+            <div class="summaryToDoBox">
+              <div class="aboveContentTodo">
+                <div class="summaryContent" onclick="goToBoardUsual('to-do-content')">
+                  <div class="summaryBoxContent">
+                    <div class="editIcons circle">
+                      <img class="editIcon" src="/img/Mobile/Summary/edit.svg"></img>
                     </div>
-                  </div>
-                  <div class="aboveContentDone" onclick="goToBoardUsual('is-done-content')">
-                    <div class="dFlexCC">
-                      <div class="dFlexdirectionCR">
-                        <div class="circle dFlexCC">
-                          <img class="editIcon" src="../img/icons/check.svg"></img>
-                        </div>
-                        <div class="dFdColumnC">
-                          <div class="numberContent" id="number-done"></div>
-                          <div class="nameBox">Done</div>
-                        </div>
-                      </div>
+                    <div class="summaryNumberContent">
+                      <div class="numberContent" id="number-to-do">2</div>
+                      <div class="nameBox">To-do</div>
                     </div>
                   </div>
                 </div>
-                <div class="prioContent dFlexdirectionCR" id="prioContent" onclick="goToBoard()">
-                  <div class="prioCircle dFlexCC">
-                    <img class="urgentIcon" src="../img/icons/arrows-urgent.svg"></img>
-                  </div>
-                  <div class="dFdColumnC">
-                    <div class="numberContent" id="number-urgent"></div>
-                    <div class="textPrioContent">Urgent</div>
-                  </div>
-                  <div class="prioLine"></div>
-                  <div class="containerDateofdeadline" id="containerDeadLine">
-                    <div class="dateofdeadline" id="deadlineDate"></div>
-                    <div class="textPrioContent">Upcoming Deadline</div>
-                  </div>
-                </div>
-                <div class="dFlexdirectionRSb">
-                  <div class="downContentTasksinboard dFdColumnC" onclick="goToBoardUsual('to-do-content')">
-                    <div class="numberContent" id="numberTasksinboard"></div>
-                    <div class="textDownContent">Tasks in Board</div>
-                  </div>
-                  <div class="downContentTasksinprogress dFdColumnC" onclick="goToBoardUsual('progress-content')">
-                    <div class="numberContent" id="number-tasksinprogress"></div>
-                    <div class="textDownContent">Tasks in Progress</div>
-                  </div>
-                  <div class="downContentAwaitingfeedback dFdColumnC" onclick="goToBoardUsual('feedback-content')">
-                    <div class="numberContent" id="number-awaitingfeedback"></div>
-                    <div class="textDownContent">Awaiting Feedback</div>
+              </div>
+
+              <div class="aboveContentDone" onclick="goToBoardUsual('is-done-content')">
+                <div class="summaryContent">
+                  <div class="summaryBoxContent">
+                    <div class="circle editIcons">
+                      <img class="editIcon" src="/img/Mobile/Summary/check.svg"></img>
+                    </div>
+                    <div class="summaryNumberContent">
+                      <div class="numberContent" id="number-done">2</div>
+                      <div class="nameBox">Done</div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="greetingContainer">
-              <div class="greeting dFlexAiC" id="greetingname"></div>
-              <div class="usernameContainer dFlexAiC" id="username"></div>
+            <div class="middleBoxContent summaryBoxContent" id="prioContent" onclick="goToBoard()">
+              <div class="middleBoxCircle editIcons">
+                <img class="urgentIcon" src="/img/Mobile/Summary/arrows.svg"></img>
+              </div>
+              <div class="summaryNumberContent">
+                <div class="numberContent" id="number-urgent">2</div>
+                <div class="textMiddleBoxContent">Urgent</div>
+              </div>
+              <div class="middleBoxLine"></div>
+              <div class="containerDateofdeadline" id="containerDeadLine">
+                <div class="dateofdeadline" id="deadlineDate">Juni 13. 2024</div>
+                <div class="textMiddleBoxContent">Upcoming Deadline</div>
+              </div>
+            </div>
+            <div class="summaryToDoBox">
+              <div class="downContentTasksinboard summaryNumberContent" onclick="goToBoardUsual('to-do-content')">
+                <div class="numberContent" id="numberTasksinboard">8</div>
+                <div class="textDownContent">Tasks in Board</div>
+              </div>
+              <div class="downContentTasksinprogress summaryNumberContent" onclick="goToBoardUsual('progress-content')">
+                <div class="numberContent" id="number-tasksinprogress">2</div>
+                <div class="textDownContent">Tasks in Progress</div>
+              </div>
+              <div class="downContentAwaitingfeedback summaryNumberContent" onclick="goToBoardUsual('feedback-content')">
+                <div class="numberContent" id="number-awaitingfeedback">5</div>
+                <div class="textDownContent">Awaiting Feedback</div>
+              </div>
             </div>
           </div>
-        </section>
+        </div>
+        <div class="greetingContainer">
+          <div class="greeting greetingText" id="greetingname"></div>
+          <div class="greetingName greetingText" id="username"></div>
+        </div>
       </div>
+    </section>
+  
   
     <div id="modalMobileGreeting" class="">
       <div id="modalContentMobileGreeting">
-        <div class="greeting dFlexAiC" id="greetingname2"></div>
-        <div class="usernameContainer dFlexAiC" id="username2"></div>
+        <div class="greeting greetingText" id="greetingname2"></div>
+        <div class="greetingName greetingText" id="username2"></div>
       </div>
-    
-    <footer id="menu" class="footer"></footer>
-    
-    </body>
+      <footer id="menu" class="footer"></footer>
+    </div>
+
+</body>
 </html>
