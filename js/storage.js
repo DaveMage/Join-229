@@ -135,6 +135,23 @@ async function getContacts() {
 }
 
 
+async function getTask() {
+    let userId = await getUserIdByEmail();
+
+    let response = await fetch(BASE_URL + '/users/' + userId + '/tasks.json'); // Fetch tasks from the server
+    let responseToJson = await response.json(); // Convert the response to JSON format
+    let fetchedTasks = [];
+
+    for (const key in responseToJson) { // Iterate through each key in the response JSON object
+        let task = responseToJson[key]; // Get the task object
+        task.id = key; // Assign the key as the task ID
+        fetchedTasks.push(task); // Add the task to the fetchedtask array
+    }
+
+    tasks = fetchedTasks; // Store fetched tasks in a global variable
+    return tasks; // Return the fetched tasks array
+
+}
 
 
 
