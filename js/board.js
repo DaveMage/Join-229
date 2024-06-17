@@ -8,23 +8,9 @@ async function initBoard() {
     getContacts();
     await getTask();
     displayTask();
-    /* loadTasks();
-    emptyTaskColumns(); // vorübergehende Funktion */
+    // loadTasks();
+    // emptyTaskColumns(); // vorübergehende Funktion
 }
-
-
-
-
-function displayTask() {
-    let toDo = document.getElementById('tasksToDo');
-    toDo.innerHTML = '';
-
-    for (let i = 0; i < tasks.length; i++) {
-        task = tasks[i];        
-        toDo.innerHTML += loadTasksHTML(task);
-    }
-}
-
 
 function toggleAssignedDropdown() {
     const dropdown = document.getElementById('dropdownAssigned');
@@ -52,13 +38,35 @@ function toggleCategoryDropdown() {
     }
 }
 
-function openTask() {
-    let task = document.getElementById('taskOverlay');
-    task.classList.remove('dNone');
+function displayTask() {
+    let toDo = document.getElementById('tasksToDo');
+    toDo.innerHTML = '';
+
+    for (let i = 0; i < tasks.length; i++) {
+        task = tasks[i];        
+        toDo.innerHTML += loadTasksHTML(task, i);
+    }
+}
+
+function openTask(numberOfTask) {
+    let taskOverlay = document.getElementById('taskOverlay');
+    taskOverlay.classList.remove('dNone');
     let content = document.getElementById('wholeContent');
     content.classList.add('overflowHidden');
     let body = document.getElementById('template');
     body.classList.add('overflowHidden');
+    
+    taskOverlay.innerHTML = '';
+    taskOverlay.innerHTML = viewTask(tasks[numberOfTask], numberOfTask);
+}
+
+function subtaskProgressbar(viewedSubtask) {
+    if (viewedSubtask.Subtasks == null) {
+        return '';
+    } else {
+        console.log(viewedSubtask);
+        subtaskProgressbarHTML(viewedSubtask);
+    }
 }
 
 function closeTask() {
@@ -104,10 +112,10 @@ let taskCards = document.getElementsByClassName('taskCard');
 
 
 
-function loadTasks() {
+/*function loadTasks() {
     let inProgressColumn = document.getElementById('tasksInProgress');
     inProgressColumn.innerHTML += loadTasksHTML();
-}
+}*/
 
 
 function emptyTaskColumns() {
