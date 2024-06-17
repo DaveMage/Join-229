@@ -4,7 +4,8 @@ async function contactInit() {
     loadGuestLogin();
     await getContacts();
     displayContacts(contacts);
-    loadUserInitial();
+    loadUserInitial(); 
+    
 }
 
 
@@ -22,6 +23,7 @@ function closeAddContact() {
         document.getElementById('contactAddFormBackground').remove(); // Remove the contactAddFormBackground element after a delay of 300 milliseconds
     }, 300);
 }
+
 
 
 
