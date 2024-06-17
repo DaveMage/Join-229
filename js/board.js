@@ -1,27 +1,55 @@
+async function initBoard() {
+    displayTask();
+    displayMobileHeader();
+    displayMobileMenu();
+    loadGuestLogin();
+    checkGuestLogin();
+    loadUserInitial();
+    getContacts();
+    await getTask();
+    displayTask();
+    /* loadTasks();
+    emptyTaskColumns(); // vorübergehende Funktion */
+}
+
+
+
+
+function displayTask() {
+    let toDo = document.getElementById('tasksToDo');
+    toDo.innerHTML = '';
+
+    for (let i = 0; i < tasks.length; i++) {
+        task = tasks[i];        
+        toDo.innerHTML += loadTasksHTML(task);
+    }
+}
+
+
 function toggleAssignedDropdown() {
-    const dropdown = document.getElementById('dropdownAssigned');    
-    let icon = document.getElementById('assignedDropdownArrow');   
-    
-        if (dropdown.style.display === 'flex') {            
-            dropdown.style.display = 'none';
-            icon.style.transform = 'rotate(0deg)';        
-        } else {
-            dropdown.style.display = 'flex';            
-            icon.style.transform = 'rotate(180deg)';   
-        }
+    const dropdown = document.getElementById('dropdownAssigned');
+    let icon = document.getElementById('assignedDropdownArrow');
+
+    if (dropdown.style.display === 'flex') {
+        dropdown.style.display = 'none';
+        icon.style.transform = 'rotate(0deg)';
+    } else {
+        dropdown.style.display = 'flex';
+        icon.style.transform = 'rotate(180deg)';
+    }
 }
 
 function toggleCategoryDropdown() {
-    const dropdown = document.getElementById('dropdownCategory');    
-    let icon = document.getElementById('categoryDropdownArrow');   
-    
-        if (dropdown.style.display === 'flex') {            
-            dropdown.style.display = 'none';
-            icon.style.transform = 'rotate(0deg)';        
-        } else {
-            dropdown.style.display = 'flex';            
-            icon.style.transform = 'rotate(180deg)';
-        }
+    const dropdown = document.getElementById('dropdownCategory');
+    let icon = document.getElementById('categoryDropdownArrow');
+
+    if (dropdown.style.display === 'flex') {
+        dropdown.style.display = 'none';
+        icon.style.transform = 'rotate(0deg)';
+    } else {
+        dropdown.style.display = 'flex';
+        icon.style.transform = 'rotate(180deg)';
+    }
 }
 
 function openTask() {
@@ -74,17 +102,13 @@ function filterTasks() {
 
 let taskCards = document.getElementsByClassName('taskCard');
 
-let tasks = [];
 
-function initBoard() {
-    loadTasks();
-    emptyTaskColumns(); // vorübergehende Funktion
-}
 
 function loadTasks() {
     let inProgressColumn = document.getElementById('tasksInProgress');
     inProgressColumn.innerHTML += loadTasksHTML();
 }
+
 
 function emptyTaskColumns() {
     let toDoColumn = document.getElementById('tasksToDo');
@@ -96,7 +120,7 @@ function emptyTaskColumns() {
     } else {
         console.log('test');
     }
-    
+
     if (tasks[0] == null) {
         awaitFeedbackColumn.innerHTML += loadEmptyAwaitFeedbackColumn();
     } else {
