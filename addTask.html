@@ -27,7 +27,7 @@
           <input
             type="text"
             placeholder="Enter a Title"
-            class="addTaskInput"
+            class="addTaskInput focus-border"
             id="addTaskTitle"
             onblur="titlequery()"
           />
@@ -36,11 +36,11 @@
           >
         </label>
 
-        <label for="addTaskDescription" class="addTaskLabel">
+        <label for="addTaskDescription" class="addTaskLabel" id="addTaskLabelDescription">
           Description
           <textarea
             placeholder="Enter a Description"
-            class="addTaskInput addTaskDescription"
+            class="addTaskInput addTaskDescription focus-border"
             id="addTaskDescription"
             rows="4"
           ></textarea>
@@ -54,7 +54,7 @@
               id="addTaskFormAssignedInput"
               type="text"
               placeholder="Select contacts to assign"
-              class="addTaskInput"
+              class="addTaskInput focus-border"
               onclick="toggleAssignedDropdown()"
               readonly
             />
@@ -77,7 +77,7 @@
           <p>Due Date<span class="required">*</span></p>
           <input
             type="date"
-            class="addTaskInput"
+            class="addTaskInput focus-border"
             id="addTaskDueDate"
             placeholder="Select a Date"
             onblur="datequery()"
@@ -135,7 +135,7 @@
               id="addTaskCategory"
               type="text"
               placeholder="Select a Category"
-              class="addTaskInput"
+              class="addTaskInput focus-border"
               readonly
               onclick="toggleCategoryDropdown()"
             />
@@ -167,7 +167,7 @@
               id="addTaskSubtask"
               type="text"
               placeholder="Add new subtasks"
-              class="addTaskInput"
+              class="addTaskInput focus-border"
               readonly              
             />
             <div
