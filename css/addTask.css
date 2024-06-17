@@ -104,10 +104,10 @@ body {
   width: 24px;
   height: 24px;
   cursor: pointer;
-  
+
 }
 
-.assignedItemContainer{
+.assignedItemContainer {
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
@@ -121,7 +121,7 @@ body {
   color: #ffffff;
 }
 
-.addTaskSubtaskIconContainer{
+.addTaskSubtaskIconContainer {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -187,33 +187,33 @@ body {
   background-color: #ffffff;
 }
 
-#medium:checked + #prioMedium {
+#medium:checked+#prioMedium {
   background-color: #ffa800;
   color: #ffffff;
   font-weight: 700;
 }
 
-#medium:checked + #prioMedium img {
+#medium:checked+#prioMedium img {
   content: url(/img/Mobile/AddTask/hoverMediumIconAddTask.png);
 }
 
-#urgent:checked + #prioUrgent {
+#urgent:checked+#prioUrgent {
   background-color: #ff3d00;
   color: #ffffff;
   font-weight: 700;
 }
 
-#urgent:checked + #prioUrgent img {
+#urgent:checked+#prioUrgent img {
   content: url(/img/Mobile/AddTask/hoverUrgentIconAdTask.png);
 }
 
-#low:checked + #prioLow {
+#low:checked+#prioLow {
   background-color: #7ae229;
   color: #ffffff;
   font-weight: 700;
 }
 
-#low:checked + #prioLow img {
+#low:checked+#prioLow img {
   content: url(/img/Mobile/AddTask/hoverLowIconAddTask.png);
 }
 
@@ -250,15 +250,15 @@ body {
   font-size: 20px;
 }
 
-.addTaskSubtaskIconContainer{
+.addTaskSubtaskIconContainer {
   position: absolute;
   right: 16px;
 }
 
 .subtaskIcon {
   cursor: pointer;
-  border-radius: 100%;  
-  
+  border-radius: 100%;
+
 }
 
 .subtaskIcon:hover {
@@ -274,26 +274,26 @@ body {
 }
 
 
-.errorLabel{  
+.errorLabel {
   border: 1px solid #ff8190;
 }
 
-.errorSpan{
+.errorSpan {
   display: none;
   font-size: 12px;
   margin-top: -4px;
   color: #ff8190;
 }
 
-.addTaskSubtaskItem{
-  padding: 4px  16px 4px 0;
+.addTaskSubtaskItem {
+  padding: 4px 16px 4px 0;
   position: relative;
   margin-left: 36px;
   margin-bottom: 4px;
 }
 
 
-.subtaskItemIconContainer{
+.subtaskItemIconContainer {
   position: absolute;
   right: 16px;
   top: 2px;
@@ -302,26 +302,30 @@ body {
   gap: 4px;
 }
 
-.subtaskSeperator{
+.subtaskSeperator {
   width: 1px;
   height: 24px;
   background-color: #d1d1d1;
-   
+
 }
 
-.subtaskItemIcon{
-  cursor: pointer;  
+.subtaskItemIcon {
+  cursor: pointer;
   height: 24px;
   width: 24px;
 }
 
-.subtaskItemIcon:active{
+.subtaskItemIcon:active {
   background-color: #d1d1d1;
-  border-radius: 100%;  
+  border-radius: 100%;
 }
 
-.subtaskItemInput{
+.subtaskItemInput {
   outline: none;
   border: none;
   background-color: transparent;
+}
+
+.focus-border:focus {
+  border-color: #29ABE2;
 }
