@@ -64,8 +64,7 @@ function subtaskProgressbar(viewedSubtask) {
     if (viewedSubtask.Subtasks == null) {
         return '';
     } else {
-        console.log(viewedSubtask);
-        subtaskProgressbarHTML(viewedSubtask);
+        return subtaskProgressbarHTML(viewedSubtask)
     }
 }
 

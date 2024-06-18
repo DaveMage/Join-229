@@ -34,7 +34,7 @@ function loadTasksHTML(task, numberOfTask) {
     return /*html*/ `
         <div class="taskCard" id="taskCard${numberOfTask}" onclick="openTask(${numberOfTask})" draggable="true" ondragstart="dragTask()">
             <div class="cardBody">
-                <p class="userStory">${task.Category}</p>
+                <p class="${((task.Category == 'Technical Task') ? ('technicalTask') : (task.Category == 'User Story') ? ('userStory') : (''))}">${task.Category}</p>
                 <div class="taskHeadline">
                     ${task.title}
                 </div>
@@ -65,7 +65,7 @@ function subtaskProgressbarHTML(subtask) {
         <div class="progressText">
             <span class="complTasks">${subtask.Subtasks.length}</span>
             /
-            <span class="totalNumOfTasks">${subtask.Subtasks.length}</span>Subtasks</div>
+            <span class="totalNumOfTasks">${subtask.Subtasks.length}</span>Subtasks
         </div>
     `
 }
@@ -84,7 +84,7 @@ function viewTask(task, number) {
             <div class="taskBody">
                 <div class="dueDateSection bodySection">
                     <span class="dueDate spanDatePriorityAssigned">Due date:</span>
-                    <span class="date">10/05/2023</span>
+                    <span class="date">${task.date}</span>
                 </div>
                 <div class="prioritySection bodySection">
                     <span class="priorityTask spanDatePriorityAssigned">Priority:</span>
@@ -108,15 +108,8 @@ function viewTask(task, number) {
                     </div>
                 </div>
                 <div class="taskSubtask">
-                    <h3 class="subtasksHeadline spanDatePriorityAssigned">Subtasks</h3>
-                    <div class="taskSubtasks">
-                        <input class="checkboxSubtasks" type="checkbox" checked>
-                        <span>Implement Recipe Recommendation</span>
-                    </div>
-                    <div class="taskSubtasks">
-                        <input class="checkboxSubtasks" type="checkbox">
-                        <span>Start Page Layout</span>
-                    </div>
+                    ${((task.Subtasks == null) ? '' : `<h3 class="subtasksHeadline spanDatePriorityAssigned">Subtasks</h3><div id="loadSubtasks"></div>`)}
+                    ${((task.Subtasks == null) ? '' : renderSubtasks(task))}
                 </div>
             </div>
             <div class="showTaskFooter">
@@ -132,4 +125,25 @@ function viewTask(task, number) {
             </div>
         </div>
     `
+}
+
+function renderSubtasks(subtasks) {
+    for (let i = 0; i < subtasks.Subtasks.length; i++) {
+        console.log(subtasks.Subtasks[i]);
+        return /*html*/ `
+        <div class="taskSubtasks">
+            <input class="checkboxSubtasks" type="checkbox">
+            <span>${subtasks.Subtasks[i]}</span>
+        </div>
+    `;
+    }
+}
+
+function showSubtask() {
+    return /*html*/ `
+        <div class="taskSubtasks">
+            <input class="checkboxSubtasks" type="checkbox" checked>
+            <span>${subtask[0]}</span>
+        </div>
+    `;
 }
