@@ -1,10 +1,20 @@
-function onloadInit() {
+async function onloadInit() {
     displayMobileHeader();
     displayMobileMenu();
     loadGuestLogin();
     checkGuestLogin();
-    loadUserInitial();   
-       
+    await loadUserInitial()
+
+}
+
+async function loadUserInitial() {
+    let user = await getUser();    
+    user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
+    document.getElementById('profileInitial').innerHTML = user.initials;
+    document.getElementById('menu').style.display = 'flex';
+    if (localStorage.getItem('guestLoggedIn') === 'true') {
+        document.getElementById('profileInitial').innerHTML = 'G';
+    }
 }
 
 
@@ -67,20 +77,11 @@ function checkGuestLogin() {
     }
 }
 
-function loadUserInitial() {
-
-
-}
 
 
 
-function loadUserInitial() {
-    if (localStorage.getItem('user') !== null) {
-        let user = JSON.parse(localStorage.getItem('user'));
-        document.getElementById('profileInitial').innerHTML = user.initials;
-        document.getElementById('menu').style.display = 'flex';
-    }
-}
+
+
 
 
 /**
