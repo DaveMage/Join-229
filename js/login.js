@@ -18,7 +18,6 @@ function resetFocus() {
 async function createUser(user) {
 
     try {
-
         await postData('/users', user);
         document.getElementById('signUpMain').innerHTML += successfullyMessageHTML();
         setTimeout(() => { window.location.href = "/login.html"; }, 800);
@@ -27,15 +26,7 @@ async function createUser(user) {
     }
 }
 
-function guestLogin() {
-    let initials = 'G';
-    let name = 'Guest';
-    let email = 'guest@mail.com';
 
-    createUser({ initials, name, email});
-
-    window.location.href = "/summary.html";
-}
 
 
 async function login() {
@@ -44,38 +35,38 @@ async function login() {
     let rememberMe = document.getElementById('checkboxRemember').checked;
 
     try {
-        const response = await fetch(BASE_URL + '/users.json');
-        const data = await response.json();
-        
-        // Check for user authentication separately
-        const user = Object.values(data).find(user => user.email === email && user.password === password);
-
+        let users = await getUser();
+        let user = users.find(user => user.email === email && user.password === password);
         if (user) {
             if (rememberMe) {
-                storeTokens(email, password); // Store email and password separately as tokens
+                localStorage.setItem('emailToken', btoa(email));
+                localStorage.setItem('passwordToken', btoa(password));
+            } else {
+                localStorage.removeItem('emailToken');
+                localStorage.removeItem('passwordToken');
             }
-            loginSuccess(user);
+            window.location.href = "/summary.html";            
         } else {
-            console.error('Invalid email or password');
+            console.log('User not found');
         }
     } catch (error) {
         console.error('Error during login:', error);
     }
 }
 
-function storeTokens(email, password) {
-    // Basic token generation using Base64 encoding
-    const emailToken = btoa(email);
-    console.log(emailToken);
-    const passwordToken = btoa(password);
-    localStorage.setItem('emailToken', emailToken);
-    localStorage.setItem('passwordToken', passwordToken);
-}
 
-function loginSuccess(user) {
-    localStorage.setItem('user', JSON.stringify(user));
-    // Redirect to the dashboard or another page after successful login
-    window.location.href = "/summary.html";
+async function guestLogin(){
+    let respnose = await fetch(BASE_URL + '/users/-O-Mr5g8976g5-yCxVK8.json');    
+
+    if(respnose.ok){
+        
+        localStorage.setItem('guestLoggedIn', 'true');
+        window.location.href = "/summary.html";
+    } else {
+        console.error('Error during guest login:', error);
+    }
+    
+
 }
 
 function displayUserEmailPassword() {
