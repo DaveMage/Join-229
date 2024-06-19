@@ -93,7 +93,7 @@ async function saveContact() {
         setTimeout(() => {
             document.getElementById('conctactSuccessfully').remove(); // Remove the success message after 800 milliseconds
         }, 800);
-        
+
         closeAddContact(); // Close the add contact form
 
         contactInit(); // Initialize the contact page
@@ -124,8 +124,12 @@ async function openContactView(contactId) {
 
 // Function to delete a contact
 async function deleteContact(contactId) {
-    let userId = await getUserIdByEmail(); // Wait for the user ID
-
+    let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); // Find the user object with the specified email
+    userId = userId.id; // Get the user ID from the user object    
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn'); // Get the guestLoggedIn value from local storage
+    if (guestLoggedIn === 'true') {
+        userId = '-O-Mr5g8976g5-yCxVK8'; // Set the user ID to the guest user ID if the guest is logged in
+    }
     if (!userId) {
         console.error('User not found'); // Log an error message if user ID is not found
         return;
@@ -197,9 +201,16 @@ async function saveEditContact(contactId) {
     let contactEmail = document.getElementById('contactEmail' + contactId).value; // Get the value of the contact email input field
     let contactPhone = document.getElementById('contactPhone' + contactId).value; // Get the value of the contact phone input field
     let initials = contactName.split(' ').map((n) => n[0]).join(''); // Generate initials from the contact name
-    let userId = await getUserIdByEmail(); // Wait for the user ID   
+    let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); // Find the user object with the specified email
+    userId = userId.id; // Get the user ID from the user object    
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn'); // Get the guestLoggedIn value from local storage 
 
     try {
+
+        if (guestLoggedIn === 'true') {
+            userId = '-O-Mr5g8976g5-yCxVK8'; // Set the user ID to the guest user ID if the guest is logged in
+        }
+
         await putData('/users/' + userId + '/contacts/' + contactId, { // Update the contact details on the server
             'name': contactName,
             'email': contactEmail,
