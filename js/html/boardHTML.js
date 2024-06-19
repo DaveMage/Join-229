@@ -46,9 +46,8 @@ function loadTasksHTML(task, numberOfTask) {
                 </div>
                 <div class="taskFooter">
                     <div class="profiles">
-                        <div class="profileIcon" style="background-color:${task.Assigned[0].profileColor};">${task.Assigned[0].initials}</div>
-                        <div class="profileIcon" style="background-color:${task.Assigned[0].profileColor};">${task.Assigned[0].initials}</div>
-                        <div class="profileIcon" style="background-color:${task.Assigned[0].profileColor};">${task.Assigned[0].initials}</div>
+                        <div class="profileIcon"></div>
+                        
                     </div>
                     <img class="prioritySymbol" src="${task.Priority.imgSrc}" alt="priority Level">
                 </div>
