@@ -2,6 +2,7 @@ async function contactInit() {
     displayMobileHeader();
     displayMobileMenu();
     loadGuestLogin();
+    
     await getContacts();
     displayContacts(contacts);
     loadUserInitial(); 
@@ -23,11 +24,6 @@ function closeAddContact() {
         document.getElementById('contactAddFormBackground').remove(); // Remove the contactAddFormBackground element after a delay of 300 milliseconds
     }, 300);
 }
-
-
-
-
-
 
 
 /**
@@ -76,10 +72,15 @@ async function saveContact() {
     let contactEmail = document.getElementById('contactEmail').value; // Get the value of the contact email input
     let contactPhone = document.getElementById('contactPhone').value; // Get the value of the contact phone input
     let randomColor = profileColor[Math.floor(Math.random() * profileColor.length)]; // Get a random color from the profileColor array
-    let initials = contactName.split(' ').map((n) => n[0]).join(''); // Get the initials of the contact name
-    let userId = await getUserIdByEmail(); // Wait for the user ID
-
-    try {
+    let initials = contactName.split(' ').map((n) => n[0]).join(''); // Get the initials of the contact name    
+    let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); // Find the user object with the specified email
+    userId = userId.id; // Get the user ID from the user object    
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn'); // Get the guestLoggedIn value from local storage
+    try {       
+        if (guestLoggedIn === 'true') {
+            userId = '-O-Mr5g8976g5-yCxVK8'; // Set the user ID to the guest user ID if the guest is logged in
+        }
+       
         await postData('/users/' + userId + '/contacts',  { // Send a POST request to add the contact to the server
             'name': contactName,
             'email': contactEmail,
@@ -92,6 +93,7 @@ async function saveContact() {
         setTimeout(() => {
             document.getElementById('conctactSuccessfully').remove(); // Remove the success message after 800 milliseconds
         }, 800);
+        
         closeAddContact(); // Close the add contact form
 
         contactInit(); // Initialize the contact page
