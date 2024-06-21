@@ -1,5 +1,3 @@
-addTaskToArray = [];
-
 function addTaskInit() {
     displayMobileHeader();
     displayMobileMenu();
