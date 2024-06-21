@@ -2,11 +2,11 @@ async function contactInit() {
     displayMobileHeader();
     displayMobileMenu();
     loadGuestLogin();
-    
+
     await getContacts();
     displayContacts(contacts);
-    loadUserInitial(); 
-    
+    loadUserInitial();
+
 }
 
 
@@ -76,12 +76,12 @@ async function saveContact() {
     let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); // Find the user object with the specified email
     userId = userId.id; // Get the user ID from the user object    
     let guestLoggedIn = localStorage.getItem('guestLoggedIn'); // Get the guestLoggedIn value from local storage
-    try {       
+    try {
         if (guestLoggedIn === 'true') {
             userId = '-O-Mr5g8976g5-yCxVK8'; // Set the user ID to the guest user ID if the guest is logged in
         }
-       
-        await postData('/users/' + userId + '/contacts',  { // Send a POST request to add the contact to the server
+
+        await postData('/users/' + userId + '/contacts', { // Send a POST request to add the contact to the server
             'name': contactName,
             'email': contactEmail,
             'phone': contactPhone,
@@ -105,11 +105,6 @@ async function saveContact() {
 
 // Function to open the contact view for a specific contact
 async function openContactView(contactId) {
-    // Make sure the contacts are loaded
-    if (!contacts) {
-        getContacts(); // Call the function to retrieve contacts from the server
-    }
-
     // Find the contact with the given id
     let contact = contacts.find(contact => contact.id === contactId);
 
@@ -133,7 +128,7 @@ async function deleteContact(contactId) {
     if (!userId) {
         console.error('User not found'); // Log an error message if user ID is not found
         return;
-    } 
+    }
     try {
         await deleteData('/users/' + userId + '/contacts/' + contactId); // Delete the contact data from the server
         window.location.href = 'contacts.html'; // Redirect to the contacts page after deleting the contact
