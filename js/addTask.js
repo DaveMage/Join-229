@@ -391,3 +391,12 @@ function clearFrom(){
     document.getElementById('subtaskContainer').innerHTML = '';    
     document.getElementById('medium').checked = true;
 }
+
+function successfullyNewTask(){
+    return `
+    <div class="backgroundSuccessfullyMessage">
+    <div id="conctactSuccessfully" class="successfullyMessage slideInBottom">
+    Contact successfully created
+    </div>
+    </div>
+    `;}
