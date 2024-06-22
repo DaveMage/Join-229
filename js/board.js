@@ -52,7 +52,7 @@ function openTask(taskId) {
     let task = tasks.find(task => task.id === taskId);
     
     if(task){
-        document.getElementById('mainBoard').innerHTML = viewTask(task);
+        document.getElementById('mainBoard').innerHTML += viewTask(task);
     }  else {
         console.error('Task not found');
     }
@@ -67,13 +67,8 @@ function subtaskProgressbar(viewedSubtask) {
     }
 }
 
-function closeTask() {
-    let task = document.getElementById('taskOverlay');
-    task.classList.add('dNone');
-    let content = document.getElementById('wholeContent');
-    content.classList.remove('overflowHidden');
-    let body = document.getElementById('template');
-    body.classList.remove('overflowHidden');
+function closeTask() {    
+    document.getElementById('taskOverlayBackground').remove();
 }
 
 function openEditTask() {
@@ -154,7 +149,8 @@ async function deleteTask(taskId){
 
     try {
         await deleteData('/users/' + userId + '/tasks/' + taskId); // Delete the contact data from the server
-        await getTask(); // Get the updated contact data from the server        
+        closeTask(); // Close the contact overlay
+        displayTask();    
     } catch (error) {
         console.error('Error deleting Task:', error); // Log an error message if there is an error deleting the contact
     }
