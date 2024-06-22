@@ -329,3 +329,22 @@ body {
 .focus-border:focus {
   border-color: #29ABE2;
 }
+
+.addToBoard{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 20px;
+  width: 326px;
+  height: 74px; 
+  background-color: #2A3647;
+  color: white;
+  font-size: 24px;
+}
+
+.addToBoardHeadline {
+  font-size: 20px;
+  font-weight: 400;
+}
