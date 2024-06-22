@@ -1,5 +1,6 @@
 body{
   background-color: #f6f7f8;
+  overflow: hidden;
 }
 
 .headerMenu{
@@ -281,6 +282,25 @@ h1{
 .downContentAwaitingfeedback:hover div{
   color: #ffffff;
 }
+
+.greetingBackground{
+  background-color: #f8f8f8;
+  position: absolute;
+  top: 90px;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+.greetingText{
+  z-index: 1000;
+}
+
+
 @media screen and (max-width: 1100px){
   .mainContainer{
     max-width: 396px;
