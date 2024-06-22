@@ -147,15 +147,23 @@ body {
 
 .taskCard {
   background-color: #ffffff;
-  max-width: 252px;
-  min-width: 230px;
+  min-width: 252px;
   border-radius: 24px;
   cursor: pointer;
   margin-right: 16px;
 }
 
 .cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   padding: 16px;
+}
+
+.taskCardHeadlineDescription {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .userStory {
@@ -164,8 +172,7 @@ body {
   width: 113px;
   height: 27px;
   border-radius: 8px;
-  padding: 4px 16px 4px 16px;
-  margin-bottom: 24px;
+  padding: 4px 16px 4px 16px;  
   text-align: center;
 }
 
@@ -176,25 +183,21 @@ body {
   height: 27px;
   border-radius: 8px;
   padding: 4px 16px 4px 16px;
-  margin-bottom: 24px;
   text-align: center;
 }
 
 .taskHeadline {
   font-weight: 700;
   color: #2a3647;
-  margin-bottom: 8px;
 }
 
 .taskDescr {
   color: #a8a8a8;
-  margin-bottom: 24px;
 }
 
 .subtasks {
   display: flex;
   align-items: center;
-  margin-bottom: 28px;
 }
 
 .progressBar {
@@ -223,6 +226,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 8px;
 }
 
 .profiles {
@@ -335,7 +339,8 @@ body {
 }
 
 .assignedToProfiles {
-  margin-top: 7px;
+  display: flex;
+  align-items: center;
 }
 
 .taskProfile {
@@ -347,10 +352,9 @@ body {
 }
 
 .taskProfileIcon {
-  margin-right: 16px;
-  margin-left: 0;
-  width: 42px;
-  height: 42px;
+  margin-right: -2px;
+  width: 32px;
+  height: 32px;
   font-size: 12px;
 }
 
@@ -681,25 +685,32 @@ body {
   border-radius: 8px;
   border: none;
   width: 60%;
-  
 }
 
 .taskCardSubtaskProgressbar {
-    height: 8px;
-    background-color: #4589ff;
-    border-radius: 8px;
-    border: none;
+  height: 8px;
+  background-color: #4589ff;
+  border-radius: 8px;
+  border: none;
 }
 
-.taskCardSubtaskCounter{
-    font-size: 12px;
-
+.taskCardSubtaskCounter {
+  font-size: 12px;
 }
 
-.taskCardSubtaskbar{
+.taskCardSubtaskbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  justify-content: space-between;
+}
+
+.test{
+    background-color: #f6f7f8;
     display: flex;
     align-items: center;
-    width: 100%;
+    justify-content: center;
+    z-index: 9999;
     
-    justify-content: space-between;
 }
