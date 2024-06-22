@@ -1,6 +1,6 @@
 function addContactHtml() {
     return `
-    <div class="background " id="contactAddFormBackground">
+    <div class="background" id="contactAddFormBackground">
             <div class="addContactContainer slideInBottom" id="addContactContainer">
                 <div class="addContainerTopContainer">
                     <img class="closeBtn" src="/img/Mobile/Contacts/closeWhite.png" onclick="closeAddContact()">
