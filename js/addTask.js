@@ -72,14 +72,12 @@ async function saveTask() {
         await postData('/users/' + userId + '/tasks', {
             'title': title,
             'description': description,
-            'Assigned': selectedAssigned,
+            'assigned': selectedAssigned,
             'date': date,
-            'Priority': prio,
-            'Category': category,
-            'Subtasks': subtasks
-
-        });
-       
+            'priority': prio,
+            'category': category,
+            'subtasks': subtasks
+        });  
 
 
         clearFrom();
