@@ -118,6 +118,10 @@
   cursor: pointer;
 }
 
+.contactLabel:focus-within {
+  border-color:  #29abe2;
+}
+
 .contactLabel input::placeholder {
   color: #d1d1d1;
 }
