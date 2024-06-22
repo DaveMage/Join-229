@@ -58,17 +58,22 @@ function loadTasksHTML(task) {
     `
 }
 
-function assingedProfileIconHtml(task) { 
-    let assignedProfilesHtml = '';  
-    
+function assingedProfileIconHtml(task) {
+    let assignedProfilesHtml = '';
+
     for (let i = 0; i < task.assigned.length; i++) {
-        assignedProfilesHtml += `
+
+        if(task.assigned[i]){
+            assignedProfilesHtml += `
         <div class="taskProfileIcon profileIcon" style="background-color:${task.assigned[i].profileColor};">
         ${task.assigned[i].initials}</div>`;
-        
-    }
+        } else {
+            return '';  
 
+    }
+}
     return assignedProfilesHtml;
+
 }
 
 
@@ -93,10 +98,10 @@ function subtaskProgressbarHTML(task) {
 
 function viewTask(task) {
     return /*html*/ `
-        <div class="taskOverlayBackground">
+        <div class="taskOverlayBackground" id="taskOverlayBackground">
             <div class="overlayTask" id="task${task.id}">
                 <div class="overlayHeader">
-                    <p class="userStory userStoryOverlay">${task.category}</p>
+                <p class="${((task.category == 'Technical Task') ? ('technicalTask') : (task.category == 'User Story') ? ('userStory') : (''))}">${task.category}</p>
                     <img onclick="closeTask()" class="closeTask" src="./img/Mobile/Board/closeTask.png" alt="close Task">
                 </div>
                 <h1 class="overlayHeadline">${task.title}</h1>
@@ -127,7 +132,7 @@ function viewTask(task) {
                     </div>
                 </div>
                 <div class="showTaskFooter">
-                    <div class="deleteEditTask" onclick="deleteTask(${task.id})">
+                    <div class="deleteEditTask" onclick="deleteTask('${task.id}')">
                         <img class="taskFooterIcon taskFooterIconDelete" src="./img/Mobile/Board/deleteWithText.png">
                         <!-- <span>Delete</span> -->
                     </div>
