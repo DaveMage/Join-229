@@ -32,20 +32,25 @@ function loadEmptyDoneColumn() {
 
 function loadTasksHTML(task) {
     return /*html*/ `
-        <div class="taskCard" id="taskCard${task.id}" draggable="true" ondragstart="dragTask()">
+        <div class="taskCard" id="taskCard${task.id}" draggable="true" ondragstart="dragTask()" onclick="viewTask2('${task.id}')">
             <div class="cardBody">
                 <p class="${((task.category == 'Technical Task') ? ('technicalTask') : (task.category == 'User Story') ? ('userStory') : (''))}">${task.category}</p>
-                <div class="taskHeadline">
-                    ${task.title}
-                </div>
-                <div class="taskDescr">
-                    ${task.description}
+                <div class="taskCardHeadlineDescription">
+                    <div class="taskHeadline">
+                        ${task.title}
+                    </div>
+                    <div class="taskDescr">
+                        ${task.description}
+                    </div>
                 </div>
                 <div class="subtasks">
                     ${subtaskProgressbarHTML(task)}
                 </div>
                 <div class="taskFooter">
+                    <div class="assignedToProfiles">
                     ${assingedProfileIconHtml(task)}
+                    </div>
+                    
                     <img class="prioritySymbol" src="${task.priority.imgSrc}" alt="priority Level">
                 </div>
             </div>
@@ -83,6 +88,12 @@ function subtaskProgressbarHTML(task) {
               </div>`;
     }
     return subtaskContentHtml;
+}
+
+function viewTask2(task) {
+    return `
+        <div class="test">${task.id}</div>
+    `;
 }
 
 function viewTask(task) {
