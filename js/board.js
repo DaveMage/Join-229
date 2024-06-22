@@ -50,14 +50,15 @@ function displayTask() {
 
 function openTask(taskId) {
     let task = tasks.find(task => task.id === taskId);
-    console.log("Function openTask called with ID:", taskId);
+    
+    if(task){
+        document.getElementById('mainBoard').innerHTML = viewTask(task);
+    }  else {
+        console.error('Task not found');
+    }
+}
 
-    if (task){
-        console.log(task);
-    } else {
-        console.log('Contact with id ' + taskId + ' not found');
-}
-}
+
 function subtaskProgressbar(viewedSubtask) {
     if (viewedSubtask.Subtasks == null) {
         return '';
