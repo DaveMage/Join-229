@@ -712,5 +712,16 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    
+
+}
+
+.taskOverlayBackground{    
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 90px;
+    left: 0;
+    right: 0;
+    bottom: 80px;
+
+
 }
