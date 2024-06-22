@@ -18,7 +18,13 @@
 </head>
 <body id="template" onload="onloadInit()">
   <header id="header" class="headerMenu"></header>
-    <section class="mainContainer">
+    <main class="mainContainer" id="summaryMain">
+      <section class="greetingBackground">
+        <div class="greetingContainer">
+          <div class="greetingText" id="greetingText">Good morning,</div>
+          <div class="greetingText" id="greetingName">Tobias Müller</div>
+        </div>
+      </section>
       <div class="headlineContainer summaryMainContent">
         <div class="summaryContent">
           <h1>Join 360</h1>
@@ -97,7 +103,7 @@
           <div class="greetingName greetingText" id="username"></div>
         </div>
       </div>
-    </section>
+    </main>
   
   
     <div id="modalMobileGreeting" class="">
