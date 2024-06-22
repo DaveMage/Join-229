@@ -30,11 +30,11 @@ function loadEmptyDoneColumn() {
     `
 }
 
-function loadTasksHTML(task, numberOfTask) {    
+function loadTasksHTML(task) {
     return /*html*/ `
-        <div class="taskCard" id="taskCard${numberOfTask}" onclick="openTask(${numberOfTask})" draggable="true" ondragstart="dragTask()">
+        <div class="taskCard" id="taskCard${task.id}" draggable="true" ondragstart="dragTask()">
             <div class="cardBody">
-                <p class="${((task.Category == 'Technical Task') ? ('technicalTask') : (task.Category == 'User Story') ? ('userStory') : (''))}">${task.Category}</p>
+                <p class="${((task.category == 'Technical Task') ? ('technicalTask') : (task.category == 'User Story') ? ('userStory') : (''))}">${task.category}</p>
                 <div class="taskHeadline">
                     ${task.title}
                 </div>
@@ -42,38 +42,54 @@ function loadTasksHTML(task, numberOfTask) {
                     ${task.description}
                 </div>
                 <div class="subtasks">
-                    ${subtaskProgressbar(task)}
+                    ${subtaskProgressbarHTML(task)}
                 </div>
                 <div class="taskFooter">
-                    <div class="profiles">
-                        <div class="profileIcon"></div>
-                        
-                    </div>
-                    <img class="prioritySymbol" src="${task.Priority.imgSrc}" alt="priority Level">
+                    ${assingedProfileIconHtml(task)}
+                    <img class="prioritySymbol" src="${task.priority.imgSrc}" alt="priority Level">
                 </div>
             </div>
         </div>  
     `
 }
 
-function subtaskProgressbarHTML(subtask) {
-    console.log(subtask.Subtasks.length);
+function assingedProfileIconHtml(task) { 
+    let assignedProfilesHtml = '';  
+    
+    for (let i = 0; i < task.assigned.length; i++) {
+        assignedProfilesHtml += `
+        <div class="taskProfileIcon profileIcon" style="background-color:${task.assigned[i].profileColor};">
+        ${task.assigned[i].initials}</div>`;
+        
+    }
 
-    return /*html*/ `
-        <div class="progressBar"></div>
-        <div class="progressText">
-            <span class="complTasks">${subtask.Subtasks.length}</span>
-            /
-            <span class="totalNumOfTasks">${subtask.Subtasks.length}</span>Subtasks
-        </div>
-    `
+    return assignedProfilesHtml;
 }
 
-function viewTask(task, number) {
+
+
+function subtaskProgressbarHTML(task) {
+    let subtaskContentHtml = '';
+    if (task.subtasks && task.subtasks.length > 0) {
+        let completedSubtasks = task.subtasks.filter(subtask => subtask.completed).length;
+        const progressPercentage = (completedSubtasks / task.subtasks.length) * 100;
+
+        subtaskContentHtml = `
+                <div class="taskCardSubtaskbar">
+                  <div class="taskCardSubtaskbarBackground">
+                      <div class="taskCardSubtaskProgressbar" style="width: ${progressPercentage}%;"></div>
+                      </div>
+                  <div class="taskCardSubtaskCounter">${completedSubtasks}/${task.subtasks.length} Subtasks</div>
+              </div>`;
+    }
+    return subtaskContentHtml;
+}
+
+function viewTask(task) {
     return /*html*/ `
-        <div class="overlayTask" id="task${number}">
+        <div class="overlayTask" id="task${task.id}">
             <div class="overlayHeader">
-                <p class="userStory userStoryOverlay">${task.Category}</p>
+                <p class="userStory userStoryOverlay">${task.category}</p>
                 <img onclick="closeTask()" class="closeTask" src="./img/Mobile/Board/closeTask.png" alt="close Task">
             </div>
             <h1 class="overlayHeadline">${task.title}</h1>
@@ -87,38 +103,31 @@ function viewTask(task, number) {
                 </div>
                 <div class="prioritySection bodySection">
                     <span class="priorityTask spanDatePriorityAssigned">Priority:</span>
-                    <span class="priorityLevel">${task.Priority.value}</span><img src="${task.Priority.imgSrc}" alt="priority Level">
+                    <span class="priorityLevel">${task.priority.value}</span><img src="${task.priority.imgSrc}" alt="priority Level">
                 </div>
                 <div class="assignedToSection bodySection"> <!-- auslagern um die einzelnen assigned Contacts anzuzeigen -->
                     <span class="assignedTo spanDatePriorityAssigned">Assigned To:</span>
                     <div class="assignedToProfiles">
                         <div class="taskProfile">
-                            <div class="profileIcon taskProfileIcon" style="background-color:${task.Assigned[0].profileColor};">${task.Assigned[0].initials}</div>
-                            <span>${task.Assigned[0].name}</span>
-                        </div>
-                        <div class="taskProfile">
-                            <div class="profileIcon taskProfileIcon" style="background-color:${task.Assigned[0].profileColor};">${task.Assigned[0].initials}</div>
-                            <span>${task.Assigned[0].name}</span>
-                        </div>
-                        <div class="taskProfile">
-                            <div class="profileIcon taskProfileIcon" style="background-color:${task.Assigned[0].profileColor};">${task.Assigned[0].initials}</div>
-                            <span>${task.Assigned[0].name}</span>
-                        </div>
+                            <div class="profileIcon taskProfileIcon" style="background-color:${task.assigned[0].profileColor};">${task.assigned[0].initials}</div>
+                            <span>${task.assigned[0].name}</span>
+                        </div>                    
+                        
                     </div>
                 </div>
                 <div class="taskSubtask">
-                    ${((task.Subtasks == null) ? '' : `<h3 class="subtasksHeadline spanDatePriorityAssigned">Subtasks</h3><div id="loadSubtasks"></div>`)}
-                    ${((task.Subtasks == null) ? '' : renderSubtasks(task))}
+                    ${((task.subtasks == null) ? '' : `<h3 class="subtasksHeadline spanDatePriorityAssigned">Subtasks</h3><div id="loadSubtasks"></div>`)}
+                    ${((task.subtasks == null) ? '' : renderSubtasks(task))}
                 </div>
             </div>
             <div class="showTaskFooter">
-                <div class="deleteEditTask">
-                    <img class="taskFooterIcon taskFooterIconDelete" src="./img/Mobile/Board/deleteWithText.png" alt="">
+                <div class="deleteEditTask" onclick="deleteTask(${task.id})">
+                    <img class="taskFooterIcon taskFooterIconDelete" src="./img/Mobile/Board/deleteWithText.png">
                     <!-- <span>Delete</span> -->
                 </div>
                 <img class="barFooter" src="./img/Mobile/Board/bar.png">
                 <div class="deleteEditTask" onclick="openEditTask()">
-                    <img class="taskFooterIcon taskFooterIconEdit" src="./img/Mobile/Board/editTaskWithText.png" alt="">
+                    <img class="taskFooterIcon taskFooterIconEdit" src="./img/Mobile/Board/editTaskWithText.png">
                     <!-- <span>Edit</span> -->
                 </div>
             </div>
