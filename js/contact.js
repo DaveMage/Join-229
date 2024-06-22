@@ -114,6 +114,8 @@ async function openContactView(contactId) {
     } else {
         console.log('Contact with id ' + contactId + ' not found'); // Log an error message if the contact was not found
     }
+
+    
 }
 
 
