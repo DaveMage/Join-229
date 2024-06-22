@@ -49,17 +49,15 @@ function displayTask() {
 }
 
 function openTask(taskId) {
-    let taskOverlay = document.getElementById('taskOverlay');
-    taskOverlay.classList.remove('dNone');
-    let content = document.getElementById('wholeContent');
-    content.classList.add('overflowHidden');
-    let body = document.getElementById('template');
-    body.classList.add('overflowHidden');
-    
-    taskOverlay.innerHTML = '';
-    taskOverlay.innerHTML = viewTask(taskId);
-}
+    let task = tasks.find(task => task.id === taskId);
+    console.log("Function openTask called with ID:", taskId);
 
+    if (task){
+        console.log(task);
+    } else {
+        console.log('Contact with id ' + taskId + ' not found');
+}
+}
 function subtaskProgressbar(viewedSubtask) {
     if (viewedSubtask.Subtasks == null) {
         return '';
