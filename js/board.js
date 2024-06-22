@@ -48,7 +48,7 @@ function displayTask() {
     }
 }
 
-function openTask(numberOfTask) {
+function openTask(taskId) {
     let taskOverlay = document.getElementById('taskOverlay');
     taskOverlay.classList.remove('dNone');
     let content = document.getElementById('wholeContent');
@@ -57,7 +57,7 @@ function openTask(numberOfTask) {
     body.classList.add('overflowHidden');
     
     taskOverlay.innerHTML = '';
-    taskOverlay.innerHTML = viewTask(tasks[numberOfTask], numberOfTask);
+    taskOverlay.innerHTML = viewTask(taskId);
 }
 
 function subtaskProgressbar(viewedSubtask) {
@@ -138,5 +138,25 @@ function emptyTaskColumns() {
         doneColumn.innerHTML += loadEmptyDoneColumn();
     } else {
         console.log('test');
+    }
+}
+
+async function deleteTask(taskId){
+    let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); // Find the user object with the specified email
+    userId = userId.id; // Get the user ID from the user object    
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn'); // Get the guestLoggedIn value from local storage
+    if (guestLoggedIn === 'true') {
+        userId = '-O-Mr5g8976g5-yCxVK8'; // Set the user ID to the guest user ID if the guest is logged in
+    }
+    if (!userId) {
+        console.error('User not found'); // Log an error message if user ID is not found
+        return;
+    }
+
+    try {
+        await deleteData('/users/' + userId + '/tasks/' + taskId); // Delete the contact data from the server
+        await getTask(); // Get the updated contact data from the server        
+    } catch (error) {
+        console.error('Error deleting Task:', error); // Log an error message if there is an error deleting the contact
     }
 }
