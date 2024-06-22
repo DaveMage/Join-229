@@ -17,7 +17,6 @@ function toggleAssignedDropdown() {
     } else {
         dropdown.style.display = 'flex';
         icon.style.transform = 'rotate(180deg)';
-
     }
     displayAssignedTo();
     setCheckedAssigned();
