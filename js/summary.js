@@ -16,19 +16,25 @@ function goToBoard() {
 async function displayUserName() {
     await getUser();
     let user = users.find(user => user.email && user.email === atob(localStorage.getItem('emailToken')));
-    if (user && user.name) {
-        document.getElementById('greetingName').innerHTML = user.name;
+    let mainContainer = document.getElementById('greetingMain');
 
-    } else {
-        console.error('User or user name not found');
+    if (mainContainer) {
+        if (user && user.name) {
+
+            document.getElementById('greetingName').innerHTML = user.name;
+
+        } else {
+            console.error('User or user name not found');
+        }
+        setTimeout(() => {
+            mainContainer.classList.add('fadeOut');
+        }, 1000);
+
+        setTimeout(() => {
+
+            mainContainer.classList.remove('fadeOut');
+            window.location.href = "/summary.html";
+        }, 2000);
     }
-    setTimeout(() => {
-        document.getElementById('summaryMain').classList.add('fadeOut');
-    }, 1000);
 
-    setTimeout(() => {
-
-        document.getElementById('summaryMain').classList.remove('fadeOut');
-        window.location.href = "/summary.html";
-    }, 2000);
 }
