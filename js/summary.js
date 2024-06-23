@@ -13,9 +13,22 @@ function goToBoard() {
         "./board.html?findtaskbyid=" + encodeURIComponent(holdTaskId);
 }
 
-async function displayUserName(){
+async function displayUserName() {
     await getUser();
-    let user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
-    document.getElementById('greetingName').innerText = user.name;
-    
+    let user = users.find(user => user.email && user.email === atob(localStorage.getItem('emailToken')));
+    if (user && user.name) {
+        document.getElementById('greetingName').innerHTML = user.name;
+
+    } else {
+        console.error('User or user name not found');
+    }
+    setTimeout(() => {
+        document.getElementById('summaryMain').classList.add('fadeOut');
+    }, 1000);
+
+    setTimeout(() => {
+
+        document.getElementById('summaryMain').classList.remove('fadeOut');
+        window.location.href = "/summary.html";
+    }, 2000);
 }
