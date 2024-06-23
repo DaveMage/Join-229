@@ -45,7 +45,9 @@ async function login() {
                 localStorage.removeItem('emailToken');
                 localStorage.removeItem('passwordToken');
             }
-            window.location.href = "/summary.html";            
+
+            window.location.href = "/summary2.html";
+                       
         } else {
             console.log('User not found');
         }
