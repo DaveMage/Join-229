@@ -156,3 +156,5 @@ async function deleteTask(taskId){
         console.error('Error deleting Task:', error); // Log an error message if there is an error deleting the contact
     }
 }
+
+
