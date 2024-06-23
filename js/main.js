@@ -9,6 +9,15 @@ async function onloadInit() {
 
 }
 
+async function templateInit(){    
+    displayMobileHeader();
+    displayMobileMenu();
+    loadGuestLogin();
+    checkGuestLogin();
+    await loadUserInitial();
+    menuActive();
+}
+
 async function loadUserInitial() {
     let user = await getUser();    
     user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
