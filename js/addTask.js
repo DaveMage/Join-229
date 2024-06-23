@@ -4,6 +4,7 @@ function addTaskInit() {
     loadUserInitial();
     dateTreshhold();
     getContacts();
+    menuActive();
 }
 
 function toggleAssignedDropdown() {
