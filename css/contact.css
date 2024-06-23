@@ -441,30 +441,6 @@ span {
   animation: slideOutBottom 300ms ease-out 0s 1 normal forwards;
 }
 
-@keyframes slideInRight {
-  0% {
-    transform: translateX(100%);
-  }
 
-  100% {
-    transform: translateX(0);
-  }
-}
 
-.slideInRight {
-  animation: slideInRight 300ms ease-out 0s 1 normal forwards;
-}
 
-@keyframes slideOutRight {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.slideOutRight {
-  animation: slideOutRight 300ms ease-out 0s 1 normal forwards;
-}
