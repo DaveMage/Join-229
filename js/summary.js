@@ -42,3 +42,34 @@ async function displayUserName() {
     }
 
 }
+
+function greeting(){
+    let greetingContainer = document.getElementById('greetingText');
+    let date = new Date();
+    let hour = date.getHours();
+    let greeting = '';
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
+    if(hour >= 0 && hour < 10){
+        if (guestLoggedIn === 'true') {
+            greeting = 'Good morning!';
+        } else {
+            greeting = 'Good morning,';
+        }
+        
+    }
+    if(hour >= 10 && hour < 18){
+        if (guestLoggedIn === 'true') {
+            greeting = 'Good noon!';
+        } else {
+            greeting = 'Good noon,';
+        }
+    }
+    if(hour >= 18){
+        if (guestLoggedIn === 'true') {
+            greeting = 'Good evening!';
+        } else {
+            greeting = 'Good evening,';
+        }
+    }
+    greetingContainer.innerHTML = greeting;
+}
