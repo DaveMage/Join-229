@@ -40,12 +40,12 @@ function logoutMobileHtml(){
 `;
 }
 
-function greetingHTML(){
+function greetingHTML(user){
     return `
     <section class="greetingBackground">
     <div class="greetingContainer">
       <div class="greetingText" id="greetingText">Good morning,</div>
-      <div class="greetingText" id="greetingName">Tobias Müller</div>
+      <div class="greetingText" id="greetingName">${user.name}</div>
     </div>
   </section>
     `;
