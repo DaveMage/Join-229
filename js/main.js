@@ -1,4 +1,5 @@
 async function onloadInit() {
+    displayUserName();
     displayMobileHeader();
     displayMobileMenu();
     loadGuestLogin();
