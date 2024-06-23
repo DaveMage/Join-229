@@ -12,3 +12,10 @@ function goToBoard() {
     window.location.href =
         "./board.html?findtaskbyid=" + encodeURIComponent(holdTaskId);
 }
+
+async function displayUserName(){
+    await getUser();
+    let user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
+    document.getElementById('greetingName').innerText = user.name;
+    
+}
