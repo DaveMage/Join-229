@@ -10,19 +10,19 @@ function headerMobileHtml(){
 
 function menuMobileHtml(){
    return `
-   <a class="menuMobile" href="/summary.html">
+   <a class="menuMobile" href="/summary.html" id="summaryLink">
        <img src="/img/Mobile/generalElements/summaryIconGray.png" alt="Summary Icon" id="summaryMobileIcon}">
        <p>Summary</p>
    </a>   
-   <a class="menuMobile" href="/board.html">
+   <a class="menuMobile" href="/board.html" id="boardLink">
        <img src="/img/Mobile/generalElements/boardIconGray.png" alt="Board Icon" id="boardMobileIcon">
        <p>Board</p>
    </a>
-   <a class="menuMobile" href="/addTask.html">
+   <a class="menuMobile" href="/addTask.html" id="addTaskLink">
        <img src="/img/Mobile/generalElements/addTaskIconGray.png" alt="Add Task Icon" id="addTaskMobileIcon">
        <p>Add Task</p>
    </a>
-   <a class="menuMobile" href="/contacts.html">
+   <a class="menuMobile" href="/contacts.html" id="contactsLink">
        <img src="/img/Mobile/generalElements/contactsIconGray.png" alt="Contacs Icon" id="contactsMobileIcon">
        <p>Contacts</p>
    </a>
