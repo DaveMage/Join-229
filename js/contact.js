@@ -2,7 +2,7 @@ async function contactInit() {
     displayMobileHeader();
     displayMobileMenu();
     loadGuestLogin();
-
+    menuActive();	
     await getContacts();
     displayContacts(contacts);
     loadUserInitial();
