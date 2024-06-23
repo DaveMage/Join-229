@@ -40,3 +40,13 @@ function logoutMobileHtml(){
 `;
 }
 
+function greetingHTML(){
+    return `
+    <section class="greetingBackground">
+    <div class="greetingContainer">
+      <div class="greetingText" id="greetingText">Good morning,</div>
+      <div class="greetingText" id="greetingName">Tobias Müller</div>
+    </div>
+  </section>
+    `;
+}
