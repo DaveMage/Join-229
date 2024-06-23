@@ -17,9 +17,13 @@ async function displayUserName() {
     await getUser();
     let user = users.find(user => user.email && user.email === atob(localStorage.getItem('emailToken')));
     let mainContainer = document.getElementById('greetingMain');
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
 
     if (mainContainer) {
-        if (user && user.name) {
+        if(guestLoggedIn === 'true'){
+            document.getElementById('greetingName').innerHTML = '';                     
+        }
+        if (user && user.name && guestLoggedIn !== 'true') {
 
             document.getElementById('greetingName').innerHTML = user.name;
 
