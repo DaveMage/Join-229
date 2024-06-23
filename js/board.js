@@ -9,7 +9,6 @@ async function initBoard() {
     menuActive();
     await getTask();
     displayTask();
-    // loadTasks();
     // emptyTaskColumns(); // vorübergehende Funktion
 }
 
@@ -68,24 +67,29 @@ function subtaskProgressbar(viewedSubtask) {
     }
 }
 
-function closeTask() {    
+function closeTask() {
     document.getElementById('taskOverlayBackground').remove();
 }
 
-function openEditTask() {
-    let task = document.getElementById('taskOverlay');
-    task.classList.add('dNone');
-    let editTask = document.getElementById('editTaskOverlay');
-    editTask.classList.remove('dNone');
+function closeEditTask() {
+    document.getElementById('taskOverlayBackground').remove();
+    document.getElementById('editTaskOverlayBackground').remove();
 }
 
-function closeEditTask() {
-    let editTask = document.getElementById('editTaskOverlay');
-    editTask.classList.add('dNone');
-    let content = document.getElementById('wholeContent');
-    content.classList.remove('overflowHidden');
-    let body = document.getElementById('template');
-    body.classList.remove('overflowHidden');
+function saveTaskChanges() {
+    console.log('not ready');
+}
+
+function openEditTask(taskId) {
+    document.getElementById('taskOverlayBackground').innerHTML = '';
+    let task = tasks.find(task => task.id === taskId);
+    
+
+    if(task){
+        document.getElementById('mainBoard').innerHTML += displayEditTask(task);
+    }  else {
+        console.error('Task not found');
+    }
 }
 
 function filterTasks() {
@@ -99,18 +103,6 @@ function filterTasks() {
 
     // Tasks müssen erst im Array vorhanden sein
 }
-
-// Drag & Drop
-
-let taskCards = document.getElementsByClassName('taskCard');
-
-
-
-/*function loadTasks() {
-    let inProgressColumn = document.getElementById('tasksInProgress');
-    inProgressColumn.innerHTML += loadTasksHTML();
-}*/
-
 
 function emptyTaskColumns() {
     let toDoColumn = document.getElementById('tasksToDo');
@@ -150,8 +142,9 @@ async function deleteTask(taskId){
 
     try {
         await deleteData('/users/' + userId + '/tasks/' + taskId); // Delete the contact data from the server
+        location.reload();
         closeTask(); // Close the contact overlay
-        displayTask();    
+        displayTask();
     } catch (error) {
         console.error('Error deleting Task:', error); // Log an error message if there is an error deleting the contact
     }

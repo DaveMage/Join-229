@@ -244,6 +244,19 @@ body {
   margin-left: -8px;
 }
 
+.showTaskProfileIcon {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: orange;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ffffff;
+    font-size: 12px;
+}
+
 .prioritySymbol {
   width: 16px;
   height: 16px;
@@ -337,6 +350,13 @@ body {
   align-items: center;
 }
 
+.assignedToProfilesTask {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
 .taskProfile {
   display: flex;
   align-items: center;
@@ -350,6 +370,12 @@ body {
   width: 32px;
   height: 32px;
   font-size: 12px;
+}
+
+.showTaskProfileIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
 }
 
 .subtasksHeadline {
@@ -710,4 +736,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.editTaskOverlayBackground {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editTaskProfileIcon {
+    margin-right: 8px;
 }
