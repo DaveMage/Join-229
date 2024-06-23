@@ -6,6 +6,7 @@ async function initBoard() {
     checkGuestLogin();
     loadUserInitial();
     getContacts();
+    menuActive();
     await getTask();
     displayTask();
     // loadTasks();
