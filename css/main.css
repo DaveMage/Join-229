@@ -191,3 +191,8 @@ body{
   background-color: #0c2e621f;
   border-radius: 100%;
 }
+
+
+.active{
+  background-color: #091931;
+}
