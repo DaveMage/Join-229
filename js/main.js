@@ -42,7 +42,14 @@ function displayMobileMenu() {
 function displayMobileLogout() {
     let logout = document.getElementById("logout");
     if (logout.style.display === "flex") {
-        logout.style.display = "none";
+        
+        logout.classList.remove('slideInRight');
+        logout.classList.add('slideOutRight');
+        setTimeout(() => {
+            logout.classList.remove('slideOutRight');
+            logout.classList.add('slideInRight');
+            logout.style.display = "none";
+        }, 250);
     } else {
         logout.style.display = "flex";
     }
