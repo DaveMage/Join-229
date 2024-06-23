@@ -63,7 +63,7 @@ async function guestLogin(){
     if(respnose.ok){
         
         localStorage.setItem('guestLoggedIn', 'true');
-        window.location.href = "/summary.html";
+        window.location.href = "/greeting.html";
     } else {
         console.error('Error during guest login:', error);
     }
