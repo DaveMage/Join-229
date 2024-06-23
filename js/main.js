@@ -4,7 +4,8 @@ async function onloadInit() {
     displayMobileMenu();
     loadGuestLogin();
     checkGuestLogin();
-    await loadUserInitial()
+    await loadUserInitial();
+    menuActive();
 
 }
 
@@ -141,5 +142,45 @@ function goToBoard() {
 }
 
 
+function menuActive(){
+    let summary = document.getElementById('summaryLink');
+    let board = document.getElementById('boardLink');
+    let addTask = document.getElementById('addTaskLink');
+    let contacts = document.getElementById('contactsLink');
+
+    if (window.location.pathname === '/summary.html') {
+        summary.classList.add('active');
+        addTask.classList.remove('active');
+        board.classList.remove('active');
+        contacts.classList.remove('active');
+    }
+
+    if (window.location.pathname === '/greeting.html') {
+        summary.classList.add('active');
+        addTask.classList.remove('active');
+        board.classList.remove('active');
+        contacts.classList.remove('active');
+    }
+
+    if (window.location.pathname === '/addTask.html') {
+        addTask.classList.add('active');
+        summary.classList.remove('active');
+        board.classList.remove('active');
+        contacts.classList.remove('active');
+    }
+
+    if (window.location.pathname === '/board.html') {
+        board.classList.add('active');
+        summary.classList.remove('active');
+        addTask.classList.remove('active');
+        contacts.classList.remove('active');
+    }
+    if (window.location.pathname === '/contacts.html') {
+        contacts.classList.add('active');
+        summary.classList.remove('active');
+        addTask.classList.remove('active');
+        board.classList.remove('active');
+    }
+}
 
 
