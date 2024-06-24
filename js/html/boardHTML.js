@@ -59,6 +59,11 @@ function loadTasksHTML(task) {
 }
 
 function assingedProfileIconHtml(task) {
+    // Überprüfen, ob task.assigned leer ist
+    if (!task.assigned || task.assigned.length === 0) {
+        return '';
+    }
+
     let assignedProfilesHtml = '';
 
     for (let i = 0; i < task.assigned.length; i++) {
@@ -72,7 +77,7 @@ function assingedProfileIconHtml(task) {
         }
     }
 
-    return assignedProfilesHtml
+    return assignedProfilesHtml;
 }
 
 function subtaskProgressbarHTML(task) {
