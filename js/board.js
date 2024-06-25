@@ -118,6 +118,12 @@ function emptyTaskColumns() {
     }
 }
 
+
+/**
+ * Deletes a task.
+ * @param {string} taskId - The ID of the task to be deleted.
+ * @returns {Promise<void>} - A promise that resolves when the task is deleted.
+ */
 async function deleteTask(taskId) {
     let user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
     let userId = localStorage.getItem('guestLoggedIn') === 'true' ? '-O-Mr5g8976g5-yCxVK8' : user?.id;
@@ -138,6 +144,12 @@ async function deleteTask(taskId) {
 }
 
 
+/**
+ * Searches for tasks based on the given search term and status, and displays them in the specified element.
+ * @param {string} elementId - The ID of the HTML element where the tasks will be displayed.
+ * @param {string} search - The search term to filter the tasks.
+ * @param {string} status - The status of the tasks to filter.
+ */
 function searchAndDisplayTasks(elementId, search, status) {
     let element = document.getElementById(elementId);
     element.innerHTML = '';
@@ -150,6 +162,10 @@ function searchAndDisplayTasks(elementId, search, status) {
     }
 }
 
+
+/**
+ * Searches for tasks based on the input value and displays them in different sections.
+ */
 function searchTask() {
     let search = document.getElementById('findTask').value.toLowerCase();
 
