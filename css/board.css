@@ -1,9 +1,12 @@
 body {
   background-color: #f6f7f8;
+  overflow: hidden;
 }
 
 .boardContent {
   padding: 0 16px;
+  overflow: auto;
+  height: calc(100vh - 160px);
 }
 
 .boardHeader {
@@ -94,7 +97,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .columns {
-  margin-top: 24px;
+  margin-top: 24px;  
 }
 
 .column {
@@ -127,6 +130,7 @@ input[type="search"]::-webkit-search-results-decoration {
   margin-top: 16px;
   display: flex;
   overflow: auto;
+  min-height: 100px;
   /* scrollbar-width: none; */
 }
 
@@ -161,6 +165,7 @@ input[type="search"]::-webkit-search-results-decoration {
   flex-direction: column;
   gap: 24px;
   padding: 16px;
+
 }
 
 .taskCardHeadlineDescription {
