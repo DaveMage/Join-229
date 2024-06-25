@@ -41,8 +41,7 @@
           <div class="pressSearch">
             <img src="./img/Mobile/Board/bar.png" class="bar" />
             <img
-              src="./img/Mobile/Board/search.png"
-              onclick="changeImg()"
+              src="./img/Mobile/Board/search.png"              
               id="magGlassImg"
               class="magnifyingGlass"
             />
@@ -59,7 +58,8 @@
                   alt="add Task Button"
               /></a>
             </div>
-            <div class="tasks" id="tasksToDo"></div>
+            <div class="tasks" id="tasksToDo" ondrop="drop('toDo')"
+            ondragover="allowDrop(event)"></div>
           </div>
           <div class="columnInProgress column" id="colInProgress">
             <div class="columnHeader">
@@ -83,7 +83,8 @@
                   alt="add Task Button"
               /></a>
             </div>
-            <div class="tasks" id="tasksAwaitFeedback"></div>
+            <div class="tasks" id="tasksAwaitFeedback" ondragover="allowDrop(event)"
+            ondrop="drop('awaitFeedback')"></div>
           </div>
           <div class="columnDone column" id="colDone">
             <div class="columnHeader">
