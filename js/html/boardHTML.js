@@ -141,24 +141,26 @@ function viewTask(task) {
     `
 }
 
-function renderAssignedProfiles(task) {
-    let assigendProfilesEditHTML = '';
+function assingedProfileIconHtml(task) {
+    // Überprüfen, ob task.assigned leer ist
+    if (!task.assigned || task.assigned.length === 0) {
+        return '';
+    }
+
+    let assignedProfilesHtml = '';
 
     for (let i = 0; i < task.assigned.length; i++) {
-        if (task.assigned[i]) {
-            assigendProfilesEditHTML += /*html*/ `
-                <div class="taskProfile">
-                    <div class="showTaskProfileIcon showTaskProfileIcon editTaskProfileIcon" style="background-color:${task.assigned[i].profileColor};">
-                        ${task.assigned[i].initials}
-                    </div>
-                    <span>${task.assigned[i].name}</span>
-                </div>
+        if(task.assigned[i]){
+            assignedProfilesHtml += /*html*/ `
+                <div class="taskProfileIcon profileIcon" style="background-color:${task.assigned[i].profileColor};">
+                ${task.assigned[i].initials}</div>
             `;
         } else {
             return '';
         }
     }
-        return assigendProfilesEditHTML
+
+    return assignedProfilesHtml;
 }
 
 function renderSubtasks(subtasks) {
