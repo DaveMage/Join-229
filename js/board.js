@@ -178,9 +178,7 @@ function searchTask() {
 function startDragging(event) {
     let taskId = event.target.id;
     event.dataTransfer.setData('text', event.target.id);
-    console.log(taskId);
-
-    
+    console.log(taskId);    
 }
 
 function allowDrop(event) {
