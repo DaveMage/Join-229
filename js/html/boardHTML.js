@@ -72,8 +72,6 @@ function assingedProfileIconHtml(task) {
                 <div class="taskProfileIcon profileIcon" style="background-color:${task.assigned[i].profileColor};">
                 ${task.assigned[i].initials}</div>
             `;
-        } else {
-            return '';
         }
     }
 
