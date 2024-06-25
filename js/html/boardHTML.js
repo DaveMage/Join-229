@@ -32,7 +32,7 @@ function loadEmptyDoneColumn() {
 
 function loadTasksHTML(task) {
     return /*html*/ `
-        <div class="taskCard" id="taskCard${task.id}" draggable="true" ondragstart="dragTask()" onclick="openTask('${task.id}')">
+        <div class="taskCard" id="taskCard${task.id}" draggable="true" ondragstart="startDragging(event)" onclick="openTask('${task.id}')">
             <div class="cardBody">
                 <p class="${((task.category == 'Technical Task') ? ('technicalTask') : (task.category == 'User Story') ? ('userStory') : (''))}">${task.category}</p>
                 <div class="taskCardHeadlineDescription">
