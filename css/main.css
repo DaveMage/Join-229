@@ -224,3 +224,49 @@ body{
 .slideInRight {
   animation: slideInRight 300ms ease-out 0s 1 normal forwards;
 }
+
+
+@keyframes slideInBottom {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.slideInBottom {
+  animation: slideInBottom 300ms ease-out 0s 1 normal forwards;
+}
+
+@keyframes slideOutBottom {
+  0% {
+    transform: translateY(-80px);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.slideOutBottom {
+  animation: slideOutBottom 300ms ease-out 0s 1 normal forwards;
+}
+
+
+.taskSlideIn {
+  animation: taskSlideIn 500ms ease-in-out 0s 1 normal forwards;
+}
+
+@keyframes taskSlideIn {
+	0% {
+		opacity: 0;
+		transform: translateY(250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

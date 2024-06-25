@@ -413,34 +413,6 @@ span {
   font-size: 21px;
 }
 
-@keyframes slideInBottom {
-  0% {
-    transform: translateY(100%);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.slideInBottom {
-  animation: slideInBottom 300ms ease-out 0s 1 normal forwards;
-}
-
-@keyframes slideOutBottom {
-  0% {
-    transform: translateY(-80px);
-  }
-
-  100% {
-    transform: translateY(100%);
-  }
-}
-
-.slideOutBottom {
-  animation: slideOutBottom 300ms ease-out 0s 1 normal forwards;
-}
-
 
 
 

@@ -20,7 +20,7 @@
 
   <body id="template" onload="addTaskInit()">
     <header id="header" class="headerMenu"></header>
-    <main class="mainContainer">
+    <main class="mainContainer" id="mainContainerId">
       <h1 class="addTaskHeadline">Add Task</h1>
       <form onsubmit="return false;" class="addTaskForm">
         <label for="addTaskTitle" class="addTaskLabel">
@@ -37,10 +37,7 @@
           >
         </label>
 
-        <div class="addToBoard">
-          <h1 class="addToBoardHeadline">Task added to board</h1>
-          <img src="./img/Mobile/AddTask/addTaskBoardIcons.png" alt="board">
-        </div>
+
 
         <label for="addTaskDescription" class="addTaskLabel" id="addTaskLabelDescription">
           Description

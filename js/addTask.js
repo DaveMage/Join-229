@@ -47,19 +47,19 @@ function dateTreshhold() {
 
 async function saveTask() {
     let title = document.getElementById('addTaskTitle').value;
-    let date = document.getElementById('addTaskDueDate').value;    
+    let date = document.getElementById('addTaskDueDate').value;
     let description = document.getElementById('addTaskDescription').value;
     let prio = getSelectedPriority();
     let category = document.getElementById('addTaskCategory').value;
     await getUser();
     let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
     let guestLoggedIn = localStorage.getItem('guestLoggedIn');
-    if(guestLoggedIn === 'true'){
+    if (guestLoggedIn === 'true') {
         userId = '-O-Mr5g8976g5-yCxVK8';
     } else {
-     
+
         userId = userId.id;
-    }   
+    }
 
     if (title === '' || date === '') {
         titlequery();
@@ -79,10 +79,11 @@ async function saveTask() {
             'category': category,
             'subtasks': subtasks,
             'status': 'toDo'
-        });  
+        });
 
-
+        displaySuccsessfullyMessage()
         clearFrom();
+        
     } catch (error) {
         console.error('Error saving task:', error);
     }
@@ -256,11 +257,11 @@ function activateSubtaskInput() {
     let secondSubtaskIcon = document.getElementById('secondSubtaskIcon');
 
     // Entferne das readonly-Attribut
-    subtaskInput.removeAttribute('readonly');    
+    subtaskInput.removeAttribute('readonly');
     subtaskInput.focus();
     // Ändere das Bild
     firstSubtaskIcon.src = '/img/Mobile/AddTask/closeIcon.png';
-    firstSubtaskIcon.setAttribute('onclick', 'deleteValueSubtask()');    
+    firstSubtaskIcon.setAttribute('onclick', 'deleteValueSubtask()');
     secondSubtaskIcon.style.display = 'flex';
     document.getElementById('subtaskInputSeperator').style.display = 'flex';
     secondSubtaskIcon.src = '/img/Mobile/AddTask/checkIcon.png';
@@ -280,7 +281,7 @@ function deleteValueSubtask() {
     secondSubtaskIcon.style.display = 'none';
     document.getElementById('subtaskInputSeperator').style.display = 'none';
     firstSubtaskIcon.setAttribute('onclick', 'activateSubtaskInput()');
-    
+
 
 
 }
@@ -301,7 +302,7 @@ function onBlurSubtask() {
 
 function addSubtaskItem() {
     let subtaskInput = document.getElementById('addTaskSubtask');
-    
+
     if (subtaskInput.value === '') {
         return;
     }
@@ -364,7 +365,7 @@ function saveSubtaskItem(event) {
         subtasks[subtaskIndex] = subtaskItemInput.value;
     }
     console.log(subtasks);
-    
+
     // Setzen des Inputs auf "readonly"
     subtaskItemInput.setAttribute('readonly', 'readonly');
 
@@ -375,7 +376,7 @@ function saveSubtaskItem(event) {
     rightIcon.setAttribute('onclick', 'deleteSubtaskItem(event)');
 }
 
-function clearFrom(){
+function clearFrom() {
     document.getElementById('addTaskFormAssignedInput').value = '';
     selectedAssigned = [];
     document.getElementById('addTaskTitle').value = '';
@@ -385,15 +386,26 @@ function clearFrom(){
     document.getElementById('addTaskSubtask').value = '';
     document.getElementById('addTaskFormAssignedInput').value = '';
     subtasks = [];
-    document.getElementById('subtaskContainer').innerHTML = '';    
+    document.getElementById('subtaskContainer').innerHTML = '';
     document.getElementById('medium').checked = true;
 }
 
-function successfullyNewTask(){
+function successfullyNewTask() {
     return `
-    <div class="backgroundSuccessfullyMessage">
-    <div id="conctactSuccessfully" class="successfullyMessage slideInBottom">
-    Contact successfully created
-    </div>
-    </div>
-    `;}
+        <div class="backGroundNewTask" id="newTaskBGMessage">
+          <div class="addToBoard taskSlideIn" id="createBoardItem">
+            <h1 class="addToBoardHeadline">Task added to board</h1>
+            <img src="./img/Mobile/AddTask/addTaskBoardIcons.png" alt="board">
+          </div>
+        </div>
+    `;
+}
+
+function displaySuccsessfullyMessage() {
+    let mainContainer = document.getElementById('mainContainerId');
+    mainContainer.innerHTML += successfullyNewTask();
+    setTimeout(() => {
+        document.getElementById('newTaskBGMessage').remove();
+        window.location.href = '/board.html'; // Remove the success message after 800 milliseconds
+    }, 900);
+}
