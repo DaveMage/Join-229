@@ -92,17 +92,7 @@ function openEditTask(taskId) {
     }
 }
 
-function filterTasks() {
-    let search = document.getElementById('findTask').value;
-    search = search.toLowerCase();
 
-    console.log('Tasks müssen erst im Array vorhanden sein');
-
-    // let columns = document.getElementById('columns');
-    // columns.innerHTML = '';
-
-    // Tasks müssen erst im Array vorhanden sein
-}
 
 function emptyTaskColumns() {
     let toDoColumn = document.getElementById('tasksToDo');
@@ -128,26 +118,43 @@ function emptyTaskColumns() {
     }
 }
 
-async function deleteTask(taskId){
-    let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); // Find the user object with the specified email
-    userId = userId.id; // Get the user ID from the user object    
-    let guestLoggedIn = localStorage.getItem('guestLoggedIn'); // Get the guestLoggedIn value from local storage
-    if (guestLoggedIn === 'true') {
-        userId = '-O-Mr5g8976g5-yCxVK8'; // Set the user ID to the guest user ID if the guest is logged in
-    }
+async function deleteTask(taskId) {
+    let user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
+    let userId = localStorage.getItem('guestLoggedIn') === 'true' ? '-O-Mr5g8976g5-yCxVK8' : user?.id;
+
     if (!userId) {
-        console.error('User not found'); // Log an error message if user ID is not found
+        console.error('User not found');
         return;
     }
 
     try {
-        await deleteData('/users/' + userId + '/tasks/' + taskId); // Delete the contact data from the server
+        await deleteData(`/users/${userId}/tasks/${taskId}`);
         location.reload();
-        closeTask(); // Close the contact overlay
+        closeTask();
         displayTask();
     } catch (error) {
-        console.error('Error deleting Task:', error); // Log an error message if there is an error deleting the contact
+        console.error('Error deleting Task:', error);
     }
 }
 
 
+function searchAndDisplayTasks(elementId, search, status) {
+    let element = document.getElementById(elementId);
+    element.innerHTML = '';
+
+    for (let i = 0; i < tasks.length; i++) {
+        let task = tasks[i];
+        if ((task.title.toLowerCase().includes(search) || task.description.toLowerCase().includes(search)) && task.status === status) {
+            element.innerHTML += loadTasksHTML(task, i);
+        }
+    }
+}
+
+function searchTask() {
+    let search = document.getElementById('findTask').value.toLowerCase();
+
+    searchAndDisplayTasks('tasksToDo', search, 'toDo');
+    searchAndDisplayTasks('tasksAwaitFeedback', search, 'awaitFeedback');
+    searchAndDisplayTasks('tasksDone', search, 'done');
+    searchAndDisplayTasks('tasksInProgress', search, 'inProgress');
+}
