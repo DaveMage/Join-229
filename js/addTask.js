@@ -77,7 +77,8 @@ async function saveTask() {
             'date': date,
             'priority': prio,
             'category': category,
-            'subtasks': subtasks
+            'subtasks': subtasks,
+            'status': 'toDo'
         });  
 
 
