@@ -184,58 +184,59 @@ function showSubtask() {
 
 function displayEditTask(task) {
     return /*html*/ `
-        <div class="editTaskOverlayBackground" id="editTaskOverlayBackground">
+        <div class="editTaskOverlayBackground task${task.id}" id="editTaskOverlayBackground">
             <div class="editTaskOverlay">
                 <div class="closeEditTask">
                     <img onclick="closeEditTask()" class="closeTask" src="./img/Mobile/Board/closeTask.png" alt="close Task"/>
                 </div>
                 <div class="editTaskHeader">
                     <h4>Title</h4>
-                    <input class="editTaskField editTitle" value="${task.title}">
+                    <input class="editTaskField editTitle" id="editTaskTitle" value="${task.title}">
                 </div>
                 <div class="editTaskDescription">
                     <h4>Description</h4>
-                    <textarea class="editTaskField editDescription" rows="4">${task.description}</textarea>
+                    <textarea class="editTaskField editDescription" id="editTaskDescription" rows="4">${task.description}</textarea>
                 </div>
                 <!-- edit Date -->
                 <div class="editTaskDueDate">
                 <label for="addTaskDueDate" class="addTaskLabel">
                     <p>Due Date</p>
-                    <input type="date" class="addTaskInput" id="addTaskDueDate" placeholder="Select a Date" value="${task.date}"/>
+                    <input type="date" class="addTaskInput" id="addTaskDueDate editTaskDate" placeholder="Select a Date" value="${task.date}"/>
                 </label>
                 </div>
                 <!-- edit Priority -->
                 <div class="priority">
-                <label for="addTaskPriority" class="addTaskLabel"> Priority </label>
-                <!-- Prio input Radio als btn -->
-                <div class="prioContainer">
+                    <label for="addTaskPriority" class="addTaskLabel"> Priority </label>
+                    <!-- Prio input Radio als btn -->
+                    <div class="prioContainer">
                     
-                    <!-- Prio input Radio Urgent -->
-                    <input type="radio" id="urgent" name="priority" value="urgent" hidden/>
-                    <label for="urgent" class="prioLabel" id="prioUrgent">
-                        Urgent
-                        <img src="/img/Mobile/AddTask/urgentIconAddTask.png" />
-                    </label>
-                    
-                    <!-- Prio input Radio Medium -->
-                    <input type="radio" id="medium" name="priority" value="medium" hidden/>
-                    <label for="medium" class="prioLabel" id="prioMedium">
-                        Medium
-                        <img src="/img/Mobile/AddTask/mediumIconAddTask.png" />
-                    </label>
-                    
-                    <!-- Prio input Radio Low -->
-                    <input type="radio" id="low" name="priority" value="low" hidden />
-                    <label for="low" class="prioLabel" id="prioLow">
-                        Low
-                        <img src="/img/Mobile/AddTask/lowIconAddTask.png" />
-                    </label>
+                        <!-- Prio input Radio Urgent -->
+                        <input type="radio" id="urgent" name="priority" value="urgent" hidden/>
+                        <label for="urgent" class="prioLabel" id="prioUrgent">
+                            Urgent
+                            <img src="/img/Mobile/AddTask/urgentIconAddTask.png" />
+                        </label>
+                        
+                        <!-- Prio input Radio Medium -->
+                        <input type="radio" id="medium" name="priority" value="medium" hidden/>
+                        <label for="medium" class="prioLabel" id="prioMedium">
+                            Medium
+                            <img src="/img/Mobile/AddTask/mediumIconAddTask.png" />
+                        </label>
+                        
+                        <!-- Prio input Radio Low -->
+                        <input type="radio" id="low" name="priority" value="low" hidden />
+                        <label for="low" class="prioLabel" id="prioLow">
+                            Low
+                            <img src="/img/Mobile/AddTask/lowIconAddTask.png" />
+                        </label>
+                    </div>
                 </div>
-                </div>
+
                 <!-- edit Contacts -->
                 <div class="edtiTaskCategory">
                 <label for="addTaskCategory" class="addTaskLabel">
-                    Category
+                    Assigend Contacts
                     <div class="addTaskInputIconContainer">
                         <input
                             id="addTaskCategory"
@@ -273,7 +274,7 @@ function displayEditTask(task) {
                 
                 <!-- accept changes -->
                 <div class="acceptChanges">
-                    <div class="saveChanges" onclick="saveTaskChanges()">
+                    <div class="saveChanges" onclick="saveTaskChanges('${task.id}')">
                         <p class="acceptOK">Ok</p>
                         <img src="./img/Mobile/Board/check.png" />
                     </div>

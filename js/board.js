@@ -76,23 +76,51 @@ function closeEditTask() {
     document.getElementById('editTaskOverlayBackground').remove();
 }
 
-function saveTaskChanges() {
-    console.log('not ready');
-}
-
 function openEditTask(taskId) {
     document.getElementById('taskOverlayBackground').innerHTML = '';
     let task = tasks.find(task => task.id === taskId);
-    
 
-    if(task){
+    if (task) {
         document.getElementById('mainBoard').innerHTML += displayEditTask(task);
     }  else {
         console.error('Task not found');
     }
 }
 
+async function saveTaskChanges(editedTask) {
+    console.log(editedTask);
+    let editTitle = document.getElementById('editTaskTitle').value;
+    let editDescription = document.getElementById('editTaskDescription').value;
+    let editDate = document.getElementById('editTaskDate');
+    // let prio = getSelectedPriority();
+    
+    await getUser();
+    let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
+    
+    if (guestLoggedIn === 'true') {
+        userId = '-O-Mr5g8976g5-yCxVK8';
+    } else {
+        userId = userId.id;
+    }
 
+    /*try {
+        await postData('/users/' + userId + '/tasks', {
+            'title': editTitle,
+            'description': editDescription,
+            'date': editDate,
+            'assigned': selectedAssigned,
+            'priority': prio,
+            'category': category,
+            'subtasks': subtasks,
+            'status': 'toDo'
+        });
+    } catch (error) {
+        console.error('Error saving task:', error);
+    }*/
+
+    closeEditTask();
+}
 
 function emptyTaskColumns() {
     let toDoColumn = document.getElementById('tasksToDo');
