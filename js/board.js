@@ -174,3 +174,30 @@ function searchTask() {
     searchAndDisplayTasks('tasksDone', search, 'done');
     searchAndDisplayTasks('tasksInProgress', search, 'inProgress');
 }
+
+function startDragging(event) {
+    let taskId = event.target.id;
+    event.dataTransfer.setData('text', event.target.id);
+    console.log(taskId);
+
+    
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drop(event) {
+    event.preventDefault();
+    let taskId = event.dataTransfer.getData('text');
+    let task = tasks.find(task => task.id === taskId);
+    let status = event.target.id;
+
+    if (task) {
+        task.status = status;
+        updateTask(task);
+        displayTask();
+    } else {
+        console.error('Task not found');
+    }
+}
