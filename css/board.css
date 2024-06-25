@@ -54,6 +54,13 @@ body {
   max-width: 200px;
 }
 
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
 #findTask::placeholder {
   color: #d1d1d1;
 }
@@ -245,16 +252,16 @@ body {
 }
 
 .showTaskProfileIcon {
-    height: 32px;
-    width: 32px;
-    border-radius: 50%;
-    background-color: orange;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ffffff;
-    font-size: 12px;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background-color: orange;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ffffff;
+  font-size: 12px;
 }
 
 .prioritySymbol {
@@ -351,10 +358,10 @@ body {
 }
 
 .assignedToProfilesTask {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .taskProfile {
@@ -373,9 +380,9 @@ body {
 }
 
 .showTaskProfileIcon {
-    width: 32px;
-    height: 32px;
-    font-size: 12px;
+  width: 32px;
+  height: 32px;
+  font-size: 12px;
 }
 
 .subtasksHeadline {
@@ -739,16 +746,16 @@ body {
 }
 
 .editTaskOverlayBackground {
-    position: absolute;
-    top: 80px;
-    left: 0;
-    right: 0;
-    bottom: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .editTaskProfileIcon {
-    margin-right: 8px;
+  margin-right: 8px;
 }
