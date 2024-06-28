@@ -6,6 +6,7 @@ function boardInit() {
     loadUserInitial();
     getContacts();
     displayTaskCard();
+    
 }
 
 function addActiveClass() {
@@ -121,16 +122,26 @@ function closeTaskCardOverview() {
     document.getElementById('taskCardOverviewBackground').remove();
 }
 
-function deleteTaskCard(taskId) {
-    let task = tasks.find(t => t.id === taskId);
-    let index = tasks.indexOf(task);
-    userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))).id;    
 
-    deleteData('/users/' + userId + '/tasks/' + taskId)
-        .then(() => {
-            tasks.splice(index, 1);
-            updateBoardHtml();
-        });
-    
-    closeTaskCardOverview();    
+
+async function deleteTask(taskId) {   
+    let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); // Find the user object with the specified email
+    userId = userId.id; // Get the user ID from the user object    
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn'); // Get the guestLoggedIn value from local storage
+    if (guestLoggedIn === 'true') {
+        userId = '-O-Mr5g8976g5-yCxVK8'; // Set the user ID to the guest user ID if the guest is logged in
+    }
+    if (!userId) {
+        console.error('User not found'); // Log an error message if user ID is not found
+        return;
+    }
+    try {
+        await deleteData('/users/' + userId + '/tasks/' + taskId); // Delete the contact data from the server
+        
+        closeTaskCardOverview(); // Close the task card overview
+        window.location.reload(); // Reload the page        
+        
+    } catch (error) {
+        console.error('Error deleting contact:', error); // Log an error message if there is an error deleting the contact
+    }
 }
