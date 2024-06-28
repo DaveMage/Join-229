@@ -13,94 +13,75 @@
     />
     <script src="/js/storage.js" defer></script>
     <script src="/js/main.js"></script>
-    <script src="/js/board.js"></script>    
+    <script src="/js/board.js"></script>
     <script src="/js/html/boardHTML.js"></script>
     <script src="/js/html/mainHTML.js"></script>
   </head>
-  <body id="template" onload="initBoard()">
+  <body id="template" onload="boardInit()">
     <header id="header" class="headerMenu"></header>
-      <main class="boardContent" id="mainBoard">
-        <div class="boardHeader">
-          <h1 class="headline">Board</h1>
-          <a href="./addTask.html"
-            ><img
-              id="addTask"
-              src="./img/Mobile/Board/plusAddTaskMobile.png"
-              alt="add Task Button"
-          /></a>
+    
+    <main id="mainBoard">
+      
+
+
+      <div class="headlineContainer">
+        <h1 class="headline">Board</h1>
+        <img src="/img/Mobile/Board/plusAddTaskMobile.png" />
+      </div>
+      <div class="searchContainer" id="searchBar">
+        <input
+          type="search"
+          placeholder="Find Task"
+          onfocus="addActiveClass()"
+          onblur="removeActiveClass()"
+        />
+        <span class="seperator"></span>
+        <img src="/img/Mobile/Board/search.png" />
+      </div>
+
+      <div class="tasksContainer">
+        <div class="taskSubContainer" >
+          <div class="taskSubContainerHeader">
+            <h2 class="subHeadline">To do</h2>
+            <img src="/img/Mobile/Board/plusButtonMobile.png" />
+          </div>
+          <div id="toDoContainer" class="taskCardContainer" ondrop="moveTo('open')"              
+          ondragover="allowDrop(event)"></div>
         </div>
-        <div class="searchBar">
-          <div class="search">
-            <input
-              id="findTask"
-              type="search"
-              placeholder="Find Task"
-              onkeypress="searchTask()"
-            />
+
+        <div class="taskSubContainer" >
+          <div class="taskSubContainerHeader">
+            <h2 class="subHeadline">In progress</h2>
+            <img src="/img/Mobile/Board/plusButtonMobile.png" />
           </div>
-          <div class="pressSearch">
-            <img src="./img/Mobile/Board/bar.png" class="bar" />
-            <img
-              src="./img/Mobile/Board/search.png"              
-              id="magGlassImg"
-              class="magnifyingGlass"
-            />
-          </div>
+          <div id="progressContainer" class="taskCardContainer" ondrop="moveTo('inProgress')"
+              
+          ondragover="allowDrop(event)"></div>
         </div>
-        <div class="columns" id="columns">
-          <div class="columnToDo column" id="colToDo">
-            <div class="columnHeader">
-              <h2 class="subheadline">To do</h2>
-              <a href="./addTask.html"
-                ><img
-                  class="addTaskColumn"
-                  src="./img/Mobile/Board/plusButtonMobile.png"
-                  alt="add Task Button"
-              /></a>
-            </div>
-            <div class="tasks" id="tasksToDo" ondrop="drop('toDo')"
-            ondragover="allowDrop(event)"></div>
+
+        <div class="taskSubContainer" >
+          <div class="taskSubContainerHeader">
+            <h2 class="subHeadline">Await feedback</h2>
+            <img src="/img/Mobile/Board/plusButtonMobile.png" />
           </div>
-          <div class="columnInProgress column" id="colInProgress">
-            <div class="columnHeader">
-              <h2 class="subheadline">In progress</h2>
-              <a href="./addTask.html"
-                ><img
-                  class="addTaskColumn"
-                  src="./img/Mobile/Board/plusButtonMobile.png"
-                  alt="add Task Button"
-              /></a>
-            </div>
-            <div class="tasks" id="tasksInProgress"></div>
-          </div>
-          <div class="columnAwaitFeedback column" id="colAwaitFeedback">
-            <div class="columnHeader">
-              <h2 class="subheadline">Await feedback</h2>
-              <a href="./addTask.html"
-                ><img
-                  class="addTaskColumn"
-                  src="./img/Mobile/Board/plusButtonMobile.png"
-                  alt="add Task Button"
-              /></a>
-            </div>
-            <div class="tasks" id="tasksAwaitFeedback" ondragover="allowDrop(event)"
-            ondrop="drop('awaitFeedback')"></div>
-          </div>
-          <div class="columnDone column" id="colDone">
-            <div class="columnHeader">
-              <h2 class="subheadline">Done</h2>
-              <a href="./addTask.html"
-                ><img
-                  class="addTaskColumn"
-                  src="./img/Mobile/Board/plusButtonMobile.png"
-                  alt="add Task Button"
-              /></a>
-            </div>
-            <div class="tasks" id="tasksDone"></div>
-          </div>
+          <div id="feedbackContainer" class="taskCardContainer" ondrop="moveTo('awaitFeedback')"
+              
+          ondragover="allowDrop(event)"></div>
         </div>
-      </main>
-    </div>
+
+        <div class="taskSubContainer" >
+          <div class="taskSubContainerHeader">
+            <h2 class="subHeadline">Done</h2>
+            <img src="/img/Mobile/Board/plusButtonMobile.png" />
+          </div>
+            <div id="doneContainer" class="taskCardContainer" ondrop="moveTo('done')"
+              
+            ondragover="allowDrop(event)">
+                
+            </div>
+        </div>
+      </div>
+    </main>
 
     <footer id="menu" class="footer"></footer>
   </body>

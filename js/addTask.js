@@ -78,7 +78,7 @@ async function saveTask() {
             'priority': prio,
             'category': category,
             'subtasks': subtasks,
-            'status': 'toDo'
+            'status': 'open'
         });
 
         displaySuccsessfullyMessage()

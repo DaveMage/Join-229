@@ -125,39 +125,6 @@ function logout() {
     window.location.href = "/login.html";
 }
 
-
-
-//Summary Content
-
-/**
-  * This function switches the navbar on or out if the user clicks on the circle in the top corner.
-  */
-function openNavbar() {
-    document.getElementById('navbar').classList.toggle('d-none');
-}
-
-/**
- * This function hides the navbar if the user clicks on the main container.
- */
-function closeNavbar() {
-    document.getElementById('navbar').classList.add('d-none');
-}
-
-/**functions goes to Board */
-function goToBoardUsual(mark) {
-    window.location.href = `./board.html#${mark}`;
-}
-
-/**
-* function goes to the board and at the same time searches for the task
-* which id is stored
-*/
-function goToBoard() {
-    window.location.href =
-        "./board.html?findtaskbyid=" + encodeURIComponent(holdTaskId);
-}
-
-
 function menuActive(){
     let summary = document.getElementById('summaryLink');
     let board = document.getElementById('boardLink');

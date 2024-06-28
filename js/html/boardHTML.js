@@ -1,61 +1,72 @@
-function loadEmptyToDoColumn() {
+function displayNoTasksToDo() {
     return /*html*/ `
-        <div class="noTasksToDo">
+        <div class="noTasks">
             <p class="noTasksText">No tasks To do</p>
         </div>
     `
 }
 
-function loadEmptyInProgressColumn() {
+function displayNoTasksDone() {
     return /*html*/ `
-        <div class="noTasksToDo">
-            <p class="noTasksText">No tasks To do</p>
-        </div>
-    `
-}
-
-function loadEmptyAwaitFeedbackColumn() {
-    return /*html*/ `
-        <div class="noTasksToDo">
-            <p class="noTasksText">No tasks waiting for feedback</p>
-        </div>
-    `
-}
-
-function loadEmptyDoneColumn() {
-    return /*html*/ `
-        <div class="noTasksToDo">
+        <div class="noTasks">
             <p class="noTasksText">No tasks Done</p>
         </div>
     `
 }
 
-function loadTasksHTML(task) {
+function displayNoTasksFeedback() {
     return /*html*/ `
-        <div class="taskCard" id="taskCard${task.id}" draggable="true" ondragstart="startDragging(event)" onclick="openTask('${task.id}')">
-            <div class="cardBody">
-                <p class="${((task.category == 'Technical Task') ? ('technicalTask') : (task.category == 'User Story') ? ('userStory') : (''))}">${task.category}</p>
-                <div class="taskCardHeadlineDescription">
-                    <div class="taskHeadline">
-                        ${task.title}
-                    </div>
-                    <div class="taskDescr">
-                        ${task.description}
-                    </div>
-                </div>
-                <div class="subtasks">
-                    ${subtaskProgressbarHTML(task)}
-                </div>
-                <div class="taskFooter">
-                    <div class="assignedToProfiles">
-                        ${assingedProfileIconHtml(task)}
-                    </div>
-                    
-                    <img class="prioritySymbol" src="${task.priority.imgSrc}" alt="priority Level">
-                </div>
-            </div>
-        </div>  
+        <div class="noTasks">
+            <p class="noTasksText">No tasks Await feedback</p>
+        </div>
     `
+}
+
+function displayNoTasksProgress() {
+    return /*html*/ `
+        <div class="noTasks">
+            <p class="noTasksText">No tasks In progress</p>
+        </div>
+    `
+}
+
+function taskCardHTML(task) {
+    return /* html */ `<div class="taskCard" ${task.status} id=${task.id} draggable="true" ondragstart="startDragging(event, '${task.id}')" onclick="displayOverwieTaskCard('${task.id}')">
+
+    <div class="taskCardMain">
+    ${taskCardCategoryHTML(task)}
+      <div class="taskCardTitleDescriptionContainer">
+        <div class="taskCardTitle">${task.title}</div>
+        <div class="taskCardDescription">${task.description}</div>
+      </div>      
+      ${subtaskProgressbarHTML(task)}
+      <div class="taskCardAssingedPrio">
+      <div class="taskCardAssigned">
+      ${assingedProfileIconHtml(task)} 
+      </div>
+      <div class="taskCardPriority"><img src="${task.priority.imgSrc}"></div>  
+    </div> 
+    </div>
+  </div>`;
+}
+
+
+function taskCardCategoryHTML(task) {
+    let categoryColor = '';
+    let categoryText = '';
+
+    if (task.category) {
+        if (task.category === 'Technical Task') {
+            categoryColor = 'style="background-color: #1FD7C1"';
+        } else {
+            categoryColor = 'style="background-color: #0038FF"';
+        }
+
+        categoryText = `
+        <div class="taskCardCategory" ${categoryColor}>${task.category}</div>`;
+    }
+
+    return categoryText;
 }
 
 function assingedProfileIconHtml(task) {
@@ -67,11 +78,10 @@ function assingedProfileIconHtml(task) {
     let assignedProfilesHtml = '';
 
     for (let i = 0; i < task.assigned.length; i++) {
-        if(task.assigned[i]){
-            assignedProfilesHtml += /*html*/ `
-                <div class="taskProfileIcon profileIcon" style="background-color:${task.assigned[i].profileColor};">
-                ${task.assigned[i].initials}</div>
-            `;
+        if (task.assigned[i]) {
+            assignedProfilesHtml += /*html*/ `          
+                <div class="taskCardProfileIcon" style="background-color:${task.assigned[i].profileColor};">
+                ${task.assigned[i].initials}</div>`;
         }
     }
 
@@ -84,184 +94,89 @@ function subtaskProgressbarHTML(task) {
         let completedSubtasks = task.subtasks.filter(subtask => subtask.completed).length;
         const progressPercentage = (completedSubtasks / task.subtasks.length) * 100;
 
-        subtaskContentHtml = `
-                <div class="taskCardSubtaskbar">
-                  <div class="taskCardSubtaskbarBackground">
-                      <div class="taskCardSubtaskProgressbar" style="width: ${progressPercentage}%;"></div>
-                      </div>
-                  <div class="taskCardSubtaskCounter">${completedSubtasks}/${task.subtasks.length} Subtasks</div>
-              </div>`;
+        subtaskContentHtml = /*html*/ `
+        <div class="taskCardSubtaskContainer">
+            <div class="subtaskProgressbar">
+                <div class="subtaskProgressbarFill" style="width: ${progressPercentage}%;"></div>
+            </div>
+            <div class='subtaskText'>${completedSubtasks}/${task.subtasks.length} Subtasks</div>
+        </div>`;
     }
     return subtaskContentHtml;
 }
 
-function viewTask(task) {
-    return /*html*/ `
-        <div class="taskOverlayBackground" id="taskOverlayBackground">
-            <div class="overlayTask" id="task${task.id}">
-                <div class="overlayHeader">
-                <p class="${((task.category == 'Technical Task') ? ('technicalTask') : (task.category == 'User Story') ? ('userStory') : (''))}">${task.category}</p>
-                    <img onclick="closeTask()" class="closeTask" src="./img/Mobile/Board/closeTask.png" alt="close Task">
-                </div>
-                <h1 class="overlayHeadline">${task.title}</h1>
-                <p class="overlayDescription">
-                    ${task.description}
-                </p>
-                <div class="taskBody">
-                    <div class="dueDateSection bodySection">
-                        <span class="dueDate spanDatePriorityAssigned">Due date:</span>
-                        <span class="date">${task.date}</span>
-                    </div>
-                    <div class="prioritySection bodySection">
-                        <span class="priorityTask spanDatePriorityAssigned">Priority:</span>
-                        <span class="priorityLevel">${task.priority.value}</span><img src="${task.priority.imgSrc}" alt="priority Level">
-                    </div>
-                    <div class="assignedToSection bodySection"> <!-- auslagern um die einzelnen assigned Contacts anzuzeigen -->
-                        <span class="assignedTo spanDatePriorityAssigned">Assigned To:</span>
-                        <div class="assignedToProfiles assignedToProfilesTask">
-                            ${renderAssignedProfiles(task)}
-                        </div>
-                    </div>
-                    <div class="taskSubtask">
-                        ${((task.subtasks == null) ? '' : `<h3 class="subtasksHeadline spanDatePriorityAssigned">Subtasks</h3><div id="loadSubtasks"></div>`)}
-                        ${((task.subtasks == null) ? '' : renderSubtasks(task))}
-                    </div>
-                </div>
-                <div class="showTaskFooter">
-                    <div class="deleteEditTask" onclick="deleteTask('${task.id}')">
-                        <img class="taskFooterIcon taskFooterIconDelete" src="./img/Mobile/Board/deleteWithText.png">
-                    </div>
-                    <img class="barFooter" src="./img/Mobile/Board/bar.png">
-                    <div class="deleteEditTask" onclick="openEditTask('${task.id}')">
-                        <img class="taskFooterIcon taskFooterIconEdit" src="./img/Mobile/Board/editTaskWithText.png">
-                    </div>
-                </div>
-            </div>
+//Task Card Overwiew
+
+function overwieTaskCardHTML(task) {
+    return /* html */`
+    <div class="background" id="taskCardOverviewBackground">
+    <div class="taskCardOverviewBody">
+      <div class="taskCardOverviewMain">
+
+        <div class="taskCardOverviewCategoryCloseContainer">
+          <div class="taskCardOverviewCategory">${task.category}</div>
+          <img src="/img/Mobile/Board/closeTask.png" onclick="closeTaskCardOverview()">
+        </div>  
+
+        <h2 class="taskCardOverviewTitle">${task.title}</h2>
+
+        <p class="taskCardOverviewDescription">${task.description}</p>
+
+        <div class="taskCardOverviewLabelContainer">
+          <p class="taskCardOverviewLabel">Due date:</p>
+          <p class="taskCardOverview">${task.date}</p>
+      </div>
+
+      <div class="taskCardOverviewLabelContainer">
+        <p class="taskCardOverviewLabel">Priority:</p>
+        <p class="taskCardOverview">${task.priority.value}</p>
+        <img src="${task.priority.imgSrc}">
+    </div>
+
+    <div class="taskCardOverviewAssignedContainer">
+      <p class="taskCardOverviewLabel">Assigned To:</p>
+      <div class="taskCardOverviewAssigneds">
+
+        <div class="taskCardOverviewContact">
+          <div class="taskCardOverviewProfileIcon">TM</div>
+          <p class="taskCardOverviewAssignedName">Tobias Müller</p>
         </div>
-    `
-}
+      
 
+      <div class="taskCardOverviewContact">
+        <div class="taskCardOverviewProfileIcon">TM</div>
+        <p class="taskCardOverviewAssignedName">Tobias Müller</p>
+      </div>
+    </div>
+    </div>
 
-
-function renderSubtasks(subtasks) {
-    for (let i = 0; i < subtasks.subtasks.length; i++) {
-        console.log(subtasks.subtasks[i]);
-        return /*html*/ `
-        <div class="taskSubtasks">
-            <input class="checkboxSubtasks" type="checkbox">
-            <span>${subtasks.subtasks[i]}</span>
+     <div class="taskCardOverviewSubtaskContainer">
+      <div class="taskCardOverviewLabel">Subtasks</div>
+      <div class="taskCardOverviewSubtasks">
+        <div class="taskCardOverviewSubtask">
+          <input type="checkbox" name="" id="">
+          <label for="">${task.subtask}</label>
         </div>
-    `;
-    }
-}
-
-function showSubtask() {
-    return /*html*/ `
-        <div class="taskSubtasks">
-            <input class="checkboxSubtasks" type="checkbox" checked>
-            <span>${subtask[0]}</span>
+      
+      
+        <div class="taskCardOverviewSubtask">
+          <input type="checkbox" name="" id="">
+          <label for="">${task.subtask}</label>
         </div>
-    `;
-}
+      </div>
+     </div>
 
-function displayEditTask(task) {
-    return /*html*/ `
-        <div class="editTaskOverlayBackground task${task.id}" id="editTaskOverlayBackground">
-            <div class="editTaskOverlay">
-                <div class="closeEditTask">
-                    <img onclick="closeEditTask()" class="closeTask" src="./img/Mobile/Board/closeTask.png" alt="close Task"/>
-                </div>
-                <div class="editTaskHeader">
-                    <h4>Title</h4>
-                    <input class="editTaskField editTitle" id="editTaskTitle" value="${task.title}">
-                </div>
-                <div class="editTaskDescription">
-                    <h4>Description</h4>
-                    <textarea class="editTaskField editDescription" id="editTaskDescription" rows="4">${task.description}</textarea>
-                </div>
-                <!-- edit Date -->
-                <div class="editTaskDueDate">
-                <label for="addTaskDueDate" class="addTaskLabel">
-                    <p>Due Date</p>
-                    <input type="date" class="addTaskInput" id="addTaskDueDate editTaskDate" placeholder="Select a Date" value="${task.date}"/>
-                </label>
-                </div>
-                <!-- edit Priority -->
-                <div class="priority">
-                    <label for="addTaskPriority" class="addTaskLabel"> Priority </label>
-                    <!-- Prio input Radio als btn -->
-                    <div class="prioContainer">
-                    
-                        <!-- Prio input Radio Urgent -->
-                        <input type="radio" id="urgent" name="priority" value="urgent" hidden/>
-                        <label for="urgent" class="prioLabel" id="prioUrgent">
-                            Urgent
-                            <img src="/img/Mobile/AddTask/urgentIconAddTask.png" />
-                        </label>
-                        
-                        <!-- Prio input Radio Medium -->
-                        <input type="radio" id="medium" name="priority" value="medium" hidden/>
-                        <label for="medium" class="prioLabel" id="prioMedium">
-                            Medium
-                            <img src="/img/Mobile/AddTask/mediumIconAddTask.png" />
-                        </label>
-                        
-                        <!-- Prio input Radio Low -->
-                        <input type="radio" id="low" name="priority" value="low" hidden />
-                        <label for="low" class="prioLabel" id="prioLow">
-                            Low
-                            <img src="/img/Mobile/AddTask/lowIconAddTask.png" />
-                        </label>
-                    </div>
-                </div>
-
-                <!-- edit Contacts -->
-                <div class="edtiTaskCategory">
-                <label for="addTaskCategory" class="addTaskLabel">
-                    Assigend Contacts
-                    <div class="addTaskInputIconContainer">
-                        <input
-                            id="addTaskCategory"
-                            type="text"
-                            placeholder="Select contacts to assign"
-                            class="addTaskInput"
-                            readonly
-                            onclick="toggleCategoryDropdown()"
-                        />
-                        <img
-                            class="dropdownIcon"
-                            id="categoryDropdownArrow"
-                            src="/img/Mobile/AddTask/arrowDropDownaa.png"
-                        />
-                    </div>
-                    <div class="customDropdownCategory customDropdownBox" id="dropdownCategory">
-                        <div class="dropdownItemCategory contactDropdown">
-                            <div class="contactDropout">
-                                <div class="profileIcon taskProfileIcon" style="background-color: #1fd7c1">
-                                    EM
-                                </div>
-                                Emmanuel Mauer
-                            </div>
-                            <img src="./img/Mobile/Board/checkButtonMobile.png" alt="" />
-                        </div>
-                    </div>
-                </label>
-                </div>
-                
-                <!-- edit Subtasks -->
-                <div class="editSubtasks">
-                    <p>Subtasks</p>
-                    <input type="text" class="subtaskField" placeholder="Add new Subtask" rows="1"/>
-                </div>
-                
-                <!-- accept changes -->
-                <div class="acceptChanges">
-                    <div class="saveChanges" onclick="saveTaskChanges('${task.id}')">
-                        <p class="acceptOK">Ok</p>
-                        <img src="./img/Mobile/Board/check.png" />
-                    </div>
-                </div>
-            </div>
-        </div>
+     <div class="taskCardOverviewBtnContainer">
+      <button class="taskCardOverviewBtn" id="taskCardOverviewEditBtn"><img src="/img/Mobile/Board/editTask.png" >Edit</button>
+      <span class="taskCardOverviewSeperator"></span>
+      <button class="taskCardOverviewBtn" id="taskCardOverviewDeleteBtn"><img src="/img/Mobile/Board/delete.png">Delete</button>
+     </div>
+    </div>
+  </div>
+</div>
     `;
 }
+
+
+
+
