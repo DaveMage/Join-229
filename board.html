@@ -30,13 +30,14 @@
       </div>
       <div class="searchContainer" id="searchBar">
         <input
+        id="seachFieldBoard"
           type="search"
           placeholder="Find Task"
           onfocus="addActiveClass()"
           onblur="removeActiveClass()"
         />
         <span class="seperator"></span>
-        <img src="/img/Mobile/Board/search.png" />
+        <img onclick="searchForTasks()" src="/img/Mobile/Board/search.png"/>
       </div>
 
       <div class="tasksContainer">

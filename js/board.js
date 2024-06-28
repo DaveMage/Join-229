@@ -120,3 +120,26 @@ function displayOverwieTaskCard(taskId) {
 function closeTaskCardOverview() {
     document.getElementById('taskCardOverviewBackground').style.display = 'none';
 }   
+
+function searchForTasks() {
+    let search = document.getElementById('seachFieldBoard').value.toLowerCase();    //suche die value aus dem feld
+    let todo = document.getElementById('toDoContainer');        // ziehe den inhalt aus den feldern
+    let inProgress = document.getElementById('progressContainer');
+    let awaitFeedback = document.getElementById('feedbackContainer');
+    let done = document.getElementById('doneContainer');
+    clearEveryCategorie(todo, inProgress, awaitFeedback, done);  // lösche alles
+
+    for (let index = 0; index < tasks.length; index++) {    // for schleife um abzufragen
+        const title = tasks[index]['title'];        // im array task sind alle infos drin
+        if (title.toLowerCase().includes(search))       // wenn der inhalt von search der selbe ist wie title dann console log. 
+            console.log('si fliegen!')          // beim test kam 7x mal raus also das volle array wie zu erwarten war. morgen gehts weiter
+        
+    }
+}
+
+function clearEveryCategorie(todo, inProgress, awaitFeedback, done) {
+    todo.innerHTML = '';
+    inProgress.innerHTML = '';
+    awaitFeedback.innerHTML = '';
+    done.innerHTML ='';
+}
