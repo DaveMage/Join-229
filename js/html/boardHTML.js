@@ -112,7 +112,6 @@ function overviewTaskCardHTML(task) {
     <div class="background" id="taskCardOverviewBackground">
     <div class="taskCardOverviewBody">
       <div class="taskCardOverviewMain">
-
         <div class="taskCardOverviewCategoryCloseContainer">
           <div class="taskCardOverviewCategory"></div>
           <img src="/img/Mobile/Board/closeTask.png" onclick="closeTaskCardOverview()">
@@ -136,35 +135,23 @@ function overviewTaskCardHTML(task) {
     <div class="taskCardOverviewAssignedContainer">
       <p class="taskCardOverviewLabel">Assigned To:</p>
       <div class="taskCardOverviewAssigneds">
-        ${overviewTaskCardAssignedHtml(task)}
-        
-      
-
-      
+        ${overviewTaskCardAssignedHtml(task)}     
     </div>
     </div>
 
      <div class="taskCardOverviewSubtaskContainer">
       <div class="taskCardOverviewLabel">Subtasks</div>
       <div class="taskCardOverviewSubtasks">
-        <div class="taskCardOverviewSubtask">
-          <input type="checkbox" name="" id="">
-          <label for=""></label>
-        </div>
-      
-      
-        <div class="taskCardOverviewSubtask">
-          <input type="checkbox" name="" id="">
-          <label for=""></label>
-        </div>
+        ${overviewTaskCardSubtaskHtml(task)}        
       </div>
      </div>
 
      <div class="taskCardOverviewBtnContainer">
       <button class="taskCardOverviewBtn" id="taskCardOverviewEditBtn"><img src="/img/Mobile/Board/editTask.png" >Edit</button>
       <span class="taskCardOverviewSeperator"></span>
-      <button class="taskCardOverviewBtn" id="taskCardOverviewDeleteBtn"><img src="/img/Mobile/Board/delete.png" onclick="deleteTaskCard('${task.id}')">Delete</button>
+      <button class="taskCardOverviewBtn" id="taskCardOverviewDeleteBtn"><img src="/img/Mobile/Board/delete.png" onclick="deleteTaskCard('${task.id}')">Delete</button>      
      </div>
+
     </div>
   </div>
 </div>
@@ -172,8 +159,8 @@ function overviewTaskCardHTML(task) {
 }
 
 function overviewTaskCardAssignedHtml(task) {
-     // Überprüfen, ob task.assigned leer ist
-     if (!task.assigned || task.assigned.length === 0) {
+    // Überprüfen, ob task.assigned leer ist
+    if (!task.assigned || task.assigned.length === 0) {
         return '';
     }
 
@@ -190,6 +177,21 @@ function overviewTaskCardAssignedHtml(task) {
     }
 
     return assignedProfilesHtml;
+}
+
+function overviewTaskCardSubtaskHtml(task) {
+    if (task.subtasks && task.subtasks.length > 0) {
+        let subtaskHtml = '';
+        for (let i = 0; i < task.subtasks.length; i++) {
+            subtaskHtml += /*html*/ `
+            <div class="taskCardOverviewSubtask">
+          <input type="checkbox" name="${task.id}" id="${task.id}">
+          <label for="${task.id}">${task.subtasks[i]}</label>
+        </div>`;
+        }
+        return subtaskHtml;
+    }
+    return '';
 }
 
 
