@@ -113,7 +113,7 @@ function overviewTaskCardHTML(task) {
     <div class="taskCardOverviewBody">
       <div class="taskCardOverviewMain">
         <div class="taskCardOverviewCategoryCloseContainer">
-          <div class="taskCardOverviewCategory"></div>
+          ${taskCardCategoryHTML(task)}
           <img src="/img/Mobile/Board/closeTask.png" onclick="closeTaskCardOverview()">
         </div>  
 
@@ -149,7 +149,7 @@ function overviewTaskCardHTML(task) {
      <div class="taskCardOverviewBtnContainer">
       <button class="taskCardOverviewBtn" id="taskCardOverviewEditBtn"><img src="/img/Mobile/Board/editTask.png" >Edit</button>
       <span class="taskCardOverviewSeperator"></span>
-      <button class="taskCardOverviewBtn" id="taskCardOverviewDeleteBtn"><img src="/img/Mobile/Board/delete.png" onclick="deleteTaskCard('${task.id}')">Delete</button>      
+      <button class="taskCardOverviewBtn" id="taskCardOverviewDeleteBtn" onclick="deleteTask('${task.id}')"><img src="/img/Mobile/Board/delete.png" >Delete</button>      
      </div>
 
     </div>
