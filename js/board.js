@@ -6,6 +6,7 @@ function boardInit() {
     loadUserInitial();
     getContacts();
     displayTaskCard();
+    menuActive();
     
 }
 
