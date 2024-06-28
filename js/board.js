@@ -1,18 +1,18 @@
-function boardInit(){
+function boardInit() {
     displayMobileHeader();
     displayMobileMenu();
     loadGuestLogin();
     checkGuestLogin();
     loadUserInitial();
     getContacts();
-    displayTaskCard();    
+    displayTaskCard();
 }
 
-function addActiveClass(){
+function addActiveClass() {
     document.getElementById('searchBar').classList.add('inputActive');
 }
 
-function removeActiveClass(){
+function removeActiveClass() {
     document.getElementById('searchBar').classList.remove('inputActive');
 }
 
@@ -31,8 +31,8 @@ async function moveTo(status) {
     await getUser();
     let user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
     let userId = user.id; // Speichern Sie die ID des Benutzers
-    
-    const task = tasks.find(t => t.id === currentDraggedElement);    
+
+    const task = tasks.find(t => t.id === currentDraggedElement);
     if (task) {
         task.status = status;
         updateBoardHtml();
@@ -109,14 +109,28 @@ async function displayTaskCard() {
 
 }
 
-function displayOverwieTaskCard(taskId) {
-    let task = tasks.find(task => task.id === taskId);
-    let taskCardOverview = document.getElementById('taskCardOverviewBackground');
-    taskCardOverview.style.display = 'flex';
-    taskCardOverview.innerHTML = taskCardOverviewHTML(task);
-    
+function displayOverviewTaskCard(taskId) {
+    let task = tasks.find(t => t.id === taskId);
+
+    document.getElementById('mainBoard').innerHTML += overviewTaskCardHTML(task);
+
+
 }
 
 function closeTaskCardOverview() {
-    document.getElementById('taskCardOverviewBackground').style.display = 'none';
-}   
+    document.getElementById('taskCardOverviewBackground').remove();
+}
+
+function deleteTaskCard(taskId) {
+    let task = tasks.find(t => t.id === taskId);
+    let index = tasks.indexOf(task);
+    userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))).id;    
+
+    deleteData('/users/' + userId + '/tasks/' + taskId)
+        .then(() => {
+            tasks.splice(index, 1);
+            updateBoardHtml();
+        });
+    
+    closeTaskCardOverview();    
+}
