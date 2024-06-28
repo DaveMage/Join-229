@@ -26,7 +26,7 @@
 
       <div class="headlineContainer">
         <h1 class="headline">Board</h1>
-        <img src="/img/Mobile/Board/plusAddTaskMobile.png" />
+        <img onclick="goToAddTask()" src="/img/Mobile/Board/plusAddTaskMobile.png" />
       </div>
       <div class="searchContainer" id="searchBar">
         <input
@@ -43,7 +43,7 @@
         <div class="taskSubContainer" >
           <div class="taskSubContainerHeader">
             <h2 class="subHeadline">To do</h2>
-            <img src="/img/Mobile/Board/plusButtonMobile.png" />
+            <img onclick="goToAddTask()" src="/img/Mobile/Board/plusButtonMobile.png" />
           </div>
           <div id="toDoContainer" class="taskCardContainer" ondrop="moveTo('open')"              
           ondragover="allowDrop(event)"></div>
@@ -52,7 +52,7 @@
         <div class="taskSubContainer" >
           <div class="taskSubContainerHeader">
             <h2 class="subHeadline">In progress</h2>
-            <img src="/img/Mobile/Board/plusButtonMobile.png" />
+            <img onclick="goToAddTask()" src="/img/Mobile/Board/plusButtonMobile.png" />
           </div>
           <div id="progressContainer" class="taskCardContainer" ondrop="moveTo('inProgress')"
               
@@ -62,7 +62,7 @@
         <div class="taskSubContainer" >
           <div class="taskSubContainerHeader">
             <h2 class="subHeadline">Await feedback</h2>
-            <img src="/img/Mobile/Board/plusButtonMobile.png" />
+            <img onclick="goToAddTask()" src="/img/Mobile/Board/plusButtonMobile.png" />
           </div>
           <div id="feedbackContainer" class="taskCardContainer" ondrop="moveTo('awaitFeedback')"
               
@@ -71,8 +71,7 @@
 
         <div class="taskSubContainer" >
           <div class="taskSubContainerHeader">
-            <h2 class="subHeadline">Done</h2>
-            <img src="/img/Mobile/Board/plusButtonMobile.png" />
+            <h2 class="subHeadline">Done</h2>            
           </div>
             <div id="doneContainer" class="taskCardContainer" ondrop="moveTo('done')"              
             ondragover="allowDrop(event)">
