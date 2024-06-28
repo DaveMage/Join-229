@@ -1,18 +1,20 @@
-function boardInit(){
+function boardInit() {
     displayMobileHeader();
     displayMobileMenu();
     loadGuestLogin();
     checkGuestLogin();
     loadUserInitial();
     getContacts();
-    displayTaskCard();    
+    displayTaskCard();
+    menuActive();
+    
 }
 
-function addActiveClass(){
+function addActiveClass() {
     document.getElementById('searchBar').classList.add('inputActive');
 }
 
-function removeActiveClass(){
+function removeActiveClass() {
     document.getElementById('searchBar').classList.remove('inputActive');
 }
 
@@ -31,8 +33,8 @@ async function moveTo(status) {
     await getUser();
     let user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
     let userId = user.id; // Speichern Sie die ID des Benutzers
-    
-    const task = tasks.find(t => t.id === currentDraggedElement);    
+
+    const task = tasks.find(t => t.id === currentDraggedElement);
     if (task) {
         task.status = status;
         updateBoardHtml();
@@ -109,17 +111,41 @@ async function displayTaskCard() {
 
 }
 
-function displayOverwieTaskCard(taskId) {
-    let task = tasks.find(task => task.id === taskId);
-    let taskCardOverview = document.getElementById('taskCardOverviewBackground');
-    taskCardOverview.style.display = 'flex';
-    taskCardOverview.innerHTML = taskCardOverviewHTML(task);
-    
+function displayOverviewTaskCard(taskId) {
+    let task = tasks.find(t => t.id === taskId);
+
+    document.getElementById('mainBoard').innerHTML += overviewTaskCardHTML(task);
+
+
 }
 
 function closeTaskCardOverview() {
-    document.getElementById('taskCardOverviewBackground').style.display = 'none';
-}   
+    document.getElementById('taskCardOverviewBackground').remove();
+}
+
+
+
+async function deleteTask(taskId) {   
+    let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); // Find the user object with the specified email
+    userId = userId.id; // Get the user ID from the user object    
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn'); // Get the guestLoggedIn value from local storage
+    if (guestLoggedIn === 'true') {
+        userId = '-O-Mr5g8976g5-yCxVK8'; // Set the user ID to the guest user ID if the guest is logged in
+    }
+    if (!userId) {
+        console.error('User not found'); // Log an error message if user ID is not found
+        return;
+    }
+    try {
+        await deleteData('/users/' + userId + '/tasks/' + taskId); // Delete the contact data from the server
+        
+        closeTaskCardOverview(); // Close the task card overview
+        window.location.reload(); // Reload the page        
+        
+    } catch (error) {
+        console.error('Error deleting contact:', error); // Log an error message if there is an error deleting the contact
+    }
+}
 
 function searchForTasks() {
     let search = document.getElementById('seachFieldBoard').value.toLowerCase();    //suche die value aus dem feld

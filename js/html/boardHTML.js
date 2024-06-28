@@ -31,7 +31,7 @@ function displayNoTasksProgress() {
 }
 
 function taskCardHTML(task) {
-    return /* html */ `<div class="taskCard" ${task.status} id=${task.id} draggable="true" ondragstart="startDragging(event, '${task.id}')" onclick="displayOverwieTaskCard('${task.id}')">
+    return /* html */ `<div class="taskCard" ${task.status} id=${task.id} draggable="true" ondragstart="startDragging(event, '${task.id}')" onclick="displayOverviewTaskCard('${task.id}')">
 
     <div class="taskCardMain">
     ${taskCardCategoryHTML(task)}
@@ -107,14 +107,13 @@ function subtaskProgressbarHTML(task) {
 
 //Task Card Overwiew
 
-function overwieTaskCardHTML(task) {
+function overviewTaskCardHTML(task) {
     return /* html */`
     <div class="background" id="taskCardOverviewBackground">
     <div class="taskCardOverviewBody">
       <div class="taskCardOverviewMain">
-
         <div class="taskCardOverviewCategoryCloseContainer">
-          <div class="taskCardOverviewCategory">${task.category}</div>
+          ${taskCardCategoryHTML(task)}
           <img src="/img/Mobile/Board/closeTask.png" onclick="closeTaskCardOverview()">
         </div>  
 
@@ -136,45 +135,63 @@ function overwieTaskCardHTML(task) {
     <div class="taskCardOverviewAssignedContainer">
       <p class="taskCardOverviewLabel">Assigned To:</p>
       <div class="taskCardOverviewAssigneds">
-
-        <div class="taskCardOverviewContact">
-          <div class="taskCardOverviewProfileIcon">TM</div>
-          <p class="taskCardOverviewAssignedName">Tobias Müller</p>
-        </div>
-      
-
-      <div class="taskCardOverviewContact">
-        <div class="taskCardOverviewProfileIcon">TM</div>
-        <p class="taskCardOverviewAssignedName">Tobias Müller</p>
-      </div>
+        ${overviewTaskCardAssignedHtml(task)}     
     </div>
     </div>
 
      <div class="taskCardOverviewSubtaskContainer">
       <div class="taskCardOverviewLabel">Subtasks</div>
       <div class="taskCardOverviewSubtasks">
-        <div class="taskCardOverviewSubtask">
-          <input type="checkbox" name="" id="">
-          <label for="">${task.subtask}</label>
-        </div>
-      
-      
-        <div class="taskCardOverviewSubtask">
-          <input type="checkbox" name="" id="">
-          <label for="">${task.subtask}</label>
-        </div>
+        ${overviewTaskCardSubtaskHtml(task)}        
       </div>
      </div>
 
      <div class="taskCardOverviewBtnContainer">
       <button class="taskCardOverviewBtn" id="taskCardOverviewEditBtn"><img src="/img/Mobile/Board/editTask.png" >Edit</button>
       <span class="taskCardOverviewSeperator"></span>
-      <button class="taskCardOverviewBtn" id="taskCardOverviewDeleteBtn"><img src="/img/Mobile/Board/delete.png">Delete</button>
+      <button class="taskCardOverviewBtn" id="taskCardOverviewDeleteBtn" onclick="deleteTask('${task.id}')"><img src="/img/Mobile/Board/delete.png" >Delete</button>      
      </div>
+
     </div>
   </div>
 </div>
     `;
+}
+
+function overviewTaskCardAssignedHtml(task) {
+    // Überprüfen, ob task.assigned leer ist
+    if (!task.assigned || task.assigned.length === 0) {
+        return '';
+    }
+
+    let assignedProfilesHtml = '';
+
+    for (let i = 0; i < task.assigned.length; i++) {
+        if (task.assigned[i]) {
+            assignedProfilesHtml += /*html*/ `          
+                <div class="taskCardOverviewContact">
+                <div class="taskCardOverviewProfileIcon" style="background-color:${task.assigned[i].profileColor};">${task.assigned[i].initials}</div>
+                <p class="taskCardOverviewAssignedName">${task.assigned[i].name}</p>
+              </div>`;
+        }
+    }
+
+    return assignedProfilesHtml;
+}
+
+function overviewTaskCardSubtaskHtml(task) {
+    if (task.subtasks && task.subtasks.length > 0) {
+        let subtaskHtml = '';
+        for (let i = 0; i < task.subtasks.length; i++) {
+            subtaskHtml += /*html*/ `
+            <div class="taskCardOverviewSubtask">
+          <input type="checkbox" name="${task.id}" id="${task.id}">
+          <label for="${task.id}">${task.subtasks[i]}</label>
+        </div>`;
+        }
+        return subtaskHtml;
+    }
+    return '';
 }
 
 

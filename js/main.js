@@ -95,13 +95,6 @@ function checkGuestLogin() {
     }
 }
 
-
-
-
-
-
-
-
 /**
  * Clears the localStorage and redirects the user to the login page.
  */
@@ -164,6 +157,10 @@ function menuActive(){
         addTask.classList.remove('active');
         board.classList.remove('active');
     }
+}
+
+function goToAddTask() {
+    window.location.href = '/addTask.html';
 }
 
 
