@@ -147,7 +147,7 @@ function overviewTaskCardHTML(task) {
      </div>
 
      <div class="taskCardOverviewBtnContainer">
-      <button class="taskCardOverviewBtn" id="taskCardOverviewEditBtn"><img src="/img/Mobile/Board/editTask.png" >Edit</button>
+      <button class="taskCardOverviewBtn" id="taskCardOverviewEditBtn" onclick="openEditTask('${task.id}')"><img src="/img/Mobile/Board/editTask.png" >Edit</button>
       <span class="taskCardOverviewSeperator"></span>
       <button class="taskCardOverviewBtn" id="taskCardOverviewDeleteBtn" onclick="deleteTask('${task.id}')"><img src="/img/Mobile/Board/delete.png" >Delete</button>      
      </div>
@@ -194,6 +194,55 @@ function overviewTaskCardSubtaskHtml(task) {
     return '';
 }
 
+function taskCardEditHTML(task) {   
+    
+    return /* html */`
+    <div class="background" id="taskCardEditBackground">
+    <div class="taskCardEditBody">
+    <div class="taskCardEditMain">
+        <div class="closeBtnContainer"><img src="/img/Mobile/Board/closeTask.png" onclick="closeEditTask()"></div>
+        <form class="editTaskForm">
 
+        <div class="labelInputContainer">
+            <label for="title${task.id}">Title</label>
+            <input type="text" id="title${task.id}" name="title${task.id}" value="${task.title}" class="inputText">
+        </div>
+
+        <div class="labelInputContainer">
+            <label for="description${task.id}">Description</label>
+            <textarea  id="description${task.id}" name="description${task.id}" class="inputTextarea">${task.description}</textarea>
+        </div>
+    
+        <div class="labelInputContainer">
+            <label for="date${task.id}">Due date</label>
+            <input type="date" id="date${task.id}" name="date${task.id}" value="${task.date}" class="inputDate inputText">
+        </div>
+
+        <div class="labelInputContainer">
+            Priority
+            <div class = "prioRadioContainer">
+                <div class="prioRadio">
+                    <input class="inputUrgent" type="radio" id="urgent${task.id}" name="priority${task.id}" value="Urgent" ${task.priority.value === 'Urgent' ? 'checked' : ''} hidden >
+                    <label id="labelUrgent" class="prioLabelImg" for="urgent${task.id}">Urgent <img src="/img/Mobile/AddTask/urgentIconAddTask.png" /> </label>
+                </div>
+
+                <div class="prioRadio">
+                    <input class="inputMedium" type="radio" id="medium${task.id}" name="priority${task.id}" value="Medium" ${task.priority.value === 'Medium' ? 'checked' : ''} hidden >
+                    <label id="labelMedium" class="prioLabelImg" for="medium${task.id}">Medium <img src="/img/Mobile/AddTask/mediumIconAddTask.png" /></label>
+                </div>
+
+                <div class="prioRadio">
+                    <input class="inputLow" type="radio" id="low${task.id}" name="priority${task.id}" value="Low" ${task.priority.value === 'Low' ? 'checked' : ''} hidden >
+                    <label id="labelLow" class="prioLabelImg" for="low${task.id}">Low <img src="/img/Mobile/AddTask/lowIconAddTask.png" /> </label>
+                </div>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    </div>
+    </div>
+    `;
+}
 
 
