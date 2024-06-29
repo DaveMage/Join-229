@@ -441,11 +441,10 @@ main {
   resize: none;
 }
 
-.inputDate{  
+.inputDate {
   background-image: url(/img/Mobile/AddTask/calendarIcon.png);
   background-repeat: no-repeat;
   background-position: right 16px center;
-  
 }
 
 .inputDate::-webkit-calendar-picker-indicator {
@@ -453,15 +452,13 @@ main {
   cursor: pointer;
 }
 
-.prioRadioContainer{
+.prioRadioContainer {
   display: flex;
   gap: 16px;
   padding: 0 2px;
 }
 
-
-
-.prioLabelImg{
+.prioLabelImg {
   padding: 18px 10px;
   border-radius: 10px;
   height: 41px;
@@ -475,32 +472,84 @@ main {
   gap: 8px;
 }
 
-.inputMedium:checked+#labelMedium {
+.inputMedium:checked + #labelMedium {
   background-color: #ffa800;
   color: #ffffff;
   font-weight: 700;
 }
 
-.inputMedium:checked+#labelMedium img {
+.inputMedium:checked + #labelMedium img {
   content: url(/img/Mobile/AddTask/hoverMediumIconAddTask.png);
 }
 
-.inputUrgent:checked+#labelUrgent {
+.inputUrgent:checked + #labelUrgent {
   background-color: #ff3d00;
   color: #ffffff;
   font-weight: 700;
 }
 
-.inputUrgent:checked+#labelUrgent img {
+.inputUrgent:checked + #labelUrgent img {
   content: url(/img/Mobile/AddTask/hoverUrgentIconAdTask.png);
 }
 
-.inputLow:checked+#labelLow {
+.inputLow:checked + #labelLow {
   background-color: #7ae229;
   color: #ffffff;
   font-weight: 700;
 }
 
-.inputLow:checked+#labelLow img {
+.inputLow:checked + #labelLow img {
   content: url(/img/Mobile/AddTask/hoverLowIconAddTask.png);
+}
+
+.inputAssingedContainer {
+  position: relative;
+  border: 1px solid #d1d1d1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+.inputAssingedContainer input {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.inputAssingedContainer img {
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+  border-radius: 100%;
+}
+
+.inputAssingedContainer img:active {
+  background-color: #d1d1d1;
+}
+
+.inputAssingedContainer img:hover {
+  background-color: #d1d1d1;
+}
+
+#profileIconAssingedContainer{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.profileIcon{
+  min-height: 42px;
+  min-width: 42px;
+  border-radius: 100%;
+  border: 2px solid #ffffff;
+  background-color: #ff8190;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 12px;
 }
