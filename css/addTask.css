@@ -187,6 +187,7 @@ body {
   background-color: #ffffff;
 }
 
+
 #medium:checked+#prioMedium {
   background-color: #ffa800;
   color: #ffffff;
