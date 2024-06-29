@@ -7,7 +7,7 @@ function boardInit() {
     getContacts();
     displayTaskCard();
     menuActive();
-    
+
 }
 
 function addActiveClass() {
@@ -113,10 +113,7 @@ async function displayTaskCard() {
 
 function displayOverviewTaskCard(taskId) {
     let task = tasks.find(t => t.id === taskId);
-
     document.getElementById('mainBoard').innerHTML += overviewTaskCardHTML(task);
-
-
 }
 
 function closeTaskCardOverview() {
@@ -125,7 +122,7 @@ function closeTaskCardOverview() {
 
 
 
-async function deleteTask(taskId) {   
+async function deleteTask(taskId) {
     let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); // Find the user object with the specified email
     userId = userId.id; // Get the user ID from the user object    
     let guestLoggedIn = localStorage.getItem('guestLoggedIn'); // Get the guestLoggedIn value from local storage
@@ -138,15 +135,17 @@ async function deleteTask(taskId) {
     }
     try {
         await deleteData('/users/' + userId + '/tasks/' + taskId); // Delete the contact data from the server
-        
+
         closeTaskCardOverview(); // Close the task card overview
         window.location.reload(); // Reload the page        
-        
+
     } catch (error) {
         console.error('Error deleting contact:', error); // Log an error message if there is an error deleting the contact
     }
 }
 
+
+// Such Funktion
 function searchForTasks() {
     let search = document.getElementById('seachFieldBoard').value.toLowerCase();    //suche die value aus dem feld
     let todo = document.getElementById('toDoContainer');        // ziehe den inhalt aus den feldern
@@ -159,7 +158,7 @@ function searchForTasks() {
         const title = tasks[index]['title'];        // im array task sind alle infos drin
         if (title.toLowerCase().includes(search))       // wenn der inhalt von search der selbe ist wie title dann console log. 
             console.log('si fliegen!')          // beim test kam 7x mal raus also das volle array wie zu erwarten war. morgen gehts weiter
-        
+
     }
 }
 
@@ -167,5 +166,22 @@ function clearEveryCategorie(todo, inProgress, awaitFeedback, done) {
     todo.innerHTML = '';
     inProgress.innerHTML = '';
     awaitFeedback.innerHTML = '';
-    done.innerHTML ='';
+    done.innerHTML = '';
+}
+//----------------------------------------------
+
+//Edit Task function
+
+function openEditTask(taskId) {
+    let task = tasks.find(t => t.id === (taskId));
+    if (task) {
+        document.getElementById('mainBoard').innerHTML += taskCardEditHTML(task);
+        closeTaskCardOverview();
+    } else {
+        console.error('Task not found with ID:', taskId);
+    }
+}
+
+function closeEditTask() {
+    document.getElementById('taskCardEditBackground').remove();
 }
