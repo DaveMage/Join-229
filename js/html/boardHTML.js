@@ -238,6 +238,19 @@ function taskCardEditHTML(task) {
             </div>
         </div>
 
+        <div class="labelInputContainer">
+            Assigned to
+
+            <div class="inputAssingedContainer">
+                <input type="text" id="assigned${task.id}" name="assigned${task.id}" placeholder="Select contacts to assign" readonly>
+                <img src="/img/Mobile/AddTask/arrowDropDownaa.png">
+            </div>
+
+            <div id="profileIconAssingedContainer">
+            ${displayAssignedProfileIcons(task)}
+            </div>
+        </div>
+
         </form>
     </div>
     </div>
@@ -245,4 +258,13 @@ function taskCardEditHTML(task) {
     `;
 }
 
-
+function displayAssignedProfileIcons(task) {
+    let profileIconHtml = '';
+    if (task.assigned && task.assigned.length > 0) {
+        for (let i = 0; i < task.assigned.length; i++) {
+            profileIconHtml += /*html*/ `
+            <div class="profileIcon" style="background-color:${task.assigned[i].profileColor};">${task.assigned[i].initials}</div>`;
+        }
+    }
+    return profileIconHtml;
+}
