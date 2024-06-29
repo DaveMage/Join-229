@@ -392,3 +392,115 @@ main {
   height: 24px;
   border-left: 1px solid #d1d1d1;
 }
+
+/* edit Task */
+
+.taskCardEditBody {
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+  border-radius: 30px;
+  background-color: #ffffff;
+  padding: 32px 24px;
+  width: 100%;
+}
+
+.closeBtnContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+.closeBtnContainer img {
+  cursor: pointer;
+  border-radius: 100%;
+}
+
+.editTaskForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.labelInputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.inputText {
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  padding: 10px 21px;
+}
+
+.inputTextarea {
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  padding: 18px 21px;
+  height: 88px;
+  resize: none;
+}
+
+.inputDate{  
+  background-image: url(/img/Mobile/AddTask/calendarIcon.png);
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  
+}
+
+.inputDate::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  cursor: pointer;
+}
+
+.prioRadioContainer{
+  display: flex;
+  gap: 16px;
+  padding: 0 2px;
+}
+
+
+
+.prioLabelImg{
+  padding: 18px 10px;
+  border-radius: 10px;
+  height: 41px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: #ffffff;
+  width: 104px;
+  justify-content: center;
+  gap: 8px;
+}
+
+.inputMedium:checked+#labelMedium {
+  background-color: #ffa800;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.inputMedium:checked+#labelMedium img {
+  content: url(/img/Mobile/AddTask/hoverMediumIconAddTask.png);
+}
+
+.inputUrgent:checked+#labelUrgent {
+  background-color: #ff3d00;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.inputUrgent:checked+#labelUrgent img {
+  content: url(/img/Mobile/AddTask/hoverUrgentIconAdTask.png);
+}
+
+.inputLow:checked+#labelLow {
+  background-color: #7ae229;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.inputLow:checked+#labelLow img {
+  content: url(/img/Mobile/AddTask/hoverLowIconAddTask.png);
+}
