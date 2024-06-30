@@ -512,6 +512,7 @@ main {
   border-radius: 10px;
   padding: 12px 16px;
   cursor: pointer;
+  background-color: #ffffff;
 }
 
 .inputImgContainer input {
@@ -607,4 +608,57 @@ main {
   display: flex;
   justify-content: flex-end;
   gap: 8px;
+}
+
+.customDropdownBox {
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  background-color: #ffffff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+  padding-top: 8px;
+  margin-top: -16px;
+  
+}
+
+.assingedItem{
+  padding: 7px 16px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.assingedIconNameContainer{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.assignedCheckbox{
+  appearance: none;
+  background-image: url(/img/Mobile/Board/checkboxGrey24.png);
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+}
+
+.assignedCheckbox:checked{
+  appearance: none;
+  background-image: url(/img/Mobile/Board/checkboxChecked24.png);
+  height: 24px;
+  width: 24px;
+}
+
+.show{
+  display: flex;
+}
+
+.nameWhite {
+  color: #ffffff;
 }
