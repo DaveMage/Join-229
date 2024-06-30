@@ -241,7 +241,7 @@ function taskCardEditHTML(task) {
         <div class="labelInputContainer">
             Assigned to
 
-            <div class="inputAssingedContainer">
+            <div class="inputImgContainer">
                 <input type="text" id="assigned${task.id}" name="assigned${task.id}" placeholder="Select contacts to assign" readonly>
                 <img src="/img/Mobile/AddTask/arrowDropDownaa.png">
             </div>
@@ -251,11 +251,46 @@ function taskCardEditHTML(task) {
             </div>
         </div>
 
+        <div class="labelInputContainer">
+        Subtasks
+            <div class="inputImgContainer">
+                <input type="text" id="subtask${task.id}" name="subtask${task.id}" placeholder="Add new subtask" readonly>
+                <img src="/img/Mobile/Board/addSubtask.png">
+            </div>
+            <ul id="subtaskContainer${task.id}">
+                ${displaySubtasksHTML(task)}
+            </ul>
+        </div>
+
+
         </form>
+        <div class="taskCardEditBtnContainer">
+            <button class="taskCardEditBtn primaryBtn" id="taskCardEditSaveBtn" onclick="saveEditTask('${task.id}')">Ok <img src="/img/Mobile/Board/check.png"></button>
+            
+        </div>
     </div>
     </div>
     </div>
     `;
+}
+
+function displaySubtasksHTML(task) {
+    let subtaskHtml = '';
+    if (task.subtasks && task.subtasks.length > 0) {
+        for (let i = 0; i < task.subtasks.length; i++) {
+            subtaskHtml += /*html*/ `
+            <li class="subtaskItem"><input type="text" class="subtaskItemInput" value="${task.subtasks[i]}" readonly>            
+            <div class="subtaskItemIconContainer">
+            <img src="/img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemLeftIcon">
+            <span class="subtaskSeperator"></span>
+            <img src="/img/Mobile/AddTask/trashIcon.png" alt="Edit Icon" class="subtaskItemIcon" 
+            id="subtaskItemRightIcon"
+            >
+            </div>
+            </li>`;
+        }
+    }
+    return subtaskHtml;
 }
 
 function displayAssignedProfileIcons(task) {
