@@ -629,7 +629,7 @@ main {
   align-items: center;
   display: flex;
   border-radius: 10px;
-  cursor: pointer;
+  cursor: pointer;  
 }
 
 .assingedIconNameContainer{
@@ -660,5 +660,10 @@ main {
 }
 
 .nameWhite {
+  color: #ffffff;
+}
+
+.assignedItemChecked{
+  background-color: #2A3647;
   color: #ffffff;
 }
