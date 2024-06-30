@@ -283,12 +283,12 @@ function displayAssignedDropdown() {
     for (let i = 0; i < contacts.length; i++) {
         assignedDropdownHtml += /*html*/ `
         <div class="assingedItem">
-            <label class="assingedIconNameContainer" for="contact${contacts[i].id}" class="customDropdownItem">
+            <label class="assingedIconNameContainer" for="assignedCheckbox${contacts[i].id}" class="customDropdownItem">
                 <div class="profileIcon" style="background-color:${contacts[i].profileColor};">${contacts[i].initials}</div>
-                <p>${contacts[i].name}</p>
+                <p id="contactName${contacts[i].id}">${contacts[i].name}</p>
             </label>
-            <input class="assignedCheckbox" type="checkbox" id="contact${contacts[i].id}" name="contact${contacts[i].id}" value="${contacts[i].id}"
-            >
+            <input class="assignedCheckbox" type="checkbox" id="assignedCheckbox${contacts[i].id}" name="contact${contacts[i].id}" value="${contacts[i].id}"
+            onchange="changeBgColorAssignedItem('${contacts[i].id}')">
         </div>
         `;
     }
@@ -303,20 +303,18 @@ function toogleEditAssignedDropdown() {
     }   else {
         document.getElementById('assignedIcon').style.transform = 'rotate(0deg)';
     }
-    
+
 }
 
-function assignedItemChackBackgroundColor(checkbox, nameId) {
-    const label = checkbox.closest('.assingedItem');
-    const name = document.getElementById(nameId);
-    if (checkbox.checked) {
-        label.style.backgroundColor = '#2A3647';
-        name.classList.add('nameWhite');
-    } else {
-        label.style.backgroundColor = 'white';
-        name.classList.remove('nameWhite');
-    }
+function changeBgColorAssignedItem(contactId){
+    let assignedCheckbox = document.getElementById(`assignedCheckbox${contactId}`);
+    let contactName = document.getElementById(`contactName${contactId}`);
+    let assignedItem = assignedCheckbox.closest('.assingedItem');
+    assignedItem.style.backgroundColor = assignedCheckbox.checked ? '#2A3647' : '#fff';
+    contactName.style.color = assignedCheckbox.checked ? '#fff' : '#000';
+    assignedCheckbox.style.backgroundImage = assignedCheckbox.checked ? 'url(/img/Mobile/Board/checkButtonMobileChecked.png)' : '';
 }
+
 
 function displaySubtasksHTML(task) {
     let subtaskHtml = '';
