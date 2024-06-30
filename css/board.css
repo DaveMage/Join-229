@@ -419,6 +419,9 @@ main {
   justify-content: center;
   flex-direction: column;
   gap: 16px;
+  height: calc(100vh - 340px);
+  overflow: auto;
+  scrollbar-width: none;
 }
 
 .labelInputContainer {
@@ -620,6 +623,8 @@ main {
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
   padding-top: 8px;
   margin-top: -16px;
+  height: 200px;
+  overflow: auto;
   
 }
 
