@@ -242,8 +242,8 @@ function taskCardEditHTML(task) {
             Assigned to
 
             <div class="inputImgContainer">
-                <input type="text" id="assigned${task.id}" name="assigned${task.id}" placeholder="Select contacts to assign" readonly>
-                <img src="/img/Mobile/AddTask/arrowDropDownaa.png" onclick="toogleEditAssignedDropdown()">
+                <input type="text" id="assigned${task.id}" name="assigned${task.id}" placeholder="Select contacts to assign" readonly onclick="toogleEditAssignedDropdown()">
+                <img id="assignedIcon" src="/img/Mobile/AddTask/arrowDropDownaa.png" onclick="toogleEditAssignedDropdown()">
             </div>
 
             <div id="editAssignedDropdown" class="customDropdownBox">
@@ -298,6 +298,12 @@ function displayAssignedDropdown() {
 function toogleEditAssignedDropdown() {
     let dropdown = document.getElementById('editAssignedDropdown');
     dropdown.classList.toggle('show');
+    if (dropdown.classList.contains('show')) {
+        document.getElementById('assignedIcon').style.transform = 'rotate(180deg)';
+    }   else {
+        document.getElementById('assignedIcon').style.transform = 'rotate(0deg)';
+    }
+    
 }
 
 function assignedItemChackBackgroundColor(checkbox, nameId) {
