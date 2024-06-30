@@ -243,7 +243,11 @@ function taskCardEditHTML(task) {
 
             <div class="inputImgContainer">
                 <input type="text" id="assigned${task.id}" name="assigned${task.id}" placeholder="Select contacts to assign" readonly>
-                <img src="/img/Mobile/AddTask/arrowDropDownaa.png">
+                <img src="/img/Mobile/AddTask/arrowDropDownaa.png" onclick="toogleEditAssignedDropdown()">
+            </div>
+
+            <div id="editAssignedDropdown" class="customDropdownBox">
+                ${displayAssignedDropdown(task)}
             </div>
 
             <div id="profileIconAssingedContainer">
@@ -274,19 +278,52 @@ function taskCardEditHTML(task) {
     `;
 }
 
+function displayAssignedDropdown() {
+    let assignedDropdownHtml = '';
+    for (let i = 0; i < contacts.length; i++) {
+        assignedDropdownHtml += /*html*/ `
+        <div class="assingedItem">
+            <label class="assingedIconNameContainer" for="contact${contacts[i].id}" class="customDropdownItem">
+                <div class="profileIcon" style="background-color:${contacts[i].profileColor};">${contacts[i].initials}</div>
+                <p>${contacts[i].name}</p>
+            </label>
+            <input class="assignedCheckbox" type="checkbox" id="contact${contacts[i].id}" name="contact${contacts[i].id}" value="${contacts[i].id}"
+            >
+        </div>
+        `;
+    }
+    return assignedDropdownHtml;
+}
+
+function toogleEditAssignedDropdown() {
+    let dropdown = document.getElementById('editAssignedDropdown');
+    dropdown.classList.toggle('show');
+}
+
+function assignedItemChackBackgroundColor(checkbox, nameId) {
+    const label = checkbox.closest('.assingedItem');
+    const name = document.getElementById(nameId);
+    if (checkbox.checked) {
+        label.style.backgroundColor = '#2A3647';
+        name.classList.add('nameWhite');
+    } else {
+        label.style.backgroundColor = 'white';
+        name.classList.remove('nameWhite');
+    }
+}
+
 function displaySubtasksHTML(task) {
     let subtaskHtml = '';
     if (task.subtasks && task.subtasks.length > 0) {
         for (let i = 0; i < task.subtasks.length; i++) {
             subtaskHtml += /*html*/ `
-            <li class="subtaskItem"><input type="text" class="subtaskItemInput" value="${task.subtasks[i]}" readonly>            
-            <div class="subtaskItemIconContainer">
-            <img src="/img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemLeftIcon">
-            <span class="subtaskSeperator"></span>
-            <img src="/img/Mobile/AddTask/trashIcon.png" alt="Edit Icon" class="subtaskItemIcon" 
-            id="subtaskItemRightIcon"
-            >
-            </div>
+            <li class="subtaskItem">
+                <input type="text" class="subtaskItemInput" value="${task.subtasks[i]}" readonly>            
+                    <div class="subtaskItemIconContainer">
+                        <img src="/img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemLeftIcon">
+                        <span class="subtaskSeperator"></span>
+                        <img src="/img/Mobile/AddTask/trashIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemRightIcon">
+                    </div>
             </li>`;
         }
     }
