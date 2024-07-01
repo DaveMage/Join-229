@@ -155,12 +155,21 @@ function searchForTasks() {
     let done = document.getElementById('doneContainer');
     clearEveryCategorie(todo, inProgress, awaitFeedback, done);  // lösche alles
 
-    for (let index = 0; index < tasks.length; index++) {    // for schleife um abzufragen
-        const title = tasks[index]['title'];        // im array task sind alle infos drin
-        if (title.toLowerCase().includes(search))       // wenn der inhalt von search der selbe ist wie title dann console log. 
-            console.log('si fliegen!')          // beim test kam 7x mal raus also das volle array wie zu erwarten war. morgen gehts weiter
+    tasks.forEach(task => {  //durchsuche die tasks
+        if (task.title.toLowerCase().includes(search) || task.description.toLowerCase().includes(search)) {  //suche nach dem wort
+            if (task.status === 'open') {
+                todo.innerHTML += taskCardHTML(task);  //füge es in die kategorie ein
+            } else if (task.status === 'inProgress') {
+                inProgress.innerHTML += taskCardHTML(task);
+            } else if (task.status === 'awaitFeedback') {
+                awaitFeedback.innerHTML += taskCardHTML(task);
+            } else if (task.status === 'done') {
+                done.innerHTML += taskCardHTML(task);
+            }
+        }          
 
-    }
+    });
+    displayNoTasks();
 }
 
 function clearEveryCategorie(todo, inProgress, awaitFeedback, done) {
