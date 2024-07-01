@@ -288,7 +288,7 @@ function displayAssignedDropdown() {
                 <p id="contactName${contacts[i].id}">${contacts[i].name}</p>
             </label>
             <input class="assignedCheckbox" type="checkbox" id="assignedCheckbox${contacts[i].id}" name="contact${contacts[i].id}" value="${contacts[i].id}"
-            onchange="changeBgColorAssignedItem('${contacts[i].id}')">
+            onchange="changeBgColorAssignedItem('${contacts[i].id}'); selectEditAssigned()">
         </div>
         `;
     }
@@ -305,6 +305,9 @@ function toogleEditAssignedDropdown() {
     }
 
 }
+
+
+
 
 function changeBgColorAssignedItem(contactId){
     let assignedCheckbox = document.getElementById(`assignedCheckbox${contactId}`);
