@@ -35,9 +35,10 @@
           placeholder="Find Task"
           onfocus="addActiveClass()"
           onblur="removeActiveClass()"
+          onkeypress="searchForTasks()"
         />
         <span class="seperator"></span>
-        <img onchange="searchForTasks()" src="/img/Mobile/Board/search.png"/>
+        <img  src="/img/Mobile/Board/search.png"/>
       </div>
 
       <div class="tasksContainer">
