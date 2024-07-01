@@ -7,6 +7,7 @@ function boardInit() {
     getContacts();
     displayTaskCard();
     menuActive();
+    
 
 }
 
