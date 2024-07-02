@@ -2,6 +2,7 @@ async function onloadInit() {
     displayUserName();
     displayMobileHeader();
     displayMobileMenu();
+    displayDesktopMenu();
     loadGuestLogin();
     checkGuestLogin();
     await loadUserInitial();
@@ -12,6 +13,7 @@ async function onloadInit() {
 async function templateInit(){    
     displayMobileHeader();
     displayMobileMenu();
+    displayDesktopMenu();
     loadGuestLogin();
     checkGuestLogin();
     await loadUserInitial();
@@ -44,6 +46,12 @@ function displayMobileMenu() {
     document.getElementById("menu").innerHTML = menuMobileHtml();
 }
 
+/**
+ * Displays the desktop menu by updating the HTML content of the "menu" element.
+ */
+function displayDesktopMenu() {
+    document.getElementById("menuDesktop").innerHTML = menuDesktopHtml();
+}
 
 /**
  * Toggles the display of the logout element on mobile devices.

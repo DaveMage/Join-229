@@ -1,6 +1,7 @@
 async function contactInit() {
     displayMobileHeader();
     displayMobileMenu();
+    displayDesktopMenu();
     loadGuestLogin();
     menuActive();	
     await getContacts();

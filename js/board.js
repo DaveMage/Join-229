@@ -1,14 +1,13 @@
 function boardInit() {
     displayMobileHeader();
     displayMobileMenu();
+    displayDesktopMenu();
     loadGuestLogin();
     checkGuestLogin();
     loadUserInitial();
     getContacts();
     displayTaskCard();
     menuActive();
-    
-
 }
 
 function addActiveClass() {

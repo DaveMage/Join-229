@@ -1,6 +1,7 @@
 function addTaskInit() {
     displayMobileHeader();
     displayMobileMenu();
+    displayDesktopMenu();
     loadUserInitial();
     dateTreshhold();
     getContacts();

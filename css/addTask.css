@@ -363,3 +363,9 @@ body {
   justify-content: center;
   
 }
+
+@media (min-width: 1100px) {
+  .addTaskBtnContainer {
+    left: 232px;
+  }
+}
