@@ -92,10 +92,19 @@ function countDoneTasks(tasks) {
     return tasks.filter(task => task.status === 'done').length;
 }
 
+function countUrgentTasks(tasks) {
+    return tasks.filter(task => task.priority.value === 'Urgent').length;
+}
+
+function countTasks(tasks) {
+    return tasks.length;
+}
+
+
+
 
 async function displayCountToDo() {
-    let tasks = await getTask(); // Fetch the tasks
-    console.log(tasks); // Log the tasks to ensure they are fetched correctly
+    let tasks = await getTask(); // Fetch the tasks    
     let openTasksCount = countOpenTasks(tasks); // Count the 'open' tasks
     document.getElementById('openTasks').innerHTML = openTasksCount;
 }
@@ -118,11 +127,25 @@ async function displayCountDone() {
     document.getElementById('doneTasks').innerHTML = doneTasksCount;
 }
 
+async function displayCountUrgent() {
+    let tasks = await getTask(); // Fetch the tasks
+    let urgentTasksCount = countUrgentTasks(tasks); // Count the 'urgent' tasks
+    document.getElementById('urgentTasks').innerHTML = urgentTasksCount;
+}
+
+async function displayCountAllTasks() {
+    let tasks = await getTask(); // Fetch the tasks
+    let allTasksCount = countTasks(tasks); // Count all tasks
+    document.getElementById('allTasks').innerHTML = allTasksCount;
+}
+
 
 function countInit(){
     displayCountToDo();
     displayCountInProgress();
     displayCountAwaitFeedback();
     displayCountDone();
+    displayCountUrgent();
+    displayCountAllTasks();
 }
 
