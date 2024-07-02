@@ -74,3 +74,17 @@ function greeting(){
     greetingContainer.innerHTML = greeting;
 }
 
+// function getMyTasks() {
+//     let statusOpen = document.getElementById('number-to-do').value;
+//     let statusinProgress = document.getElementById('number-tasksinprogress').value;
+//     let statusawaitFeedback = document.getElementById('number-awaitingfeedback').value;
+//     let statusDone = document.getElementById('number-done').value;
+//     let statusAllTasks = document.getElementById('numberTasksinboard').value;
+// }
+
+function getMyTasks() {
+    let status = tasks[0]['staus']
+    if (status == 'awaitFeedback') {
+        document.getElementById('number-to-do').innerHTML = status
+    }
+}
