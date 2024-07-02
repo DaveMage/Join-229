@@ -6,7 +6,8 @@ async function onloadInit() {
     checkGuestLogin();
     await loadUserInitial();
     menuActive();
-    lengthToDo();
+    getTask();
+    getMyTasks();
 }
 
 async function templateInit(){    
