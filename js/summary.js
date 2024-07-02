@@ -213,28 +213,3 @@ async function displayCountAllTasks() {
     let allTasksCount = countTasks(tasks); // Count all tasks
     document.getElementById('allTasks').innerHTML = allTasksCount;
 }
-
-
-function countInit(){
-    displayCountToDo();
-    displayCountInProgress();
-    displayCountAwaitFeedback();
-    displayCountDone();
-    displayCountUrgent();
-    displayCountAllTasks();
-}
-
-// function getMyTasks() {
-//     let statusOpen = document.getElementById('number-to-do').value;
-//     let statusinProgress = document.getElementById('number-tasksinprogress').value;
-//     let statusawaitFeedback = document.getElementById('number-awaitingfeedback').value;
-//     let statusDone = document.getElementById('number-done').value;
-//     let statusAllTasks = document.getElementById('numberTasksinboard').value;
-// }
-
-function getMyTasks() {
-    let status = tasks[0]['staus']
-    if (status == 'awaitFeedback') {
-        document.getElementById('number-to-do').innerHTML = status
-    }
-}
