@@ -74,3 +74,55 @@ function greeting(){
     greetingContainer.innerHTML = greeting;
 }
 
+
+
+function countOpenTasks(tasks) {
+    return tasks.filter(task => task.status === 'open').length;
+}
+
+function countInProgressTasks(tasks) {
+    return tasks.filter(task => task.status === 'inProgress').length;
+}
+
+function countAwaitFeedbackTasks(tasks) {
+    return tasks.filter(task => task.status === 'awaitFeedback').length;
+}
+
+function countDoneTasks(tasks) {
+    return tasks.filter(task => task.status === 'done').length;
+}
+
+
+async function displayCountToDo() {
+    let tasks = await getTask(); // Fetch the tasks
+    console.log(tasks); // Log the tasks to ensure they are fetched correctly
+    let openTasksCount = countOpenTasks(tasks); // Count the 'open' tasks
+    document.getElementById('openTasks').innerHTML = openTasksCount;
+}
+
+async function displayCountInProgress() {
+    let tasks = await getTask(); // Fetch the tasks
+    let inProgressTasksCount = countInProgressTasks(tasks); // Count the 'inProgress' tasks
+    document.getElementById('inProgressTasks').innerHTML = inProgressTasksCount;
+}
+
+async function displayCountAwaitFeedback() {
+    let tasks = await getTask(); // Fetch the tasks
+    let awaitFeedbackTasksCount = countAwaitFeedbackTasks(tasks); // Count the 'awaitFeedback' tasks
+    document.getElementById('awaitFeedbackTasks').innerHTML = awaitFeedbackTasksCount;
+}
+
+async function displayCountDone() {
+    let tasks = await getTask(); // Fetch the tasks
+    let doneTasksCount = countDoneTasks(tasks); // Count the 'done' tasks
+    document.getElementById('doneTasks').innerHTML = doneTasksCount;
+}
+
+
+function countInit(){
+    displayCountToDo();
+    displayCountInProgress();
+    displayCountAwaitFeedback();
+    displayCountDone();
+}
+
