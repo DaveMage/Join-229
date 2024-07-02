@@ -295,6 +295,7 @@ function displayAssignedDropdown() {
     return assignedDropdownHtml;
 }
 
+
 function toogleEditAssignedDropdown() {
     let dropdown = document.getElementById('editAssignedDropdown');
     dropdown.classList.toggle('show');
