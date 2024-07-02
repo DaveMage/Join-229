@@ -150,7 +150,10 @@ function assignedItemHtml(contact) {
                 type="checkbox"                
                 class="checkboxAssigned"
                 onchange="assignedItemChackBackgroundColor(this, 'name${contact.id}'); selectAssigned()"/>  
-        </label>`;
+        </label>
+        
+        
+        `;
 }
 
 
