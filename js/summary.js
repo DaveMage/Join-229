@@ -149,3 +149,92 @@ function countInit(){
     displayCountAllTasks();
 }
 
+
+
+function countOpenTasks(tasks) {
+    return tasks.filter(task => task.status === 'open').length;
+}
+
+function countInProgressTasks(tasks) {
+    return tasks.filter(task => task.status === 'inProgress').length;
+}
+
+function countAwaitFeedbackTasks(tasks) {
+    return tasks.filter(task => task.status === 'awaitFeedback').length;
+}
+
+function countDoneTasks(tasks) {
+    return tasks.filter(task => task.status === 'done').length;
+}
+
+function countUrgentTasks(tasks) {
+    return tasks.filter(task => task.priority.value === 'Urgent').length;
+}
+
+function countTasks(tasks) {
+    return tasks.length;
+}
+
+
+
+
+async function displayCountToDo() {
+    let tasks = await getTask(); // Fetch the tasks    
+    let openTasksCount = countOpenTasks(tasks); // Count the 'open' tasks
+    document.getElementById('openTasks').innerHTML = openTasksCount;
+}
+
+async function displayCountInProgress() {
+    let tasks = await getTask(); // Fetch the tasks
+    let inProgressTasksCount = countInProgressTasks(tasks); // Count the 'inProgress' tasks
+    document.getElementById('inProgressTasks').innerHTML = inProgressTasksCount;
+}
+
+async function displayCountAwaitFeedback() {
+    let tasks = await getTask(); // Fetch the tasks
+    let awaitFeedbackTasksCount = countAwaitFeedbackTasks(tasks); // Count the 'awaitFeedback' tasks
+    document.getElementById('awaitFeedbackTasks').innerHTML = awaitFeedbackTasksCount;
+}
+
+async function displayCountDone() {
+    let tasks = await getTask(); // Fetch the tasks
+    let doneTasksCount = countDoneTasks(tasks); // Count the 'done' tasks
+    document.getElementById('doneTasks').innerHTML = doneTasksCount;
+}
+
+async function displayCountUrgent() {
+    let tasks = await getTask(); // Fetch the tasks
+    let urgentTasksCount = countUrgentTasks(tasks); // Count the 'urgent' tasks
+    document.getElementById('urgentTasks').innerHTML = urgentTasksCount;
+}
+
+async function displayCountAllTasks() {
+    let tasks = await getTask(); // Fetch the tasks
+    let allTasksCount = countTasks(tasks); // Count all tasks
+    document.getElementById('allTasks').innerHTML = allTasksCount;
+}
+
+
+function countInit(){
+    displayCountToDo();
+    displayCountInProgress();
+    displayCountAwaitFeedback();
+    displayCountDone();
+    displayCountUrgent();
+    displayCountAllTasks();
+}
+
+// function getMyTasks() {
+//     let statusOpen = document.getElementById('number-to-do').value;
+//     let statusinProgress = document.getElementById('number-tasksinprogress').value;
+//     let statusawaitFeedback = document.getElementById('number-awaitingfeedback').value;
+//     let statusDone = document.getElementById('number-done').value;
+//     let statusAllTasks = document.getElementById('numberTasksinboard').value;
+// }
+
+function getMyTasks() {
+    let status = tasks[0]['staus']
+    if (status == 'awaitFeedback') {
+        document.getElementById('number-to-do').innerHTML = status
+    }
+}
