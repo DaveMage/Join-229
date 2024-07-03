@@ -1,6 +1,7 @@
 function headerMobileHtml(){
    return `
-   <img src="/img/Mobile/generalElements/joinLogoMobile.png" alt="Join Logo">
+   <img class="headerMobileLogo" src="/img/Mobile/generalElements/joinLogoMobile.png" alt="Join Logo">
+   <span class="headerDesktopText">Kanban Project Management Tool</span>
    <div class="headerProfileIcon" onclick="displayMobileLogout()">
        <span id="profileInitial"></span> 
     </div>
