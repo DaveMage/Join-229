@@ -165,7 +165,7 @@ function searchForTasks() {
             } else if (task.status === 'done') {
                 done.innerHTML += taskCardHTML(task);
             }
-        }          
+        }
 
     });
     displayNoTasks();
@@ -195,30 +195,97 @@ function closeEditTask() {
     document.getElementById('taskCardEditBackground').remove();
 }
 
-async function selectEditAssigned(taskId){
-        const selectedAssigned = [];
-        const inputAssigned = document.getElementById(`assigned${taskId}`);
-        const checkboxes = document.querySelectorAll('.assignedCheckbox');
+async function selectEditAssigned(taskId) {
+    const selectedAssigned = [];
+    const inputAssigned = document.getElementById(`assigned${taskId}`);
+    const checkboxes = document.querySelectorAll('.assignedCheckbox');
 
-        checkboxes.forEach(checkbox => {
-            // Get the contact name element
-            const contactNameElement = checkbox.parentNode.querySelector('p[id^="contactName"]');
-            
-            if (checkbox.checked && contactNameElement) {
-                const contactName = contactNameElement.textContent.trim();
-                const contact = contacts.find(c => c.name === contactName);
-                if (contact) {
-                    selectedAssigned.push(contact);                   
-                }
+    checkboxes.forEach(checkbox => {
+        // Get the contact name element
+        const contactNameElement = checkbox.parentNode.querySelector('p[id^="contactName"]');
+
+        if (checkbox.checked && contactNameElement) {
+            const contactName = contactNameElement.textContent.trim();
+            const contact = contacts.find(c => c.name === contactName);
+            if (contact) {
+                selectedAssigned.push(contact);
             }
-        });
+        }
+    });
 
-        // Set the value of the input field
-        if (inputAssigned) {
-            inputAssigned.value = selectedAssigned.length > 0 ? 'An: ' + selectedAssigned.map(c => c.name).join(', ') : '';    
-        } else {
-            console.error(`Input field assigned${taskId} not found`);
-        }       
-
-        return selectedAssigned;
+    // Set the value of the input field
+    if (inputAssigned) {
+        inputAssigned.value = selectedAssigned.length > 0 ? 'An: ' + selectedAssigned.map(c => c.name).join(', ') : '';
+    } else {
+        console.error(`Input field assigned${taskId} not found`);
     }
+
+    return selectedAssigned;
+}
+
+function deleteSubtask(taskId, subtaskIndex) {
+    // Find the task by taskId
+    const task = tasks.find(t => t.id === taskId);
+    if (task) {
+        // Remove the subtask at subtaskIndex
+        task.subtasks.splice(subtaskIndex, 1);
+        // Update the subtask HTML
+        const subtaskContainer = document.getElementById(`subtaskContainer${taskId}`);
+        if (subtaskContainer) {
+            subtaskContainer.innerHTML = displaySubtasksHTML(task);
+        }
+    }
+}
+
+function addSubtask(taskId) {
+    // Find the task by taskId
+    const task = tasks.find(t => t.id === taskId);
+    if (task) {
+        // Get the input field value
+        const inputField = document.getElementById(`subtaskInput${taskId}`);
+        const newSubtask = inputField.value.trim();
+
+        if (newSubtask) {
+            // Add the new subtask to the task
+            task.subtasks.push(newSubtask);
+            // Update the subtask HTML
+            const subtaskContainer = document.getElementById(`subtaskContainer${taskId}`);
+            if (subtaskContainer) {
+                subtaskContainer.innerHTML = displaySubtasksHTML(task);
+            }
+            // Clear the input field
+            inputField.value = '';
+        } else {
+            console.error('Subtask cannot be empty');
+        }
+    } else {
+        console.error(`Task with id ${taskId} not found`);
+    }
+}
+
+function focusSubtaskInput() {
+    const inputField = document.getElementById(`subtask`);
+    let leftIcon = document.getElementById('leftEditSubtaskIcon');
+    let rightIcon = document.getElementById('rightEditSubtaskIcon');
+    let seperator = document.getElementById('subtaskEditInputSeperator');
+    inputField.readOnly = false;
+    inputField.focus();
+    leftIcon.src = '/img/Mobile/AddTask/closeIcon.png';
+    leftIcon.style.display = 'flex';
+    rightIcon.src = '/img/Mobile/AddTask/checkIcon.png';
+    seperator.style.display = 'flex';
+
+}
+
+function onBlurSubtaskInput() {
+    const inputField = document.getElementById(`subtask`);
+    let leftIcon = document.getElementById('leftEditSubtaskIcon');
+    let rightIcon = document.getElementById('rightEditSubtaskIcon');
+    let seperator = document.getElementById('subtaskEditInputSeperator');
+    inputField.readOnly = true;
+    leftIcon.src = '#';
+    leftIcon.style.display = 'none';
+    rightIcon.src = '/img/Mobile/Board/addSubtask.png';
+    seperator.style.display = 'none';
+    inputField.setAttribute('readonly', 'readonly');
+}
