@@ -678,3 +678,59 @@ main {
   gap: 8px;
   align-items: center;
 }
+
+/* Desktopversion */
+
+@media (min-width: 1100px) {
+  main {
+    height: 100vh;
+    margin-left: 48px;
+  }
+
+  .headerBoard {
+    height: 232px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .addTaskOnBoard {
+    content: url("/img/Desktop/board/addTaskOnBoardDesktopDefault.png");
+  }
+
+  .addTaskOnBoard:hover {
+    content: url("/img/Desktop/board/addTaskOnBoardDesktopHover.png");
+  }
+
+  .headlineContainer img:active {
+    content: url("/img/Desktop/board/addTaskOnBoardDesktopActive.png");
+  }
+
+  .tasksContainer {
+    flex-direction: row;
+    gap: 35px;
+  }
+
+  .taskCardContainer {
+    flex-direction: column;
+    width: 252px;
+  }
+
+  .subHeadline {
+    font-size: 20px;
+    color: #42526E;
+  }
+
+  .taskCard {
+    width: 220px;
+  }
+
+  .addTaskDesktopIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .addTaskDesktopIcon:hover {
+    content: url("/img/Mobile/Board/plusButtonMobileBlue.png");
+  }
+}

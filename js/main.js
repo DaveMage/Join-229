@@ -128,42 +128,90 @@ function logout() {
 
 function menuActive(){
     let summary = document.getElementById('summaryLink');
+    let summaryDesktop = document.getElementById('summaryLinkDesktop');
+    let summaryIconDesktop = document.getElementById('summaryDesktopIcon');
     let board = document.getElementById('boardLink');
+    let boardDesktop = document.getElementById('boardLinkDesktop');
+    let boardIconDesktop = document.getElementById('boardDesktopIcon');
     let addTask = document.getElementById('addTaskLink');
+    let addTaskDesktop = document.getElementById('addTaskLinkDesktop');
+    let addTaskIconDesktop = document.getElementById('addTaskDesktopIcon');
     let contacts = document.getElementById('contactsLink');
+    let contactsDesktop = document.getElementById('contactsLinkDesktop');
+    let contactsIconDesktop = document.getElementById('contactsDesktopIcon');
 
     if (window.location.pathname === '/summary.html') {
         summary.classList.add('active');
+        summaryDesktop.classList.add('activeDesktop');
+        summaryIconDesktop.classList.add('activeDesktopIconSummary');
         addTask.classList.remove('active');
+        addTaskDesktop.classList.remove('activeDesktop');
+        addTaskIconDesktop.classList.remove('activeDesktopIconAddTask');
         board.classList.remove('active');
+        boardDesktop.classList.remove('activeDesktop');
+        boardIconDesktop.classList.remove('activeDesktopIconBoard');
         contacts.classList.remove('active');
+        contactsDesktop.classList.remove('activeDesktop');
+        contactsIconDesktop.classList.remove('activeDesktopIconContacts');
     }
 
     if (window.location.pathname === '/greeting.html') {
         summary.classList.add('active');
+        summaryDesktop.classList.add('activeDesktop');
+        summaryIconDesktop.classList.add('activeDesktopIconSummary');
         addTask.classList.remove('active');
+        addTaskDesktop.classList.remove('activeDesktop');
+        addTaskIconDesktop.classList.remove('activeDesktopIconAddTask');
         board.classList.remove('active');
+        boardDesktop.classList.remove('activeDesktop');
+        boardIconDesktop.classList.remove('activeDesktopIconBoard');
         contacts.classList.remove('active');
+        contactsDesktop.classList.remove('activeDesktop');
+        contactsIconDesktop.classList.remove('activeDesktopIconContacts');
     }
 
     if (window.location.pathname === '/addTask.html') {
         addTask.classList.add('active');
+        addTaskDesktop.classList.add('activeDesktop');
+        addTaskIconDesktop.classList.add('activeDesktopIconAddTask');
         summary.classList.remove('active');
+        summaryDesktop.classList.remove('activeDesktop');
+        summaryIconDesktop.classList.remove('activeDesktopIconSummary');
         board.classList.remove('active');
+        boardDesktop.classList.remove('activeDesktop');
+        boardIconDesktop.classList.remove('activeDesktopIconBoard');
         contacts.classList.remove('active');
+        contactsDesktop.classList.remove('activeDesktop');
+        contactsIconDesktop.classList.remove('activeDesktopIconContacts');
     }
 
     if (window.location.pathname === '/board.html') {
         board.classList.add('active');
+        boardDesktop.classList.add('activeDesktop');
+        boardIconDesktop.classList.add('activeDesktopIconBoard');
         summary.classList.remove('active');
+        summaryDesktop.classList.remove('activeDesktop');
+        summaryIconDesktop.classList.remove('activeDesktopIconSummary');
         addTask.classList.remove('active');
+        addTaskDesktop.classList.remove('activeDesktop');
+        addTaskIconDesktop.classList.remove('activeDesktopIconAddTask');
         contacts.classList.remove('active');
+        contactsDesktop.classList.remove('activeDesktop');
+        contactsIconDesktop.classList.remove('activeDesktopIconContacts');
     }
     if (window.location.pathname === '/contacts.html') {
         contacts.classList.add('active');
+        contactsDesktop.classList.add('activeDesktop');
+        contactsIconDesktop.classList.add('activeDesktopIconContacts');
         summary.classList.remove('active');
+        summaryDesktop.classList.remove('activeDesktop');
+        summaryIconDesktop.classList.remove('activeDesktopIconSummary');
         addTask.classList.remove('active');
+        addTaskDesktop.classList.remove('activeDesktop');
+        addTaskIconDesktop.classList.remove('activeDesktopIconAddTask');
         board.classList.remove('active');
+        boardDesktop.classList.remove('activeDesktop');
+        boardIconDesktop.classList.remove('activeDesktopIconBoard');
     }
 }
 

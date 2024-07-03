@@ -1,9 +1,13 @@
 function headerMobileHtml(){
-   return `
-   <img class="headerMobileLogo" src="/img/Mobile/generalElements/joinLogoMobile.png" alt="Join Logo">
-   <span class="headerDesktopText">Kanban Project Management Tool</span>
-   <div class="headerProfileIcon" onclick="displayMobileLogout()">
-       <span id="profileInitial"></span> 
+   return /*html*/ `
+    <img class="headerMobileLogo" src="/img/Mobile/generalElements/joinLogoMobile.png" alt="Join Logo">
+    <span class="headerDesktopText">Kanban Project Management Tool</span>
+    
+    <div class="headerProfileMenu">
+        <img src="./img/Desktop/header/helpIconSmall.png" alt="Help Icon" class="helpIcon">
+        <div class="headerProfileIcon" onclick="displayMobileLogout()">
+           <span id="profileInitial"></span>
+        </div>
     </div>
     ${logoutMobileHtml()}`; 
 }
@@ -75,8 +79,8 @@ function menuDesktopHtml() {
             </a>
         </div>
         <div class="contentLinksPolicyLegalNotice">
-            <p class="linksPrivacyLegal">Privacy Policy</p>
-            <p class="linksPrivacyLegal">Legal notice</p>
+            <a href="./privacyPolice.html" class="linksPrivacyLegal">Privacy Policy</a>
+            <a href="./legalNotice.html" class="linksPrivacyLegal">Legal notice</a>
         </div>
     `;
 }

@@ -58,3 +58,9 @@ body {
   font-size: 20px;
   font-weight: 700;
 }
+
+@media (min-width: 1100px) {
+  .helpContent {
+    height: 100vh;
+  }
+}

@@ -209,6 +209,11 @@ body{
   display: block;
 }
 
+.helpIcon {
+  display: none;
+  cursor: pointer;
+}
+
 @media (min-width: 1100px) {
   .headerDesktopText {
       display: block;
@@ -216,6 +221,21 @@ body{
   
   .headerMobileLogo {
       display: none;
+  }
+
+  .headerProfileMenu {
+    width: 88px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .helpIcon {
+    display: block;
+  }
+
+  .helpIcon:hover {
+    content: url("/img/Desktop/header/helpIconBig.png");
   }
 }
 
