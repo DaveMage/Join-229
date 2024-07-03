@@ -24,181 +24,173 @@
     <main class="mainContainer" id="mainContainerId">
       <h1 class="addTaskHeadline">Add Task</h1>
       <form onsubmit="return false;" class="addTaskForm">
-        <label for="addTaskTitle" class="addTaskLabel">
-          <p>Title<span class="required">*</span></p>
-          <input
-            type="text"
-            placeholder="Enter a Title"
-            class="addTaskInput focus-border"
-            id="addTaskTitle"
-            onblur="titlequery()"
-          />
-          <span id="errorSpanTitle" class="errorSpan"
-            >This field is required</span
-          >
-        </label>
-
-
-
-        <label for="addTaskDescription" class="addTaskLabel" id="addTaskLabelDescription">
-          Description
-          <textarea
-            placeholder="Enter a Description"
-            class="addTaskInput addTaskDescription focus-border"
-            id="addTaskDescription"
-            rows="4"
-          ></textarea>
-        </label>
-
-        <!-- dropdown Box Assigned -->
-        <label for="addTaskFormAssignedInput" class="addTaskLabel">
-          Assigned To
-          <div class="addTaskInputIconContainer">
+        <div class="addTaskUpperDesktop"> <!-- linker teil für desktop version-->
+          <label for="addTaskTitle" class="addTaskLabel">
+            <p>Title<span class="required">*</span></p>
             <input
-              id="addTaskFormAssignedInput"
               type="text"
-              placeholder="Select contacts to assign"
+              placeholder="Enter a Title"
               class="addTaskInput focus-border"
-              onclick="toggleAssignedDropdown()"
-              readonly
+              id="addTaskTitle"
+              onblur="titlequery()"
             />
-            <img
-              class="dropdownIcon"
-              id="assignedDropdownArrow"
-              src="/img/Mobile/AddTask/arrowDropDownaa.png"
-            />
-          </div>
-          <div
-            class="customDropdownAssigned customDropdownBox"
-            id="dropdownAssigned"
-          >
-            <!-- Assigend Item with Checkbox -->
-          </div>
-        </label>
-
-        <!--Due Date -->
-        <label for="addTaskDueDate" class="addTaskLabel">
-          <p>Due Date<span class="required">*</span></p>
-          <input
-            type="date"
-            class="addTaskInput focus-border"
-            id="addTaskDueDate"
-            placeholder="Select a Date"
-            onblur="datequery()"
-          />
-          <span id="errorSpanDate" class="errorSpan"
-            >This field is required</span
-          >
-        </label>
-
-        <!-- Priority -->
-        <label for="addTaskPriority" class="addTaskLabel"> Priority </label>
-
-        <!-- Prio input Radio als btn -->
-        <div class="prioContainer">
-          <!-- Prio input Radio Urgent -->
-          <input
-            type="radio"
-            id="urgent"
-            name="priority"
-            value="Urgent"
-            hidden
-          />
-          <label for="urgent" class="prioLabel" id="prioUrgent">
-            Urgent
-            <img src="/img/Mobile/AddTask/urgentIconAddTask.png" />
+            <span id="errorSpanTitle" class="errorSpan"
+              >This field is required</span
+            >
           </label>
-
-          <!-- Prio input Radio Medium -->
-          <input
-            type="radio"
-            id="medium"
-            name="priority"
-            value="Medium"
-            hidden
-            checked
-          />
-          <label for="medium" class="prioLabel" id="prioMedium">
-            Medium
-            <img src="/img/Mobile/AddTask/mediumIconAddTask.png" />
+          <label for="addTaskDescription" class="addTaskLabel" id="addTaskLabelDescription">
+            Description
+            <textarea
+              placeholder="Enter a Description"
+              class="addTaskInput addTaskDescription focus-border"
+              id="addTaskDescription"
+              rows="4"
+            ></textarea>
           </label>
-
-          <!-- Prio input Radio Low -->
-          <input type="radio" id="low" name="priority" value="Low" hidden />
-          <label for="low" class="prioLabel" id="prioLow">
-            Low
-            <img src="/img/Mobile/AddTask/lowIconAddTask.png" />
+          <label for="addTaskFormAssignedInput" class="addTaskLabel"> <!-- dropdown Box Assigned -->
+            Assigned To
+            <div class="addTaskInputIconContainer">
+              <input
+                id="addTaskFormAssignedInput"
+                type="text"
+                placeholder="Select contacts to assign"
+                class="addTaskInput focus-border"
+                onclick="toggleAssignedDropdown()"
+                readonly
+              />
+              <img
+                class="dropdownIcon"
+                id="assignedDropdownArrow"
+                src="/img/Mobile/AddTask/arrowDropDownaa.png"
+              />
+            </div>
+            <div
+              class="customDropdownAssigned customDropdownBox"
+              id="dropdownAssigned"
+            >
+              <!-- Assigend Item with Checkbox -->
+            </div>
           </label>
         </div>
 
-        <!-- Category -->
-        <label for="addTaskCategory" class="addTaskLabel">
-          Category
-          <div class="addTaskInputIconContainer">
+        <span class="addTaskDesktopSeperator"></span>
+        
+        <div class="addTaskLowerDesktop"> <!-- rechter teil für desktop version-->
+          <label for="addTaskDueDate" class="addTaskLabel"> <!--Due Date -->
+            <p>Due Date<span class="required">*</span></p>
             <input
-              id="addTaskCategory"
-              type="text"
-              placeholder="Select a Category"
+              type="date"
               class="addTaskInput focus-border"
-              readonly
-              onclick="toggleCategoryDropdown()"
+              id="addTaskDueDate"
+              placeholder="Select a Date"
+              onblur="datequery()"
             />
-            <img
-              class="dropdownIcon"
-              id="categoryDropdownArrow"
-              src="/img/Mobile/AddTask/arrowDropDownaa.png"
-            />
-          </div>
-          <div
-            class="customDropdownCategory customDropdownBox"
-            id="dropdownCategory"
-          >
-            <div class="dropdownItemCategory" onclick="selectCategory(this)">
-              Technical Task
-            </div>
-            <div class="dropdownItemCategory" onclick="selectCategory(this)">
-              User Story
-            </div>
-          </div>
-        </label>
-
-        <!-- Subtasks -->
-        <label class="addTaskLabel">
-          Subtasks
-
-          <div class="addTaskInputIconContainer">
-            <input
-              id="addTaskSubtask"
-              type="text"
-              placeholder="Add new subtasks"
-              class="addTaskInput focus-border"
-              onblur="onBlurSubtask()"
-              readonly              
-            />
-            <div
-              class="addTaskSubtaskIconContainer"
-              id="addTaskSubtaskIconContainer"
+            <span id="errorSpanDate" class="errorSpan"
+              >This field is required</span
             >
-              <img
-              onclick="activateSubtaskInput()"
-                class="subtaskIcon"
-                id="firstSubtaskIcon"
-                src="/img/Mobile/AddTask/addIconAddTask.png"
+          </label>
+          <!-- Priority -->
+          <label for="addTaskPriority" class="addTaskLabel"> Priority </label>
+          <!-- Prio input Radio als btn -->
+          <div class="prioContainer">
+            <!-- Prio input Radio Urgent -->
+            <input
+              type="radio"
+              id="urgent"
+              name="priority"
+              value="Urgent"
+              hidden
+            />
+            <label for="urgent" class="prioLabel" id="prioUrgent">
+              Urgent
+              <img src="/img/Mobile/AddTask/urgentIconAddTask.png" />
+            </label>
+            <!-- Prio input Radio Medium -->
+            <input
+              type="radio"
+              id="medium"
+              name="priority"
+              value="Medium"
+              hidden
+              checked
+            />
+            <label for="medium" class="prioLabel" id="prioMedium">
+              Medium
+              <img src="/img/Mobile/AddTask/mediumIconAddTask.png" />
+            </label>
+            <!-- Prio input Radio Low -->
+            <input type="radio" id="low" name="priority" value="Low" hidden />
+            <label for="low" class="prioLabel" id="prioLow">
+              Low
+              <img src="/img/Mobile/AddTask/lowIconAddTask.png" />
+            </label>
+          </div>
+          <!-- Category -->
+          <label for="addTaskCategory" class="addTaskLabel">
+            Category
+            <div class="addTaskInputIconContainer">
+              <input
+                id="addTaskCategory"
+                type="text"
+                placeholder="Select a Category"
+                class="addTaskInput focus-border"
+                readonly
+                onclick="toggleCategoryDropdown()"
               />
-              <span class="subtaskSeperator" id="subtaskInputSeperator" style="display: none;"></span>
               <img
-                src="#"
-                id="secondSubtaskIcon"
-                style="display: none"
-                class="subtaskIcon"
-                
+                class="dropdownIcon"
+                id="categoryDropdownArrow"
+                src="/img/Mobile/AddTask/arrowDropDownaa.png"
               />
             </div>
-          </div>
-        </label>
-        <ul class="subtaskList" id="subtaskContainer">
+            <div
+              class="customDropdownCategory customDropdownBox"
+              id="dropdownCategory"
+            >
+              <div class="dropdownItemCategory" onclick="selectCategory(this)">
+                Technical Task
+              </div>
+              <div class="dropdownItemCategory" onclick="selectCategory(this)">
+                User Story
+              </div>
+            </div>
+          </label>
+          <!-- Subtasks -->
+          <label class="addTaskLabel">
+            Subtasks
+            <div class="addTaskInputIconContainer">
+              <input
+                id="addTaskSubtask"
+                type="text"
+                placeholder="Add new subtasks"
+                class="addTaskInput focus-border"
+                readonly
+              />
+              <div
+                class="addTaskSubtaskIconContainer"
+                id="addTaskSubtaskIconContainer"
+              >
+                <img
+                onclick="activateSubtaskInput()"
+                  class="subtaskIcon"
+                  id="firstSubtaskIcon"
+                  src="/img/Mobile/AddTask/addIconAddTask.png"
+                />
+                <span class="subtaskSeperator" id="subtaskInputSeperator" style="display: none;"></span>
+                <img
+                  src="#"
+                  id="secondSubtaskIcon"
+                  style="display: none"
+                  class="subtaskIcon"
           
-        </ul>
+                />
+              </div>
+            </div>
+          </label>
+          <ul class="subtaskList" id="subtaskContainer">
+          
+          </ul>
+        </div>
 
         <!-- Buttons-->
         <div class="addTaskBtnContainer">
