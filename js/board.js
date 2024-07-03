@@ -322,4 +322,9 @@ function displaySubtasksHTML(task) {
     return subtaskHtml;
 }
 
+function emptySubtaskInput(taskId) {
+    let subtaskInput = document.getElementById('subtask' + taskId);
+    subtaskInput.value = '';
+    onBlurSubtaskInput();
+}
 
