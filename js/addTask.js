@@ -410,3 +410,7 @@ function displaySuccsessfullyMessage() {
         window.location.href = '/board.html'; // Remove the success message after 800 milliseconds
     }, 900);
 }
+
+function addTaskClearTask() {
+    location.reload();
+}

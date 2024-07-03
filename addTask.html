@@ -24,7 +24,7 @@
     <main class="mainContainer" id="mainContainerId">
       <h1 class="addTaskHeadline">Add Task</h1>
       <form onsubmit="return false;" class="addTaskForm">
-        <div class="addTaskUpperDesktop"> <!-- linker teil für desktop version-->
+        <div class="addTaskDesktopColumns"> <!-- linker teil für desktop version-->
           <label for="addTaskTitle" class="addTaskLabel">
             <p>Title<span class="required">*</span></p>
             <input
@@ -75,7 +75,7 @@
 
         <span class="addTaskDesktopSeperator"></span>
         
-        <div class="addTaskLowerDesktop"> <!-- rechter teil für desktop version-->
+        <div class="addTaskDesktopColumns"> <!-- rechter teil für desktop version-->
           <label for="addTaskDueDate" class="addTaskLabel"> <!--Due Date -->
             <p>Due Date<span class="required">*</span></p>
             <input
@@ -196,11 +196,16 @@
               <!-- Buttons-->
               <div class="addTaskBtnContainer">
                 <p><span class="required">*</span>This field is required</p>
-                <button onclick="saveTask()" class="primaryBtn createTaskBtn">
-                  Create Task
-                  <img src="/img/Mobile/AddTask/checkMarkIconAddTask.png" />
-                </button>
-              </div>
+                <div class="addTaskDesktopBtnArea">
+                  <button onclick="addTaskClearTask()" class="addTaskClearBtn">
+                    Clear x
+                  </button>
+                  <button onclick="saveTask()" class="primaryBtn createTaskBtn">
+                    Create Task
+                    <img src="/img/Mobile/AddTask/checkMarkIconAddTask.png" />
+                  </button>
+                                </div>
+                </div>
 
     </main>
 
