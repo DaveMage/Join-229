@@ -195,7 +195,7 @@ function overviewTaskCardSubtaskHtml(task) {
 }
 
 function taskCardEditHTML(task) {   
-    
+    let assignedContactsString = task.assigned ? task.assigned.map(contact => contact.name).join(', ') : '';
     return /* html */`
     <div class="background" id="taskCardEditBackground">
     <div class="taskCardEditBody">
@@ -239,10 +239,12 @@ function taskCardEditHTML(task) {
         </div>
 
         <div class="labelInputContainer">
+        
             Assigned to
 
             <div class="inputImgContainer">
-                <input type="text" id="assigned${task.id}" name="assigned${task.id}" placeholder="Select contacts to assign" readonly onclick="toogleEditAssignedDropdown()">
+                <input type="text" id="assigned${task.id}" name="assigned${task.id}" placeholder="Select contacts to assign" readonly onclick="toogleEditAssignedDropdown()"
+                value="An: ${assignedContactsString}">
                 <img id="assignedIcon" src="/img/Mobile/AddTask/arrowDropDownaa.png" onclick="toogleEditAssignedDropdown()">
             </div>
 
@@ -278,7 +280,7 @@ function taskCardEditHTML(task) {
     `;
 }
 
-function displayAssignedDropdown() {
+function displayAssignedDropdown(task) {
     let assignedDropdownHtml = '';
     for (let i = 0; i < contacts.length; i++) {
         assignedDropdownHtml += /*html*/ `
@@ -288,7 +290,7 @@ function displayAssignedDropdown() {
                 <p id="contactName${contacts[i].id}">${contacts[i].name}</p>
             </label>
             <input class="assignedCheckbox" type="checkbox" id="assignedCheckbox${contacts[i].id}" name="contact${contacts[i].id}" value="${contacts[i].id}"
-            onchange="changeBgColorAssignedItem('${contacts[i].id}'); selectEditAssigned()">
+            onchange="changeBgColorAssignedItem('${contacts[i].id}'); selectEditAssigned('${task.id}')">
         </div>
         `;
     }
