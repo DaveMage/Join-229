@@ -200,7 +200,7 @@ function taskCardEditHTML(task) {
     let assignedContactsString = task.assigned ? task.assigned.map(contact => contact.name).join(', ') : '';
     return /* html */`
     <div class="background" id="taskCardEditBackground">
-    <div class="taskCardEditBody">
+    <div class="taskCardEditBody" >
     <div class="taskCardEditMain">
         <div class="closeBtnContainer"><img src="/img/Mobile/Board/closeTask.png" onclick="closeEditTask()"></div>
         <form class="editTaskForm">
@@ -263,19 +263,31 @@ function taskCardEditHTML(task) {
         Subtasks
             <div class="inputImgContainer">
                 <input type="text" id="subtask${task.id}" name="subtask${task.id}" placeholder="Add new subtask" class="subtaskInput" readonly
-                ondblclick="focusSubtaskInput('${task.id}')"
+                ondblclick="focusSubtaskInput()"
+                
                 >
                 <div id="subtaskEditInputIconContainer" >
+                
                 <img
-                src="#"
-                id="leftEditSubtaskIcon"
+                src="/img/Mobile/AddTask/closeIcon.png"
+                id="closeSubtaskIcon"
                 style="display: none"
                 class="subtaskIcon"
                 />
+
                 <span class="subtaskSeperator" id="subtaskEditInputSeperator" style="display: none;"></span>
-                <img src="/img/Mobile/Board/addSubtask.png" onclick="focusSubtaskInput('${task.id}')"
+
+                <img src="/img/Mobile/Board/addSubtask.png" onclick="focusSubtaskInput()"
+                id="addEditSubtaskIcon">
+
+                <img
+                src="/img/Mobile/AddTask/checkIcon.png"
+                id="checkSubtaskIcon"
+                style="display: none"
+                class="subtaskIcon"
+                onclick="addEditSubtask('${task.id}')"
+                />
                 
-                id="rightEditSubtaskIcon">
                 </div>
             </div>
             <ul id="subtaskContainer${task.id}">
