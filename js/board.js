@@ -194,3 +194,31 @@ function openEditTask(taskId) {
 function closeEditTask() {
     document.getElementById('taskCardEditBackground').remove();
 }
+
+async function selectEditAssigned(taskId){
+        const selectedAssigned = [];
+        const inputAssigned = document.getElementById(`assigned${taskId}`);
+        const checkboxes = document.querySelectorAll('.assignedCheckbox');
+
+        checkboxes.forEach(checkbox => {
+            // Get the contact name element
+            const contactNameElement = checkbox.parentNode.querySelector('p[id^="contactName"]');
+            
+            if (checkbox.checked && contactNameElement) {
+                const contactName = contactNameElement.textContent.trim();
+                const contact = contacts.find(c => c.name === contactName);
+                if (contact) {
+                    selectedAssigned.push(contact);
+                }
+            }
+        });
+
+        // Set the value of the input field
+        if (inputAssigned) {
+            inputAssigned.value = selectedAssigned.length > 0 ? 'An: ' + selectedAssigned.map(c => c.name).join(', ') : '';    
+        } else {
+            console.error(`Input field assigned${taskId} not found`);
+        }
+
+        return selectedAssigned;
+    }
