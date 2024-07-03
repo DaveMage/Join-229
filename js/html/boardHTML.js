@@ -262,7 +262,8 @@ function taskCardEditHTML(task) {
         <div class="labelInputContainer">
         Subtasks
             <div class="inputImgContainer">
-                <input type="text" id="subtask${task.id}" name="subtask${task.id}" placeholder="Add new subtask"  readonly
+                <input type="text" id="subtask${task.id}" name="subtask${task.id}" placeholder="Add new subtask" class="subtaskInput" readonly
+                ondblclick="focusSubtaskInput('${task.id}')"
                 >
                 <div id="subtaskEditInputIconContainer" >
                 <img
@@ -273,6 +274,7 @@ function taskCardEditHTML(task) {
                 />
                 <span class="subtaskSeperator" id="subtaskEditInputSeperator" style="display: none;"></span>
                 <img src="/img/Mobile/Board/addSubtask.png" onclick="focusSubtaskInput('${task.id}')"
+                
                 id="rightEditSubtaskIcon">
                 </div>
             </div>
