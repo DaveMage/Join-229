@@ -208,7 +208,7 @@ async function selectEditAssigned(taskId){
                 const contactName = contactNameElement.textContent.trim();
                 const contact = contacts.find(c => c.name === contactName);
                 if (contact) {
-                    selectedAssigned.push(contact);
+                    selectedAssigned.push(contact);                   
                 }
             }
         });
@@ -218,7 +218,7 @@ async function selectEditAssigned(taskId){
             inputAssigned.value = selectedAssigned.length > 0 ? 'An: ' + selectedAssigned.map(c => c.name).join(', ') : '';    
         } else {
             console.error(`Input field assigned${taskId} not found`);
-        }
+        }       
 
         return selectedAssigned;
     }
