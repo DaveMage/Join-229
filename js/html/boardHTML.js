@@ -262,8 +262,8 @@ function taskCardEditHTML(task) {
         <div class="labelInputContainer">
         Subtasks
             <div class="inputImgContainer">
-                <input type="text" id="subtask" name="subtask${task.id}" placeholder="Add new subtask"  readonly
-                onblur="onBlurSubtaskInput()">
+                <input type="text" id="subtask${task.id}" name="subtask${task.id}" placeholder="Add new subtask"  readonly
+                >
                 <div id="subtaskEditInputIconContainer" >
                 <img
                 src="#"
