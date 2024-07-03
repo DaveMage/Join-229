@@ -237,34 +237,11 @@ function deleteSubtask(taskId, subtaskIndex) {
     }
 }
 
-function addSubtask(taskId) {
-    // Find the task by taskId
-    const task = tasks.find(t => t.id === taskId);
-    if (task) {
-        // Get the input field value
-        const inputField = document.getElementById(`subtaskInput${taskId}`);
-        const newSubtask = inputField.value.trim();
 
-        if (newSubtask) {
-            // Add the new subtask to the task
-            task.subtasks.push(newSubtask);
-            // Update the subtask HTML
-            const subtaskContainer = document.getElementById(`subtaskContainer${taskId}`);
-            if (subtaskContainer) {
-                subtaskContainer.innerHTML = displaySubtasksHTML(task);
-            }
-            // Clear the input field
-            inputField.value = '';
-        } else {
-            console.error('Subtask cannot be empty');
-        }
-    } else {
-        console.error(`Task with id ${taskId} not found`);
-    }
-}
 
-function focusSubtaskInput() {
-    const inputField = document.getElementById(`subtask`);
+function focusSubtaskInput(taskId) {
+
+    const inputField = document.querySelector('.subtaskInput');
     let leftIcon = document.getElementById('leftEditSubtaskIcon');
     let rightIcon = document.getElementById('rightEditSubtaskIcon');
     let seperator = document.getElementById('subtaskEditInputSeperator');
@@ -273,12 +250,13 @@ function focusSubtaskInput() {
     leftIcon.src = '/img/Mobile/AddTask/closeIcon.png';
     leftIcon.style.display = 'flex';
     rightIcon.src = '/img/Mobile/AddTask/checkIcon.png';
+    rightIcon.setAttribute('onclick', `focusSubtaskInput(\`${taskId}\`)`);
     seperator.style.display = 'flex';
 
 }
 
 function onBlurSubtaskInput() {
-    const inputField = document.getElementById(`subtask`);
+    const inputField = document.querySelector('.subtaskInput');
     let leftIcon = document.getElementById('leftEditSubtaskIcon');
     let rightIcon = document.getElementById('rightEditSubtaskIcon');
     let seperator = document.getElementById('subtaskEditInputSeperator');
@@ -287,5 +265,34 @@ function onBlurSubtaskInput() {
     leftIcon.style.display = 'none';
     rightIcon.src = '/img/Mobile/Board/addSubtask.png';
     seperator.style.display = 'none';
+    rightIcon.setAttribute('onclick', `addEditSubtask(\`${taskId}\`)`);
     inputField.setAttribute('readonly', 'readonly');
 }
+
+function addEditSubtask(taskId) {
+    // Retrieve the value of the subtask input field
+    let subtaskInput = document.getElementById('subtask' + taskId);
+    let subtask = subtaskInput.value;
+    // Retrieve the subtask list element
+    let subtaskList = document.getElementById('subtaskContainer' + taskId);
+
+    // Check if the subtask input field is not empty
+    if (subtask) {
+        // Add the new subtask to the subtask list
+        subtaskList.innerHTML += `<li class="subtaskItem">
+                <input type="text" class="subtaskItemInput"  readonly id="subtaskEditInput" value="${subtask}">            
+            <div class="subtaskItemIconContainer">
+                <img src="/img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemLeftIcon">
+                <span class="subtaskSeperator"></span>
+                <img src="/img/Mobile/AddTask/trashIcon.png" alt="Trash Icon" class="subtaskItemIcon" id="subtaskItemRightIcon">
+            </div>
+        </li>`;
+        // Clear the subtask input field
+        subtaskInput.value = '';
+
+
+    } else {
+        console.error('Subtask input is empty');
+    }
+}
+
