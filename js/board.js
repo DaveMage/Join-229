@@ -328,3 +328,27 @@ function emptySubtaskInput(taskId) {
     onBlurSubtaskInput();
 }
 
+
+// muss noch bearbeitet werden FINGER WEG!
+function saveEditTask(){
+    let taskId = document.getElementById('editTaskId').value;
+    let task = tasks.find(t => t.id === taskId);
+    if (!task) {
+        console.error(`Task with id ${taskId} not found`);
+        return;
+    }
+
+    let title = document.getElementById('editTaskTitle').value;
+    let description = document.getElementById('editTaskDescription').value;
+    let assigned = document.getElementById('assigned' + taskId).value;
+    let dueDate = document.getElementById('editTaskDueDate').value;
+    let subtasks = task.subtasks;
+
+    task.title = title;
+    task.description = description;
+    task.assigned = assigned;
+    task.dueDate = dueDate;
+    task.subtasks = subtasks;
+
+    updateTask(taskId, task);
+}
