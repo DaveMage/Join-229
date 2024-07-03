@@ -273,6 +273,7 @@ function taskCardEditHTML(task) {
                 id="closeSubtaskIcon"
                 style="display: none"
                 class="subtaskIcon"
+                onclick="emptySubtaskInput('${task.id}')"
                 />
 
                 <span class="subtaskSeperator" id="subtaskEditInputSeperator" style="display: none;"></span>
