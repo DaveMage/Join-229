@@ -165,25 +165,32 @@
                 placeholder="Add new subtasks"
                 class="addTaskInput focus-border"
                 readonly
+                ondblclick="focusSubtaskInput()"
+
               />
               <div
                 class="addTaskSubtaskIconContainer"
                 id="addTaskSubtaskIconContainer"
               >
-                <img
-                onclick="activateSubtaskInput()"
-                  class="subtaskIcon"
-                  id="firstSubtaskIcon"
-                  src="/img/Mobile/AddTask/addIconAddTask.png"
-                />
-                <span class="subtaskSeperator" id="subtaskInputSeperator" style="display: none;"></span>
-                <img
-                  src="#"
-                  id="secondSubtaskIcon"
-                  style="display: none"
-                  class="subtaskIcon"
-              	  
-                />
+              <img
+              src="/img/Mobile/AddTask/closeIcon.png"
+              id="closeSubtaskIcon"
+              style="display: none"
+              class="subtaskIcon"
+              />
+
+              <span class="subtaskSeperator" id="subtaskEditInputSeperator" style="display: none;"></span>
+
+              <img src="/img/Mobile/Board/addSubtask.png" onclick="focusSubtaskInput()"
+              id="addEditSubtaskIcon">
+
+              <img
+              src="/img/Mobile/AddTask/checkIcon.png"
+              id="checkSubtaskIcon"
+              style="display: none"
+              class="subtaskIcon"
+              onclick="addSubtaskItem()"
+              />
               </div>
             </div>
           </label>
