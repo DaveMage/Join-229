@@ -49,6 +49,13 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  padding-bottom: 32px;
+}
+
+.addTaskLabelPriority {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 8px;
 }
 
 .addTaskDescription {
@@ -171,6 +178,7 @@ body {
 .prioContainer {
   display: flex;
   gap: 16px;
+  padding-bottom: 32px;
 }
 
 .prioLabel {
@@ -331,7 +339,7 @@ body {
   border-color: #29ABE2;
 }
 
-.addToBoard{
+.addToBoard {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -339,7 +347,7 @@ body {
   padding-right: 30px;
   border-radius: 20px;
   width: 326px;
-  height: 74px; 
+  height: 74px;
   background-color: #2A3647;
   color: white;
   font-size: 24px;
@@ -361,7 +369,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
 }
 
 .addTaskDesktopSeperator {
@@ -374,7 +382,7 @@ body {
     left: 232px;
   }
 
-  .addTaskHeadline{
+  .addTaskHeadline {
     padding-left: 96px;
     margin-top: 110px;
     font-size: 61px;
@@ -384,11 +392,17 @@ body {
   .addTaskForm {
     flex-direction: row;
     padding-left: 96px;
-    height: 430px;
+    height: auto;
     gap: 48px;
+    align-items: center;
+    padding-bottom: 0;
   }
 
   .mainContainer {
     gap: 48px;
+  }
+
+  .addTaskLabel {
+    padding-bottom: 32px;
   }
 }
