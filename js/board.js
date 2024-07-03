@@ -263,29 +263,59 @@ function addSubtask(taskId) {
     }
 }
 
-function focusSubtaskInput() {
-    const inputField = document.getElementById(`subtask`);
+function focusSubtaskInput(taskId) {
+    
+    const inputField = document.getElementById('subtask' + taskId);
     let leftIcon = document.getElementById('leftEditSubtaskIcon');
     let rightIcon = document.getElementById('rightEditSubtaskIcon');
     let seperator = document.getElementById('subtaskEditInputSeperator');
     inputField.readOnly = false;
     inputField.focus();
     leftIcon.src = '/img/Mobile/AddTask/closeIcon.png';
-    leftIcon.style.display = 'flex';
-    rightIcon.src = '/img/Mobile/AddTask/checkIcon.png';
-    seperator.style.display = 'flex';
+        leftIcon.style.display = 'flex';
+        rightIcon.src = '/img/Mobile/AddTask/checkIcon.png';
+        rightIcon.setAttribute('onclick', `addEditSubtask(\`${taskId}\`)`);
+        seperator.style.display = 'flex';
 
-}
+    }
 
-function onBlurSubtaskInput() {
-    const inputField = document.getElementById(`subtask`);
-    let leftIcon = document.getElementById('leftEditSubtaskIcon');
-    let rightIcon = document.getElementById('rightEditSubtaskIcon');
-    let seperator = document.getElementById('subtaskEditInputSeperator');
-    inputField.readOnly = true;
-    leftIcon.src = '#';
-    leftIcon.style.display = 'none';
+    function onBlurSubtaskInput(taskId) {
+        const inputField = document.getElementById('subtask' + taskId);
+        let leftIcon = document.getElementById('leftEditSubtaskIcon');
+        let rightIcon = document.getElementById('rightEditSubtaskIcon');
+        let seperator = document.getElementById('subtaskEditInputSeperator');
+        inputField.readOnly = true;
+        leftIcon.src = '#';
+        leftIcon.style.display = 'none';
     rightIcon.src = '/img/Mobile/Board/addSubtask.png';
     seperator.style.display = 'none';
     inputField.setAttribute('readonly', 'readonly');
 }
+
+function addEditSubtask(taskId) {
+    // Retrieve the value of the subtask input field
+    let subtaskInput = document.getElementById('subtask' + taskId);
+    let subtask = subtaskInput.value;
+    // Retrieve the subtask list element
+    let subtaskList = document.getElementById('subtaskContainer' + taskId);
+
+    // Check if the subtask input field is not empty
+    if (subtask) {
+        // Add the new subtask to the subtask list
+        subtaskList.innerHTML += `<li class="subtaskItem">
+        <input type="text" class="subtaskItemInput"  readonly id="subtaskEditInput" value="${subtask}">            
+            <div class="subtaskItemIconContainer">
+                <img src="/img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemLeftIcon">
+                <span class="subtaskSeperator"></span>
+                <img src="/img/Mobile/AddTask/trashIcon.png" alt="Trash Icon" class="subtaskItemIcon" id="subtaskItemRightIcon">
+            </div>
+    </li>`;
+        // Clear the subtask input field
+        subtaskInput.value = '';
+        // Set the subtask input field to read-only
+        
+    } else {
+        console.error('Subtask input is empty');
+    }
+}
+
