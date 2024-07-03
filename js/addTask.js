@@ -330,6 +330,12 @@ function addSubtaskItem() {
     onBlurSubtaskInput();
 }
 
+function emptySubtaskInput() {
+    let subtaskInput = document.getElementById('addTaskSubtask');
+    subtaskInput.value = '';
+    onBlurSubtaskInput();
+}
+
 function deleteSubtaskItem(event) {
     let subtaskItem = event.target.closest('.addTaskSubtaskItem');
     let subtaskItemValue = subtaskItem.querySelector('.subtaskItemInput').value;
