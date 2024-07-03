@@ -239,60 +239,87 @@ function deleteSubtask(taskId, subtaskIndex) {
 
 
 
-function focusSubtaskInput(taskId) {
+function focusSubtaskInput() {
 
     const inputField = document.querySelector('.subtaskInput');
-    let leftIcon = document.getElementById('leftEditSubtaskIcon');
-    let rightIcon = document.getElementById('rightEditSubtaskIcon');
+    let checkIcon = document.getElementById('checkSubtaskIcon');
+    let closeIcon = document.getElementById('closeSubtaskIcon');
+    let addIcon = document.getElementById('addEditSubtaskIcon');
     let seperator = document.getElementById('subtaskEditInputSeperator');
+
     inputField.readOnly = false;
     inputField.focus();
-    leftIcon.src = '/img/Mobile/AddTask/closeIcon.png';
-    leftIcon.style.display = 'flex';
-    rightIcon.src = '/img/Mobile/AddTask/checkIcon.png';
-    rightIcon.setAttribute('onclick', `focusSubtaskInput(\`${taskId}\`)`);
+    addIcon.style.display = 'none';
+    checkIcon.style.display = 'flex';
+    closeIcon.style.display = 'flex';
     seperator.style.display = 'flex';
 
 }
 
 function onBlurSubtaskInput() {
     const inputField = document.querySelector('.subtaskInput');
-    let leftIcon = document.getElementById('leftEditSubtaskIcon');
-    let rightIcon = document.getElementById('rightEditSubtaskIcon');
+    let checkIcon = document.getElementById('checkSubtaskIcon');
+    let closeIcon = document.getElementById('closeSubtaskIcon');
+    let addIcon = document.getElementById('addEditSubtaskIcon');
     let seperator = document.getElementById('subtaskEditInputSeperator');
+
     inputField.readOnly = true;
-    leftIcon.src = '#';
-    leftIcon.style.display = 'none';
-    rightIcon.src = '/img/Mobile/Board/addSubtask.png';
+    addIcon.style.display = 'flex';
+    checkIcon.style.display = 'none';
+    closeIcon.style.display = 'none';
     seperator.style.display = 'none';
-    rightIcon.setAttribute('onclick', `addEditSubtask(\`${taskId}\`)`);
-    inputField.setAttribute('readonly', 'readonly');
 }
 
+
+
+
 function addEditSubtask(taskId) {
+    // Retrieve the task by taskId
+    const task = tasks.find(t => t.id === taskId);
+    if (!task) {
+        console.error(`Task with id ${taskId} not found`);
+        return;
+    }
+
     // Retrieve the value of the subtask input field
     let subtaskInput = document.getElementById('subtask' + taskId);
-    let subtask = subtaskInput.value;
+    let subtask = subtaskInput.value.trim();
+    
     // Retrieve the subtask list element
     let subtaskList = document.getElementById('subtaskContainer' + taskId);
 
-    // Check if the subtask input field is not empty
-    if (subtask) {
-        // Add the new subtask to the subtask list
-        subtaskList.innerHTML += `<li class="subtaskItem">
-                <input type="text" class="subtaskItemInput"  readonly id="subtaskEditInput" value="${subtask}">            
-            <div class="subtaskItemIconContainer">
-                <img src="/img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemLeftIcon">
-                <span class="subtaskSeperator"></span>
-                <img src="/img/Mobile/AddTask/trashIcon.png" alt="Trash Icon" class="subtaskItemIcon" id="subtaskItemRightIcon">
-            </div>
-        </li>`;
-        // Clear the subtask input field
-        subtaskInput.value = '';
-
-
-    } else {
-        console.error('Subtask input is empty');
+    if (subtask === '') {
+        console.error('Subtask cannot be empty');
+        return;
     }
+
+    // Add the new subtask to the task's subtasks array
+    task.subtasks.push(subtask);
+
+    // Update the subtask list HTML
+    subtaskList.innerHTML = displaySubtasksHTML(task);
+
+    // Clear the input field
+    subtaskInput.value = '';
+    onBlurSubtaskInput();
 }
+
+function displaySubtasksHTML(task) {
+    let subtaskHtml = '';
+    if (task.subtasks && task.subtasks.length > 0) {
+        for (let i = 0; i < task.subtasks.length; i++) {
+            subtaskHtml += /*html*/ `
+            <li class="subtaskItem">
+                <input type="text" class="subtaskItemInput" value="${task.subtasks[i]}" readonly id="subtaskEditInput${task.id}-${i}">
+                <div class="subtaskItemIconContainer">
+                    <img src="/img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemLeftIcon" onclick="focusSubtaskInput(${task.id}, ${i})">
+                    <span class="subtaskSeperator"></span>
+                    <img src="/img/Mobile/AddTask/trashIcon.png" alt="Trash Icon" class="subtaskItemIcon" id="subtaskItemRightIcon" onclick="deleteSubtask(${task.id}, ${i})">
+                </div>
+            </li>`;
+        }
+    }
+    return subtaskHtml;
+}
+
 
