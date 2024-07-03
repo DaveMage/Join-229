@@ -672,3 +672,9 @@ main {
   background-color: #2A3647;
   color: #ffffff;
 }
+
+#subtaskEditInputIconContainer{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
