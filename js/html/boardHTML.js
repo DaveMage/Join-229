@@ -262,8 +262,19 @@ function taskCardEditHTML(task) {
         <div class="labelInputContainer">
         Subtasks
             <div class="inputImgContainer">
-                <input type="text" id="subtask${task.id}" name="subtask${task.id}" placeholder="Add new subtask" readonly>
-                <img src="/img/Mobile/Board/addSubtask.png">
+                <input type="text" id="subtask" name="subtask${task.id}" placeholder="Add new subtask"  readonly
+                onblur="onBlurSubtaskInput()">
+                <div id="subtaskEditInputIconContainer" >
+                <img
+                src="#"
+                id="leftEditSubtaskIcon"
+                style="display: none"
+                class="subtaskIcon"
+                />
+                <span class="subtaskSeperator" id="subtaskEditInputSeperator" style="display: none;"></span>
+                <img src="/img/Mobile/Board/addSubtask.png" onclick="focusSubtaskInput('${task.id}')"
+                id="rightEditSubtaskIcon">
+                </div>
             </div>
             <ul id="subtaskContainer${task.id}">
                 ${displaySubtasksHTML(task)}
@@ -330,11 +341,11 @@ function displaySubtasksHTML(task) {
         for (let i = 0; i < task.subtasks.length; i++) {
             subtaskHtml += /*html*/ `
             <li class="subtaskItem">
-                <input type="text" class="subtaskItemInput" value="${task.subtasks[i]}" readonly>            
+                <input type="text" class="subtaskItemInput" value="${task.subtasks[i]}" readonly id="subtaskEditInput">            
                     <div class="subtaskItemIconContainer">
                         <img src="/img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemLeftIcon">
                         <span class="subtaskSeperator"></span>
-                        <img src="/img/Mobile/AddTask/trashIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemRightIcon">
+                        <img src="/img/Mobile/AddTask/trashIcon.png" alt="Trash Icon" class="subtaskItemIcon" id="subtaskItemRightIcon" onclick="deleteSubtask('${task.id}', ${i})">
                     </div>
             </li>`;
         }

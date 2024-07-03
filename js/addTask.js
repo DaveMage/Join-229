@@ -285,9 +285,6 @@ function deleteValueSubtask() {
     secondSubtaskIcon.style.display = 'none';
     document.getElementById('subtaskInputSeperator').style.display = 'none';
     firstSubtaskIcon.setAttribute('onclick', 'activateSubtaskInput()');
-
-
-
 }
 
 function onBlurSubtask() {
@@ -300,7 +297,7 @@ function onBlurSubtask() {
 
     // Ändere das Bild
     firstSubtaskIcon.src = '/img/Mobile/AddTask/addIconAddTask.png';
-
+    document.getElementById('subtaskInputSeperator').style.display = 'none';
     secondSubtaskIcon.style.display = 'none';
 }
 
