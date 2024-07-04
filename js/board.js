@@ -223,6 +223,38 @@ async function selectEditAssigned(taskId) {
     return selectedAssigned;
 }
 
+function getSelectEditAssigned(taskId) {
+    // Clear the selectedAssigned array at the beginning
+    selectedAssigned = [];
+    
+    // Get all the checkboxes that indicate assigned contacts for a specific task
+    let checkboxes = document.querySelectorAll(`#assignedCheckbox${contactId} .assignedCheckbox`);
+
+    // Iterate over each checkbox
+    checkboxes.forEach(checkbox => {
+        // Get the name of the contact from the data-value attribute of the assigned-name element
+        let contactName = checkbox.parentNode.querySelector('.contactName').getAttribute('data-value');
+
+        // Check if the checkbox is checked
+        if (checkbox.checked) {
+            // Find the contact object in the contacts array that matches the contact name
+            let contact = contacts.find(c => c.name === contactName);
+            // Add the contact object to the selectedAssigned array
+            if (contact) {
+                selectedAssigned.push(contact);
+            }
+        }
+    });
+
+    // Update the inputAssigned element with the names of the selected contacts
+    let inputAssigned = document.getElementById(`assigned${taskId}`);
+    inputAssigned.value = selectedAssigned.length > 0 ? 'An: ' + selectedAssigned.map(c => c.name).join(', ') : '';
+
+    // Return the array of selected assigned contacts
+    return selectedAssigned;
+}
+
+
 function deleteSubtask(taskId, subtaskIndex) {
     // Find the task by taskId
     const task = tasks.find(t => t.id === taskId);
@@ -330,25 +362,71 @@ function emptySubtaskInput(taskId) {
 
 
 // muss noch bearbeitet werden FINGER WEG!
-function saveEditTask(){
-    let taskId = document.getElementById('editTaskId').value;
-    let task = tasks.find(t => t.id === taskId);
-    if (!task) {
-        console.error(`Task with id ${taskId} not found`);
-        return;
+async function saveEditTask(taskId) {
+       
+    let title = document.getElementById('title' + taskId).value;
+    let description = document.getElementById('description' + taskId).value; 
+    let date = document.getElementById('date' + taskId).value;
+    let priority = getSelectedPriority(taskId);
+
+   
+    let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); // Find the user object with the specified email
+    userId = userId.id; // Get the user ID from the user object    
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn'); // Get the guestLoggedIn value from local storage 
+    
+    try {
+
+        if (guestLoggedIn === 'true') {
+            userId = '-O-Mr5g8976g5-yCxVK8'; // Set the user ID to the guest user ID if the guest is logged in
+        }
+
+        await putData('/users/' + userId + '/tasks/' + taskId, { // Update the contact details on the server
+            'title': title,
+            'description': description,
+            'date': date,            
+            'priority': priority,
+            'assigned': selectedAssigned,
+            'subtasks': subtasks,
+            'status': 'open'
+
+            
+        });      
+        closeEditTask(); // Close the edit task card
+        window.location.reload(); // Reload the page
+        
+    } catch (error) {
+        console.error('Error updating task:', error); // Log an error message if there is an error updating the task
+    }
+}
+
+// Funktion, um die ausgewählte Priorität basierend auf der Aufgaben-ID zu ermitteln
+function getSelectedPriority(taskId) {
+    // Holt alle Radio-Buttons mit dem Namen, der der Aufgaben-ID entspricht
+    const priorities = document.getElementsByName(`priority${taskId}`);
+    let selectedPriority = null; // Variable zur Speicherung des ausgewählten Radio-Buttons
+
+    // Schleife durch alle Prioritäten (Radio-Buttons)
+    for (const priority of priorities) {
+        // Überprüfen, ob der aktuelle Radio-Button ausgewählt ist
+        if (priority.checked) {
+            selectedPriority = priority; // Speichere den ausgewählten Radio-Button
+            break; // Schleife abbrechen, da wir die Auswahl gefunden haben
+        }
     }
 
-    let title = document.getElementById('editTaskTitle').value;
-    let description = document.getElementById('editTaskDescription').value;
-    let assigned = document.getElementById('assigned' + taskId).value;
-    let dueDate = document.getElementById('editTaskDueDate').value;
-    let subtasks = task.subtasks;
+    // Überprüfen, ob eine Priorität ausgewählt wurde
+    if (selectedPriority) {
+        const priorityValue = selectedPriority.value; // Wert des ausgewählten Radio-Buttons
+        const priorityLabel = document.querySelector(`label[for='${selectedPriority.id}']`); // Holt das zugehörige Label-Element
+        const priorityImgSrc = priorityLabel.querySelector('img').src; // Holt den Bildpfad des Bildes innerhalb des Labels
 
-    task.title = title;
-    task.description = description;
-    task.assigned = assigned;
-    task.dueDate = dueDate;
-    task.subtasks = subtasks;
-
-    updateTask(taskId, task);
+        // Rückgabe eines Objekts mit dem Wert und dem Bildpfad
+        return {
+            value: priorityValue,
+            imgSrc: priorityImgSrc
+        };
+    } else {
+        // Falls keine Priorität ausgewählt wurde, können wir einen Standardwert oder eine Fehlerbehandlung zurückgeben
+        return null; // oder passende Fehlermeldung/Logik
+    }
 }
