@@ -315,7 +315,7 @@ function displayAssignedDropdown(task) {
         <div class="assingedItem">
             <label class="assingedIconNameContainer" for="assignedCheckbox${contacts[i].id}" class="customDropdownItem">
                 <div class="profileIcon" style="background-color:${contacts[i].profileColor};">${contacts[i].initials}</div>
-                <p id="contactName${contacts[i].id}">${contacts[i].name}</p>
+                <p class="contactName" data-value="${contacts[i].name}" id="contactName${contacts[i].id}">${contacts[i].name} </p>
             </label>
             <input class="assignedCheckbox" type="checkbox" id="assignedCheckbox${contacts[i].id}" name="contact${contacts[i].id}" value="${contacts[i].id}"
             onchange="changeBgColorAssignedItem('${contacts[i].id}'); selectEditAssigned('${task.id}')">
