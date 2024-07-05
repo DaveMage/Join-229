@@ -70,3 +70,9 @@ body{
     height: calc(100vh - 80px);
     overflow: auto;
 }
+
+@media (min-width: 1100px) {
+    .mainContainer {
+        padding-left: 96px;
+    }
+}
