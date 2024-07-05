@@ -393,6 +393,7 @@ async function saveEditTask(taskId) {
     let category = currentTask.category;
     let subtasks = currentTask.subtasks; // Stellen Sie sicher, dass das Subtasks-Array vorhanden ist
     let assigned = updateSelectedAssignedAndInputField(taskId) // Stellen Sie sicher, dass das zugewiesene Array vorhanden ist
+    let status = currentTask.status;
     let userEmailToken = localStorage.getItem('emailToken');
     let userId = users.find(user => user.email === atob(userEmailToken)); // Find the user object with the specified email
     userId = userId ? userId.id : null; // Get the user ID from the user object
@@ -418,7 +419,7 @@ async function saveEditTask(taskId) {
             'priority': priority,
             'subtasks': subtasks,
             'assigned': assigned,
-            'status': 'open'
+            'status': status
         });
 
         closeEditTask(); // Close the edit task card
