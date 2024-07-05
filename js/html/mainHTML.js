@@ -78,9 +78,10 @@ function menuDesktopHtml() {
                 <p>Contacts</p>
             </a>
         </div>
+
         <div class="contentLinksPolicyLegalNotice">
-            <a href="./privacyPolice.html" class="linksPrivacyLegal">Privacy Policy</a>
-            <a href="./legalNotice.html" class="linksPrivacyLegal">Legal notice</a>
+            <a href="./privacyPolice.html" id="privacyLink" class="linksPrivacyLegal">Privacy Policy</a>
+            <a href="./legalNotice.html" id="legalLink" class="linksPrivacyLegal">Legal notice</a>
         </div>
     `;
 }
