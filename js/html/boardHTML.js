@@ -310,20 +310,27 @@ function taskCardEditHTML(task) {
 
 function displayAssignedDropdown(task) {
     let assignedDropdownHtml = '';
+    // Es wird angenommen, dass task.assigned ein Array von Kontakt-IDs ist, die bereits zugewiesen wurden.
+    const assignedIds = task.assigned ? task.assigned.map(contact => contact.id) : [];
+
     for (let i = 0; i < contacts.length; i++) {
+        // Überprüfen, ob der aktuelle Kontakt bereits zugewiesen wurde
+        const isChecked = assignedIds.includes(contacts[i].id) ? 'checked' : '';
+
         assignedDropdownHtml += /*html*/ `
-        <div class="assingedItem">
-            <label class="assingedIconNameContainer" for="assignedCheckbox${contacts[i].id}" class="customDropdownItem">
+        <div class="assignedItem" id="wrapper${contacts[i].id}">
+            <label class="assignedIconNameContainer" for="assignedCheckbox${contacts[i].id}" class="customDropdownItem">
                 <div class="profileIcon" style="background-color:${contacts[i].profileColor};">${contacts[i].initials}</div>
-                <p class="contactName" data-value="${contacts[i].name}" id="contactName${contacts[i].id}">${contacts[i].name} </p>
+                <p data-value="${contacts[i].name}" class="contactName" id="contactName${contacts[i].id}">${contacts[i].name}</p>
             </label>
-            <input class="assignedCheckbox" type="checkbox" id="assignedCheckbox${contacts[i].id}" name="contact${contacts[i].id}" value="${contacts[i].id}"
-            onchange="changeBgColorAssignedItem('${contacts[i].id}'); selectEditAssigned('${task.id}')">
+            <input class="assignedCheckbox" type="checkbox" id="assignedCheckbox${contacts[i].id}" name="contact${contacts[i].id}" data-value="${contacts[i].id}"
+            ${isChecked} onchange="changeBgColorAssignedItem('${contacts[i].id}'); updateSelectedAssignedAndInputField('${task.id}')">
         </div>
         `;
     }
     return assignedDropdownHtml;
 }
+
 
 
 function toogleEditAssignedDropdown() {
@@ -343,7 +350,7 @@ function toogleEditAssignedDropdown() {
 function changeBgColorAssignedItem(contactId){
     let assignedCheckbox = document.getElementById(`assignedCheckbox${contactId}`);
     let contactName = document.getElementById(`contactName${contactId}`);
-    let assignedItem = assignedCheckbox.closest('.assingedItem');
+    let assignedItem = assignedCheckbox.closest('.assignedItem');
     assignedItem.style.backgroundColor = assignedCheckbox.checked ? '#2A3647' : '#fff';
     contactName.style.color = assignedCheckbox.checked ? '#fff' : '#000';
     assignedCheckbox.style.backgroundImage = assignedCheckbox.checked ? 'url(/img/Mobile/Board/checkButtonMobileChecked.png)' : '';
