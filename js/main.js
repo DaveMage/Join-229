@@ -1,3 +1,27 @@
+const pages = [
+    { path: '/summary.html', classes: ['summaryLink', 'summaryLinkDesktop', 'summaryDesktopIcon'] },
+    { path: '/greeting.html', classes: ['summaryLink', 'summaryLinkDesktop', 'summaryDesktopIcon'] },
+    { path: '/addTask.html', classes: ['addTaskLink', 'addTaskLinkDesktop', 'addTaskDesktopIcon'] },
+    { path: '/board.html', classes: ['boardLink', 'boardLinkDesktop', 'boardDesktopIcon'] },
+    { path: '/contacts.html', classes: ['contactsLink', 'contactsLinkDesktop', 'contactsDesktopIcon'] },
+    { path: '/privacyPolice.html', classes: ['privacyLink'], exclusive: 'legalLink' },
+    { path: '/legalNotice.html', classes: ['legalLink'], exclusive: 'privacyLink' }
+];
+
+function pagesArray() {
+    const pages = [
+        { path: '/summary.html', classes: ['summaryLink', 'summaryLinkDesktop', 'summaryDesktopIcon'] },
+        { path: '/greeting.html', classes: ['summaryLink', 'summaryLinkDesktop', 'summaryDesktopIcon'] },
+        { path: '/addTask.html', classes: ['addTaskLink', 'addTaskLinkDesktop', 'addTaskDesktopIcon'] },
+        { path: '/board.html', classes: ['boardLink', 'boardLinkDesktop', 'boardDesktopIcon'] },
+        { path: '/contacts.html', classes: ['contactsLink', 'contactsLinkDesktop', 'contactsDesktopIcon'] },
+        { path: '/privacyPolice.html', classes: ['privacyLink'], exclusive: 'legalLink' },
+        { path: '/legalNotice.html', classes: ['legalLink'], exclusive: 'privacyLink' }
+    ];
+    return pages;
+}
+
+
 async function onloadInit() {
     displayUserName();
     displayMobileHeader();
@@ -126,94 +150,38 @@ function logout() {
     window.location.href = "/login.html";
 }
 
-function menuActive(){
-    let summary = document.getElementById('summaryLink');
-    let summaryDesktop = document.getElementById('summaryLinkDesktop');
-    let summaryIconDesktop = document.getElementById('summaryDesktopIcon');
-    let board = document.getElementById('boardLink');
-    let boardDesktop = document.getElementById('boardLinkDesktop');
-    let boardIconDesktop = document.getElementById('boardDesktopIcon');
-    let addTask = document.getElementById('addTaskLink');
-    let addTaskDesktop = document.getElementById('addTaskLinkDesktop');
-    let addTaskIconDesktop = document.getElementById('addTaskDesktopIcon');
-    let contacts = document.getElementById('contactsLink');
-    let contactsDesktop = document.getElementById('contactsLinkDesktop');
-    let contactsIconDesktop = document.getElementById('contactsDesktopIcon');
+function addClassActive(){
+    
+}
 
-    if (window.location.pathname === '/summary.html') {
-        summary.classList.add('active');
-        summaryDesktop.classList.add('activeDesktop');
-        summaryIconDesktop.classList.add('activeDesktopIconSummary');
-        addTask.classList.remove('active');
-        addTaskDesktop.classList.remove('activeDesktop');
-        addTaskIconDesktop.classList.remove('activeDesktopIconAddTask');
-        board.classList.remove('active');
-        boardDesktop.classList.remove('activeDesktop');
-        boardIconDesktop.classList.remove('activeDesktopIconBoard');
-        contacts.classList.remove('active');
-        contactsDesktop.classList.remove('activeDesktop');
-        contactsIconDesktop.classList.remove('activeDesktopIconContacts');
-    }
+function menuActive() {
+    pagesArray();
 
-    if (window.location.pathname === '/greeting.html') {
-        summary.classList.add('active');
-        summaryDesktop.classList.add('activeDesktop');
-        summaryIconDesktop.classList.add('activeDesktopIconSummary');
-        addTask.classList.remove('active');
-        addTaskDesktop.classList.remove('activeDesktop');
-        addTaskIconDesktop.classList.remove('activeDesktopIconAddTask');
-        board.classList.remove('active');
-        boardDesktop.classList.remove('activeDesktop');
-        boardIconDesktop.classList.remove('activeDesktopIconBoard');
-        contacts.classList.remove('active');
-        contactsDesktop.classList.remove('activeDesktop');
-        contactsIconDesktop.classList.remove('activeDesktopIconContacts');
-    }
+    const currentPage = pages.find(page => window.location.pathname === page.path);
+    if (currentPage) {
+        currentPage.classes.forEach(className => {
+            const element = document.getElementById(className);
+            if (element) {
+                element.classList.add('active');
+                if (className.endsWith('Desktop')) {
+                    element.classList.add('activeDesktop');
+                }
+                if (className.endsWith('Icon')) {
+                    element.classList.add('activeDesktopIcon' + className.split('Desktop')[0]);
+                }
+            }
+        });
 
-    if (window.location.pathname === '/addTask.html') {
-        addTask.classList.add('active');
-        addTaskDesktop.classList.add('activeDesktop');
-        addTaskIconDesktop.classList.add('activeDesktopIconAddTask');
-        summary.classList.remove('active');
-        summaryDesktop.classList.remove('activeDesktop');
-        summaryIconDesktop.classList.remove('activeDesktopIconSummary');
-        board.classList.remove('active');
-        boardDesktop.classList.remove('activeDesktop');
-        boardIconDesktop.classList.remove('activeDesktopIconBoard');
-        contacts.classList.remove('active');
-        contactsDesktop.classList.remove('activeDesktop');
-        contactsIconDesktop.classList.remove('activeDesktopIconContacts');
-    }
-
-    if (window.location.pathname === '/board.html') {
-        board.classList.add('active');
-        boardDesktop.classList.add('activeDesktop');
-        boardIconDesktop.classList.add('activeDesktopIconBoard');
-        summary.classList.remove('active');
-        summaryDesktop.classList.remove('activeDesktop');
-        summaryIconDesktop.classList.remove('activeDesktopIconSummary');
-        addTask.classList.remove('active');
-        addTaskDesktop.classList.remove('activeDesktop');
-        addTaskIconDesktop.classList.remove('activeDesktopIconAddTask');
-        contacts.classList.remove('active');
-        contactsDesktop.classList.remove('activeDesktop');
-        contactsIconDesktop.classList.remove('activeDesktopIconContacts');
-    }
-    if (window.location.pathname === '/contacts.html') {
-        contacts.classList.add('active');
-        contactsDesktop.classList.add('activeDesktop');
-        contactsIconDesktop.classList.add('activeDesktopIconContacts');
-        summary.classList.remove('active');
-        summaryDesktop.classList.remove('activeDesktop');
-        summaryIconDesktop.classList.remove('activeDesktopIconSummary');
-        addTask.classList.remove('active');
-        addTaskDesktop.classList.remove('activeDesktop');
-        addTaskIconDesktop.classList.remove('activeDesktopIconAddTask');
-        board.classList.remove('active');
-        boardDesktop.classList.remove('activeDesktop');
-        boardIconDesktop.classList.remove('activeDesktopIconBoard');
+        const exclusivePage = pages.find(page => page.exclusive && window.location.pathname === page.path);
+        if (exclusivePage) {
+            const exclusiveElement = document.getElementById(exclusivePage.exclusive);
+            if (exclusiveElement) {
+                exclusiveElement.classList.remove('active');
+            }
+        }
     }
 }
+
 
 function goToAddTask() {
     window.location.href = '/addTask.html';
