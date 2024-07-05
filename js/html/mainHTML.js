@@ -59,24 +59,26 @@ function greetingHTML(user){
 
 function menuDesktopHtml() {
     return /*html*/ `
-        <img src="./img/Desktop/sidebar/joinLogoDesktop.png" alt="Join Logo" class="joinLogoDesktop">
-        <div class="quickNavLinks">
-            <a class="menuDesktop" href="/summary.html" id="summaryLinkDesktop">
-                <img src="./img/Desktop/sidebar/summaryIconDesktop.png" alt="Summary Icon" id="summaryDesktopIcon" class="iconSidebar">
-                <p>Summary</p>
-            </a>
-            <a class="menuDesktop" href="/board.html" id="boardLinkDesktop">
-                <img src="./img/Desktop/sidebar/boardIconDesktop.png" alt="Board Icon" id="boardDesktopIcon" class="iconSidebar">
-                <p>Board</p>
-            </a>
-            <a class="menuDesktop" href="/addTask.html" id="addTaskLinkDesktop">
-                <img src="./img/Desktop/sidebar/addTaskIconDesktop.png" alt="Add Task Icon" id="addTaskDesktopIcon" class="iconSidebar">
-                <p>Add Task</p>
-            </a>
-            <a class="menuDesktop" href="/contacts.html" id="contactsLinkDesktop">
-                <img src="./img/Desktop/sidebar/contactsIconDesktop.png" alt="Contacs Icon" id="contactsDesktopIcon" class="iconSidebar">
-                <p>Contacts</p>
-            </a>
+        <div class="logoLinks">
+            <img src="./img/Desktop/sidebar/joinLogoDesktop.png" alt="Join Logo" class="joinLogoDesktop">
+            <div class="quickNavLinks">
+                <a class="menuDesktop" href="/summary.html" id="summaryLinkDesktop">
+                    <img src="./img/Desktop/sidebar/summaryIconDesktop.png" alt="Summary Icon" id="summaryDesktopIcon" class="iconSidebar">
+                    <p>Summary</p>
+                </a>
+                <a class="menuDesktop" href="/board.html" id="boardLinkDesktop">
+                    <img src="./img/Desktop/sidebar/boardIconDesktop.png" alt="Board Icon" id="boardDesktopIcon" class="iconSidebar">
+                    <p>Board</p>
+                </a>
+                <a class="menuDesktop" href="/addTask.html" id="addTaskLinkDesktop">
+                    <img src="./img/Desktop/sidebar/addTaskIconDesktop.png" alt="Add Task Icon" id="addTaskDesktopIcon" class="iconSidebar">
+                    <p>Add Task</p>
+                </a>
+                <a class="menuDesktop" href="/contacts.html" id="contactsLinkDesktop">
+                    <img src="./img/Desktop/sidebar/contactsIconDesktop.png" alt="Contacs Icon" id="contactsDesktopIcon" class="iconSidebar">
+                    <p>Contacts</p>
+                </a>
+            </div>
         </div>
 
         <div class="contentLinksPolicyLegalNotice">
