@@ -628,7 +628,7 @@ main {
   
 }
 
-.assingedItem{
+.assignedItem{
   padding: 7px 16px;
   justify-content: space-between;
   align-items: center;
@@ -637,7 +637,7 @@ main {
   cursor: pointer;  
 }
 
-.assingedIconNameContainer{
+.assignedIconNameContainer{
   display: flex;
   align-items: center;
   gap: 8px;
