@@ -1,22 +1,25 @@
 function goToSighUp() {
     window.location.href = "/signUp.html";
-}
+};
+
 
 function focusInput(inputId) {
     const ids = ["loginLabelEmail", "loginLabelPassword"];
     ids.forEach(id => {
         document.getElementById(id).style.borderColor = id === inputId ? "#29ABE2" : "#D1D1D1";
     });
-}
+};
+
+
 function resetFocus() {
     const ids = ["loginLabelEmail", "loginLabelPassword"];
     ids.forEach(id => {
         document.getElementById(id).style.borderColor = "#D1D1D1";
     });
-}
+};
+
 
 async function createUser(user) {
-
     try {
         await postData('/users', user);
         document.getElementById('signUpMain').innerHTML += successfullyMessageHTML();
@@ -24,9 +27,7 @@ async function createUser(user) {
     } catch (error) {
         console.error('Error creating user:', error);
     }
-}
-
-
+};
 
 
 async function login() {
@@ -45,31 +46,27 @@ async function login() {
                 localStorage.removeItem('emailToken');
                 localStorage.removeItem('passwordToken');
             }
-
-            window.location.href = "/greeting.html";
-                       
+            window.location.href = "/greeting.html";                      
         } else {
             console.log('User not found');
         }
     } catch (error) {
         console.error('Error during login:', error);
     }
-}
+};
 
 
 async function guestLogin(){
     let respnose = await fetch(BASE_URL + '/users/-O-Mr5g8976g5-yCxVK8.json');    
 
-    if(respnose.ok){
-        
+    if(respnose.ok){        
         localStorage.setItem('guestLoggedIn', 'true');
         window.location.href = "/greeting.html";
     } else {
         console.error('Error during guest login:', error);
     }
-    
+};
 
-}
 
 function displayUserEmailPassword() {
     let emailToken = localStorage.getItem('emailToken');
@@ -80,7 +77,7 @@ function displayUserEmailPassword() {
         document.getElementById('loginEmail').value = email;
         document.getElementById('loginPassword').value = password;
     }
-}
+};
 
 
 
