@@ -6,23 +6,24 @@ function addTaskInit() {
     dateTreshhold();
     getContacts();
     menuActive();
-}
+};
+
 
 function toggleAssignedDropdown() {
-    const dropdown = document.getElementById('dropdownAssigned');
+    let dropdown = document.getElementById('dropdownAssigned');
     let icon = document.getElementById('assignedDropdownArrow');
 
     if (dropdown.style.display === 'flex') {
         dropdown.style.display = 'none';
         icon.style.transform = 'rotate(0deg)';
-
     } else {
         dropdown.style.display = 'flex';
         icon.style.transform = 'rotate(180deg)';
     }
     displayAssignedTo();
     setCheckedAssigned();
-}
+};
+
 
 function toggleCategoryDropdown() {
     const dropdown = document.getElementById('dropdownCategory');
@@ -34,16 +35,14 @@ function toggleCategoryDropdown() {
     } else {
         dropdown.style.display = 'flex';
         icon.style.transform = 'rotate(180deg)';
-
     }
+};
 
-}
 
 function dateTreshhold() {
     let today = new Date().toISOString().split('T')[0];
     document.getElementById("addTaskDueDate").setAttribute('min', today);
 };
-
 
 
 async function saveTask() {
@@ -58,7 +57,6 @@ async function saveTask() {
     if (guestLoggedIn === 'true') {
         userId = '-O-Mr5g8976g5-yCxVK8';
     } else {
-
         userId = userId.id;
     }
 
@@ -70,7 +68,6 @@ async function saveTask() {
     }
 
     try {
-
         await postData('/users/' + userId + '/tasks', {
             'title': title,
             'description': description,
@@ -88,56 +85,48 @@ async function saveTask() {
     } catch (error) {
         console.error('Error saving task:', error);
     }
+};
 
 
-}
+function getSelectedPriority() {                                         // Funktion, um die ausgewählte Priorität zu ermitteln
+    const priorities = document.getElementsByName('priority');           // Holt alle Radio-Buttons mit dem Namen 'priority'
+    let selectedPriority = null;                                         // Variable zur Speicherung des ausgewählten Radio-Buttons
 
-// Funktion, um die ausgewählte Priorität zu ermitteln
-function getSelectedPriority() {
-    // Holt alle Radio-Buttons mit dem Namen 'priority'
-    const priorities = document.getElementsByName('priority');
-    let selectedPriority = null; // Variable zur Speicherung des ausgewählten Radio-Buttons
-
-    // Schleife durch alle Prioritäten (Radio-Buttons)
-    for (const priority of priorities) {
-        // Überprüfen, ob der aktuelle Radio-Button ausgewählt ist
-        if (priority.checked) {
-            selectedPriority = priority; // Speichere den ausgewählten Radio-Button
-            break; // Schleife abbrechen, da wir die Auswahl gefunden haben
+    for (const priority of priorities) {                                 // Schleife durch alle Prioritäten (Radio-Buttons) 
+        if (priority.checked) {                                          // Überprüfen, ob der aktuelle Radio-Button ausgewählt ist
+            selectedPriority = priority;                                 // Speichere den ausgewählten Radio-Button
+            break;                                                       // Schleife abbrechen, da wir die Auswahl gefunden haben
         }
     }
 
-    // Überprüfen, ob eine Priorität ausgewählt wurde
-    if (selectedPriority) {
-        const priorityValue = selectedPriority.value; // Wert des ausgewählten Radio-Buttons
+    if (selectedPriority) {                                              // Überprüfen, ob eine Priorität ausgewählt wurde
+        const priorityValue = selectedPriority.value;                    // Wert des ausgewählten Radio-Buttons
         const priorityLabel = document.querySelector(`label[for=${selectedPriority.id}]`); // Holt das zugehörige Label-Element
-        const priorityImgSrc = priorityLabel.querySelector('img').src; // Holt den Bildpfad des Bildes innerhalb des Labels
+        const priorityImgSrc = priorityLabel.querySelector('img').src;   // Holt den Bildpfad des Bildes innerhalb des Labels
 
-        // Rückgabe eines Objekts mit dem Wert und dem Bildpfad
-        return {
+        return {                                                         // Rückgabe eines Objekts mit dem Wert und dem Bildpfad 
             value: priorityValue,
             imgSrc: priorityImgSrc
         };
     }
-}
+};
 
 
-// Funktion zum Auswählen einer Kategorie und Übertragen in das Eingabefeld
-function selectCategory(element) {
+function selectCategory(element) {                                      // Funktion zum Auswählen einer Kategorie und Übertragen in das Eingabefeld
     const categoryInput = document.getElementById('addTaskCategory');
-    categoryInput.value = element.textContent.trim(); // Setzt den Text des ausgewählten Elements in das Eingabefeld
+    categoryInput.value = element.textContent.trim();                   // Setzt den Text des ausgewählten Elements in das Eingabefeld
+};
 
-}
 
 function displayAssignedTo() {
     let container = document.getElementById('dropdownAssigned');
 
     container.innerHTML = '';
     for (let i = 0; i < contacts.length; i++) {
-
         container.innerHTML += assignedItemHtml(contacts[i]);
     }
-}
+};
+
 
 function assignedItemHtml(contact) {
     return /*html*/ `                
@@ -151,11 +140,8 @@ function assignedItemHtml(contact) {
                 type="checkbox"                
                 class="checkboxAssigned"
                 onchange="assignedItemChackBackgroundColor(this, 'name${contact.id}'); selectAssigned()"/>  
-        </label>
-        
-        
-        `;
-}
+        </label>`;
+};
 
 
 function assignedItemChackBackgroundColor(checkbox, nameId) {
@@ -168,63 +154,40 @@ function assignedItemChackBackgroundColor(checkbox, nameId) {
         label.style.backgroundColor = 'white';
         name.classList.remove('nameWhite');
     }
-}
+};
+
 
 function setCheckedAssigned() {
-    // Get all the checkboxes that indicate assigned contacts
-    let checkboxes = document.querySelectorAll('.checkboxAssigned');
+    let checkboxes = document.querySelectorAll('.checkboxAssigned');        // Get all the checkboxes that indicate assigned contacts
 
-    // Iterate over each checkbox
-    checkboxes.forEach(checkbox => {
-        // Get the name of the contact from the data-value attribute of the assigned-name element
-        let contactName = checkbox.parentNode.querySelector('.assignedName').getAttribute('data-value');
-
-        // Check if the contact is in the selectedAssigned array
-        let isSelected = selectedAssigned.some(contact => contact.name === contactName);
-
-        // Set the checked state of the checkbox
-        checkbox.checked = isSelected;
-
-        // Update the background color based on the checked state
-        assignedItemChackBackgroundColor(checkbox, checkbox.parentNode.querySelector('.assignedName').id);
+    checkboxes.forEach(checkbox => {                                        // Iterate over each checkbox    
+        let contactName = checkbox.parentNode.querySelector('.assignedName').getAttribute('data-value');     // Get the name of the contact from the data-value attribute of the assigned-name element
+        let isSelected = selectedAssigned.some(contact => contact.name === contactName);                     // Check if the contact is in the selectedAssigned array
+        checkbox.checked = isSelected;                                      // Set the checked state of the checkbox
+        assignedItemChackBackgroundColor(checkbox, checkbox.parentNode.querySelector('.assignedName').id);  // Update the background color based on the checked state
     });
-}
-
+};
 
 
 function selectAssigned() {
-    // Clear the selectedAssigned array at the beginning
-    selectedAssigned = [];
+    selectedAssigned = [];                                                  // Clear the selectedAssigned array at the beginning
+    let checkboxes = document.querySelectorAll('.checkboxAssigned');        // Get all the checkboxes that indicate assigned contacts
 
-    // Get all the checkboxes that indicate assigned contacts
-    let checkboxes = document.querySelectorAll('.checkboxAssigned');
-
-    // Iterate over each checkbox
-    checkboxes.forEach(checkbox => {
-        // Get the name of the contact from the data-value attribute of the assigned-name element
-        let contactName = checkbox.parentNode.querySelector('.assignedName').getAttribute('data-value');
-
-        // Check if the checkbox is checked
-        if (checkbox.checked) {
-            // Find the contact object in the contacts array that matches the contact name
-            let contact = contacts.find(c => c.name === contactName);
-            // Add the contact object to the selectedAssigned array
-            if (contact) {
+    checkboxes.forEach(checkbox => {// Iterate over each checkbox
+        
+        let contactName = checkbox.parentNode.querySelector('.assignedName').getAttribute('data-value');// Get the name of the contact from the data-value attribute of the assigned-name element   
+        if (checkbox.checked) {                                             // Check if the checkbox is checked           
+            let contact = contacts.find(c => c.name === contactName);       // Find the contact object in the contacts array that matches the contact name           
+            if (contact) {                                                  // Add the contact object to the selectedAssigned array
                 selectedAssigned.push(contact);
             }
         }
-    });
-
-    // Update the inputAssigned element with the names of the selected contacts
-    let inputAssigned = document.getElementById('addTaskFormAssignedInput');
+    });   
+    let inputAssigned = document.getElementById('addTaskFormAssignedInput');// Update the inputAssigned element with the names of the selected contacts
     inputAssigned.value = selectedAssigned.length > 0 ? 'An: ' + selectedAssigned.map(c => c.name).join(', ') : '';
-
-    // Return the array of selected assigned contacts
-    return selectedAssigned;
-}
-
-
-
+    
+    return selectedAssigned;                                                // Return the array of selected assigned contacts
+};
 
 
 function titlequery() {
@@ -238,7 +201,7 @@ function titlequery() {
         title.classList.remove('errorLabel');
         document.getElementById('errorSpanTitle').style.display = 'none';
     }
-}
+};
 
 function datequery() {
     let date = document.getElementById("addTaskDueDate");
@@ -251,12 +214,10 @@ function datequery() {
         date.classList.remove('errorLabel');
         document.getElementById('errorSpanDate').style.display = 'none';
     }
-}
+};
 
 
-// Funktion zum Wechseln der Bilder und Entfernen des readonly-Attributs
-function focusSubtaskInput() {
-
+function focusSubtaskInput() {                                           // Funktion zum Wechseln der Bilder und Entfernen des readonly-Attributs
     const inputField = document.querySelector('#addTaskSubtask');
     let checkIcon = document.getElementById('checkSubtaskIcon');
     let closeIcon = document.getElementById('closeSubtaskIcon');
@@ -269,9 +230,7 @@ function focusSubtaskInput() {
     checkIcon.style.display = 'flex';
     closeIcon.style.display = 'flex';
     seperator.style.display = 'flex';
-
-}
-
+};
 
 
 function deleteValueSubtask() {
@@ -285,7 +244,8 @@ function deleteValueSubtask() {
     secondSubtaskIcon.style.display = 'none';
     document.getElementById('subtaskInputSeperator').style.display = 'none';
     firstSubtaskIcon.setAttribute('onclick', 'activateSubtaskInput()');
-}
+};
+
 
 function onBlurSubtaskInput() {
     const inputField = document.querySelector('#addTaskSubtask');
@@ -299,8 +259,7 @@ function onBlurSubtaskInput() {
     checkIcon.style.display = 'none';
     closeIcon.style.display = 'none';
     seperator.style.display = 'none';
-}
-
+};
 
 
 function addSubtaskItem() {
@@ -309,7 +268,6 @@ function addSubtaskItem() {
     if (subtaskInput.value === '') {
         return;
     }
-
     subtasks.push(subtaskInput.value);
     document.getElementById('subtaskContainer').innerHTML = '';
 
@@ -328,13 +286,15 @@ function addSubtaskItem() {
     }
     subtaskInput.value = '';
     onBlurSubtaskInput();
-}
+};
+
 
 function emptySubtaskInput() {
     let subtaskInput = document.getElementById('addTaskSubtask');
     subtaskInput.value = '';
     onBlurSubtaskInput();
-}
+};
+
 
 function deleteSubtaskItem(event) {
     let subtaskItem = event.target.closest('.addTaskSubtaskItem');
@@ -342,7 +302,8 @@ function deleteSubtaskItem(event) {
 
     subtasks = subtasks.filter(subtask => subtask !== subtaskItemValue);
     subtaskItem.remove();
-}
+};
+
 
 function editSubtaskItem(event) {
     let subtaskItem = event.target.closest('.addTaskSubtaskItem');
@@ -358,33 +319,29 @@ function editSubtaskItem(event) {
     leftIcon.setAttribute('onclick', 'deleteSubtaskItem(event)');
     rightIcon.src = '/img/Mobile/AddTask/CheckIcon.png';
     rightIcon.setAttribute('onclick', 'saveSubtaskItem(event)');
+};
 
-}
 
 function saveSubtaskItem(event) {
     const subtaskItem = event.target.closest('.addTaskSubtaskItem');
     const leftIcon = subtaskItem.querySelector('#subtaskItemLeftIcon');
     const rightIcon = subtaskItem.querySelector('#subtaskItemRightIcon');
     const subtaskItemInput = subtaskItem.querySelector('.subtaskItemInput');
-    const subtaskId = subtaskItem.dataset.id; // Angenommen, jedes Subtask-Item hat eine eindeutige ID
-
-    // Prüfen, ob das Subtask bereits im Array ist und aktualisieren
-    const subtaskIndex = subtasks.findIndex(subtask => subtask.id === subtaskId);
-
+    const subtaskId = subtaskItem.dataset.id;                                       // Angenommen, jedes Subtask-Item hat eine eindeutige ID
+   
+    const subtaskIndex = subtasks.findIndex(subtask => subtask.id === subtaskId);   // Prüfen, ob das Subtask bereits im Array ist und aktualisieren
     if (subtaskIndex !== -1) {
         subtasks[subtaskIndex] = subtaskItemInput.value;
     }
-    console.log(subtasks);
-
-    // Setzen des Inputs auf "readonly"
-    subtaskItemInput.setAttribute('readonly', 'readonly');
-
-    // Anpassen der Icons und deren Click-Handler
-    leftIcon.src = '/img/Mobile/AddTask/EditIcon.png';
+    console.log(subtasks);   
+    subtaskItemInput.setAttribute('readonly', 'readonly');                          // Setzen des Inputs auf "readonly"
+   
+    leftIcon.src = '/img/Mobile/AddTask/EditIcon.png';                              // Anpassen der Icons und deren Click-Handler
     leftIcon.setAttribute('onclick', 'editSubtaskItem(event)');
     rightIcon.src = '/img/Mobile/AddTask/TrashIcon.png';
     rightIcon.setAttribute('onclick', 'deleteSubtaskItem(event)');
-}
+};
+
 
 function clearFrom() {
     document.getElementById('addTaskFormAssignedInput').value = '';
@@ -398,7 +355,8 @@ function clearFrom() {
     subtasks = [];
     document.getElementById('subtaskContainer').innerHTML = '';
     document.getElementById('medium').checked = true;
-}
+};
+
 
 function successfullyNewTask() {
     return `
@@ -409,7 +367,8 @@ function successfullyNewTask() {
           </div>
         </div>
     `;
-}
+};
+
 
 function displaySuccsessfullyMessage() {
     let mainContainer = document.getElementById('mainContainerId');
@@ -418,8 +377,9 @@ function displaySuccsessfullyMessage() {
         document.getElementById('newTaskBGMessage').remove();
         window.location.href = '/board.html'; // Remove the success message after 800 milliseconds
     }, 900);
-}
+};
+
 
 function addTaskClearTask() {
     location.reload();
-}
+};
