@@ -183,8 +183,11 @@ function clearEveryCategorie(todo, inProgress, awaitFeedback, done) {
 
 function openEditTask(taskId) {
     let task = tasks.find(t => t.id === (taskId));
+
     if (task) {
         document.getElementById('mainBoard').innerHTML += taskCardEditHTML(task);
+        fillSelectedAssigned(taskId);
+
         closeTaskCardOverview();
     } else {
         console.error('Task not found with ID:', taskId);
@@ -195,50 +198,52 @@ function closeEditTask() {
     document.getElementById('taskCardEditBackground').remove();
 }
 
-async function selectEditAssigned(taskId) {
-    const selectedAssigned = [];
-    const inputAssigned = document.getElementById(`assigned${taskId}`);
-    const checkboxes = document.querySelectorAll('.assignedCheckbox');
+function fillSelectedAssigned(taskId) {
+    let task = tasks.find(t => t.id === taskId);
+    if (task) {
+        selectedAssigned = task.assigned; // Angenommen, task.assigned ist ein Array von zugewiesenen Kontaktnamen
 
-    checkboxes.forEach(checkbox => {
-        // Get the contact name element
-        const contactNameElement = checkbox.parentNode.querySelector('p[id^="contactName"]');
-
-        if (checkbox.checked && contactNameElement) {
-            const contactName = contactNameElement.textContent.trim();
-            const contact = contacts.find(c => c.name === contactName);
-            if (contact) {
-                selectedAssigned.push(contact);
-            }
+        // Nach dem Füllen von selectedAssigned, die Hintergrundfarbe ändern
+        for (let i = 0; i < selectedAssigned.length; i++) {
+            changeEditColorAssignedItem(selectedAssigned[i].id);
         }
-    });
-
-    // Set the value of the input field
-    if (inputAssigned) {
-        inputAssigned.value = selectedAssigned.length > 0 ? 'An: ' + selectedAssigned.map(c => c.name).join(', ') : '';
-    } else {
-        console.error(`Input field assigned${taskId} not found`);
     }
-
-    return selectedAssigned;
 }
 
-function getSelectEditAssigned(taskId) {
+function changeEditColorAssignedItem(contactId) {
+    let assignedCheckbox = document.getElementById(`assignedCheckbox${contactId}`);
+    let contactName = document.getElementById(`contactName${contactId}`);
+    let assignedItem = document.getElementById(`wrapper${contactId}`);
+
+    if (assignedCheckbox.checked) {
+        assignedItem.style.backgroundColor = '#2A3647';
+        contactName.style.color = '#fff';
+        assignedCheckbox.style.backgroundImage = 'url(/img/Mobile/Board/checkButtonMobileChecked.png)';
+    }   else {
+        assignedItem.style.backgroundColor = '#fff';
+        contactName.style.color = '#000';
+        assignedCheckbox.style.backgroundImage = 'url(/img/Mobile/Board/checkButtonMobile.png)';
+    }
+}
+
+
+
+function updateSelectedAssignedAndInputField(taskId) {
     // Clear the selectedAssigned array at the beginning
     selectedAssigned = [];
-    
-    // Get all the checkboxes that indicate assigned contacts for a specific task
-    let checkboxes = document.querySelectorAll(`#assignedCheckbox${contactId} .assignedCheckbox`);
+
+    // Get all the checkboxes that indicate assigned contacts
+    let checkboxes = document.querySelectorAll('.assignedCheckbox');
 
     // Iterate over each checkbox
     checkboxes.forEach(checkbox => {
-        // Get the name of the contact from the data-value attribute of the assigned-name element
-        let contactName = checkbox.parentNode.querySelector('.contactName').getAttribute('data-value');
+        // Get the data-value attribute of the checkbox
+        let contactId = checkbox.getAttribute('data-value');
 
         // Check if the checkbox is checked
         if (checkbox.checked) {
-            // Find the contact object in the contacts array that matches the contact name
-            let contact = contacts.find(c => c.name === contactName);
+            // Find the contact object in the contacts array that matches the contact ID
+            let contact = contacts.find(c => c.id === contactId);
             // Add the contact object to the selectedAssigned array
             if (contact) {
                 selectedAssigned.push(contact);
@@ -247,12 +252,15 @@ function getSelectEditAssigned(taskId) {
     });
 
     // Update the inputAssigned element with the names of the selected contacts
-    let inputAssigned = document.getElementById(`assigned${taskId}`);
+    let inputAssigned = document.getElementById('assigned' + taskId); // Adjusted to match your example
     inputAssigned.value = selectedAssigned.length > 0 ? 'An: ' + selectedAssigned.map(c => c.name).join(', ') : '';
 
     // Return the array of selected assigned contacts
     return selectedAssigned;
 }
+
+
+
 
 
 function deleteSubtask(taskId, subtaskIndex) {
@@ -313,12 +321,14 @@ function addEditSubtask(taskId) {
         return;
     }
 
+    // Ensure that the task has a subtasks array
+    if (!task.subtasks) {
+        task.subtasks = [];
+    }
+
     // Retrieve the value of the subtask input field
     let subtaskInput = document.getElementById('subtask' + taskId);
     let subtask = subtaskInput.value.trim();
-    
-    // Retrieve the subtask list element
-    let subtaskList = document.getElementById('subtaskContainer' + taskId);
 
     if (subtask === '') {
         console.error('Subtask cannot be empty');
@@ -328,13 +338,21 @@ function addEditSubtask(taskId) {
     // Add the new subtask to the task's subtasks array
     task.subtasks.push(subtask);
 
-    // Update the subtask list HTML
+    // Retrieve the subtask list element
+    let subtaskList = document.getElementById('subtaskContainer' + taskId);
+
+    // Update the subtask list HTML using a function that generates HTML for subtasks
     subtaskList.innerHTML = displaySubtasksHTML(task);
 
     // Clear the input field
     subtaskInput.value = '';
-    onBlurSubtaskInput();
+
+    // Optionally call a function to handle UI changes after input field is cleared
+    if (typeof onBlurSubtaskInput === 'function') {
+        onBlurSubtaskInput();
+    }
 }
+
 
 function displaySubtasksHTML(task) {
     let subtaskHtml = '';
@@ -361,43 +379,56 @@ function emptySubtaskInput(taskId) {
 }
 
 
-// muss noch bearbeitet werden FINGER WEG!
 async function saveEditTask(taskId) {
-       
+    let currentTask = tasks.find(t => t.id === taskId);
+    if (!currentTask) {
+        console.error(`Task with id ${taskId} not found`);
+        return;
+    }
+
     let title = document.getElementById('title' + taskId).value;
-    let description = document.getElementById('description' + taskId).value; 
+    let description = document.getElementById('description' + taskId).value;
     let date = document.getElementById('date' + taskId).value;
-    let priority = getSelectedPriority(taskId);
+    let priority = getSelectedPriority(taskId); // Achten Sie darauf, dass Sie den Wert der Priorität verwenden
+    let category = currentTask.category;
+    let subtasks = currentTask.subtasks; // Stellen Sie sicher, dass das Subtasks-Array vorhanden ist
+    let assigned = updateSelectedAssignedAndInputField(taskId) // Stellen Sie sicher, dass das zugewiesene Array vorhanden ist
+    let userEmailToken = localStorage.getItem('emailToken');
+    let userId = users.find(user => user.email === atob(userEmailToken)); // Find the user object with the specified email
+    userId = userId ? userId.id : null; // Get the user ID from the user object
 
-   
-    let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); // Find the user object with the specified email
-    userId = userId.id; // Get the user ID from the user object    
     let guestLoggedIn = localStorage.getItem('guestLoggedIn'); // Get the guestLoggedIn value from local storage 
-    
-    try {
 
+    try {
+        // Set the user ID to the guest user ID if the guest is logged in
         if (guestLoggedIn === 'true') {
-            userId = '-O-Mr5g8976g5-yCxVK8'; // Set the user ID to the guest user ID if the guest is logged in
+            userId = '-O-Mr5g8976g5-yCxVK8';
         }
 
-        await putData('/users/' + userId + '/tasks/' + taskId, { // Update the contact details on the server
+        if (!userId) {
+            throw new Error('User ID is not available.');
+        }
+
+        // Update the contact details on the server
+        await putData('/users/' + userId + '/tasks/' + taskId, {
+            'category': category,
             'title': title,
             'description': description,
-            'date': date,            
+            'date': date,
             'priority': priority,
-            'assigned': selectedAssigned,
             'subtasks': subtasks,
+            'assigned': assigned,
             'status': 'open'
+        });
 
-            
-        });      
         closeEditTask(); // Close the edit task card
-        window.location.reload(); // Reload the page
-        
+        window.location.reload(); // Reload the page after successful update
+
     } catch (error) {
         console.error('Error updating task:', error); // Log an error message if there is an error updating the task
     }
 }
+
 
 // Funktion, um die ausgewählte Priorität basierend auf der Aufgaben-ID zu ermitteln
 function getSelectedPriority(taskId) {
