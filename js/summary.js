@@ -139,6 +139,16 @@ async function displayCountAllTasks() {
     document.getElementById('allTasks').innerHTML = allTasksCount;
 }
 
+async function displayDeadline() {     
+    let tasks = await getTask();
+    let deadlineDate = document.getElementById('deadlineDate');
+    let urgentTasks = tasks.filter(task => task.priority.value === 'Urgent');
+    let getDeadline = urgentTasks.map(task => new Date(task.date));
+    let sortedDeadline = getDeadline.sort((a, b) => a - b);
+    let earliestDeadline = sortedDeadline[0];    
+    deadlineDate.innerHTML = earliestDeadline.toLocaleDateString('en-EN', {month: 'long', day: 'numeric',year: 'numeric' });
+}
+
 
 function countInit(){
     displayCountToDo();
@@ -147,6 +157,7 @@ function countInit(){
     displayCountDone();
     displayCountUrgent();
     displayCountAllTasks();
+    displayDeadline();
 }
 
 
@@ -176,40 +187,3 @@ function countTasks(tasks) {
 }
 
 
-
-
-async function displayCountToDo() {
-    let tasks = await getTask(); // Fetch the tasks    
-    let openTasksCount = countOpenTasks(tasks); // Count the 'open' tasks
-    document.getElementById('openTasks').innerHTML = openTasksCount;
-}
-
-async function displayCountInProgress() {
-    let tasks = await getTask(); // Fetch the tasks
-    let inProgressTasksCount = countInProgressTasks(tasks); // Count the 'inProgress' tasks
-    document.getElementById('inProgressTasks').innerHTML = inProgressTasksCount;
-}
-
-async function displayCountAwaitFeedback() {
-    let tasks = await getTask(); // Fetch the tasks
-    let awaitFeedbackTasksCount = countAwaitFeedbackTasks(tasks); // Count the 'awaitFeedback' tasks
-    document.getElementById('awaitFeedbackTasks').innerHTML = awaitFeedbackTasksCount;
-}
-
-async function displayCountDone() {
-    let tasks = await getTask(); // Fetch the tasks
-    let doneTasksCount = countDoneTasks(tasks); // Count the 'done' tasks
-    document.getElementById('doneTasks').innerHTML = doneTasksCount;
-}
-
-async function displayCountUrgent() {
-    let tasks = await getTask(); // Fetch the tasks
-    let urgentTasksCount = countUrgentTasks(tasks); // Count the 'urgent' tasks
-    document.getElementById('urgentTasks').innerHTML = urgentTasksCount;
-}
-
-async function displayCountAllTasks() {
-    let tasks = await getTask(); // Fetch the tasks
-    let allTasksCount = countTasks(tasks); // Count all tasks
-    document.getElementById('allTasks').innerHTML = allTasksCount;
-}
