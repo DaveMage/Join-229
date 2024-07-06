@@ -9,8 +9,8 @@ function goToBoardUsual(mark) {
 * which id is stored
 */
 function goToBoard() {
-    window.location.href =
-        "./board.html?findtaskbyid=" + encodeURIComponent(holdTaskId);
+    window.location.href = '../board.html';
+        
 }
 
 async function displayUserName() {
