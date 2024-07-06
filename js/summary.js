@@ -186,4 +186,54 @@ function countTasks(tasks) {
     return tasks.length;
 }
 
+async function greetingSummary() {
+    await getUser();
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
+    let greetingScreen = document.getElementById('greetingScreen');
+    
 
+    let username = '';    
+    let user = users.find(user => user.email && user.email === atob(localStorage.getItem('emailToken')));
+
+    if (guestLoggedIn === 'true'){
+        username = '';
+    }
+    if (user && user.name && guestLoggedIn !== 'true') {
+        console.log(user)
+        username = user.name;
+    }
+    
+    let greeting = '';
+    
+    let hour = new Date().getHours();
+    if(hour >= 0 && hour < 10){
+        if (guestLoggedIn === 'true') {
+            greeting = 'Good morning!';
+        } else {
+            greeting = 'Good morning,';
+        }
+    }
+
+    if(hour >= 10 && hour < 18){
+        if (guestLoggedIn === 'true') {
+            greeting = 'Good noon!';
+        } else {
+            greeting = 'Good noon,';
+        }
+    }
+
+    if(hour >= 18){
+        if (guestLoggedIn === 'true') {
+            greeting = 'Good evening!';
+        } else {
+            greeting = 'Good evening,';
+        }
+    }
+
+    greetingScreen.innerHTML = /*html*/ `
+        <div class="greetingContainer">
+          <div class="greetingText" id="greetingText">${greeting}</div>
+          <div class="greetingText" id="greetingName">${username}</div>
+        </div>
+    `;
+}
