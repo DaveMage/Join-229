@@ -60,5 +60,6 @@ body{
     .mainContainer {
         padding-left: 96px;
         padding-right: 98px;
+        padding-bottom: 16px;
     }
 }

@@ -4,7 +4,7 @@ function headerMobileHtml(){
     <span class="headerDesktopText">Kanban Project Management Tool</span>
     
     <div class="headerProfileMenu">
-        <img src="./img/Desktop/header/helpIconSmall.png" alt="Help Icon" class="helpIcon">
+        <a href="./help.html"><img src="./img/Desktop/header/helpIconSmall.png" alt="Help Icon" class="helpIcon"></a>
         <div class="headerProfileIcon" onclick="displayMobileLogout()">
            <span id="profileInitial"></span>
         </div>

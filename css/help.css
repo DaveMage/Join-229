@@ -63,4 +63,14 @@ body {
   .helpContent {
     height: 100vh;
   }
+
+  .mainContainer {
+    padding-left: 96px;
+    padding-right: 96px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0;
+  }
 }
+

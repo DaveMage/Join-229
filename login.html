@@ -15,11 +15,19 @@
   </head>
   <body onload="displayUserEmailPassword()">
     <header>
-      <img
-        src="/img/Mobile/LogIn/logoIconLogIn.png"
-        class="loginLogo"
-        alt="Join Logo"
-      />
+      <div class="headerLogin">
+        <img
+          src="./img/Desktop/login/joinLogoLogin100x122.png"
+          class="loginLogo"
+          alt="Join Logo"
+        />
+        <div class="registerContainerDesktop">
+          <p>Not a Join user?</p>
+          <button class="primaryBtn signUpBtn" onclick="goToSighUp()">
+            Sign up
+          </button>
+        </div>
+      </div>
     </header>
     <main>
       <form autocomplete="off" class="loginForm" onsubmit="return false;">
@@ -58,7 +66,7 @@
           </button>
         </div>
       </form>
-      <div class="registerContainer">
+      <div class="registerContainerMobile">
         <p>Not a Join user?</p>
         <button class="primaryBtn signUpBtn" onclick="goToSighUp()">
           Sign up
