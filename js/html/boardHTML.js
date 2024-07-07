@@ -94,16 +94,17 @@ function subtaskProgressbarHTML(task) {
         let completedSubtasks = task.subtasks.filter(subtask => subtask.completed).length;
         const progressPercentage = (completedSubtasks / task.subtasks.length) * 100;
 
-        subtaskContentHtml = /*html*/ `
-        <div class="taskCardSubtaskContainer">
-            <div class="subtaskProgressbar">
-                <div class="subtaskProgressbarFill" style="width: ${progressPercentage}%;"></div>
-            </div>
-            <div class='subtaskText'>${completedSubtasks}/${task.subtasks.length} Subtasks</div>
-        </div>`;
+        subtaskContentHtml = `
+            <div class="taskCardSubtaskContainer">
+                <div class="subtaskProgressbar">
+                    <div class="subtaskProgressbarFill" style="width: ${progressPercentage}%;"></div>
+                </div>
+                <div class='subtaskText'>${completedSubtasks}/${task.subtasks.length} Subtasks</div>
+            </div>`;
     }
     return subtaskContentHtml;
 }
+
 
 //Task Card Overwiew
 
@@ -185,16 +186,17 @@ function overviewTaskCardSubtaskHtml(task) {
     if (task.subtasks && task.subtasks.length > 0) {
         let subtaskHtml = '';
         for (let i = 0; i < task.subtasks.length; i++) {
-            subtaskHtml += /*html*/ `
-            <div class="taskCardOverviewSubtask">
-          <input type="checkbox" name="${task.id}" id="${task.id}">
-          <label for="${task.id}">${task.subtasks[i]}</label>
-        </div>`;
+            subtaskHtml += `
+                <div class="taskCardOverviewSubtask">
+                    <input type="checkbox" name="subtaskItem${i}" id="subtaskItem${i}" onclick="toggleSubtaskProgress('${task.id}', ${i})" ${task.subtasks[i].completed ? 'checked' : ''}>
+                    <label for="subtaskItem${i}">${task.subtasks[i]}</label>
+                </div>`;
         }
         return subtaskHtml;
     }
     return '';
 }
+
 
 function taskCardEditHTML(task) {   
     let assignedContactsString = task.assigned ? task.assigned.map(contact => contact.name).join(', ') : '';
