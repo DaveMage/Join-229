@@ -90,6 +90,7 @@ function assingedProfileIconHtml(task) {
 
 function subtaskProgressbarHTML(task) {
     let subtaskContentHtml = '';
+    
     if (task.subtasks && task.subtasks.length > 0) {
         let completedSubtasks = task.subtasks.filter(subtask => subtask.completed).length;
         const progressPercentage = (completedSubtasks / task.subtasks.length) * 100;
@@ -104,6 +105,8 @@ function subtaskProgressbarHTML(task) {
     }
     return subtaskContentHtml;
 }
+
+
 
 
 //Task Card Overwiew
@@ -182,19 +185,23 @@ function overviewTaskCardAssignedHtml(task) {
     return assignedProfilesHtml;
 }
 
-function overviewTaskCardSubtaskHtml(task) {
-    if (task.subtasks && task.subtasks.length > 0) {
-        let subtaskHtml = '';
-        for (let i = 0; i < task.subtasks.length; i++) {
-            subtaskHtml += `
-                <div class="taskCardOverviewSubtask">
-                    <input type="checkbox" name="subtaskItem${i}" id="subtaskItem${i}" onclick="toggleSubtaskProgress('${task.id}', ${i})" ${task.subtasks[i].completed ? 'checked' : ''}>
-                    <label for="subtaskItem${i}">${task.subtasks[i]}</label>
-                </div>`;
-        }
-        return subtaskHtml;
+function overviewTaskCardSubtaskHtml(task) {  
+
+    let subtaskItemsHtml = '';
+  
+    for (let i = 0; i < task.subtasks.length; i++) {
+      let subtaskItem = task.subtasks[i];
+      let subtaskItemHtml = `
+      <div class="taskCardOverviewSubtask">
+      <input type="checkbox" name="subtaskItem${i}" id="subtaskItem${i}">
+      <label for="subtaskItem${i}">${subtaskItem}</label>
+  </div>
+        `;
+  
+      subtaskItemsHtml += subtaskItemHtml;
     }
-    return '';
+  
+    return subtaskItemsHtml;
 }
 
 
