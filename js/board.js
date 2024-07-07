@@ -389,19 +389,18 @@ async function saveEditTask(taskId) {
     let title = document.getElementById('title' + taskId).value;
     let description = document.getElementById('description' + taskId).value;
     let date = document.getElementById('date' + taskId).value;
-    let priority = getSelectedPriority(taskId); // Achten Sie darauf, dass Sie den Wert der Priorität verwenden
+    let priority = getSelectedPriority(taskId);
     let category = currentTask.category;
-    let subtasks = currentTask.subtasks; // Stellen Sie sicher, dass das Subtasks-Array vorhanden ist
-    let assigned = updateSelectedAssignedAndInputField(taskId) // Stellen Sie sicher, dass das zugewiesene Array vorhanden ist
+    let subtasks = currentTask.subtasks;
+    let assigned = updateSelectedAssignedAndInputField(taskId);
     let status = currentTask.status;
     let userEmailToken = localStorage.getItem('emailToken');
-    let userId = users.find(user => user.email === atob(userEmailToken)); // Find the user object with the specified email
-    userId = userId ? userId.id : null; // Get the user ID from the user object
+    let userId = users.find(user => user.email === atob(userEmailToken));
+    userId = userId ? userId.id : null;
 
-    let guestLoggedIn = localStorage.getItem('guestLoggedIn'); // Get the guestLoggedIn value from local storage 
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
 
     try {
-        // Set the user ID to the guest user ID if the guest is logged in
         if (guestLoggedIn === 'true') {
             userId = '-O-Mr5g8976g5-yCxVK8';
         }
@@ -410,7 +409,6 @@ async function saveEditTask(taskId) {
             throw new Error('User ID is not available.');
         }
 
-        // Update the contact details on the server
         await putData('/users/' + userId + '/tasks/' + taskId, {
             'category': category,
             'title': title,
@@ -422,11 +420,11 @@ async function saveEditTask(taskId) {
             'status': status
         });
 
-        closeEditTask(); // Close the edit task card
-        window.location.reload(); // Reload the page after successful update
+        closeEditTask();
+        window.location.reload();
 
     } catch (error) {
-        console.error('Error updating task:', error); // Log an error message if there is an error updating the task
+        console.error('Error updating task:', error);
     }
 }
 
@@ -462,6 +460,11 @@ function getSelectedPriority(taskId) {
         return null; // oder passende Fehlermeldung/Logik
     }
 }
+
+
+
+
+
 
 
 
