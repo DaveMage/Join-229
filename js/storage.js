@@ -13,16 +13,30 @@ async function loadData(path = '') {
 }
 
 
-async function postData(path = '', data = {}) {
-    let response = await fetch(BASE_URL + path + '.json', {
-        method: 'POST',
-        header: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    });
-    return responseToJson = await response.json();
+async function putData(path = '', data = {}) {
+    try {
+        let response = await fetch(BASE_URL + path + '.json', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        let responseToJson = await response.json();
+        return responseToJson;
+    } catch (error) {
+        console.error('Error putting data:', error);
+        throw error; // Re-throw the error so caller can handle it
+    }
 }
+
+
+
 
 
 async function deleteData(path = '') {
