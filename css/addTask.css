@@ -111,7 +111,6 @@ body {
   width: 24px;
   height: 24px;
   cursor: pointer;
-
 }
 
 .assignedItemContainer {
@@ -195,7 +194,6 @@ body {
   background-color: #ffffff;
 }
 
-
 #medium:checked+#prioMedium {
   background-color: #ffa800;
   color: #ffffff;
@@ -267,7 +265,6 @@ body {
 .subtaskIcon {
   cursor: pointer;
   border-radius: 100%;
-
 }
 
 .subtaskIcon:hover {
@@ -282,7 +279,6 @@ body {
   position: relative;
   z-index: 1001;
 }
-
 
 .errorLabel {
   border: 1px solid #ff8190;
@@ -301,7 +297,6 @@ body {
   margin-left: 36px;
   margin-bottom: 4px;
 }
-
 
 .subtaskItemIconContainer {
   position: absolute;
@@ -370,14 +365,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .customDropdownAssigned {
   height: 250px;
   overflow: auto;
-  z-index: 1000;
-  
+  z-index: 1000; 
 }
 
 .addTaskDesktopSeperator {
@@ -404,8 +397,6 @@ body {
   color: #29ABE2;
   box-shadow: 0px 4px 4px 0px #00000040;
 }
-
-
 
 @media (min-width: 1100px) {
   .addTaskBtnContainer {
@@ -460,5 +451,4 @@ body {
     display: flex;
     gap: 16px;
   }
-
 }
