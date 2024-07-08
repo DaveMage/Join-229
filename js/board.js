@@ -437,23 +437,7 @@ function getSelectedPriority(taskId) {  // Funktion, um die ausgewählte Priorit
 
 
 
-async function toggleSubtask(taskId, subtaskId) {
-    // Finden Sie die Aufgabe und die Teilaufgabe
-    let task = tasks.find(t => t.id === taskId);
-    let subtask = task.subtasks[subtaskId];
-    await getUser();
-    let user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
-    let userId = user.id; // Speichern Sie die ID des Benutzers
 
-    // Ändern Sie den completed-Status der Teilaufgabe
-    subtask.completed = !subtask.completed;
-
-    // Senden Sie die aktualisierten Daten an den Server
-    await putData('/users/' + userId + '/tasks/' + taskId + '/subtasks/', subtaskId, ['completed']);
-    
-    updateBoardHtml();
-    
-}
 
 
 
