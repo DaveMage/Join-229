@@ -65,7 +65,7 @@ body {
   margin: -20px 0;
 }
 
-#signUpLabelConfirmPassword:focus + img {
+#signUpLabelConfirmPassword:focus+img {
   content: none;
 }
 
@@ -211,7 +211,7 @@ body {
     height: 122px;
     width: 100px;
   }
-  
+
   .loginForm {
     width: 652px;
   }
@@ -263,7 +263,7 @@ body {
     width: 130px;
   }
 
-  .footerLogin a:hover{
+  .footerLogin a:hover {
     color: #29abe2;
     font-weight: 700;
   }
