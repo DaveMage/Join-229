@@ -215,11 +215,11 @@ function changeEditColorAssignedItem(contactId) {
     if (assignedCheckbox.checked) {
         assignedItem.style.backgroundColor = '#2A3647';
         contactName.style.color = '#fff';
-        assignedCheckbox.style.backgroundImage = 'url(/img/Mobile/Board/checkButtonMobileChecked.png)';
+        assignedCheckbox.style.backgroundImage = 'url(./img/Mobile/Board/checkButtonMobileChecked.png)';
     }   else {
         assignedItem.style.backgroundColor = '#fff';
         contactName.style.color = '#000';
-        assignedCheckbox.style.backgroundImage = 'url(/img/Mobile/Board/checkButtonMobile.png)';
+        assignedCheckbox.style.backgroundImage = 'url(./img/Mobile/Board/checkButtonMobile.png)';
     }
 };
 

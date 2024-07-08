@@ -4,7 +4,7 @@ function goToBoardUsual(mark) {
 
 
 function goToBoard() {
-    window.location.href = '../board.html';       
+    window.location.href = './board.html';       
 };
 
 

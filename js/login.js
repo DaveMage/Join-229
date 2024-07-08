@@ -23,7 +23,7 @@ async function createUser(user) {
     try {
         await postData('/users', user);
         document.getElementById('signUpMain').innerHTML += successfullyMessageHTML();
-        setTimeout(() => { window.location.href = "/login.html"; }, 800);
+        setTimeout(() => { window.location.href = "./login.html"; }, 800);
     } catch (error) {
         console.error('Error creating user:', error);
     }
@@ -46,7 +46,7 @@ async function login() {
                 localStorage.removeItem('emailToken');
                 localStorage.removeItem('passwordToken');
             }
-            window.location.href = "/greeting.html";                      
+            window.location.href = "./greeting.html";
         } else {
             console.log('User not found');
         }
@@ -56,12 +56,12 @@ async function login() {
 };
 
 
-async function guestLogin(){
-    let respnose = await fetch(BASE_URL + '/users/-O-Mr5g8976g5-yCxVK8.json');    
+async function guestLogin() {
+    let respnose = await fetch(BASE_URL + '/users/-O-Mr5g8976g5-yCxVK8.json');
 
-    if(respnose.ok){        
+    if (respnose.ok) {
         localStorage.setItem('guestLoggedIn', 'true');
-        window.location.href = "/greeting.html";
+        window.location.href = "./greeting.html";
     } else {
         console.error('Error during guest login:', error);
     }

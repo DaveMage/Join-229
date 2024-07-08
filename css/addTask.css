@@ -201,7 +201,7 @@ body {
 }
 
 #medium:checked+#prioMedium img {
-  content: url(/img/Mobile/AddTask/hoverMediumIconAddTask.png);
+  content: url(./img/Mobile/AddTask/hoverMediumIconAddTask.png);
 }
 
 #urgent:checked+#prioUrgent {
@@ -211,7 +211,7 @@ body {
 }
 
 #urgent:checked+#prioUrgent img {
-  content: url(/img/Mobile/AddTask/hoverUrgentIconAdTask.png);
+  content: url(./img/Mobile/AddTask/hoverUrgentIconAdTask.png);
 }
 
 #low:checked+#prioLow {
@@ -221,7 +221,7 @@ body {
 }
 
 #low:checked+#prioLow img {
-  content: url(/img/Mobile/AddTask/hoverLowIconAddTask.png);
+  content: url(./img/Mobile/AddTask/hoverLowIconAddTask.png);
 }
 
 .dropdownItemCategory {

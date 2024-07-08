@@ -7,8 +7,8 @@ function focusInput(inputId) {
         document.getElementById(id).style.borderColor = id === inputId ? "#29ABE2" : "#D1D1D1";
     });
 
-    passwortImg.src = inputId === 'signUpLabelPassword' ? "/img/Mobile/LogIn/visibilityOffIconLogIn.png" : "../img/Mobile/LogIn/lockIconLogIn.png";
-    passwortConfirmImg.src = inputId === 'signUpLabelConfirmPassword' ? "../img/Mobile/LogIn/visibilityOffIconLogIn.png" : "../img/Mobile/LogIn/lockIconLogIn.png";
+    passwortImg.src = inputId === 'signUpLabelPassword' ? "/img/Mobile/LogIn/visibilityOffIconLogIn.png" : "./img/Mobile/LogIn/lockIconLogIn.png";
+    passwortConfirmImg.src = inputId === 'signUpLabelConfirmPassword' ? "./img/Mobile/LogIn/visibilityOffIconLogIn.png" : "./img/Mobile/LogIn/lockIconLogIn.png";
 };
 
 

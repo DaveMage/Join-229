@@ -59,7 +59,7 @@ body {
 
 .customCheckbox {
   appearance: none;
-  background-image: url(/img/Mobile/LogIn/checkbox.png);
+  background-image: url(./img/Mobile/LogIn/checkbox.png);
   height: 24px;
   width: 24px;
   background-repeat: no-repeat;
@@ -67,7 +67,7 @@ body {
 }
 
 .customCheckbox:checked {
-  background-image: url(/img/Mobile/LogIn/checkboxChecked.png);
+  background-image: url(./img/Mobile/LogIn/checkboxChecked.png);
 }
 
 .checkboxLabel {

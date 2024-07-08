@@ -17,7 +17,7 @@ body {
 
 @font-face {
   font-family: inter;
-  src: url(/fonts/Inter-VariableFont_slnt\,wght.ttf);
+  src: url(./fonts/Inter-VariableFont_slnt\,wght.ttf);
 }
 
 ::-webkit-scrollbar {
@@ -102,19 +102,19 @@ body {
 }
 
 .menuMobile:hover #summaryMobileIcon {
-  content: url("/img/Mobile/generalElements/summaryIconWhite.png");
+  content: url("./img/Mobile/generalElements/summaryIconWhite.png");
 }
 
 .menuMobile:hover #addTaskMobileIcon {
-  content: url("/img/Mobile/generalElements/addTaskIconWhite.png");
+  content: url("./img/Mobile/generalElements/addTaskIconWhite.png");
 }
 
 .menuMobile:hover #boardMobileIcon {
-  content: url("/img/Mobile/generalElements/boardIconWhite.png");
+  content: url("./img/Mobile/generalElements/boardIconWhite.png");
 }
 
 .menuMobile:hover #contactsMobileIcon {
-  content: url("/img/Mobile/generalElements/contactsIconWhite.png");
+  content: url("./img/Mobile/generalElements/contactsIconWhite.png");
 }
 
 .logoutContainer {

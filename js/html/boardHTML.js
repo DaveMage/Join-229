@@ -178,7 +178,7 @@ function overviewTaskCardSubtaskHtml(task) {
     if (!task.subtasks || task.subtasks.length === 0) {
         return '';
     }
-    
+
     for (let i = 0; i < task.subtasks.length; i++) {
         let subtaskItem = task.subtasks[i];
         let subtaskItemHtml = `
@@ -347,7 +347,7 @@ function changeBgColorAssignedItem(contactId) {
     let assignedItem = assignedCheckbox.closest('.assignedItem');
     assignedItem.style.backgroundColor = assignedCheckbox.checked ? '#2A3647' : '#fff';
     contactName.style.color = assignedCheckbox.checked ? '#fff' : '#000';
-    assignedCheckbox.style.backgroundImage = assignedCheckbox.checked ? 'url(/img/Mobile/Board/checkButtonMobileChecked.png)' : '';
+    assignedCheckbox.style.backgroundImage = assignedCheckbox.checked ? 'url(./img/Mobile/Board/checkButtonMobileChecked.png)' : '';
 };
 
 

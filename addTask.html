@@ -8,10 +8,10 @@
   <link rel="stylesheet" href="./css/main.css" />
   <link rel="stylesheet" href="./css/mainDesktop.css" />
   <link rel="icon" href="./img/favicon/favicon_with_bg.png" type="image/x-icon" />
-  <script src="/js/addTask.js"></script>
-  <script src="/js/storage.js"></script>
-  <script src="/js/main.js"></script>
-  <script src="/js/html/mainHTML.js"></script>
+  <script src="./js/addTask.js"></script>
+  <script src="./js/storage.js"></script>
+  <script src="./js/main.js"></script>
+  <script src="./js/html/mainHTML.js"></script>
   <link rel="stylesheet" href="./css/addTask.css" />
 </head>
 
@@ -37,7 +37,7 @@
           <div class="addTaskInputIconContainer">
             <input id="addTaskFormAssignedInput" type="text" placeholder="Select contacts to assign"
               class="addTaskInput focus-border" onclick="toggleAssignedDropdown()" readonly />
-            <img class="dropdownIcon" id="assignedDropdownArrow" src="/img/Mobile/AddTask/arrowDropDownaa.png" />
+            <img class="dropdownIcon" id="assignedDropdownArrow" src="./img/Mobile/AddTask/arrowDropDownaa.png" />
           </div>
           <div class="customDropdownAssigned customDropdownBox" id="dropdownAssigned">
             <!-- Assigend Item with Checkbox -->
@@ -62,19 +62,19 @@
           <input type="radio" id="urgent" name="priority" value="Urgent" hidden />  <!-- Prio input Radio Urgent -->
           <label for="urgent" class="prioLabel" id="prioUrgent">
             Urgent
-            <img src="/img/Mobile/AddTask/urgentIconAddTask.png" />
+            <img src="./img/Mobile/AddTask/urgentIconAddTask.png" />
           </label>
           
           <input type="radio" id="medium" name="priority" value="Medium" hidden checked />  <!-- Prio input Radio Medium -->
           <label for="medium" class="prioLabel" id="prioMedium">
             Medium
-            <img src="/img/Mobile/AddTask/mediumIconAddTask.png" />
+            <img src="./img/Mobile/AddTask/mediumIconAddTask.png" />
           </label>
           
           <input type="radio" id="low" name="priority" value="Low" hidden />  <!-- Prio input Radio Low -->
           <label for="low" class="prioLabel" id="prioLow">
             Low
-            <img src="/img/Mobile/AddTask/lowIconAddTask.png" />
+            <img src="./img/Mobile/AddTask/lowIconAddTask.png" />
           </label>
         </div>
         
@@ -83,7 +83,7 @@
           <div class="addTaskInputIconContainer">
             <input id="addTaskCategory" type="text" placeholder="Select a Category" class="addTaskInput focus-border"
               readonly onclick="toggleCategoryDropdown()" />
-            <img class="dropdownIcon" id="categoryDropdownArrow" src="/img/Mobile/AddTask/arrowDropDownaa.png" />
+            <img class="dropdownIcon" id="categoryDropdownArrow" src="./img/Mobile/AddTask/arrowDropDownaa.png" />
           </div>
           <div class="customDropdownCategory customDropdownBox" id="dropdownCategory">
             <div class="dropdownItemCategory" onclick="selectCategory(this)">
@@ -128,7 +128,7 @@
         </button>
         <button onclick="saveTask()" class="primaryBtn createTaskBtn">
           Create Task
-          <img src="/img/Mobile/AddTask/checkMarkIconAddTask.png" />
+          <img src="./img/Mobile/AddTask/checkMarkIconAddTask.png" />
         </button>
       </div>
     </div>
