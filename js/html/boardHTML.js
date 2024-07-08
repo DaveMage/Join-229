@@ -85,7 +85,7 @@ function assingedProfileIconHtml(task) {
 
 function subtaskProgressbarHTML(task) {
     let subtaskContentHtml = '';
-    
+
     if (task.subtasks && task.subtasks.length > 0) {
         let completedSubtasks = task.subtasks.filter(subtask => subtask.completed).length;
         const progressPercentage = (completedSubtasks / task.subtasks.length) * 100;
@@ -102,11 +102,7 @@ function subtaskProgressbarHTML(task) {
 };
 
 
-
-
-//Task Card Overwiew
-
-function overviewTaskCardHTML(task) {
+function overviewTaskCardHTML(task) { //Task Card Overwiew                      muss nachgeschaut werden
     return /* html */`
     <div class="background" id="taskCardOverviewBackground">
     <div class="taskCardOverviewBody">
@@ -115,15 +111,12 @@ function overviewTaskCardHTML(task) {
           ${taskCardCategoryHTML(task)}
           <img src="/img/Mobile/Board/closeTask.png" onclick="closeTaskCardOverview()">
         </div>  
-
         <h2 class="taskCardOverviewTitle">${task.title}</h2>
-
         <p class="taskCardOverviewDescription">${task.description}</p>
-
         <div class="taskCardOverviewLabelContainer">
           <p class="taskCardOverviewLabel">Due date:</p>
           <p class="taskCardOverview">${task.date}</p>
-      </div>
+        </div>
 
       <div class="taskCardOverviewLabelContainer">
         <p class="taskCardOverviewLabel">Priority:</p>
@@ -155,9 +148,9 @@ function overviewTaskCardHTML(task) {
 
     </div>
   </div>
-</div>
-    `;
-}
+</div>`;
+};
+
 
 function overviewTaskCardAssignedHtml(task) {
     // Überprüfen, ob task.assigned leer ist
@@ -176,31 +169,28 @@ function overviewTaskCardAssignedHtml(task) {
               </div>`;
         }
     }
-
     return assignedProfilesHtml;
-}
+};
 
-function overviewTaskCardSubtaskHtml(task) {  
 
+function overviewTaskCardSubtaskHtml(task) {
     let subtaskItemsHtml = '';
-  
     for (let i = 0; i < task.subtasks.length; i++) {
-      let subtaskItem = task.subtasks[i];
-      let subtaskItemHtml = `
+        let subtaskItem = task.subtasks[i];
+        let subtaskItemHtml = `
       <div class="taskCardOverviewSubtask">
       <input type="checkbox" name="subtaskItem${i}" id="subtaskItem${i}">
       <label for="subtaskItem${i}">${subtaskItem}</label>
   </div>
         `;
-  
-      subtaskItemsHtml += subtaskItemHtml;
+
+        subtaskItemsHtml += subtaskItemHtml;
     }
-  
     return subtaskItemsHtml;
-}
+};
 
 
-function taskCardEditHTML(task) {   
+function taskCardEditHTML(task) {
     let assignedContactsString = task.assigned ? task.assigned.map(contact => contact.name).join(', ') : '';
     return /* html */`
     <div class="background" id="taskCardEditBackground">
@@ -308,9 +298,9 @@ function taskCardEditHTML(task) {
         </div>
     </div>
     </div>
-    </div>
-    `;
-}
+    </div>`;
+};
+
 
 function displayAssignedDropdown(task) {
     let assignedDropdownHtml = '';
@@ -333,8 +323,7 @@ function displayAssignedDropdown(task) {
         `;
     }
     return assignedDropdownHtml;
-}
-
+};
 
 
 function toogleEditAssignedDropdown() {
@@ -342,23 +331,20 @@ function toogleEditAssignedDropdown() {
     dropdown.classList.toggle('show');
     if (dropdown.classList.contains('show')) {
         document.getElementById('assignedIcon').style.transform = 'rotate(180deg)';
-    }   else {
+    } else {
         document.getElementById('assignedIcon').style.transform = 'rotate(0deg)';
     }
-
-}
-
+};
 
 
-
-function changeBgColorAssignedItem(contactId){
+function changeBgColorAssignedItem(contactId) {
     let assignedCheckbox = document.getElementById(`assignedCheckbox${contactId}`);
     let contactName = document.getElementById(`contactName${contactId}`);
     let assignedItem = assignedCheckbox.closest('.assignedItem');
     assignedItem.style.backgroundColor = assignedCheckbox.checked ? '#2A3647' : '#fff';
     contactName.style.color = assignedCheckbox.checked ? '#fff' : '#000';
     assignedCheckbox.style.backgroundImage = assignedCheckbox.checked ? 'url(/img/Mobile/Board/checkButtonMobileChecked.png)' : '';
-}
+};
 
 
 function displaySubtasksHTML(task) {
@@ -377,7 +363,8 @@ function displaySubtasksHTML(task) {
         }
     }
     return subtaskHtml;
-}
+};
+
 
 function displayAssignedProfileIcons(task) {
     let profileIconHtml = '';
@@ -388,4 +375,4 @@ function displayAssignedProfileIcons(task) {
         }
     }
     return profileIconHtml;
-}
+};

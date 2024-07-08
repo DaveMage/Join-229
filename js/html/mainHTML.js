@@ -1,5 +1,5 @@
-function headerMobileHtml(){
-   return /*html*/ `
+function headerMobileHtml() {
+    return /*html*/ `
     <img class="headerMobileLogo" src="/img/Mobile/generalElements/joinLogoMobile.png" alt="Join Logo">
     <span class="headerDesktopText">Kanban Project Management Tool</span>
     
@@ -9,11 +9,12 @@ function headerMobileHtml(){
            <span id="profileInitial"></span>
         </div>
     </div>
-    ${logoutMobileHtml()}`; 
-}
+    ${logoutMobileHtml()}`;
+};
 
-function menuMobileHtml(){
-   return `
+
+function menuMobileHtml() {
+    return /* html */`
    <a class="menuMobile" href="/summary.html" id="summaryLink">
        <img src="/img/Mobile/generalElements/summaryIconGray.png" alt="Summary Icon" id="summaryMobileIcon}">
        <p>Summary</p>
@@ -29,35 +30,33 @@ function menuMobileHtml(){
    <a class="menuMobile" href="/contacts.html" id="contactsLink">
        <img src="/img/Mobile/generalElements/contactsIconGray.png" alt="Contacs Icon" id="contactsMobileIcon">
        <p>Contacts</p>
-   </a>
-`;
-}
+   </a>`;
+};
 
-function logoutMobileHtml(){
-   return `
+
+function logoutMobileHtml() {
+    return /* html */`
    <div class="logoutContainer slideInRight" id="logout">
       <a href="/help.html">Help</a>
       <a href="/legalNotice.html">Legal Notice</a>
       <a href="/privacyPolice.html">Privacy Policy</a>
       <a href="#" onclick="logout()">Log out</a>
-    </div>
-`;
-}
+    </div>`;
+};
 
-function greetingHTML(user){
-    return `
+
+function greetingHTML(user) {
+    return /* html */`
     <section class="greetingBackground">
-    <div class="greetingContainer">
-      <div class="greetingText" id="greetingText">Good morning,</div>
-      <div class="greetingText" id="greetingName">${user.name}</div>
-    </div>
-  </section>
-    `;
-}
+        <div class="greetingContainer">
+            <div class="greetingText" id="greetingText">Good morning,</div>
+            <div class="greetingText" id="greetingName">${user.name}</div>
+        </div>
+    </section>`;
+};
 
-// -- Desktop -- //
 
-function menuDesktopHtml() {
+function menuDesktopHtml() {            // -- Desktop -- //
     return /*html*/ `
         <div class="logoLinks">
             <img src="./img/Desktop/sidebar/joinLogoDesktop.png" alt="Join Logo" class="joinLogoDesktop">
@@ -84,6 +83,5 @@ function menuDesktopHtml() {
         <div class="contentLinksPolicyLegalNotice">
             <a href="./privacyPolice.html" id="privacyLink" class="linksPrivacyLegal">Privacy Policy</a>
             <a href="./legalNotice.html" id="legalLink" class="linksPrivacyLegal">Legal notice</a>
-        </div>
-    `;
-}
+        </div>`;
+};

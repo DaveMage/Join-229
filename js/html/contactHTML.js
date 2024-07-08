@@ -1,5 +1,5 @@
 function addContactHtml() {
-    return `
+  return /* html */`
     <div class="background" id="contactAddFormBackground">
             <div class="addContactContainer slideInBottom" id="addContactContainer">
                 <div class="addContainerTopContainer">
@@ -29,24 +29,24 @@ function addContactHtml() {
                     </form>
                 </div>
             </div>
-        </div>
-    `;
-}
+        </div>`;
+};
+
 
 function contactListItemHtml(contact) {
-    return `    
+  return /* html */`    
     <div class="contactProfileContainer" onclick="openContactView('${contact.id}')">
       <div class="profileIcon" style="background-color: ${contact.profileColor};">${contact.initials}</div>
       <div class="contactNameEmailContainer">
         <p class="contactName">${contact.name}</p>
         <p class="contactEmail">${contact.email}</p>
       </div>
-    </div>
-    `;
-}
+    </div>`;
+};
+
 
 function contactViewHtml(contact) {
-    return `
+  return /* html */`
     <section class="contactView" onclick="closeOption()" id="contactViewContainer${contact.id}">
     <img class="arrowBack" src="/img/Mobile/Contacts/arrowLeftBlue.png" onclick="goToContacts()"/>
     <div class="ContactViewHeader">
@@ -76,30 +76,30 @@ function contactViewHtml(contact) {
     <button  class="primaryBtn addContactBtn" onclick="openOption('${contact.id}')">
         <img id="contactBtnImg" src="/img/Mobile/Contacts/contactViewOption.png" />
     </button>
-    ${optionHtml(contact)}
-    `;
-}
+    ${optionHtml(contact)}`;
+};
 
 
-
-function optionHtml(contact){
-    return `<div class="optionContainer" id="optionContainer">
+function optionHtml(contact) {
+  return `<div class="optionContainer" id="optionContainer">
     <button onclick="openEditContact('${contact.id}')"><img src="/img/Mobile/Contacts/editGrey.png" class="editBtn">Edit</button>
     <button onclick="deleteContact('${contact.id}')"><img src="/img/Mobile/Contacts/trashGrey.png" class="deleteBtn" >Delete</button>
   </div>`;
-}
+};
 
-function successfullyHtml(){
-    return `
+
+function successfullyHtml() {
+  return /* html */`
     <div class="backgroundSuccessfullyMessage">
     <div id="conctactSuccessfully" class="successfullyMessage slideInBottom">
     Contact successfully created
     </div>
-    </div>
-    `;}
+    </div>`;
+};
 
-  function contactEditForm(contact){
-    return`
+
+function contactEditForm(contact) {
+  return /* html */`
     <div class="background " id="contactEditFormBackground">
     <div class="addContactContainer slideInBottom" id="editContactContainer">
         <div class="addContainerTopContainer">
@@ -131,6 +131,5 @@ function successfullyHtml(){
             </form>
         </div>
     </div>
-</div>
-    `;
-  }
+</div>`;
+};
