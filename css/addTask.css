@@ -280,6 +280,7 @@ body {
 
 .addTaskInput {
   position: relative;
+  z-index: 1001;
 }
 
 
@@ -370,6 +371,13 @@ body {
   align-items: center;
   justify-content: center;
 
+}
+
+.customDropdownAssigned {
+  height: 250px;
+  overflow: auto;
+  z-index: 1000;
+  
 }
 
 .addTaskDesktopSeperator {
