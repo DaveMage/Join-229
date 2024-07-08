@@ -159,7 +159,7 @@ function menuActive() {
 
 
 function goToAddTask() {
-    window.location.href = './addTask.html';
+    window.location.href = '/addTask.html';
 };
 
 
