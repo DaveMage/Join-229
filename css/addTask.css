@@ -277,7 +277,7 @@ body {
 
 .addTaskInput {
   position: relative;
-  z-index: 1001;
+ 
 }
 
 .errorLabel {
@@ -369,8 +369,7 @@ body {
 
 .customDropdownAssigned {
   height: 250px;
-  overflow: auto;
-  z-index: 1000; 
+  overflow: auto;  
 }
 
 .addTaskDesktopSeperator {
