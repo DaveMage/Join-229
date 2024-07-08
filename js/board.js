@@ -167,6 +167,31 @@ function searchForTasks() {     // Such Funktion
 };
 
 
+function searchForTasksDesktop() {     // Such Funktion
+    let search = document.getElementById('seachFieldBoardDesktop').value.toLowerCase();    //suche die value aus dem feld
+    let todo = document.getElementById('toDoContainer');        // ziehe den inhalt aus den feldern
+    let inProgress = document.getElementById('progressContainer');
+    let awaitFeedback = document.getElementById('feedbackContainer');
+    let done = document.getElementById('doneContainer');
+    clearEveryCategorie(todo, inProgress, awaitFeedback, done);  // lösche alles
+    tasks.forEach(task => {  //durchsuche die tasks
+        if (task.title.toLowerCase().includes(search) || task.description.toLowerCase().includes(search)) {  //suche nach dem wort
+            if (task.status === 'open') {
+                todo.innerHTML += taskCardHTML(task);  //füge es in die kategorie ein
+            } else if (task.status === 'inProgress') {
+                inProgress.innerHTML += taskCardHTML(task);
+            } else if (task.status === 'awaitFeedback') {
+                awaitFeedback.innerHTML += taskCardHTML(task);
+            } else if (task.status === 'done') {
+                done.innerHTML += taskCardHTML(task);
+            }
+        }
+
+    });
+    displayNoTasks();
+};
+
+
 function clearEveryCategorie(todo, inProgress, awaitFeedback, done) {
     todo.innerHTML = '';
     inProgress.innerHTML = '';
