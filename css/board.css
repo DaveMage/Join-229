@@ -238,7 +238,6 @@ main {
   overflow: auto;
 }
 
-/* Task Detail View */
 .taskCardOverviewMain {
   display: flex;
   flex-direction: column;
@@ -392,8 +391,6 @@ main {
   height: 24px;
   border-left: 1px solid #d1d1d1;
 }
-
-/* edit Task */
 
 .taskCardEditBody {
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
@@ -591,13 +588,11 @@ main {
   cursor: pointer;
   height: 24px;
   width: 24px;
-  
   border-radius: 100%;
 }
 
 .subtaskItemIcon:active, .subtaskItemIcon:hover {
   background-color: #d1d1d1;
-  
 }
 
 .taskCardEditBtn{
@@ -624,8 +619,7 @@ main {
   padding-top: 8px;
   margin-top: -16px;
   height: 200px;
-  overflow: auto;
-  
+  overflow: auto; 
 }
 
 .assignedItem{
@@ -678,8 +672,6 @@ main {
   gap: 8px;
   align-items: center;
 }
-
-/* Desktopversion */
 
 @media (min-width: 1100px) {
   main {
