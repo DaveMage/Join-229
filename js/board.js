@@ -37,8 +37,14 @@ function startDragging(event, taskId) {
 async function moveTo(status) {
     await getUser();
     let user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
-    let userId = user.id; // Speichern Sie die ID des Benutzers
+    let userId = user ? user.id : '-O-Mr5g8976g5-yCxVK8'; // Setzen Sie einen Standardwert für userId, wenn kein Benutzer gefunden wurde
     const task = tasks.find(t => t.id === currentDraggedElement);
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
+
+    if (guestLoggedIn === 'true') {
+        userId = '-O-Mr5g8976g5-yCxVK8';
+    }
+
     if (task) {
         task.status = status;
         updateBoardHtml();
