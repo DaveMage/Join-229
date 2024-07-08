@@ -1,44 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Join</title>
-    <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/mainDesktop.css"/>
-    <link
-      rel="icon"
-      href="./img/favicon/favicon_with_bg.png"
-      type="image/x-icon"
-    />
-    <script src="/js/main.js"></script>
-    <script src="/js/html/mainHTML.js"></script>
-    <link rel="stylesheet" href="/css/main.css" />
-    <link rel="stylesheet" href="/css/contact.css" />
-  </head>
-  <body id="template" onload="contactInit()" >
-    <header id="header" class="headerMenu"></header>
-    <main id="contactMain">
-     
-      <section class="contactsListContainer" id="contacts"></section>
 
-      
-      
-      
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join</title>
+  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="stylesheet" href="./css/mainDesktop.css" />
+  <link rel="icon" href="./img/favicon/favicon_with_bg.png" type="image/x-icon" />
+  <script src="/js/main.js"></script>
+  <script src="/js/html/mainHTML.js"></script>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/contact.css" />
+</head>
 
-      <button class="primaryBtn addContactBtn" onclick="openAddContact()">
-        <img
-          id="contactBtnImg"
-          src="/img/Mobile/Contacts/personAddIconContacts.png"
-        />
-      </button>
-    </main>
-    
-    <section id="menuDesktop" class="sidebar"></section>
-    <footer id="menu" class="footer"></footer>
+<body id="template" onload="contactInit()">
+  <header id="header" class="headerMenu"></header>
+  <main id="contactMain">
+    <section class="contactsListContainer" id="contacts"></section>
+    <button class="primaryBtn addContactBtn" onclick="openAddContact()">
+      <img id="contactBtnImg" src="/img/Mobile/Contacts/personAddIconContacts.png"/>
+    </button>
+  </main>
+  <section id="menuDesktop" class="sidebar"></section>
+  <footer id="menu" class="footer"></footer>
+  <script src="/js/storage.js"></script>
+  <script src="/js/html/contactHTML.js"></script>
+  <script src="/js/contact.js"></script>
+</body>
 
-    <script src="/js/storage.js"></script>
-    <script src="/js/html/contactHTML.js"></script>
-    <script src="/js/contact.js"></script>
-  </body>
 </html>
