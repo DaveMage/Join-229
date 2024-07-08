@@ -4,24 +4,21 @@
   box-sizing: border-box;
   font-family: var(--font-family-inter);
   font-size: 16px;
-  font-weight: 400;  
+  font-weight: 400;
 }
 
-body{
-    min-height: 100vh;
+body {
+  min-height: 100vh;
 }
 
 :root {
   --font-family-inter: "Inter", sans-serif;
 }
 
-
 @font-face {
   font-family: inter;
   src: url(/fonts/Inter-VariableFont_slnt\,wght.ttf);
 }
-
-/* Scrollbar */
 
 ::-webkit-scrollbar {
   width: 12px;
@@ -33,8 +30,6 @@ body{
   border-radius: 24px;
   background-color: #A8A8A8;
 }
-
-/* Scrollbar Ende */
 
 .headerProfileIcon {
   width: 40px;
@@ -176,24 +171,24 @@ body{
   cursor: pointer;
 }
 
-.secondaryBtn:active, .secondaryBtn:hover {
+.secondaryBtn:active,
+.secondaryBtn:hover {
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   border-color: #29ABE2;
   color: #29ABE2;
 }
 
-.arrowBack:active{
+.arrowBack:active {
   border-radius: 100%;
   background-color: #29abe2;
 }
 
-.arrowBack:hover{
+.arrowBack:hover {
   background-color: #0c2e621f;
   border-radius: 100%;
 }
 
-
-.active{
+.active {
   background-color: #091931;
 }
 
@@ -216,11 +211,11 @@ body{
 
 @media (min-width: 1100px) {
   .headerDesktopText {
-      display: block;
+    display: block;
   }
-  
+
   .headerMobileLogo {
-      display: none;
+    display: none;
   }
 
   .headerProfileMenu {
@@ -267,7 +262,6 @@ body{
   animation: slideInRight 300ms ease-out 0s 1 normal forwards;
 }
 
-
 @keyframes slideInBottom {
   0% {
     transform: translateY(100%);
@@ -296,19 +290,18 @@ body{
   animation: slideOutBottom 300ms ease-out 0s 1 normal forwards;
 }
 
-
 .taskSlideIn {
   animation: taskSlideIn 500ms ease-in-out 0s 1 normal forwards;
 }
 
 @keyframes taskSlideIn {
-	0% {
-		opacity: 0;
-		transform: translateY(250px);
-	}
+  0% {
+    opacity: 0;
+    transform: translateY(250px);
+  }
 
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
