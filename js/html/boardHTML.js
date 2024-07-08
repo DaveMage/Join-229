@@ -118,11 +118,11 @@ function overviewTaskCardHTML(task) { //Task Card Overwiew                      
           <p class="taskCardOverview">${task.date}</p>
         </div>
 
-      <div class="taskCardOverviewLabelContainer">
-        <p class="taskCardOverviewLabel">Priority:</p>
-        <p class="taskCardOverview">${task.priority.value}</p>
-        <img src="${task.priority.imgSrc}">
-    </div>
+        <div class="taskCardOverviewLabelContainer">
+            <p class="taskCardOverviewLabel">Priority:</p>
+            <p class="taskCardOverview">${task.priority.value}</p>
+            <img src="${task.priority.imgSrc}">
+        </div>
 
     <div class="taskCardOverviewAssignedContainer">
       <p class="taskCardOverviewLabel">Assigned To:</p>
