@@ -1,94 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Join - Board</title>
-    <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/board.css" />
-    <link rel="stylesheet" href="./css/mainDesktop.css"/>
-    <link
-      rel="icon"
-      href="./img/favicon/favicon_with_bg.png"
-      type="image/x-icon"
-    />
-    <script src="/js/storage.js" defer></script>
-    <script src="/js/main.js"></script>
-    <script src="/js/board.js"></script>
-    <script src="/js/html/boardHTML.js"></script>
-    <script src="/js/html/mainHTML.js"></script>
-  </head>
-  <body id="template" onload="boardInit()">
-    <header id="header" class="headerMenu"></header>
-    
-    <main id="mainBoard">
-      
 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join - Board</title>
+  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="stylesheet" href="./css/board.css" />
+  <link rel="stylesheet" href="./css/mainDesktop.css" />
+  <link rel="icon" href="./img/favicon/favicon_with_bg.png" type="image/x-icon" />
+  <script src="/js/storage.js" defer></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/board.js"></script>
+  <script src="/js/html/boardHTML.js"></script>
+  <script src="/js/html/mainHTML.js"></script>
+</head>
 
-      <div class="headerBoard">
-        <div class="headlineContainer">
-          <h1 class="headline">Board</h1>
-          <img class="addTaskOnBoard" onclick="goToAddTask()" src="/img/Mobile/Board/plusAddTaskMobile.png" />
+<body id="template" onload="boardInit()">
+  <header id="header" class="headerMenu"></header>
+
+  <main id="mainBoard">
+    <div class="headerBoard">
+      <div class="headlineContainer">
+        <h1 class="headline">Board</h1>
+        <img class="addTaskOnBoard" onclick="goToAddTask()" src="/img/Mobile/Board/plusAddTaskMobile.png" />
+      </div>
+      <div class="searchContainer" id="searchBar">
+        <input id="seachFieldBoard" type="search" placeholder="Find Task" onfocus="addActiveClass()"
+          onblur="removeActiveClass()" onkeypress="searchForTasks()" />
+        <span class="seperator"></span>
+        <img src="/img/Mobile/Board/search.png" />
+      </div>
+    </div>
+
+    <div class="tasksContainer">
+      <div class="taskSubContainer">
+        <div class="taskSubContainerHeader">
+          <h2 class="subHeadline">To do</h2>
+          <img class="addTaskDesktopIcon" onclick="goToAddTask()" src="/img/Mobile/Board/plusButtonMobile.png" />
         </div>
-        <div class="searchContainer" id="searchBar">
-          <input
-          id="seachFieldBoard"
-            type="search"
-            placeholder="Find Task"
-            onfocus="addActiveClass()"
-            onblur="removeActiveClass()"
-            onkeypress="searchForTasks()"
-          />
-          <span class="seperator"></span>
-          <img  src="/img/Mobile/Board/search.png"/>
-        </div>
+        <div id="toDoContainer" class="taskCardContainer" ondrop="moveTo('open')" ondragover="allowDrop(event)"></div>
       </div>
 
-      <div class="tasksContainer">
-        <div class="taskSubContainer" >
-          <div class="taskSubContainerHeader">
-            <h2 class="subHeadline">To do</h2>
-            <img class="addTaskDesktopIcon" onclick="goToAddTask()" src="/img/Mobile/Board/plusButtonMobile.png" />
-          </div>
-          <div id="toDoContainer" class="taskCardContainer" ondrop="moveTo('open')"              
-          ondragover="allowDrop(event)"></div>
+      <div class="taskSubContainer">
+        <div class="taskSubContainerHeader">
+          <h2 class="subHeadline">In progress</h2>
+          <img class="addTaskDesktopIcon" onclick="goToAddTask()" src="/img/Mobile/Board/plusButtonMobile.png" />
         </div>
-
-        <div class="taskSubContainer" >
-          <div class="taskSubContainerHeader">
-            <h2 class="subHeadline">In progress</h2>
-            <img class="addTaskDesktopIcon" onclick="goToAddTask()" src="/img/Mobile/Board/plusButtonMobile.png" />
-          </div>
-          <div id="progressContainer" class="taskCardContainer" ondrop="moveTo('inProgress')"
-              
+        <div id="progressContainer" class="taskCardContainer" ondrop="moveTo('inProgress')"
           ondragover="allowDrop(event)"></div>
-        </div>
+      </div>
 
-        <div class="taskSubContainer" >
-          <div class="taskSubContainerHeader">
-            <h2 class="subHeadline">Await feedback</h2>
-            <img class="addTaskDesktopIcon"i onclick="goToAddTask()" src="/img/Mobile/Board/plusButtonMobile.png" />
-          </div>
-          <div id="feedbackContainer" class="taskCardContainer" ondrop="moveTo('awaitFeedback')"
-              
+      <div class="taskSubContainer">
+        <div class="taskSubContainerHeader">
+          <h2 class="subHeadline">Await feedback</h2>
+          <img class="addTaskDesktopIcon" i onclick="goToAddTask()" src="/img/Mobile/Board/plusButtonMobile.png" />
+        </div>
+        <div id="feedbackContainer" class="taskCardContainer" ondrop="moveTo('awaitFeedback')"
           ondragover="allowDrop(event)"></div>
-        </div>
+      </div>
 
-        <div class="taskSubContainer" >
-          <div class="taskSubContainerHeader">
-            <h2 class="subHeadline">Done</h2>            
+      <div class="taskSubContainer">
+        <div class="taskSubContainerHeader">
+          <h2 class="subHeadline">Done</h2>
+        </div>
+        <div id="doneContainer" class="taskCardContainer" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+          <div class="noTasks">
+            <p class="noTasksText">No tasks Done</p>
           </div>
-            <div id="doneContainer" class="taskCardContainer" ondrop="moveTo('done')"              
-            ondragover="allowDrop(event)">
-            <div class="noTasks">
-              <p class="noTasksText">No tasks Done</p>
-          </div>
-            </div>
         </div>
       </div>
-    </main>
+    </div>
+  </main>
 
-    <section id="menuDesktop" class="sidebar"></section>
-    <footer id="menu" class="footer"></footer>
-  </body>
+  <section id="menuDesktop" class="sidebar"></section>
+  <footer id="menu" class="footer"></footer>
+</body>
+
 </html>
