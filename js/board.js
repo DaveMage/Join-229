@@ -1,3 +1,5 @@
+let currentDraggedElement = null; // drag and drop
+
 function boardInit() {
     displayMobileHeader();
     displayMobileMenu();
@@ -8,32 +10,34 @@ function boardInit() {
     getContacts();
     displayTaskCard();
     menuActive();
-}
+};
+
 
 function addActiveClass() {
     document.getElementById('searchBar').classList.add('inputActive');
-}
+};
+
 
 function removeActiveClass() {
     document.getElementById('searchBar').classList.remove('inputActive');
-}
+};
 
-// drag and drop
-let currentDraggedElement = null;
+
 function allowDrop(ev) {
     ev.preventDefault();
-}
+};
+
 
 function startDragging(event, taskId) {
     event.dataTransfer.setData('text/plain', taskId); // Legt die zu übertragende Daten (Task-ID) fest    
     currentDraggedElement = taskId; // Speichert die Task-ID des aktuell gezogenen Elements
-}
+};
+
 
 async function moveTo(status) {
     await getUser();
     let user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
     let userId = user.id; // Speichern Sie die ID des Benutzers
-
     const task = tasks.find(t => t.id === currentDraggedElement);
     if (task) {
         task.status = status;
@@ -42,7 +46,8 @@ async function moveTo(status) {
     } else {
         console.error('Task not found with ID:', currentDraggedElement);
     }
-}
+};
+
 
 function updateBoardHtml() {
     const statuses = {
@@ -51,7 +56,6 @@ function updateBoardHtml() {
         awaitFeedback: { html: '', containerId: 'feedbackContainer' },
         done: { html: '', containerId: 'doneContainer' }
     };
-
     for (let status in statuses) {
         let tasksByStatus = tasks.filter(task => task.status === status);
         tasksByStatus.forEach(task => {
@@ -59,11 +63,8 @@ function updateBoardHtml() {
         });
         document.getElementById(statuses[status].containerId).innerHTML = statuses[status].html;
     }
-
     displayNoTasks();
-}
-
-//----------------------------------------------
+};
 
 
 function displayNoTasks() {
@@ -71,7 +72,6 @@ function displayNoTasks() {
     let inProgress = document.getElementById('progressContainer');
     let awaitFeedback = document.getElementById('feedbackContainer');
     let done = document.getElementById('doneContainer');
-
     if (toDo.innerHTML === '') {
         toDo.innerHTML = displayNoTasksToDo();
     }
@@ -84,8 +84,8 @@ function displayNoTasks() {
     if (done.innerHTML === '') {
         done.innerHTML = displayNoTasksDone();
     }
+};
 
-}
 
 async function displayTaskCard() {
     let toDo = document.getElementById('toDoContainer');
@@ -106,20 +106,19 @@ async function displayTaskCard() {
             }
         }
     });
-
     displayNoTasks();
+};
 
-}
 
 function displayOverviewTaskCard(taskId) {
     let task = tasks.find(t => t.id === taskId);
     document.getElementById('mainBoard').innerHTML += overviewTaskCardHTML(task);
-}
+};
+
 
 function closeTaskCardOverview() {
     document.getElementById('taskCardOverviewBackground').remove();
-}
-
+};
 
 
 async function deleteTask(taskId) {
@@ -135,25 +134,21 @@ async function deleteTask(taskId) {
     }
     try {
         await deleteData('/users/' + userId + '/tasks/' + taskId); // Delete the contact data from the server
-
         closeTaskCardOverview(); // Close the task card overview
         window.location.reload(); // Reload the page        
-
     } catch (error) {
         console.error('Error deleting contact:', error); // Log an error message if there is an error deleting the contact
     }
-}
+};
 
 
-// Such Funktion
-function searchForTasks() {
+function searchForTasks() {     // Such Funktion
     let search = document.getElementById('seachFieldBoard').value.toLowerCase();    //suche die value aus dem feld
     let todo = document.getElementById('toDoContainer');        // ziehe den inhalt aus den feldern
     let inProgress = document.getElementById('progressContainer');
     let awaitFeedback = document.getElementById('feedbackContainer');
     let done = document.getElementById('doneContainer');
     clearEveryCategorie(todo, inProgress, awaitFeedback, done);  // lösche alles
-
     tasks.forEach(task => {  //durchsuche die tasks
         if (task.title.toLowerCase().includes(search) || task.description.toLowerCase().includes(search)) {  //suche nach dem wort
             if (task.status === 'open') {
@@ -169,17 +164,16 @@ function searchForTasks() {
 
     });
     displayNoTasks();
-}
+};
+
 
 function clearEveryCategorie(todo, inProgress, awaitFeedback, done) {
     todo.innerHTML = '';
     inProgress.innerHTML = '';
     awaitFeedback.innerHTML = '';
     done.innerHTML = '';
-}
-//----------------------------------------------
+};
 
-//Edit Task function
 
 function openEditTask(taskId) {
     let task = tasks.find(t => t.id === (taskId));
@@ -192,11 +186,13 @@ function openEditTask(taskId) {
     } else {
         console.error('Task not found with ID:', taskId);
     }
-}
+};
+
 
 function closeEditTask() {
     document.getElementById('taskCardEditBackground').remove();
-}
+};
+
 
 function fillSelectedAssigned(taskId) {
     let task = tasks.find(t => t.id === taskId);
@@ -208,7 +204,8 @@ function fillSelectedAssigned(taskId) {
             changeEditColorAssignedItem(selectedAssigned[i].id);
         }
     }
-}
+};
+
 
 function changeEditColorAssignedItem(contactId) {
     let assignedCheckbox = document.getElementById(`assignedCheckbox${contactId}`);
@@ -224,8 +221,7 @@ function changeEditColorAssignedItem(contactId) {
         contactName.style.color = '#000';
         assignedCheckbox.style.backgroundImage = 'url(/img/Mobile/Board/checkButtonMobile.png)';
     }
-}
-
+};
 
 
 function updateSelectedAssignedAndInputField(taskId) {
@@ -257,10 +253,7 @@ function updateSelectedAssignedAndInputField(taskId) {
 
     // Return the array of selected assigned contacts
     return selectedAssigned;
-}
-
-
-
+};
 
 
 function deleteSubtask(taskId, subtaskIndex) {
@@ -275,26 +268,23 @@ function deleteSubtask(taskId, subtaskIndex) {
             subtaskContainer.innerHTML = displaySubtasksHTML(task);
         }
     }
-}
-
+};
 
 
 function focusSubtaskInput() {
-
     const inputField = document.querySelector('.subtaskInput');
     let checkIcon = document.getElementById('checkSubtaskIcon');
     let closeIcon = document.getElementById('closeSubtaskIcon');
     let addIcon = document.getElementById('addEditSubtaskIcon');
     let seperator = document.getElementById('subtaskEditInputSeperator');
-
     inputField.readOnly = false;
     inputField.focus();
     addIcon.style.display = 'none';
     checkIcon.style.display = 'flex';
     closeIcon.style.display = 'flex';
     seperator.style.display = 'flex';
+};
 
-}
 
 function onBlurSubtaskInput() {
     const inputField = document.querySelector('.subtaskInput');
@@ -302,15 +292,12 @@ function onBlurSubtaskInput() {
     let closeIcon = document.getElementById('closeSubtaskIcon');
     let addIcon = document.getElementById('addEditSubtaskIcon');
     let seperator = document.getElementById('subtaskEditInputSeperator');
-
     inputField.readOnly = true;
     addIcon.style.display = 'flex';
     checkIcon.style.display = 'none';
     closeIcon.style.display = 'none';
     seperator.style.display = 'none';
-}
-
-
+};
 
 
 function addEditSubtask(taskId) {
@@ -320,38 +307,30 @@ function addEditSubtask(taskId) {
         console.error(`Task with id ${taskId} not found`);
         return;
     }
-
     // Ensure that the task has a subtasks array
     if (!task.subtasks) {
         task.subtasks = [];
     }
-
     // Retrieve the value of the subtask input field
     let subtaskInput = document.getElementById('subtask' + taskId);
     let subtask = subtaskInput.value.trim();
-
     if (subtask === '') {
         console.error('Subtask cannot be empty');
         return;
     }
-
     // Add the new subtask to the task's subtasks array
     task.subtasks.push(subtask);
-
     // Retrieve the subtask list element
     let subtaskList = document.getElementById('subtaskContainer' + taskId);
-
     // Update the subtask list HTML using a function that generates HTML for subtasks
     subtaskList.innerHTML = displaySubtasksHTML(task);
-
     // Clear the input field
     subtaskInput.value = '';
-
     // Optionally call a function to handle UI changes after input field is cleared
     if (typeof onBlurSubtaskInput === 'function') {
         onBlurSubtaskInput();
     }
-}
+};
 
 
 function displaySubtasksHTML(task) {
@@ -370,13 +349,14 @@ function displaySubtasksHTML(task) {
         }
     }
     return subtaskHtml;
-}
+};
+
 
 function emptySubtaskInput(taskId) {
     let subtaskInput = document.getElementById('subtask' + taskId);
     subtaskInput.value = '';
     onBlurSubtaskInput();
-}
+};
 
 
 async function saveEditTask(taskId) {
@@ -385,7 +365,6 @@ async function saveEditTask(taskId) {
         console.error(`Task with id ${taskId} not found`);
         return;
     }
-
     let title = document.getElementById('title' + taskId).value;
     let description = document.getElementById('description' + taskId).value;
     let date = document.getElementById('date' + taskId).value;
@@ -397,7 +376,6 @@ async function saveEditTask(taskId) {
     let userEmailToken = localStorage.getItem('emailToken');
     let userId = users.find(user => user.email === atob(userEmailToken));
     userId = userId ? userId.id : null;
-
     let guestLoggedIn = localStorage.getItem('guestLoggedIn');
 
     try {
@@ -408,7 +386,6 @@ async function saveEditTask(taskId) {
         if (!userId) {
             throw new Error('User ID is not available.');
         }
-
         await putData('/users/' + userId + '/tasks/' + taskId, {
             'category': category,
             'title': title,
@@ -419,18 +396,15 @@ async function saveEditTask(taskId) {
             'assigned': assigned,
             'status': status
         });
-
         closeEditTask();
         window.location.reload();
-
     } catch (error) {
         console.error('Error updating task:', error);
     }
-}
+};
 
 
-// Funktion, um die ausgewählte Priorität basierend auf der Aufgaben-ID zu ermitteln
-function getSelectedPriority(taskId) {
+function getSelectedPriority(taskId) {  // Funktion, um die ausgewählte Priorität basierend auf der Aufgaben-ID zu ermitteln
     // Holt alle Radio-Buttons mit dem Namen, der der Aufgaben-ID entspricht
     const priorities = document.getElementsByName(`priority${taskId}`);
     let selectedPriority = null; // Variable zur Speicherung des ausgewählten Radio-Buttons
@@ -459,7 +433,7 @@ function getSelectedPriority(taskId) {
         // Falls keine Priorität ausgewählt wurde, können wir einen Standardwert oder eine Fehlerbehandlung zurückgeben
         return null; // oder passende Fehlermeldung/Logik
     }
-}
+};
 
 
 

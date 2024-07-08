@@ -1,5 +1,3 @@
-
-
 function focusInput(inputId) {
     const ids = ["signUpLabelName", "signUpLabelEmail", "signUpLabelPassword", "signUpLabelConfirmPassword"];
     let passwortImg = document.getElementById('signUpPasswortImg');
@@ -11,7 +9,8 @@ function focusInput(inputId) {
 
     passwortImg.src = inputId === 'signUpLabelPassword' ? "/img/Mobile/LogIn/visibilityOffIconLogIn.png" : "../img/Mobile/LogIn/lockIconLogIn.png";
     passwortConfirmImg.src = inputId === 'signUpLabelConfirmPassword' ? "../img/Mobile/LogIn/visibilityOffIconLogIn.png" : "../img/Mobile/LogIn/lockIconLogIn.png";
-}
+};
+
 
 function showPassword() {
     let passwordInput = document.getElementById('signUpPassword');
@@ -24,7 +23,8 @@ function showPassword() {
         passwordInput.type = 'password';
         passwordImg.classList.remove('showPasswordImg');
     }
-}
+};
+
 
 function showConfirmPassword() {
     let passwortConfirmInput = document.getElementById('signUpConfirmPassword');
@@ -37,8 +37,7 @@ function showConfirmPassword() {
         passwortConfirmInput.type = 'password';
         passwortConfirmImg.classList.remove('showPasswordImg');
     }
-}
-
+};
 
 
 function resetFocus() {
@@ -46,11 +45,13 @@ function resetFocus() {
     ids.forEach(id => {
         document.getElementById(id).style.borderColor = "#D1D1D1";
     });
-}
+};
+
 
 function goToLogin() {
     window.location.href = "/login.html";
-}
+};
+
 
 async function checkEmailAvailability(email) {
     try {
@@ -66,7 +67,8 @@ async function checkEmailAvailability(email) {
         console.error('Error checking email availability:', error);
         return false;
     }
-}
+};
+
 
 function successfullyMessageHTML() {
     return `<div class="backgroundSuccessfullyMessage">
@@ -74,7 +76,7 @@ function successfullyMessageHTML() {
     You Signed Up successfully
     </div>
     </div>`;
-}
+};
 
 
 async function signUp() {
@@ -86,18 +88,15 @@ async function signUp() {
     let isEmailAvailable = await checkEmail(email);
     let isNameValid = validateName(name);
     let arePasswordsValid = validatePasswords(password, confirmPassword);
-
-    
-
     if (isEmailAvailable && isNameValid && arePasswordsValid) {
         await createUser({ initials, name, email, password });
     }
-}
+};
 
 
 function getInitials() {
     return document.getElementById('signUpName').value.split(' ').map((n) => n[0]).join('').toUpperCase();
-}
+};
 
 
 async function checkEmail(email) {
@@ -108,7 +107,7 @@ async function checkEmail(email) {
     }
     clearError('signUpLabelEmail', 'emailErrorSpan');
     return true;
-}
+};
 
 
 function validateName(name) {
@@ -119,7 +118,7 @@ function validateName(name) {
     }
     clearError('signUpLabelName', 'nameErrorSpan');
     return true;
-}
+};
 
 
 function validatePasswords(password, confirmPassword) {
@@ -129,7 +128,7 @@ function validatePasswords(password, confirmPassword) {
     }
     clearError('signUpLabelConfirmPassword', 'passwordErrorSpan');
     return true;
-}
+};
 
 
 function showError(labelId, errorSpanId, message) {
@@ -137,12 +136,13 @@ function showError(labelId, errorSpanId, message) {
     let errorSpan = document.getElementById(errorSpanId);
     errorSpan.textContent = message;
     errorSpan.style.display = "block";
-}
+};
+
 
 function clearError(labelId, errorSpanId) {
     document.getElementById(labelId).classList.remove("errorInput");
     document.getElementById(errorSpanId).style.display = "none";
-}
+};
 
 
 async function postData(path = '', data = {}) {
@@ -154,10 +154,10 @@ async function postData(path = '', data = {}) {
         body: JSON.stringify(data),
     });
     return responseToJson = await response.json();
-}
+};
+
 
 async function createUser(user) {
-
     try {
         await postData('/users', user);
         document.getElementById('signUpMain').innerHTML += successfullyMessageHTML();
@@ -165,5 +165,5 @@ async function createUser(user) {
     } catch (error) {
         console.error('Error creating user:', error);
     }
-}
+};
 

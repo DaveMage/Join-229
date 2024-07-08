@@ -8,6 +8,7 @@ const pages = [
     { path: '/legalNotice.html', classes: ['legalLink'], exclusive: 'privacyLink' }
 ];
 
+
 function pagesArray() {
     const pages = [
         { path: '/summary.html', classes: ['summaryLink', 'summaryLinkDesktop', 'summaryDesktopIcon'] },
@@ -19,7 +20,7 @@ function pagesArray() {
         { path: '/legalNotice.html', classes: ['legalLink'], exclusive: 'privacyLink' }
     ];
     return pages;
-}
+};
 
 
 async function onloadInit() {
@@ -32,7 +33,8 @@ async function onloadInit() {
     await loadUserInitial();
     menuActive();
     countInit();
-}
+};
+
 
 async function templateInit(){    
     displayMobileHeader();
@@ -42,7 +44,8 @@ async function templateInit(){
     checkGuestLogin();
     await loadUserInitial();
     menuActive();
-}
+};
+
 
 async function loadUserInitial() {
     let user = await getUser();    
@@ -52,38 +55,27 @@ async function loadUserInitial() {
     if (localStorage.getItem('guestLoggedIn') === 'true') {
         document.getElementById('profileInitial').innerHTML = 'G';
     }
-}
+};
 
 
-/**
- * Sets the innerHTML of the element with id "header" to the result of the headerMobileHtml function.
- */
 function displayMobileHeader() {
     document.getElementById("header").innerHTML = headerMobileHtml();
-}
+};
 
 
-/**
- * Displays the mobile menu by updating the HTML content of the "menu" element.
- */
 function displayMobileMenu() {
     document.getElementById("menu").innerHTML = menuMobileHtml();
-}
+};
 
-/**
- * Displays the desktop menu by updating the HTML content of the "menu" element.
- */
+
 function displayDesktopMenu() {
     document.getElementById("menuDesktop").innerHTML = menuDesktopHtml();
-}
+};
 
-/**
- * Toggles the display of the logout element on mobile devices.
- */
+
 function displayMobileLogout() {
     let logout = document.getElementById("logout");
-    if (logout.style.display === "flex") {
-        
+    if (logout.style.display === "flex") {  
         logout.classList.remove('slideInRight');
         logout.classList.add('slideOutRight');
         setTimeout(() => {
@@ -94,27 +86,20 @@ function displayMobileLogout() {
     } else {
         logout.style.display = "flex";
     }
-}
+};
 
 
-/**
- * Navigates the browser back to the previous page in the history.
- */
 function back() {
     window.history.back();
-}
+};
 
 
-/**
- * Loads the guest login information.
- * If the guest is logged in, it updates the profile initial to 'G'.
- */
 function loadGuestLogin() {
     if (localStorage.getItem('guestLoggedIn') === 'true') {
         document.getElementById('profileInitial').innerHTML = 'G';
         document.getElementById('menu').style.display = 'flex';
     }
-}
+};
 
 
 function checkGuestLogin() {
@@ -125,38 +110,29 @@ function checkGuestLogin() {
             document.getElementById('mainPolicy').style.height = '100vh';
         }
     }
-}
+};
 
-/**
- * Clears the localStorage and redirects the user to the login page.
- */
+
 function logout() {
-    // Store the tokens before clearing local storage
-    const emailToken = localStorage.getItem('emailToken');
+    const emailToken = localStorage.getItem('emailToken');    // Store the tokens before clearing local storage
     const passwordToken = localStorage.getItem('passwordToken');
-
-    // Clear all local storage
-    localStorage.clear();
-
-    // Restore the tokens
-    if (emailToken) {
+    localStorage.clear();    // Clear all local storage
+    if (emailToken) {    // Restore the tokens
         localStorage.setItem('emailToken', emailToken);
     }
     if (passwordToken) {
         localStorage.setItem('passwordToken', passwordToken);
     }
+    window.location.href = "/login.html";    // Redirect to the login page
+};
 
-    // Redirect to the login page
-    window.location.href = "/login.html";
-}
 
-function addClassActive(){
-    
-}
+function addClassActive(){   
+};
+
 
 function menuActive() {
     pagesArray();
-
     const currentPage = pages.find(page => window.location.pathname === page.path);
     if (currentPage) {
         currentPage.classes.forEach(className => {
@@ -171,7 +147,6 @@ function menuActive() {
                 }
             }
         });
-
         const exclusivePage = pages.find(page => page.exclusive && window.location.pathname === page.path);
         if (exclusivePage) {
             const exclusiveElement = document.getElementById(exclusivePage.exclusive);
@@ -180,11 +155,11 @@ function menuActive() {
             }
         }
     }
-}
+};
 
 
 function goToAddTask() {
     window.location.href = '/addTask.html';
-}
+};
 
 

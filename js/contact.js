@@ -184,22 +184,18 @@ async function saveEditContact(contactId) {
     let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); // Find the user object with the specified email
     userId = userId.id; // Get the user ID from the user object    
     let guestLoggedIn = localStorage.getItem('guestLoggedIn'); // Get the guestLoggedIn value from local storage 
-
     try {
-
         if (guestLoggedIn === 'true') {
             userId = '-O-Mr5g8976g5-yCxVK8'; // Set the user ID to the guest user ID if the guest is logged in
         }
-
         await putData('/users/' + userId + '/contacts/' + contactId, { // Update the contact details on the server
             'name': contactName,
             'email': contactEmail,
             'phone': contactPhone,
             'initials': initials,
             'profileColor': contact.profileColor
-        });
-        // Update the contact details in the contact view
-        let contactViewEmail = document.getElementById('contactViewEmail');
+        });    
+        let contactViewEmail = document.getElementById('contactViewEmail');// Update the contact details in the contact view
         let contactViewPhone = document.getElementById('contactViewPhone');
         let contactViewName = document.getElementById('contactViewName');
         let contactViewProfileIcon = document.getElementById('contactViewProfileIcon');
