@@ -175,6 +175,10 @@ function overviewTaskCardAssignedHtml(task) {
 
 function overviewTaskCardSubtaskHtml(task) {
     let subtaskItemsHtml = '';
+    if (!task.subtasks || task.subtasks.length === 0) {
+        return '';
+    }
+    
     for (let i = 0; i < task.subtasks.length; i++) {
         let subtaskItem = task.subtasks[i];
         let subtaskItemHtml = `
