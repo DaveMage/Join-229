@@ -92,8 +92,7 @@ h1 {
 }
 
 .aboveContentTodo:hover div {
-  filter: invert(89%) sepia(89%) saturate(0%) hue-rotate(281deg)
-    brightness(111%) contrast(112%);
+  filter: invert(89%) sepia(89%) saturate(0%) hue-rotate(281deg) brightness(111%) contrast(112%);
 }
 
 .summaryBoxContent {
@@ -151,8 +150,7 @@ h1 {
 }
 
 .aboveContentDone:hover div {
-  filter: invert(89%) sepia(89%) saturate(0%) hue-rotate(281deg)
-    brightness(111%) contrast(112%);
+  filter: invert(89%) sepia(89%) saturate(0%) hue-rotate(281deg) brightness(111%) contrast(112%);
 }
 
 .middleBoxContent {
@@ -256,7 +254,7 @@ h1 {
   top: 90px;
   bottom: 80px;
   left: 0;
-  right: 0;  
+  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -274,8 +272,13 @@ h1 {
 }
 
 @keyframes easeOut {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 .fadeOut {
@@ -455,10 +458,6 @@ h1 {
     justify-content: center;
     margin-left: 0;
   }
-
-  /* .dFdColumnSb{
-    width: 90%;
-  } */
 }
 
 @media screen and (max-width: 420px) {
