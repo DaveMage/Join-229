@@ -2,37 +2,37 @@ function displayNoTasksToDo() {
     return /*html*/ `
         <div class="noTasks">
             <p class="noTasksText">No tasks To do</p>
-        </div>
-    `
-}
+        </div>`
+};
+
 
 function displayNoTasksDone() {
     return /*html*/ `
         <div class="noTasks">
             <p class="noTasksText">No tasks Done</p>
-        </div>
-    `
-}
+        </div>`
+};
+
 
 function displayNoTasksFeedback() {
     return /*html*/ `
         <div class="noTasks">
             <p class="noTasksText">No tasks Await feedback</p>
-        </div>
-    `
-}
+        </div>`
+};
+
 
 function displayNoTasksProgress() {
     return /*html*/ `
         <div class="noTasks">
             <p class="noTasksText">No tasks In progress</p>
-        </div>
-    `
-}
+        </div>`
+};
+
 
 function taskCardHTML(task) {
-    return /* html */ `<div class="taskCard" ${task.status} id=${task.id} draggable="true" ondragstart="startDragging(event, '${task.id}')" onclick="displayOverviewTaskCard('${task.id}')">
-
+    return /* html */ `
+    <div class="taskCard" ${task.status} id=${task.id} draggable="true" ondragstart="startDragging(event, '${task.id}')" onclick="displayOverviewTaskCard('${task.id}')">
     <div class="taskCardMain">
     ${taskCardCategoryHTML(task)}
       <div class="taskCardTitleDescriptionContainer">
@@ -48,35 +48,30 @@ function taskCardHTML(task) {
     </div> 
     </div>
   </div>`;
-}
+};
 
 
 function taskCardCategoryHTML(task) {
     let categoryColor = '';
     let categoryText = '';
-
     if (task.category) {
         if (task.category === 'Technical Task') {
             categoryColor = 'style="background-color: #1FD7C1"';
         } else {
             categoryColor = 'style="background-color: #0038FF"';
         }
-
-        categoryText = `
-        <div class="taskCardCategory" ${categoryColor}>${task.category}</div>`;
+        categoryText = `<div class="taskCardCategory" ${categoryColor}>${task.category}</div>`;
     }
-
     return categoryText;
-}
+};
+
 
 function assingedProfileIconHtml(task) {
     // Überprüfen, ob task.assigned leer ist
     if (!task.assigned || task.assigned.length === 0) {
         return '';
     }
-
     let assignedProfilesHtml = '';
-
     for (let i = 0; i < task.assigned.length; i++) {
         if (task.assigned[i]) {
             assignedProfilesHtml += /*html*/ `          
@@ -84,9 +79,9 @@ function assingedProfileIconHtml(task) {
                 ${task.assigned[i].initials}</div>`;
         }
     }
-
     return assignedProfilesHtml;
-}
+};
+
 
 function subtaskProgressbarHTML(task) {
     let subtaskContentHtml = '';
@@ -104,7 +99,7 @@ function subtaskProgressbarHTML(task) {
             </div>`;
     }
     return subtaskContentHtml;
-}
+};
 
 
 
