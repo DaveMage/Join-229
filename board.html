@@ -20,7 +20,7 @@
   <header id="header" class="headerMenu"></header>
 
   <main id="mainBoard">
-    <div class="headerBoard">
+    <div class="headerBoardMobile">
       <div class="headlineContainer">
         <h1 class="headline">Board</h1>
         <img class="addTaskOnBoard" onclick="goToAddTask()" src="./img/Mobile/Board/plusAddTaskMobile.png" />
@@ -30,6 +30,19 @@
           onblur="removeActiveClass()" onkeypress="searchForTasks()" />
         <span class="seperator"></span>
         <img src="./img/Mobile/Board/search.png" />
+      </div>
+    </div>
+    <div class="headlineContainer headerBoardDesktop">
+      <h1 class="headline">Board</h1>
+      <div class="searchAndAddTask">
+        <div class="searchContainer" id="searchBar">
+          <input id="seachFieldBoard" type="search" placeholder="Find Task" onfocus="addActiveClass()"
+            onblur="removeActiveClass()" onkeypress="searchForTasks()" />
+          <span class="seperator"></span>
+          <img src="/img/Mobile/Board/search.png" />
+        </div>
+        <div class="addTaskOnBoard" onclick="goToAddTask()">Add task <img src="./img/Desktop/board/addIcon.png" class="addIcon"></div>
+        <!-- <img class="addTaskOnBoard" onclick="goToAddTask()" src="/img/Desktop/board/addTaskOnBoardDesktopDefault.png" /> -->
       </div>
     </div>
 
