@@ -44,7 +44,9 @@
           </div>
         </label>
       </div>
+
       <span class="addTaskDesktopSeperator"></span>
+
       <div class="addTaskDesktopColumns"> <!-- rechter teil für desktop version-->
         <label for="addTaskDueDate" class="addTaskLabel"> <!--Due Date -->
           <p>Due Date<span class="required">*</span></p>
@@ -52,24 +54,30 @@
             onblur="datequery()" />
           <span id="errorSpanDate" class="errorSpan">This field is required</span>
         </label>
+        
         <label for="addTaskPriority" class="addTaskLabelPriority"> Priority </label>  <!-- Priority -->
+        
         <div class="prioContainer"> <!-- Prio input Radio als btn -->
+          
           <input type="radio" id="urgent" name="priority" value="Urgent" hidden />  <!-- Prio input Radio Urgent -->
           <label for="urgent" class="prioLabel" id="prioUrgent">
             Urgent
             <img src="/img/Mobile/AddTask/urgentIconAddTask.png" />
           </label>
+          
           <input type="radio" id="medium" name="priority" value="Medium" hidden checked />  <!-- Prio input Radio Medium -->
           <label for="medium" class="prioLabel" id="prioMedium">
             Medium
             <img src="/img/Mobile/AddTask/mediumIconAddTask.png" />
           </label>
+          
           <input type="radio" id="low" name="priority" value="Low" hidden />  <!-- Prio input Radio Low -->
           <label for="low" class="prioLabel" id="prioLow">
             Low
             <img src="/img/Mobile/AddTask/lowIconAddTask.png" />
           </label>
         </div>
+        
         <label for="addTaskCategory" class="addTaskLabel">  <!-- Category -->
           Category
           <div class="addTaskInputIconContainer">
@@ -86,6 +94,7 @@
             </div>
           </div>
         </label>
+        
         <label class="addTaskLabel">  <!-- Subtasks -->
           Subtasks
           <div class="addTaskInputIconContainer">
@@ -94,9 +103,12 @@
             <div class="addTaskSubtaskIconContainer" id="addTaskSubtaskIconContainer">
               <img src="/img/Mobile/AddTask/closeIcon.png" id="closeSubtaskIcon" style="display: none"
                 class="subtaskIcon" onclick="emptySubtaskInput()" />
+
               <span class="subtaskSeperator" id="subtaskEditInputSeperator" style="display: none;"></span>
+
               <img src="/img/Mobile/Board/addSubtask.png" onclick="focusSubtaskInput()" id="addEditSubtaskIcon"
                 class="subtaskIcon">
+
               <img src="/img/Mobile/AddTask/checkIcon.png" id="checkSubtaskIcon" style="display: none"
                 class="subtaskIcon" onclick="addSubtaskItem()" />
             </div>
@@ -105,7 +117,9 @@
         <ul class="subtaskList" id="subtaskContainer">
         </ul>
       </div>
-    </form>   
+    </form>
+
+    
     <div class="addTaskBtnContainer"> <!-- Buttons-->
       <p><span class="required">*</span>This field is required</p>
       <div class="addTaskDesktopBtnArea">
@@ -118,7 +132,9 @@
         </button>
       </div>
     </div>
+
   </main>
+
   <section id="menuDesktop" class="sidebar"></section>
   <footer id="menu" class="footer"></footer>
 </body>
