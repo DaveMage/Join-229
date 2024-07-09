@@ -1,5 +1,5 @@
 function goToSighUp() {
-    window.location.href = "/signUp.html";
+    window.location.href = "./signUp.html";
 };
 
 
