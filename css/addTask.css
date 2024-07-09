@@ -165,7 +165,7 @@ body {
 }
 
 .addTaskLabel input[type="date"] {
-  background-image: url(/img/Mobile/AddTask/calendarIcon.png);
+  background-image: url(../img/Mobile/AddTask/calendarIcon.png);
   background-repeat: no-repeat;
   background-position: right 16px center;
 }
@@ -202,7 +202,7 @@ body {
 }
 
 #medium:checked+#prioMedium img {
-  content: url();
+  content: url('../img/Mobile/AddTask/hoverMediumIconAddTask.png');
 }
 
 #urgent:checked+#prioUrgent {
@@ -212,7 +212,7 @@ body {
 }
 
 #urgent:checked+#prioUrgent img {
-  content: url();
+  content: url('../img/Mobile/AddTask/hoverUrgentIconAddTask.png');
 }
 
 #low:checked+#prioLow {
@@ -222,7 +222,7 @@ body {
 }
 
 #low:checked+#prioLow img {
-  content: url(./img/Mobile/AddTask/hoverLowIconAddTask.png);
+  content: url(../img/Mobile/AddTask/hoverLowIconAddTask.png);
 }
 
 .dropdownItemCategory {
