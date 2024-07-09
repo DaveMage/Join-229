@@ -251,11 +251,12 @@ main {
 }
 
 .taskCardOverviewBody {
+  max-width: 525px;
+  min-width: 280px;
   padding: 32px 24px;
   display: flex;
   flex-direction: column;
   border-radius: 30px;
-  width: 100%;
   margin: 16px;
   background-color: white;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
@@ -405,6 +406,8 @@ main {
   background-color: #ffffff;
   padding: 32px 24px;
   width: 100%;
+  max-width: 525px;
+  min-width: 280px;
   margin: 0 16px;
 }
 
@@ -607,6 +610,7 @@ main {
   gap: 4px;
   font-size: 21px;
   font-weight: 700;
+  transition: ease-in-out 100ms;
 }
 
 .taskCardEditBtnContainer{
@@ -739,23 +743,17 @@ main {
     color: #42526E;
   }
 
-  .addTaskOnBoard:hover {
+  .addTaskOnBoard:hover, .taskCardEditBtn:hover {
     background-color: #29abe2;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   }
 
-  .addTaskOnBoard:active {
+  .addTaskOnBoard:active, .taskCardEditBtn:active {
     background-color: #091931;
   }
 
   .background {
     z-index: 999;
-  }
-
-  .taskCardOverviewBody {
-    max-width: 525px;
-    min-width: 300px;
-    width: auto;
   }
 }
 
