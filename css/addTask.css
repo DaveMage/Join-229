@@ -202,7 +202,7 @@ body {
 }
 
 #medium:checked+#prioMedium img {
-  content: url(./img/Mobile/AddTask/hoverMediumIconAddTask.png);
+  content: url();
 }
 
 #urgent:checked+#prioUrgent {
@@ -212,7 +212,7 @@ body {
 }
 
 #urgent:checked+#prioUrgent img {
-  content: url(./img/Mobile/AddTask/hoverUrgentIconAdTask.png);
+  content: url();
 }
 
 #low:checked+#prioLow {
