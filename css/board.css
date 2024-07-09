@@ -260,6 +260,7 @@ main {
   background-color: white;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
   position: relative;
+  animation: slideIn 0.17s both;
 }
 
 .taskCardOverviewCategoryCloseContainer {
@@ -697,7 +698,7 @@ main {
     position: sticky;
     top: 0;
     background-color: #F6F7F8;
-    z-index: 799;
+    z-index: 99;
   }
 
   .searchAndAddTask {
@@ -746,6 +747,16 @@ main {
   .addTaskOnBoard:active {
     background-color: #091931;
   }
+
+  .background {
+    z-index: 999;
+  }
+
+  .taskCardOverviewBody {
+    max-width: 525px;
+    min-width: 300px;
+    width: auto;
+  }
 }
 
 @media (min-width: 1425px) {
@@ -783,5 +794,17 @@ main {
 
   .taskCardContainer {
     overflow-x: hidden;
+  }
+}
+
+/* Animation */
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  
+  to {
+    transform: translateX(0);
   }
 }
