@@ -276,9 +276,9 @@ function addSubtaskItem() {
         document.getElementById('subtaskContainer').innerHTML +=
             `<li class="addTaskSubtaskItem"><input type="text" class="subtaskItemInput" value="${subtasks[i]}" readonly>            
             <div class="subtaskItemIconContainer">
-            <img src="/img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemLeftIcon" onclick="editSubtaskItem(event)">
+            <img src="./img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemLeftIcon" onclick="editSubtaskItem(event)">
             <span class="subtaskSeperator"></span>
-            <img src="/img/Mobile/AddTask/trashIcon.png" alt="Edit Icon" class="subtaskItemIcon" onclick="deleteSubtaskItem(event)"
+            <img src="./img/Mobile/AddTask/trashIcon.png" alt="Edit Icon" class="subtaskItemIcon" onclick="deleteSubtaskItem(event)"
             id="subtaskItemRightIcon"
             >
             </div>
@@ -315,9 +315,9 @@ function editSubtaskItem(event) {
     subtasks = subtasks.filter(subtask => subtask !== subtaskItemInput.value);
 
     subtasks.splice(0, 0, subtaskItemInput.value);
-    leftIcon.src = '/img/Mobile/AddTask/TrashIcon.png';
+    leftIcon.src = './img/Mobile/AddTask/TrashIcon.png';
     leftIcon.setAttribute('onclick', 'deleteSubtaskItem(event)');
-    rightIcon.src = '/img/Mobile/AddTask/CheckIcon.png';
+    rightIcon.src = './img/Mobile/AddTask/CheckIcon.png';
     rightIcon.setAttribute('onclick', 'saveSubtaskItem(event)');
 };
 
