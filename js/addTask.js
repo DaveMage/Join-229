@@ -240,7 +240,7 @@ function deleteValueSubtask() {
 
     subtaskInput.value = '';
     subtaskInput.setAttribute('readonly', 'readonly');
-    firstSubtaskIcon.src = '/img/Mobile/AddTask/addIconAddTask.png';
+    firstSubtaskIcon.src = './img/Mobile/AddTask/addIconAddTask.png';
     secondSubtaskIcon.style.display = 'none';
     document.getElementById('subtaskInputSeperator').style.display = 'none';
     firstSubtaskIcon.setAttribute('onclick', 'activateSubtaskInput()');
@@ -315,9 +315,9 @@ function editSubtaskItem(event) {
     subtasks = subtasks.filter(subtask => subtask !== subtaskItemInput.value);
 
     subtasks.splice(0, 0, subtaskItemInput.value);
-    leftIcon.src = './img/Mobile/AddTask/TrashIcon.png';
+    leftIcon.src = './img/Mobile/AddTask/trashIcon.png';
     leftIcon.setAttribute('onclick', 'deleteSubtaskItem(event)');
-    rightIcon.src = './img/Mobile/AddTask/CheckIcon.png';
+    rightIcon.src = './img/Mobile/AddTask/checkIcon.png';
     rightIcon.setAttribute('onclick', 'saveSubtaskItem(event)');
 };
 
@@ -336,9 +336,9 @@ function saveSubtaskItem(event) {
     console.log(subtasks);   
     subtaskItemInput.setAttribute('readonly', 'readonly');                          // Setzen des Inputs auf "readonly"
    
-    leftIcon.src = '/img/Mobile/AddTask/EditIcon.png';                              // Anpassen der Icons und deren Click-Handler
+    leftIcon.src = './img/Mobile/AddTask/editIcon.png';                              // Anpassen der Icons und deren Click-Handler
     leftIcon.setAttribute('onclick', 'editSubtaskItem(event)');
-    rightIcon.src = '/img/Mobile/AddTask/TrashIcon.png';
+    rightIcon.src = './img/Mobile/AddTask/trashIcon.png';
     rightIcon.setAttribute('onclick', 'deleteSubtaskItem(event)');
 };
 
