@@ -43,22 +43,22 @@
 }
 
 .menuDesktop:hover #summaryDesktopIcon {
-    content: url("./img/Desktop/sidebar/summaryIconDesktopWhite.png");
+    content: url("../img/Desktop/sidebar/summaryIconDesktopWhite.png");
     background-color: #2a3d59;
 }
 
 .menuDesktop:hover #addTaskDesktopIcon {
-    content: url("./img/Desktop/sidebar/addTaskIconDesktopWhite.png");
+    content: url("../img/Desktop/sidebar/addTaskIconDesktopWhite.png");
     background-color: #2a3d59;
 }
 
 .menuDesktop:hover #boardDesktopIcon {
-    content: url("./img/Desktop/sidebar/boardIconDesktopWhite.png");
+    content: url("../img/Desktop/sidebar/boardIconDesktopWhite.png");
     background-color: #2a3d59;
 }
 
 .menuDesktop:hover #contactsDesktopIcon {
-    content: url("./img/Desktop/sidebar/contactsIconDesktopWhite.png");
+    content: url("../img/Desktop/sidebar/contactsIconDesktopWhite.png");
     background-color: #2a3d59;
 }
 
