@@ -36,7 +36,7 @@ async function onloadInit() {
 };
 
 
-async function templateInit(){    
+async function templateInit() {
     displayMobileHeader();
     displayMobileMenu();
     displayDesktopMenu();
@@ -48,7 +48,7 @@ async function templateInit(){
 
 
 async function loadUserInitial() {
-    let user = await getUser();    
+    let user = await getUser();
     user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
     document.getElementById('profileInitial').innerHTML = user.initials;
     document.getElementById('menu').style.display = 'flex';
@@ -75,7 +75,7 @@ function displayDesktopMenu() {
 
 function displayMobileLogout() {
     let logout = document.getElementById("logout");
-    if (logout.style.display === "flex") {  
+    if (logout.style.display === "flex") {
         logout.classList.remove('slideInRight');
         logout.classList.add('slideOutRight');
         setTimeout(() => {
@@ -123,11 +123,11 @@ function logout() {
     if (passwordToken) {
         localStorage.setItem('passwordToken', passwordToken);
     }
-    window.location.href = "/login.html";    // Redirect to the login page
+    window.location.href = "./login.html";    // Redirect to the login page
 };
 
 
-function addClassActive(){   
+function addClassActive() {
 };
 
 
