@@ -787,7 +787,7 @@ main {
   }
 
   .addTaskDesktopIcon:hover {
-    content: url("./img/Mobile/Board/plusButtonMobileBlue.png");
+    content: url("/img/Mobile/Board/plusButtonMobileBlue.png");
   }
 
   .taskCardContainer {
