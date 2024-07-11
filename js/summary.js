@@ -147,15 +147,13 @@ async function displayDeadline() {
     let urgentTasks = tasks.filter(task => task.priority.value === 'Urgent');
     let getDeadline = urgentTasks.map(task => new Date(task.date));
     let sortedDeadline = getDeadline.sort((a, b) => a - b);
-    let earliestDeadline = sortedDeadline[0];    
-    
-
+    let earliestDeadline = sortedDeadline[0]; 
+       
     if(!getDeadline.length){
         deadlineDate.innerHTML = '';
     } else { 
         deadlineDate.innerHTML = earliestDeadline.toLocaleDateString('en-EN', {month: 'long', day: 'numeric',year: 'numeric' });
     }
-
 };
 
 
