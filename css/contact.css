@@ -97,6 +97,10 @@
   border-radius: 100%;
 }
 
+#contactbtnWrap {
+  background-color: #ffffff;
+}
+
 .contactLabel {
   border-radius: 10px;
   border: 1px solid #d1d1d1;
@@ -119,7 +123,7 @@
 }
 
 .contactLabel:focus-within {
-  border-color:  #29abe2;
+  border-color: #29abe2;
 }
 
 .contactLabel input::placeholder {
@@ -211,6 +215,7 @@
 
 body {
   overflow: hidden;
+  background-color: #f5f6f7;
 }
 
 .contactName {
@@ -413,14 +418,159 @@ span {
   font-size: 21px;
 }
 
-
-@media (min-width: 1100px) {
-  .contactsListContainer {
-    height: calc(100vh - 160px);
-    overflow: auto;
-    scrollbar-width: none;
-  }
+#contactBtnContainer {
+  display: none !important;
 }
 
+.contacsHeadlineContainer {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin-top: 110px;
+}
 
+.contacsHeadlineContainer h1 {
+  font-weight: 700;
+  font-size: 61px;
+}
 
+.contacsHeadlineContainer p {
+  font-size: 27px;
+  color: #2a3647;
+}
+
+.seperatorBlue {
+  border-left: 3px solid #29abe2;
+  height: 59px;
+  border-radius: 3px;
+}
+
+#profileIconDesktop {
+  min-height: 120px;
+  min-width: 120px;
+  border-radius: 100%;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 47px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.cvdNameBtnContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cvdBtns {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contactBtnTransparent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.contactSubheadline {
+  font-size: 20px;
+}
+
+.contactBtnTransparent:hover {
+  color: #29abe2;
+  font-weight: 700;
+}
+
+#contactViewDesktop{
+  display: flex;
+  gap: 21px;
+  flex-direction: column;
+}
+
+.cvdEmailPhone{
+  display: flex;
+  gap: 22px;
+  flex-direction: column;
+
+}
+
+.cvdInfoText{
+  font-weight: 700px;
+}
+
+#cvdEmail{
+  color: #007cee;
+  text-decoration: none;  
+}
+
+#cvdPhone{
+  text-decoration: none;
+  color: #000000;
+}
+
+#contactBtnTransparentEdit:hover img {
+  content: url(/img/Mobile/Contacts/editBlue.png);
+}
+
+#contactBtnTransparentTrash:hover img {
+  content: url(/img/Mobile/Contacts/trashBlue.png);
+}
+
+#cvdName {
+  font-size: 47px;
+  font-weight: 500;
+}
+
+.cvdIconName {
+  display: flex;
+  align-items: center;
+  gap: 54px;
+}
+@media (min-width: 1100px) {
+  .contactsListContainer {
+    width: 500px;
+    padding: 32px 24px;
+    height: calc(100vh - 160px);
+    scrollbar-width: thin;
+  }
+
+  #addContactMobileBtn {
+    display: none;
+  }
+
+  .addContactDesktopBtn {
+    padding: 12px 0;
+    border-radius: 10px;
+    border: 1px solid #2a3647;
+    width: 352px;
+    gap: 16px;
+    font-weight: 700;
+    font-size: 21px;
+    display: flex !important;
+  }
+
+  #contactBtnContainer {
+    display: flex !important;
+    padding-top: 23px;
+    justify-content: center;
+    width: 500px;
+  }
+
+  #contactMain {
+    display: flex;
+    gap: 55px;
+  }
+
+  #contactbtnWrap {
+    width: 500px;
+  }
+}
