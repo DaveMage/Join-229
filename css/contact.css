@@ -414,5 +414,13 @@ span {
 }
 
 
+@media (min-width: 1100px) {
+  .contactsListContainer {
+    height: calc(100vh - 160px);
+    overflow: auto;
+    scrollbar-width: none;
+  }
+}
+
 
 
