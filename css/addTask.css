@@ -73,7 +73,7 @@ body {
   cursor: pointer;
   position: absolute;
   right: 16px;
-  z-index: 100;
+  z-index: 2;
 }
 
 .dropdownIcon:hover {
@@ -142,7 +142,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 999;
+  
 }
 
 .profileIconAssigned {
@@ -245,8 +245,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px;
+  padding: 0 96px 79px 96px;
   background-color: #f6f7f8;
+  position: absolute;
+  bottom: 0;
+  left: 232px;
+  right: 0;
+  
 }
 
 .addTaskBtnContainer p,
@@ -342,7 +347,7 @@ body {
   background-color: #2a3647;
   color: white;
   font-size: 24px;
-  z-index: 100;
+ 
 }
 
 .addToBoardHeadline {
@@ -363,8 +368,14 @@ body {
 }
 
 .customDropdownAssigned {
-  height: 250px;
+  height: 200px;
   overflow: auto;
+  z-index: 1;
+  margin-top: -10px;
+}
+
+#addTaskFormAssignedInput{
+  z-index: 2;
 }
 
 .addTaskDesktopSeperator {
