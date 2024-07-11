@@ -37,7 +37,7 @@ function menuMobileHtml() {
 function logoutMobileHtml() {
     return /* html */`
    <div class="logoutContainer slideInRight" id="logout">
-      <a href="./help.html">Help</a>
+      <a href="./help.html" id="helpMobile">Help</a>
       <a href="./legalNotice.html">Legal Notice</a>
       <a href="./privacyPolice.html">Privacy Policy</a>
       <a href="#" onclick="logout()">Log out</a>
