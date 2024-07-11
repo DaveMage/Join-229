@@ -185,9 +185,7 @@ function overviewTaskCardSubtaskHtml(task) {
             <div class="taskCardOverviewSubtask">
                 <input type="checkbox" name="subtaskItem${i}" id="subtaskItem${i}">
                 <label for="subtaskItem${i}">${subtaskItem}</label>
-            </div>
-        `;
-
+            </div>`;
         subtaskItemsHtml += subtaskItemHtml;
     }
     return subtaskItemsHtml;
