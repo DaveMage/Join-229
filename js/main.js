@@ -50,10 +50,11 @@ async function templateInit() {
 async function loadUserInitial() {
     let user = await getUser();
     user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
-    document.getElementById('profileInitial').innerHTML = user.initials;
-    document.getElementById('menu').style.display = 'flex';
+
     if (localStorage.getItem('guestLoggedIn') === 'true') {
         document.getElementById('profileInitial').innerHTML = 'G';
+    } else {
+        document.getElementById('profileInitial').innerHTML = user.initials;
     }
 };
 
