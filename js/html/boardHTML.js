@@ -109,7 +109,7 @@ function overviewTaskCardHTML(task) { //Task Card Overwiew                      
       <div class="taskCardOverviewMain">
         <div class="taskCardOverviewCategoryCloseContainer">
           ${taskCardCategoryHTML(task)}
-          <img src="/img/Mobile/Board/closeTask.png" onclick="closeTaskCardOverview()">
+          <img src="./img/Mobile/Board/closeTask.png" onclick="closeTaskCardOverview()">
         </div>  
         <h2 class="taskCardOverviewTitle">${task.title}</h2>
         <p class="taskCardOverviewDescription">${task.description}</p>
@@ -139,10 +139,10 @@ function overviewTaskCardHTML(task) { //Task Card Overwiew                      
      </div>
 
      <div class="taskCardOverviewBtnContainer">
-     <button class="taskCardOverviewBtn" id="taskCardOverviewDeleteBtn" onclick="deleteTask('${task.id}')"><img src="/img/Mobile/Board/delete.png" >Delete</button>
+     <button class="taskCardOverviewBtn" id="taskCardOverviewDeleteBtn" onclick="deleteTask('${task.id}')"><img src="./img/Mobile/Board/delete.png" >Delete</button>
       
       <span class="taskCardOverviewSeperator"></span>
-      <button class="taskCardOverviewBtn" id="taskCardOverviewEditBtn" onclick="openEditTask('${task.id}')"><img src="/img/Mobile/Board/editTask.png" >Edit</button>
+      <button class="taskCardOverviewBtn" id="taskCardOverviewEditBtn" onclick="openEditTask('${task.id}')"><img src="./img/Mobile/Board/editTask.png" >Edit</button>
             
      </div>
 
@@ -200,7 +200,7 @@ function taskCardEditHTML(task) {
     <div class="background" id="taskCardEditBackground">
     <div class="taskCardEditBody" >
     <div class="taskCardEditMain">
-        <div class="closeBtnContainer"><img src="/img/Mobile/Board/closeTask.png" onclick="closeEditTask()"></div>
+        <div class="closeBtnContainer"><img src="./img/Mobile/Board/closeTask.png" onclick="closeEditTask()"></div>
         <form class="editTaskForm">
 
         <div class="labelInputContainer">
@@ -223,17 +223,17 @@ function taskCardEditHTML(task) {
             <div class = "prioRadioContainer">
                 <div class="prioRadio">
                     <input class="inputUrgent" type="radio" id="urgent${task.id}" name="priority${task.id}" value="Urgent" ${task.priority.value === 'Urgent' ? 'checked' : ''} hidden >
-                    <label id="labelUrgent" class="prioLabelImg" for="urgent${task.id}">Urgent <img src="/img/Mobile/AddTask/urgentIconAddTask.png" /> </label>
+                    <label id="labelUrgent" class="prioLabelImg" for="urgent${task.id}">Urgent <img src="./img/Mobile/AddTask/urgentIconAddTask.png" /> </label>
                 </div>
 
                 <div class="prioRadio">
                     <input class="inputMedium" type="radio" id="medium${task.id}" name="priority${task.id}" value="Medium" ${task.priority.value === 'Medium' ? 'checked' : ''} hidden >
-                    <label id="labelMedium" class="prioLabelImg" for="medium${task.id}">Medium <img src="/img/Mobile/AddTask/mediumIconAddTask.png" /></label>
+                    <label id="labelMedium" class="prioLabelImg" for="medium${task.id}">Medium <img src="./img/Mobile/AddTask/mediumIconAddTask.png" /></label>
                 </div>
 
                 <div class="prioRadio">
                     <input class="inputLow" type="radio" id="low${task.id}" name="priority${task.id}" value="Low" ${task.priority.value === 'Low' ? 'checked' : ''} hidden >
-                    <label id="labelLow" class="prioLabelImg" for="low${task.id}">Low <img src="/img/Mobile/AddTask/lowIconAddTask.png" /> </label>
+                    <label id="labelLow" class="prioLabelImg" for="low${task.id}">Low <img src="./img/Mobile/AddTask/lowIconAddTask.png" /> </label>
                 </div>
             </div>
         </div>
@@ -245,7 +245,7 @@ function taskCardEditHTML(task) {
             <div class="inputImgContainer">
                 <input type="text" id="assigned${task.id}" name="assigned${task.id}" placeholder="Select contacts to assign" readonly onclick="toogleEditAssignedDropdown()"
                 value="An: ${assignedContactsString}">
-                <img id="assignedIcon" src="/img/Mobile/AddTask/arrowDropDownaa.png" onclick="toogleEditAssignedDropdown()">
+                <img id="assignedIcon" src="./img/Mobile/AddTask/arrowDropDownaa.png" onclick="toogleEditAssignedDropdown()">
             </div>
 
             <div id="editAssignedDropdown" class="customDropdownBox">
@@ -267,7 +267,7 @@ function taskCardEditHTML(task) {
                 <div id="subtaskEditInputIconContainer" >
                 
                 <img
-                src="/img/Mobile/AddTask/closeIcon.png"
+                src="./img/Mobile/AddTask/closeIcon.png"
                 id="closeSubtaskIcon"
                 style="display: none"
                 class="subtaskIcon"
@@ -276,7 +276,7 @@ function taskCardEditHTML(task) {
 
                 <span class="subtaskSeperator" id="subtaskEditInputSeperator" style="display: none;"></span>
 
-                <img src="/img/Mobile/Board/addSubtask.png" onclick="focusSubtaskInput()"
+                <img src="./img/Mobile/Board/addSubtask.png" onclick="focusSubtaskInput()"
                 id="addEditSubtaskIcon">
 
                 <img
@@ -297,7 +297,7 @@ function taskCardEditHTML(task) {
 
         </form>
         <div class="taskCardEditBtnContainer">
-            <button class="taskCardEditBtn primaryBtn" id="taskCardEditSaveBtn" onclick="saveEditTask('${task.id}')">Ok <img src="/img/Mobile/Board/check.png"></button>
+            <button class="taskCardEditBtn primaryBtn" id="taskCardEditSaveBtn" onclick="saveEditTask('${task.id}')">Ok <img src="./img/Mobile/Board/check.png"></button>
             
         </div>
     </div>
@@ -359,9 +359,9 @@ function displaySubtasksHTML(task) {
             <li class="subtaskItem">
                 <input type="text" class="subtaskItemInput" value="${task.subtasks[i]}" readonly id="subtaskEditInput">            
                     <div class="subtaskItemIconContainer">
-                        <img src="/img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemLeftIcon">
+                        <img src="./img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemLeftIcon">
                         <span class="subtaskSeperator"></span>
-                        <img src="/img/Mobile/AddTask/trashIcon.png" alt="Trash Icon" class="subtaskItemIcon" id="subtaskItemRightIcon" onclick="deleteSubtask('${task.id}', ${i})">
+                        <img src="./img/Mobile/AddTask/trashIcon.png" alt="Trash Icon" class="subtaskItemIcon" id="subtaskItemRightIcon" onclick="deleteSubtask('${task.id}', ${i})">
                     </div>
             </li>`;
         }
