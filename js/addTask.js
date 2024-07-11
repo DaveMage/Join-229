@@ -1,11 +1,6 @@
-function addTaskInit() {
-    displayMobileHeader();
-    displayMobileMenu();
-    displayDesktopMenu();
-    loadUserInitial();
-    dateTreshhold();
-    getContacts();
-    menuActive();
+async function addTaskInit() {
+    templateInit();
+    await getContacts();
 };
 
 
