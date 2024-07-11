@@ -20,8 +20,35 @@
   <body id="template" onload="contactInit()">
     <header id="header" class="headerMenu"></header>
     <main id="contactMain">
-      <section class="contactsListContainer" id="contacts"></section>
-      <button class="primaryBtn addContactBtn" onclick="openAddContact()">
+      <section id="contactbtnWrap">
+        <div id="contactBtnContainer">
+          <button
+            class="primaryBtn addContactDesktopBtn"
+            onclick="openAddContact()"
+            id="addContactDesktopBtn"
+          >
+            Add new Contact
+            <img
+              id="contactBtnImg"
+              src="./img/Mobile/Contacts/personAddIconContacts.png"
+            />
+          </button>
+        </div>
+        <div class="contactsListContainer" id="contacts"></div>
+      </section>
+      <section id="desktopContactView">
+        <div class="contacsHeadlineContainer">
+          <h1>Contacts</h1>
+          <span class="seperatorBlue"></span>
+          <p>Better with a team</p>
+        </div>
+        <div id="contactViewDesktop"></div>
+      </section>
+      <button
+        class="primaryBtn addContactBtn"
+        onclick="openAddContact()"
+        id="addContactMobileBtn"
+      >
         <img
           id="contactBtnImg"
           src="./img/Mobile/Contacts/personAddIconContacts.png"
