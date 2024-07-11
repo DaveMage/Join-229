@@ -24,7 +24,7 @@ body {
 }
 
 .headlineContainer img:active {
-  content: url(./img/Mobile/Board/plusAddTaskMobileBlue.png);
+  content: url(/img/Mobile/Board/plusAddTaskMobileBlue.png);
 }
 
 main {
@@ -58,7 +58,7 @@ main {
 }
 
 .searchContainer img:active {
-  content: url(./img/Mobile/Board/searchBlue.png);
+  content: url(/img/Mobile/Board/searchBlue.png);
 }
 
 .inputActive {
@@ -92,7 +92,7 @@ main {
 }
 
 .taskSubContainerHeader img:active {
-  content: url(./img/Mobile/Board/plusButtonMobileBlue.png);
+  content: url(/img/Mobile/Board/plusButtonMobileBlue.png);
 }
 
 .subHeadline {
@@ -353,7 +353,7 @@ main {
 
 .taskCardOverviewSubtask input {
   appearance: none;
-  background-image: url(./img/Mobile/Board/checkboxGrey24.png);
+  background-image: url(/img/Mobile/Board/checkboxGrey24.png);
   height: 24px;
   width: 24px;
   cursor: pointer;
@@ -361,7 +361,7 @@ main {
 
 .taskCardOverviewSubtask input:checked {
   appearance: none;
-  background-image: url(./img/Mobile/Board/checkboxChecked24.png);
+  background-image: url(/img/Mobile/Board/checkboxChecked24.png);
   height: 24px;
   width: 24px;
 }
@@ -388,11 +388,11 @@ main {
 }
 
 #taskCardOverviewEditBtn:active img {
-  content: url(./img/Mobile/Board/editBlue24.png);
+  content: url(/img/Mobile/Board/editBlue24.png);
 }
 
 #taskCardOverviewDeleteBtn:active img {
-  content: url(./img/Mobile/Board/deleteBlue24.png);
+  content: url(/img/Mobile/Board/deleteBlue24.png);
 }
 
 .taskCardOverviewSeperator {
@@ -453,7 +453,7 @@ main {
 }
 
 .inputDate {
-  background-image: url(./img/Mobile/AddTask/calendarIcon.png);
+  background-image: url(/img/Mobile/AddTask/calendarIcon.png);
   background-repeat: no-repeat;
   background-position: right 16px center;
 }
@@ -490,7 +490,7 @@ main {
 }
 
 .inputMedium:checked + #labelMedium img {
-  content: url(./img/Mobile/AddTask/hoverMediumIconAddTask.png);
+  content: url(/img/Mobile/AddTask/hoverMediumIconAddTask.png);
 }
 
 .inputUrgent:checked + #labelUrgent {
@@ -500,7 +500,7 @@ main {
 }
 
 .inputUrgent:checked + #labelUrgent img {
-  content: url(./img/Mobile/AddTask/hoverUrgentIconAdTask.png);
+  content: url(/img/Mobile/AddTask/hoverUrgentIconAdTask.png);
 }
 
 .inputLow:checked + #labelLow {
@@ -510,7 +510,7 @@ main {
 }
 
 .inputLow:checked + #labelLow img {
-  content: url(./img/Mobile/AddTask/hoverLowIconAddTask.png);
+  content: url(/img/Mobile/AddTask/hoverLowIconAddTask.png);
 }
 
 .inputImgContainer {
@@ -652,7 +652,7 @@ main {
 
 .assignedCheckbox{
   appearance: none;
-  background-image: url(./img/Mobile/Board/checkboxGrey24.png);
+  background-image: url(/img/Mobile/Board/checkboxGrey24.png);
   height: 24px;
   width: 24px;
   cursor: pointer;
@@ -660,7 +660,7 @@ main {
 
 .assignedCheckbox:checked{
   appearance: none;
-  background-image: url(./img/Mobile/Board/checkboxChecked24.png);
+  background-image: url(/img/Mobile/Board/checkboxChecked24.png);
   height: 24px;
   width: 24px;
 }
@@ -735,7 +735,7 @@ main {
   }
 
   .headlineContainer img:active {
-    content: url("./img/Desktop/board/addTaskOnBoardDesktopActive.png");
+    content: url("/img/Desktop/board/addTaskOnBoardDesktopActive.png");
   }
 
   .subHeadline {
