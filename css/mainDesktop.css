@@ -1,121 +1,133 @@
 .sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    background-color: #2A3647;
-    height: 100%;
-    width: 232px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: #2a3647;
+  height: 100%;
+  width: 232px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .joinLogoDesktop {
-    width: 100px;
-    height: 122px;
-    margin: 64px 66px 114px 66px;
+  width: 100px;
+  height: 122px;
+  margin: 64px 66px 114px 66px;
 }
 
 .quickNavLinks {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .menuDesktop {
-    display: flex;
-    align-items: center;    
-   padding: 8px 56px;
-    height: 46px;    
-    gap: 8px;
-    cursor: pointer;
-    text-decoration: none;
-    color: #cdcdcd;    
+  display: flex;
+  align-items: center;
+  padding: 8px 56px;
+  height: 46px;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #cdcdcd;
 }
 
 .menuDesktop:hover p {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .menuDesktop:hover {
-    background-color: #2a3d59;
+  background-color: #2a3d59;
 }
 
 .menuDesktop:hover #summaryDesktopIcon {
-    content: url("../img/Desktop/sidebar/summaryIconDesktopWhite.png");
-    background-color: #2a3d59;
+  content: url("../img/Desktop/sidebar/summaryIconDesktopWhite.png");
+  background-color: #2a3d59;
 }
 
 .menuDesktop:hover #addTaskDesktopIcon {
-    content: url("../img/Desktop/sidebar/addTaskIconDesktopWhite.png");
-    background-color: #2a3d59;
+  content: url("../img/Desktop/sidebar/addTaskIconDesktopWhite.png");
+  background-color: #2a3d59;
 }
 
 .menuDesktop:hover #boardDesktopIcon {
-    content: url("../img/Desktop/sidebar/boardIconDesktopWhite.png");
-    background-color: #2a3d59;
+  content: url("../img/Desktop/sidebar/boardIconDesktopWhite.png");
+  background-color: #2a3d59;
 }
 
 .menuDesktop:hover #contactsDesktopIcon {
-    content: url("../img/Desktop/sidebar/contactsIconDesktopWhite.png");
-    background-color: #2a3d59;
+  content: url("../img/Desktop/sidebar/contactsIconDesktopWhite.png");
+  background-color: #2a3d59;
 }
 
 .contentLinksPolicyLegalNotice {
-    margin-bottom: 64px;
-    gap: 4px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+  margin-bottom: 64px;
+  gap: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .linksPrivacyLegal {
-    padding: 8px 60px;    
-    cursor: pointer;
-    text-decoration: none;
-    color: #A8A8A8;
-
+  padding: 8px 60px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #a8a8a8;
 }
 
 .linksPrivacyLegal:hover {
-    font-weight: 700;
-    color: #29ABE2;
+  font-weight: 700;
+  color: #29abe2;
 }
 
-.activeDesktop{
-    background-color: #091931;
-    color: #fff;
+.activeDesktop {
+  background-color: #091931;
+  color: #fff;
 }
 
 .activeDesktopIconSummary {
-    content: url("./img/Desktop/sidebar/summaryIconDesktopWhite.png");
+  content: url("./img/Desktop/sidebar/summaryIconDesktopWhite.png");
 }
 
 .activeDesktopIconAddTask {
-    content: url("./img/Desktop/sidebar/addTaskIconDesktopWhite.png");
+  content: url("./img/Desktop/sidebar/addTaskIconDesktopWhite.png");
 }
 
 .activeDesktopIconBoard {
-    content: url("./img/Desktop/sidebar/boardIconDesktopWhite.png");
+  content: url("./img/Desktop/sidebar/boardIconDesktopWhite.png");
 }
 
 .activeDesktopIconContacts {
-    content: url("./img/Desktop/sidebar/contactsIconDesktopWhite.png");
+  content: url("./img/Desktop/sidebar/contactsIconDesktopWhite.png");
 }
 
+#helpMobile {
+    display: none;
+  }
+
+
 @media (min-width: 1100px) {
-    body {
-        margin-left: 232px;
-    }
-    
-    #menu {
-        display: none !important;
-    }
+  body {
+    margin-left: 232px;
+  }
+
+  #menu {
+    display: none !important;
+  }
+
+  
+
 }
 
 @media (max-width: 1100px) {
-    #menuDesktop {
-        display: none !important;
-    }
+  #menuDesktop {
+    display: none !important;
+  }
+
+  #helpMobile {
+    display: flex;
+  }
+  
 }
