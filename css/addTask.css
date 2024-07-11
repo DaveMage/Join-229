@@ -142,7 +142,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
 }
 
 .profileIconAssigned {
@@ -245,13 +244,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 96px 79px 96px;
-  background-color: #f6f7f8;
-  position: absolute;
-  bottom: 0;
-  left: 232px;
-  right: 0;
   
+  background-color: #f6f7f8;
+ 
 }
 
 .addTaskBtnContainer p,
@@ -347,7 +342,6 @@ body {
   background-color: #2a3647;
   color: white;
   font-size: 24px;
- 
 }
 
 .addToBoardHeadline {
@@ -374,7 +368,7 @@ body {
   margin-top: -10px;
 }
 
-#addTaskFormAssignedInput{
+#addTaskFormAssignedInput {
   z-index: 2;
 }
 
@@ -434,6 +428,14 @@ body {
 
   .addTaskDesktopColumns {
     width: 50%;
+  }
+
+  .addTaskBtnContainer {
+    position: absolute;
+    bottom: 0;
+    left: 232px;
+    right: 0;
+    padding: 0 96px 79px 96px;
   }
 
   .addTaskBtnContainer p,
