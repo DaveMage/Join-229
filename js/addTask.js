@@ -170,7 +170,7 @@ function selectAssigned() {
     let checkboxes = document.querySelectorAll('.checkboxAssigned');        // Get all the checkboxes that indicate assigned contacts
 
     checkboxes.forEach(checkbox => {// Iterate over each checkbox
-        
+
         let contactName = checkbox.parentNode.querySelector('.assignedName').getAttribute('data-value');// Get the name of the contact from the data-value attribute of the assigned-name element   
         if (checkbox.checked) {                                             // Check if the checkbox is checked           
             let contact = contacts.find(c => c.name === contactName);       // Find the contact object in the contacts array that matches the contact name           
@@ -178,10 +178,10 @@ function selectAssigned() {
                 selectedAssigned.push(contact);
             }
         }
-    });   
+    });
     let inputAssigned = document.getElementById('addTaskFormAssignedInput');// Update the inputAssigned element with the names of the selected contacts
     inputAssigned.value = selectedAssigned.length > 0 ? 'An: ' + selectedAssigned.map(c => c.name).join(', ') : '';
-    
+
     return selectedAssigned;                                                // Return the array of selected assigned contacts
 };
 
@@ -324,14 +324,14 @@ function saveSubtaskItem(event) {
     const rightIcon = subtaskItem.querySelector('#subtaskItemRightIcon');
     const subtaskItemInput = subtaskItem.querySelector('.subtaskItemInput');
     const subtaskId = subtaskItem.dataset.id;                                       // Angenommen, jedes Subtask-Item hat eine eindeutige ID
-   
+
     const subtaskIndex = subtasks.findIndex(subtask => subtask.id === subtaskId);   // Prüfen, ob das Subtask bereits im Array ist und aktualisieren
     if (subtaskIndex !== -1) {
         subtasks[subtaskIndex] = subtaskItemInput.value;
     }
-    console.log(subtasks);   
+    console.log(subtasks);
     subtaskItemInput.setAttribute('readonly', 'readonly');                          // Setzen des Inputs auf "readonly"
-   
+
     leftIcon.src = './img/Mobile/AddTask/editIcon.png';                              // Anpassen der Icons und deren Click-Handler
     leftIcon.setAttribute('onclick', 'editSubtaskItem(event)');
     rightIcon.src = './img/Mobile/AddTask/trashIcon.png';
