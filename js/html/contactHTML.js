@@ -133,3 +133,41 @@ function contactEditForm(contact) {
     </div>
 </div>`;
 };
+
+function contactViewDesktop(contact) {
+  return /* html */`  
+          <div class="cvdIconName">
+            <div id="profileIconDesktop">${contact.initials}</div>
+            <div class="cvdNameBtnContainer">
+              <h2 id="cvdName">${contact.name}</h2>
+              <div class="cvdBtns">
+                <button
+                  class="contactBtnTransparent"
+                  id="contactBtnTransparentEdit"                  
+                  onclick="openEditContact('${contact.id}')"
+                >
+                  <img src="/img/Mobile/Contacts/editGrey.png" /> Edit
+                </button>
+                <button
+                  class="contactBtnTransparent"
+                  id="contactBtnTransparentTrash"
+                  onclick="deleteContact('${contact.id}')"
+                >
+                  <img src="/img/Mobile/Contacts/trashGrey.png" />Delete
+                </button>
+              </div>
+            </div>
+          </div>
+          <p class="contactSubheadline">Contact Information</p>
+          <div class="cvdEmailPhone">
+            <div class="cvdEmail">
+              <p class="cvdInfoText">Email</p>
+              <a href="mailto:${contact.email}.de" id="cvdEmail">${contact.email}</a>
+            </div>
+            <div class="cvdPhone">
+              <p class="cvdInfoText">Phone</p>
+              <a href="tel:${contact.phone}" id="cvdPhone">${contact.phone}</a>
+            </div>
+          </div>
+        `;
+}
