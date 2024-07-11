@@ -231,7 +231,7 @@ body {
   }
 
   .helpIcon:hover {
-    content: url("./img/Desktop/header/helpIconBig.png");
+    content: url("/img/Desktop/header/helpIconBig.png");
   }
 }
 
