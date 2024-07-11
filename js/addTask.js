@@ -1,6 +1,7 @@
 async function addTaskInit() {
     templateInit();
     await getContacts();
+    dateTreshhold();
 };
 
 
