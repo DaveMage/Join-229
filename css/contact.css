@@ -364,11 +364,11 @@ span {
 }
 
 .optionContainer button:hover .editBtn {
-  content: url(./img/Mobile/Contacts/editBlue.png);
+  content: url(/img/Mobile/Contacts/editBlue.png);
 }
 
 .optionContainer button:hover .deleteBtn {
-  content: url(./img/Mobile/Contacts/trashBlue.png);
+  content: url(/img/Mobile/Contacts/trashBlue.png);
 }
 
 .successfullyMessage {
