@@ -102,9 +102,11 @@ async function openContactView(contactId) {
 
     // If the contact was found, update the HTML
     if (contact) {
-        document.getElementById('contactMain').innerHTML = contactViewHtml(contact); // Update the HTML with the contact view
-    } else {
-        console.log('Contact with id ' + contactId + ' not found'); // Log an error message if the contact was not found
+        if (window.innerWidth >= 1100) {
+            document.getElementById('contactViewDesktop').innerHTML = contactViewDesktop(contact);
+        } else {
+            document.getElementById('contactMain').innerHTML = contactViewHtml(contact); // Update the HTML with the contact view
+        }
     }
 };
 
@@ -142,11 +144,14 @@ function openOption() {
 
 // Function to close the option container
 function closeOption() {
+    if (document.getElementById('optionContainer')) {
     document.getElementById('optionContainer').classList.remove('slideInRight'); // Remove the 'slideInRight' class from the option container
     document.getElementById('optionContainer').classList.add('slideOutRight'); // Add the 'slideOutRight' class to the option container
     setTimeout(() => {
         document.getElementById('optionContainer').style.display = 'none'; // Set the display property of the option container to 'none' after a delay of 300 milliseconds
     }, 300);
+
+    }
 };
 
 // Function to open the edit contact form for a specific contact
@@ -176,36 +181,38 @@ async function getContactById(contactId) {
 
 
 async function saveEditContact(contactId) {
-    let contact = await getContactById(contactId); // Fetch the contact details
-    let contactName = document.getElementById('contactName' + contactId).value; // Get the value of the contact name input field
-    let contactEmail = document.getElementById('contactEmail' + contactId).value; // Get the value of the contact email input field
-    let contactPhone = document.getElementById('contactPhone' + contactId).value; // Get the value of the contact phone input field
-    let initials = contactName.split(' ').map((n) => n[0]).join(''); // Generate initials from the contact name
-    let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); // Find the user object with the specified email
-    userId = userId.id; // Get the user ID from the user object    
-    let guestLoggedIn = localStorage.getItem('guestLoggedIn'); // Get the guestLoggedIn value from local storage 
+    let contact = await getContactById(contactId);
+    let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')))?.id || '-O-Mr5g8976g5-yCxVK8';
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn') === 'true';
+    let contactDetails = ['Name', 'Email', 'Phone'].reduce((details, field) => {
+        details[field.toLowerCase()] = document.getElementById(`contact${field}${contactId}`).value;
+        return details;
+    }, {});
+    contactDetails.initials = contactDetails.name.split(' ').map((n) => n[0]).join('');
+    contactDetails.profileColor = contact.profileColor;
+
     try {
-        if (guestLoggedIn === 'true') {
-            userId = '-O-Mr5g8976g5-yCxVK8'; // Set the user ID to the guest user ID if the guest is logged in
+        if (guestLoggedIn) {
+            userId = '-O-Mr5g8976g5-yCxVK8';
         }
-        await putData('/users/' + userId + '/contacts/' + contactId, { // Update the contact details on the server
-            'name': contactName,
-            'email': contactEmail,
-            'phone': contactPhone,
-            'initials': initials,
-            'profileColor': contact.profileColor
-        });    
-        let contactViewEmail = document.getElementById('contactViewEmail');// Update the contact details in the contact view
-        let contactViewPhone = document.getElementById('contactViewPhone');
-        let contactViewName = document.getElementById('contactViewName');
+        await putData(`/users/${userId}/contacts/${contactId}`, contactDetails);
+
+        ['Email', 'Phone', 'Name'].forEach(field => {
+            document.getElementById(`contactView${field}`).innerHTML = contactDetails[field.toLowerCase()];
+        });
+
         let contactViewProfileIcon = document.getElementById('contactViewProfileIcon');
-        contactViewEmail.innerHTML = contactEmail; // Update the contact email in the contact view
-        contactViewPhone.innerHTML = contactPhone; // Update the contact phone in the contact view
-        contactViewName.innerHTML = contactName; // Update the contact name in the contact view
-        contactViewProfileIcon.style.backgroundColor = contact.profileColor; // Update the profile icon background color in the contact view
-        contactViewProfileIcon.innerHTML = initials; // Update the profile icon initials in the contact view
-        closeEditContact(); // Close the edit contact form
+        contactViewProfileIcon.style.backgroundColor = contact.profileColor;
+        contactViewProfileIcon.innerHTML = contactDetails.initials;
+
+        closeEditContact();
     } catch (error) {
-        console.error('Error editing contact:', error); // Log an error if there is an issue editing the contact
+        console.error('Error editing contact:', error);
     }
 };
+
+
+function displayContactViewDesktop(contact) {
+    let container = document.getElementById('contactMain');
+    
+}
