@@ -104,8 +104,17 @@ async function openContactView(contactId) {
     if (contact) {
         if (window.innerWidth >= 1100) {
             document.getElementById('contactViewDesktop').innerHTML = contactViewDesktop(contact);
+            // Remove the 'current' class from all items
+            let items = document.querySelectorAll('.contactItemActive');
+            items.forEach(item => item.classList.remove('contactItemActive'));
+            // Add the 'current' class to the current item
+            let currentItem = document.getElementById(`contactItem${contactId}`);
+            if (currentItem) {
+                currentItem.classList.add('contactItemActive');
+            }
         } else {
-            document.getElementById('contactMain').innerHTML = contactViewHtml(contact); // Update the HTML with the contact view
+            // Update the HTML with the contact view
+            document.getElementById('contactMain').innerHTML = contactViewHtml(contact);
         }
     }
 };
