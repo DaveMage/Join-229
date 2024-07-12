@@ -465,6 +465,21 @@ span {
   color: #ffffff;
 }
 
+.profileIconDesktop {
+  min-height: 120px;
+  min-width: 120px;
+  border-radius: 100%;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 47px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
 .cvdNameBtnContainer {
   display: flex;
   flex-direction: column;
@@ -546,6 +561,91 @@ span {
   align-items: center;
   gap: 54px;
 }
+
+.contactEditDesktopBody{
+  background-color: #ffffff;
+  border-radius: 30px;
+  height: 594px;
+  display: flex;
+  align-items: center;
+}
+.contactEditDesktopLeft{
+  padding: 66px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #2A3647;
+  border-radius: 30px 0 0 30px;
+  height: 594px;
+  justify-content: center;
+}
+
+.contactEditDesktopRight{
+  background-color: #ffffff;
+  border-radius: 0 30px 30px 0;
+  padding: 66px 48px;
+  position: relative;
+  height: 594px;
+}
+
+.contactEditDesktopText{
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.logo55px{
+  width: 55px;
+  height: 66px;
+
+}
+
+.contactEditDesktopForm{
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.contactEditDesktopIconForm{
+  display: flex;
+  gap: 72px;
+  align-items: center;
+  justify-content: center;
+  height: calc(594px - 132px);
+}
+
+.contactEditDesktopFormBtns{
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.contactEditDesktopFormBtns button{
+  margin: 0;
+}
+
+.userIcon120px{
+  width: 120px;
+  height: 120px;
+}
+
+.horizontal{
+  border-bottom: 3px solid #29abe2;
+  width: 90px;
+}
+
+.contactEditDesktopText h1{
+  font-size: 61px;
+  font-weight: 700;
+}
+
+.contactEditDesktopText p{
+  font-size: 27px;
+}
+
+
+
 @media (min-width: 1100px) {
   .contactsListContainer {
     width: 500px;
