@@ -194,10 +194,9 @@
   color: #ffffff;
 }
 
-.contactItemActive{
+.contactItemActive {
   background: #2a3647 !important;
   color: #ffffff;
-
 }
 
 .profileIcon {
@@ -496,29 +495,35 @@ span {
   font-weight: 700;
 }
 
-#contactViewDesktop{
+#contactViewDesktop {
   display: flex;
   gap: 21px;
   flex-direction: column;
+  margin-top: 32px;
 }
 
-.cvdEmailPhone{
+.cvdEmail, .cvdPhone{
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+}
+
+.cvdEmailPhone {
   display: flex;
   gap: 22px;
   flex-direction: column;
-
 }
 
-.cvdInfoText{
-  font-weight: 700px;
+.cvdInfoText {
+  font-weight: 700;
 }
 
-#cvdEmail{
+#cvdEmail {
   color: #007cee;
-  text-decoration: none;  
+  text-decoration: none;
 }
 
-#cvdPhone{
+#cvdPhone {
   text-decoration: none;
   color: #000000;
 }
