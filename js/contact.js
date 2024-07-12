@@ -11,7 +11,11 @@ async function contactInit() {
 
 
 function openAddContact() {                                                             // Function to open the add contact form
-    document.getElementById('contactMain').innerHTML += addContactHtml();               // Append the HTML for the add contact form to the contactMain element
+    if (window.innerWidth >= 1100) {
+        document.getElementById('contactMain').innerHTML += addContactDesktop(); // Append the HTML for the add contact form to the contactViewDesktop element
+    } else {
+        document.getElementById('contactMain').innerHTML += addContactHtml();           // Append the HTML for the add contact form to the contactMain element
+    }
 };
 
 
@@ -22,6 +26,10 @@ function closeAddContact() {                                                    
         document.getElementById('contactAddFormBackground').remove();                   // Remove the contactAddFormBackground element after a delay of 300 milliseconds
     }, 300);
 };
+
+function closeAddContactDesktop() { 
+    document.getElementById('background').remove(); // Remove the background element
+};                                          
 
 
 /**
@@ -165,10 +173,17 @@ function closeOption() {
 
 // Function to open the edit contact form for a specific contact
 function openEditContact(contactId) {
-    let container = document.getElementById('contactViewContainer' + contactId); // Get the container element for the contact view
+    let container;
     closeOption(); // Close the option container
     contactId = contacts.find(contact => contact.id === contactId); // Find the contact object with the specified contactId
-    container.innerHTML += contactEditForm(contactId); // Append the edit contact form to the container
+
+    if (window.innerWidth >= 1100) {
+        container = document.getElementById('contactMain'); // Get the container element for the contact view
+        container.innerHTML += editContactDesktop(contactId); // Append the edit contact form to the container
+    } else {
+        container = document.getElementById('contactViewContainer' + contactId); // Get the container element for the contact view
+        container.innerHTML += contactEditForm(contactId); // Append the edit contact form to the container
+    }
 };
 
 // Function to close the edit contact form
