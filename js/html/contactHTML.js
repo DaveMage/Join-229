@@ -35,7 +35,7 @@ function addContactHtml() {
 
 function contactListItemHtml(contact) {
   return /* html */`    
-    <div class="contactProfileContainer" onclick="openContactView('${contact.id}')">
+    <div id="contactItem${contact.id}"  class="contactProfileContainer" onclick="openContactView('${contact.id}')">
       <div class="profileIcon" style="background-color: ${contact.profileColor};">${contact.initials}</div>
       <div class="contactNameEmailContainer">
         <p class="contactName">${contact.name}</p>
