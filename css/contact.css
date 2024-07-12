@@ -194,6 +194,12 @@
   color: #ffffff;
 }
 
+.contactItemActive{
+  background: #2a3647 !important;
+  color: #ffffff;
+
+}
+
 .profileIcon {
   min-height: 42px;
   min-width: 42px;
