@@ -108,7 +108,7 @@ function contactEditForm(contact) {
             <span class="headlineUnderline"></span>
         </div>            
         <div class="addContactContainerBottom">
-            <form onsubmit="return false;">
+            <form>
                 <div class="contactProfileIcon" style="background-color: ${contact.profileColor};">
                   ${contact.initials}
                 </div>
@@ -242,8 +242,8 @@ function addContactDesktop() {
                       <img src="/img/Mobile/Contacts/callIconContacts.png" >
                   </label>
                   <div class="contactEditDesktopFormBtns">
-                    <button class="secondaryBtn">Cancel <img src="/img/Mobile/AddTask/closeIcon.png"></button>
-                    <button type="submit" class="primaryBtn createContactBtn">Create contact <img src="/img/Mobile/Contacts/checkWhite.png"></button>
+                    <button class="secondaryBtn" onclick="closeAddContactDesktop()">Cancel <img src="/img/Mobile/AddTask/closeIcon.png"></button>
+                    <button type="submit" class="primaryBtn createContactBtn">Create contact <img src="/img/Mobile/Contacts/checkWhite.png" onclick="saveContact()"></button>
                   </div>              
               </form>
             </div>            
