@@ -175,14 +175,14 @@ function closeOption() {
 function openEditContact(contactId) {
     let container;
     closeOption(); // Close the option container
-    contactId = contacts.find(contact => contact.id === contactId); // Find the contact object with the specified contactId
+    let contact = contacts.find(contact => contact.id === contactId); // Find the contact object with the specified contactId
 
     if (window.innerWidth >= 1100) {
         container = document.getElementById('contactMain'); // Get the container element for the contact view
-        container.innerHTML += editContactDesktop(contactId); // Append the edit contact form to the container
-    } else {
+        container.innerHTML += editContactDesktop(contact); // Append the edit contact form to the container
+    } else if(document.getElementById('contactViewContainer' + contactId)) {
         container = document.getElementById('contactViewContainer' + contactId); // Get the container element for the contact view
-        container.innerHTML += contactEditForm(contactId); // Append the edit contact form to the container
+        container.innerHTML += contactEditForm(contact); // Append the edit contact form to the container
     }
 };
 
@@ -236,7 +236,4 @@ async function saveEditContact(contactId) {
 };
 
 
-function displayContactViewDesktop(contact) {
-    let container = document.getElementById('contactMain');
-    
-}
+
