@@ -103,6 +103,8 @@ async function saveContact() {                                                  
     }
 };
 
+
+
 // Function to open the contact view for a specific contact
 async function openContactView(contactId) {
     // Find the contact with the given id
