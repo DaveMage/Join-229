@@ -171,3 +171,83 @@ function contactViewDesktop(contact) {
           </div>
         `;
 }
+
+function editContactDesktop(contact) {
+  return /* html */`
+  <div class="background" id="background">
+  <div class="contactEditDesktopBody">
+    <div class="contactEditDesktopLeft">
+      <img class="logo55px" src="./img/Desktop/contact/logo55px.png" />
+      <div class="contactEditDesktopText">
+        <h1>Edit contact</h1>              
+        <span class="horizontal"></span>
+      </div>
+    </div>
+    <div class="contactEditDesktopRight">
+      <img onclick="closeAddContactDesktop()" class="closeBtn" src="img/Mobile/Board/closeTask.png">
+      <div class="contactEditDesktopIconForm">
+        <div class="profileIconDesktop" style="background-color: ${contact.profileColor};">${contact.initials}</div>
+        <form class="contactEditDesktopForm" onsubmit="return false;">          
+        
+      <label for="contactName${contact.id}" class="contactLabel">
+          <input type="text" id="contactName${contact.id}" placeholder="Name" required value="${contact.name}">
+          <img src="/img/Mobile/Contacts/personIconContacts.png">
+      </label>
+      <label for="contactEmail${contact.id}" class="contactLabel">
+          <input type="email" id="contactEmail${contact.id}" placeholder="Email" value="${contact.email}">
+          <img src="/img/Mobile/Contacts/mailIconContacts.png">
+      </label>
+      <label for="contactPhone${contact.id}" class="contactLabel">
+          <input type="tel" id="contactPhone${contact.id}" placeholder="Phone" value="${contact.phone}">
+          <img src="/img/Mobile/Contacts/callIconContacts.png" >
+      </label>
+      <div class="contactEditFormBtnContainer">
+        <button class="secondaryBtn" onclick="deleteContact('${contact.id}')">Delete</button>
+        <button onclick="saveEditContact('${contact.id}')" class="primaryBtn saveContactBtn">Save<img src="/img/Mobile/Contacts/checkWhite.png"></button>
+      </div>       
+        </form>
+      </div>      
+    </div>
+  </div>
+</div>`;
+}
+
+function addContactDesktop() {
+  return /* html */`
+  <div class="background" id="background">
+        <div class="contactEditDesktopBody">
+          <div class="contactEditDesktopLeft">
+            <img  class="logo55px" src="./img/Desktop/contact/logo55px.png" />
+            <div class="contactEditDesktopText">
+              <h1>Add Contact</h1>
+              <p>Tasks are better withe a team!</p>
+              <span class="horizontal"></span>
+            </div>
+          </div>
+          <div class="contactEditDesktopRight">
+            <img onclick="closeAddContactDesktop()" class="closeBtn" src="img/Mobile/Board/closeTask.png">
+            <div class="contactEditDesktopIconForm">
+              <img class="userIcon120px" src="/img/Desktop/contact/userLogo120px.png">
+              <form class="contactEditDesktopForm" onsubmit="return false;">               
+                  <label for="contactName" class="contactLabel">
+                      <input type="text" id="contactName" placeholder="Name" required>
+                      <img src="/img/Mobile/Contacts/personIconContacts.png">
+                  </label>
+                  <label for="contactEmail" class="contactLabel">
+                      <input type="email" id="contactEmail" placeholder="Email">
+                      <img src="/img/Mobile/Contacts/mailIconContacts.png">
+                  </label>
+                  <label for="contactPhone" class="contactLabel">
+                      <input type="tel" id="contactPhone" placeholder="Phone">
+                      <img src="/img/Mobile/Contacts/callIconContacts.png" >
+                  </label>
+                  <div class="contactEditDesktopFormBtns">
+                    <button class="secondaryBtn">Cancel <img src="/img/Mobile/AddTask/closeIcon.png"></button>
+                    <button type="submit" class="primaryBtn createContactBtn">Create contact <img src="/img/Mobile/Contacts/checkWhite.png"></button>
+                  </div>              
+              </form>
+            </div>            
+          </div>
+        </div>
+      </div>`;
+}
