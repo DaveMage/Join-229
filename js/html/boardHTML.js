@@ -101,8 +101,8 @@ function subtaskProgressbarHTML(task) {
     return subtaskContentHtml;
 };
 
-
-function overviewTaskCardHTML(task) { //Task Card Overwiew                     
+//Task Card Overwiew 
+function overviewTaskCardHTML(task) {                     
     return /* html */`
     <div class="background" id="taskCardOverviewBackground">
     <div class="taskCardOverviewBody">
