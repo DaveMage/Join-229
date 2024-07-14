@@ -693,10 +693,6 @@ main {
     scrollbar-width: none;
   }
 
-  .taskSubContainer{
-    min-height: calc(100vh - 212px);
-  }
-
   .headerBoardMobile {
     display: none;
   }
@@ -798,6 +794,10 @@ main {
 
   .taskCardContainer {
     overflow-x: hidden;
+  }
+
+  .taskSubContainer{
+    min-height: calc(100vh - 212px);
   }
 }
 
