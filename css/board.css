@@ -122,8 +122,7 @@ main {
 .taskCard {
   padding: 16px;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.08);
-  min-width: 252px;
-  max-width: 252px;  
+  min-width: 200px;
   border-radius: 24px;
   display: flex;
   flex-direction: column;
@@ -693,10 +692,6 @@ main {
     scrollbar-width: none;
   }
 
-  .taskSubContainer{
-    min-height: calc(100vh - 212px);
-  }
-
   .headerBoardMobile {
     display: none;
   }
@@ -798,6 +793,10 @@ main {
 
   .taskCardContainer {
     overflow-x: hidden;
+  }
+
+  .taskSubContainer{
+    min-height: calc(100vh - 212px);
   }
 }
 
