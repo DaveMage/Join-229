@@ -63,45 +63,40 @@ function displayContacts(contacts) {
 };
 
 
-async function saveContact() {                                                          // Function to save a new contact
-    let contactName = document.getElementById('contactName').value;                     // Get the value of the contact name input
-    const namePattern = /^[A-Za-zÄäÖöÜüß]+(?:\s[A-Za-zÄäÖöÜüß]+)+$/;                    // Regular expression pattern to validate the contact name
-    if (!namePattern.test(contactName)) {                                               // Check if the contact name matches the pattern
-        return;                                                                         // Return if the contact name is invalid
-    }
+async function saveContact() {
+    let contactName = document.getElementById('contactName').value;
+    if (!isValidName(contactName)) return;
 
-    let contactEmail = document.getElementById('contactEmail').value;                   // Get the value of the contact email input
-    let contactPhone = document.getElementById('contactPhone').value;                   // Get the value of the contact phone input
-    let randomColor = profileColor[Math.floor(Math.random() * profileColor.length)];    // Get a random color from the profileColor array
-    let initials = contactName.split(' ').map((n) => n[0]).join('');                    // Get the initials of the contact name    
-    let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); // Find the user object with the specified email
-    userId = userId.id;                                                                 // Get the user ID from the user object    
-    let guestLoggedIn = localStorage.getItem('guestLoggedIn');                          // Get the guestLoggedIn value from local storage
+    let contactEmail = document.getElementById('contactEmail').value;
+    let contactPhone = document.getElementById('contactPhone').value;
+    let randomColor = profileColor[Math.floor(Math.random() * profileColor.length)];
+    let initials = contactName.split(' ').map(n => n[0]).join('');
+    let user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
+    let userId = localStorage.getItem('guestLoggedIn') === 'true' ? '-O-Mr5g8976g5-yCxVK8' : user.id;
+
     try {
-        if (guestLoggedIn === 'true') {
-            userId = '-O-Mr5g8976g5-yCxVK8';                                            // Set the user ID to the guest user ID if the guest is logged in
-        }
-
-        await postData('/users/' + userId + '/contacts', {                              // Send a POST request to add the contact to the server
-            'name': contactName,
-            'email': contactEmail,
-            'phone': contactPhone,
-            'initials': initials,
-            'profileColor': randomColor
-        });
-
-        document.getElementById('contactMain').innerHTML += successfullyHtml();         // Add the success message to the contact main element
-        setTimeout(() => {
-            document.getElementById('conctactSuccessfully').remove();                   // Remove the success message after 800 milliseconds
-        }, 800);
-
-        closeAddContact();                                                              // Close the add contact form
-
-        contactInit();                                                                  // Initialize the contact page
+        await postData(`/users/${userId}/contacts`, { name: contactName, email: contactEmail, phone: contactPhone, initials: initials, profileColor: randomColor });
+        await showSuccessMessage();
+        closeAddContact();
+        contactInit();
     } catch (error) {
-        console.error('Error adding contact:', error);                                  // Log an error if there was an error adding the contact
+        console.error('Error adding contact:', error);
     }
-};
+}
+
+// Auslagerung der Validierung
+function isValidName(name) {
+    const namePattern = /^[A-Za-zÄäÖöÜüß]+(?:\s[A-Za-zÄäÖöÜüß]+)+$/;
+    return namePattern.test(name);
+}
+
+// Auslagerung der Erfolgsmeldung
+async function showSuccessMessage() {
+    document.getElementById('contactMain').innerHTML += successfullyHtml();
+    setTimeout(() => document.getElementById('conctactSuccessfully').remove(), 800);
+}
+
+
 
 
 
@@ -131,8 +126,9 @@ async function openContactView(contactId) {
 
 // Function to delete a contact
 async function deleteContact(contactId) {
+    await getUser(); // Fetch users if not already fetched
     let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); // Find the user object with the specified email
-    userId = userId.id; // Get the user ID from the user object    
+    userId = users.id; // Get the user ID from the user object    
     let guestLoggedIn = localStorage.getItem('guestLoggedIn'); // Get the guestLoggedIn value from local storage
     if (guestLoggedIn === 'true') {
         userId = '-O-Mr5g8976g5-yCxVK8'; // Set the user ID to the guest user ID if the guest is logged in
@@ -212,6 +208,37 @@ async function saveEditContact(contactId) {
     let guestLoggedIn = localStorage.getItem('guestLoggedIn') === 'true';
     let contactDetails = ['Name', 'Email', 'Phone'].reduce((details, field) => {
         details[field.toLowerCase()] = document.getElementById(`contact${field}${contactId}`).value;
+        return details;
+    }, {});
+    contactDetails.initials = contactDetails.name.split(' ').map((n) => n[0]).join('');
+    contactDetails.profileColor = contact.profileColor;
+
+    try {
+        if (guestLoggedIn) {
+            userId = '-O-Mr5g8976g5-yCxVK8';
+        }
+        await putData(`/users/${userId}/contacts/${contactId}`, contactDetails);
+
+        ['Email', 'Phone', 'Name'].forEach(field => {
+            document.getElementById(`contactView${field}`).innerHTML = contactDetails[field.toLowerCase()];
+        });
+
+        let contactViewProfileIcon = document.getElementById('contactViewProfileIcon');
+        contactViewProfileIcon.style.backgroundColor = contact.profileColor;
+        contactViewProfileIcon.innerHTML = contactDetails.initials;
+
+        closeEditContact();
+    } catch (error) {
+        console.error('Error editing contact:', error);
+    }
+};
+
+async function saveEditDesktopContact(contactId) {
+    let contact = await getContactById(contactId);
+    let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')))?.id || '-O-Mr5g8976g5-yCxVK8';
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn') === 'true';
+    let contactDetails = ['Name', 'Email', 'Phone'].reduce((details, field) => {
+        details[field.toLowerCase()] = document.getElementById(`contactDesktop${field}${contactId}`).value;
         return details;
     }, {});
     contactDetails.initials = contactDetails.name.split(' ').map((n) => n[0]).join('');
