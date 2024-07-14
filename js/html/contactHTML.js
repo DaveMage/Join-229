@@ -190,20 +190,20 @@ function editContactDesktop(contact) {
         <form class="contactEditDesktopForm" onsubmit="return false;">          
         
       <label for="contactName${contact.id}" class="contactLabel">
-          <input type="text" id="contactName${contact.id}" placeholder="Name" required value="${contact.name}">
+          <input type="text" id="contactDesktopName${contact.id}" placeholder="Name" required value="${contact.name}">
           <img src="/img/Mobile/Contacts/personIconContacts.png">
       </label>
       <label for="contactEmail${contact.id}" class="contactLabel">
-          <input type="email" id="contactEmail${contact.id}" placeholder="Email" value="${contact.email}">
+          <input type="email" id="contactDesktopEmail${contact.id}" placeholder="Email" value="${contact.email}">
           <img src="/img/Mobile/Contacts/mailIconContacts.png">
       </label>
       <label for="contactPhone${contact.id}" class="contactLabel">
-          <input type="tel" id="contactPhone${contact.id}" placeholder="Phone" value="${contact.phone}">
+          <input type="tel" id="contactDesktopPhone${contact.id}" placeholder="Phone" value="${contact.phone}">
           <img src="/img/Mobile/Contacts/callIconContacts.png" >
       </label>
       <div class="contactEditFormBtnContainer">
         <button class="secondaryBtn" onclick="deleteContact('${contact.id}')">Delete</button>
-        <button onclick="saveEditContact('${contact.id}')" class="primaryBtn saveContactBtn">Save<img src="/img/Mobile/Contacts/checkWhite.png"></button>
+        <button onclick="saveEditDesktopContact('${contact.id}')" class="primaryBtn saveContactBtn">Save<img src="/img/Mobile/Contacts/checkWhite.png"></button>
       </div>       
         </form>
       </div>      
@@ -243,7 +243,7 @@ function addContactDesktop() {
                   </label>
                   <div class="contactEditDesktopFormBtns">
                     <button class="secondaryBtn" onclick="closeAddContactDesktop()">Cancel <img src="/img/Mobile/AddTask/closeIcon.png"></button>
-                    <button type="submit" class="primaryBtn createContactBtn">Create contact <img src="/img/Mobile/Contacts/checkWhite.png" onclick="saveContact()"></button>
+                    <button onclick="saveContact()" type="submit" class="primaryBtn createContactBtn">Create contact <img src="/img/Mobile/Contacts/checkWhite.png" ></button>
                   </div>              
               </form>
             </div>            
