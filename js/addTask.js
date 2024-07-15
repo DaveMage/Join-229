@@ -382,6 +382,5 @@ function addTaskClearTask() {
         addNewTaskOnBoard();
     }else{
         location.reload();
-    }
-        
+    }        
 };
