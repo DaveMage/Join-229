@@ -377,5 +377,9 @@ function displaySuccsessfullyMessage() {
 
 
 function addTaskClearTask() {
-    location.reload();
+    // location.reload();
+    document.getElementById('addTaskTitle').value = '';
+    document.getElementById('addTaskDescription').value = '';
+    document.getElementById('addTaskDueDate').value = '';
+    document.getElementById('addTaskCategory').value = '';   
 };
