@@ -383,7 +383,7 @@ function displayAssignedProfileIcons(task) {
 function addNewTaskOnBoardHtml() {
     console.log('test');
     return /*html*/ `
-        <div class="floatingAddTask">
+        <div class="floatingAddTask" id="addTaskChard">
             <div class="addTaskBoardDesktop">
                 <div class="headerAddTaskOnBoard">
                     <h1 class="addTaskHeadline">Add Task</h1>
@@ -493,7 +493,7 @@ function addNewTaskOnBoardHtml() {
                     <!-- Buttons-->
                     <p><span class="required">*</span>This field is required</p>
                     <div class="addTaskDesktopBtnArea">
-                    <button onclick="addTaskClearChard()" class="addTaskClearBtn">
+                    <button onclick="addTaskClearTask()" class="addTaskClearBtn">
                         Clear x
                     </button>
                     <button onclick="saveTask()" class="primaryBtn createTaskBtn">
