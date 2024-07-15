@@ -478,8 +478,13 @@ function addNewTaskOnBoard() {
 }
 
 
+function closeAddTaskOnBoardX() {
+    document.getElementById('addTaskChard').remove();
+}
+
+
 function closeAddTaskOnBoard() {
-    document.getElementById('floatingAddTask').remove();
+    document.getElementById('addTaskChard').remove();
     location.reload();
 }
 

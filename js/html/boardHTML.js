@@ -387,7 +387,7 @@ function addNewTaskOnBoardHtml() {
             <div class="addTaskBoardDesktop">
                 <div class="headerAddTaskOnBoard">
                     <h1 class="addTaskHeadline">Add Task</h1>
-                    <img src="./img/Desktop/board/closeAddTask.png" class="closeButtonAddTask" onclick="closeAddTaskOnBoard()">
+                    <img src="./img/Desktop/board/closeAddTask.png" class="closeButtonAddTask" onclick="closeAddTaskOnBoardX()">
                 </div>
                 <form onsubmit="return false;" class="addTaskForm">
                 <div class="formInputsContainer">
