@@ -92,8 +92,14 @@ function isValidName(name) {
 
 // Auslagerung der Erfolgsmeldung
 async function showSuccessMessage() {
-    document.getElementById('contactMain').innerHTML += successfullyHtml();
+    if (window.innerWidth >= 1100){
+        document.getElementById('contactMain').innerHTML += successfullyDesktopHtml();
     setTimeout(() => document.getElementById('conctactSuccessfully').remove(), 800);
+    } else {
+        document.getElementById('contactMain').innerHTML += successfullyHtml();
+    setTimeout(() => document.getElementById('conctactSuccessfully').remove(), 800);
+    }
+    
 }
 
 
@@ -233,36 +239,7 @@ async function saveEditContact(contactId) {
     }
 };
 
-async function saveEditDesktopContact(contactId) {
-    let contact = await getContactById(contactId);
-    let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')))?.id || '-O-Mr5g8976g5-yCxVK8';
-    let guestLoggedIn = localStorage.getItem('guestLoggedIn') === 'true';
-    let contactDetails = ['Name', 'Email', 'Phone'].reduce((details, field) => {
-        details[field.toLowerCase()] = document.getElementById(`contactDesktop${field}${contactId}`).value;
-        return details;
-    }, {});
-    contactDetails.initials = contactDetails.name.split(' ').map((n) => n[0]).join('');
-    contactDetails.profileColor = contact.profileColor;
 
-    try {
-        if (guestLoggedIn) {
-            userId = '-O-Mr5g8976g5-yCxVK8';
-        }
-        await putData(`/users/${userId}/contacts/${contactId}`, contactDetails);
-
-        ['Email', 'Phone', 'Name'].forEach(field => {
-            document.getElementById(`contactView${field}`).innerHTML = contactDetails[field.toLowerCase()];
-        });
-
-        let contactViewProfileIcon = document.getElementById('contactViewProfileIcon');
-        contactViewProfileIcon.style.backgroundColor = contact.profileColor;
-        contactViewProfileIcon.innerHTML = contactDetails.initials;
-
-        closeEditContact();
-    } catch (error) {
-        console.error('Error editing contact:', error);
-    }
-};
 
 
 
