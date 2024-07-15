@@ -377,9 +377,11 @@ function displaySuccsessfullyMessage() {
 
 
 function addTaskClearTask() {
-
-    if (addTaskChard == true) {
+    let addTaskChard = document.getElementById('addTaskChard');
+    if (addTaskChard) {
         addNewTaskOnBoard();
-    }
+    }else{
         location.reload();
+    }
+        
 };
