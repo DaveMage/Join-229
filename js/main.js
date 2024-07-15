@@ -157,10 +157,3 @@ function menuActive() {
         }
     }
 };
-
-
-function goToAddTask() {
-    window.location.href = '/addTask.html';
-};
-
-

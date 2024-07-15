@@ -756,6 +756,41 @@ main {
   .background {
     z-index: 999;
   }
+
+  .floatingAddTask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .addTaskBoardDesktop {
+    width: 100%;
+    max-width: 1116px;
+    background-color: #fff;
+    z-index: 1000;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .headerAddTaskOnBoard {
+    margin-left: 74px;
+    display: flex;
+
+  }
+
+  .closeButtonAddTask {
+    width: 25px;
+    height: 25px;
+  }
 }
 
 @media (min-width: 1425px) {

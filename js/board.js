@@ -467,13 +467,11 @@ function getSelectedPriority(taskId) {  // Funktion, um die ausgewählte Priorit
 };
 
 
+function goToAddTask() {
+    window.location.href = '/addTask.html';
+};
 
-
-
-
-
-
-
-
-
-
+function addNewTaskOnBoard() {
+    let main = document.getElementById('mainBoard');
+    main.innerHTML = addNewTaskOnBoardHtml();
+}

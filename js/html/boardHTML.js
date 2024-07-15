@@ -378,3 +378,133 @@ function displayAssignedProfileIcons(task) {
     }
     return profileIconHtml;
 };
+
+
+function addNewTaskOnBoardHtml() {
+    console.log('test');
+    return /*html*/ `
+        <div class="floatingAddTask">
+            <div class="addTaskBoardDesktop">
+                <div class="headerAddTaskOnBoard">
+                    <h1 class="addTaskHeadline">Add Task</h1>
+                    <img src="./img/Desktop/board/closeAddTask.png" class="closeButtonAddTask">
+                </div>
+                <form onsubmit="return false;" class="addTaskForm">
+                <div class="formInputsContainer">
+                    <div class="addTaskDesktopColumns">
+                    <!-- linker teil für desktop version-->
+                    <label for="addTaskTitle" class="addTaskLabel">
+                        <p>Title<span class="required">*</span></p>
+                        <input type="text" placeholder="Enter a Title" class="addTaskInput focus-border" id="addTaskTitle"
+                        onblur="titlequery()" />
+                        <span id="errorSpanTitle" class="errorSpan">This field is required</span>
+                    </label>
+                    <label for="addTaskDescription" class="addTaskLabel" id="addTaskLabelDescription">
+                        Description
+                        <textarea placeholder="Enter a Description" class="addTaskInput addTaskDescription focus-border"
+                        id="addTaskDescription" rows="4"></textarea>
+                    </label>
+                    <label for="addTaskFormAssignedInput" class="addTaskLabel">
+                        <!-- dropdown Box Assigned -->
+                        Assigned To
+                        <div class="addTaskInputIconContainer">
+                        <input id="addTaskFormAssignedInput" type="text" placeholder="Select contacts to assign"
+                            class="addTaskInput focus-border" onclick="toggleAssignedDropdown()" readonly />
+                        <img class="dropdownIcon" id="assignedDropdownArrow" src="./img/Mobile/AddTask/arrowDropDownaa.png" />
+                        </div>
+                        <div class="customDropdownAssigned customDropdownBox" id="dropdownAssigned">
+                        <!-- Assigend Item with Checkbox -->
+                        </div>
+                    </label>
+                    </div>
+                    <span class="addTaskDesktopSeperator"></span>
+                    <div class="addTaskDesktopColumns">
+                    <!-- rechter teil für desktop version-->
+                    <label for="addTaskDueDate" class="addTaskLabel">
+                        <!--Due Date -->
+                        <p>Due Date<span class="required">*</span></p>
+                        <input type="date" class="addTaskInput focus-border" id="addTaskDueDate" placeholder="Select a Date"
+                        onblur="datequery()" />
+                        <span id="errorSpanDate" class="errorSpan">This field is required</span>
+                    </label>
+                    <label for="addTaskPriority" class="addTaskLabelPriority">
+                        Priority
+                    </label>
+                    <!-- Priority -->
+                    <div class="prioContainer">
+                        <!-- Prio input Radio als btn -->
+                        <input type="radio" id="urgent" name="priority" value="Urgent" hidden />
+                        <!-- Prio input Radio Urgent -->
+                        <label for="urgent" class="prioLabel" id="prioUrgent">
+                        Urgent
+                        <img src="./img/Mobile/AddTask/urgentIconAddTask.png" />
+                        </label>
+                        <input type="radio" id="medium" name="priority" value="Medium" hidden checked />
+                        <!-- Prio input Radio Medium -->
+                        <label for="medium" class="prioLabel" id="prioMedium">
+                        Medium
+                        <img src="./img/Mobile/AddTask/mediumIconAddTask.png" />
+                        </label>
+                        <input type="radio" id="low" name="priority" value="Low" hidden />
+                        <!-- Prio input Radio Low -->
+                        <label for="low" class="prioLabel" id="prioLow">
+                        Low
+                        <img src="./img/Mobile/AddTask/lowIconAddTask.png" />
+                        </label>
+                    </div>
+                    <label for="addTaskCategory" class="addTaskLabel">
+                        <!-- Category -->
+                        Category
+                        <div class="addTaskInputIconContainer">
+                        <input id="addTaskCategory" type="text" placeholder="Select a Category" class="addTaskInput focus-border"
+                            readonly onclick="toggleCategoryDropdown()" />
+                        <img class="dropdownIcon" id="categoryDropdownArrow" src="./img/Mobile/AddTask/arrowDropDownaa.png" />
+                        </div>
+                        <div class="customDropdownCategory customDropdownBox" id="dropdownCategory">
+                        <div class="dropdownItemCategory" onclick="selectCategory(this)">
+                            Technical Task
+                        </div>
+                        <div class="dropdownItemCategory" onclick="selectCategory(this)">
+                            User Story
+                        </div>
+                        </div>
+                    </label>
+                    <label class="addTaskLabel">
+                        <!-- Subtasks -->
+                        Subtasks
+                        <div class="addTaskInputIconContainer">
+                        <input id="addTaskSubtask" type="text" placeholder="Add new subtasks" class="addTaskInput focus-border"
+                            readonly ondblclick="focusSubtaskInput()" />
+                        <div class="addTaskSubtaskIconContainer" id="addTaskSubtaskIconContainer">
+                            <img src="./img/Mobile/AddTask/closeIcon.png" id="closeSubtaskIcon" style="display: none"
+                            class="subtaskIcon" onclick="emptySubtaskInput()" />
+                            <span class="subtaskSeperator" id="subtaskEditInputSeperator" style="display: none"></span>
+                            <img src="./img/Mobile/Board/addSubtask.png" onclick="focusSubtaskInput()" id="addEditSubtaskIcon"
+                            class="subtaskIcon" />
+                            <img src="./img/Mobile/AddTask/checkIcon.png" id="checkSubtaskIcon" style="display: none"
+                            class="subtaskIcon" onclick="addSubtaskItem()" />
+                        </div>
+                        </div>
+                    </label>
+                    <ul class="subtaskList" id="subtaskContainer"></ul>
+                    </div>
+                </div>
+                <div class="addTaskBtnContainer">
+                    <!-- Buttons-->
+                    <p><span class="required">*</span>This field is required</p>
+                    <div class="addTaskDesktopBtnArea">
+                    <button onclick="addTaskClearTask()" class="addTaskClearBtn">
+                        Clear x
+                    </button>
+                    <button onclick="saveTask()" class="primaryBtn createTaskBtn">
+                        Create Task
+                        <img src="./img/Mobile/AddTask/checkMarkIconAddTask.png" />
+                    </button>
+                    </div>
+                </div>
+                
+                </form>
+            </div>
+        </div>
+    `;
+}
