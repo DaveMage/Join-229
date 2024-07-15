@@ -111,13 +111,10 @@
 @media (min-width: 1100px) {
   body {
     margin-left: 232px;
-  }
-
-  #menu {
+  } 
+  .footer{
     display: none !important;
   }
-
-  
 
 }
 
@@ -125,6 +122,8 @@
   #menuDesktop {
     display: none !important;
   }
+
+  
 
   #helpMobile {
     display: flex;
