@@ -377,5 +377,9 @@ function displaySuccsessfullyMessage() {
 
 
 function addTaskClearTask() {
+
+    if (addTaskChard == true) {
+        addNewTaskOnBoard();
+    }
         location.reload();
 };
