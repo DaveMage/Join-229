@@ -471,7 +471,59 @@ function goToAddTask() {
     window.location.href = '/addTask.html';
 };
 
+
 function addNewTaskOnBoard() {
     let main = document.getElementById('mainBoard');
-    main.innerHTML = addNewTaskOnBoardHtml();
+    main.innerHTML += addNewTaskOnBoardHtml();
 }
+
+
+function closeAddTaskOnBoard() {
+    document.getElementById('floatingAddTask').remove();
+    location.reload();
+}
+
+
+async function saveTaskOnBoard() {
+    let title = document.getElementById('addTaskTitle').value;
+    let date = document.getElementById('addTaskDueDate').value;
+    let description = document.getElementById('addTaskDescription').value;
+    let prio = getSelectedPriority();
+    let category = document.getElementById('addTaskCategory').value;
+    await getUser();
+    let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
+    if (guestLoggedIn === 'true') {
+        userId = '-O-Mr5g8976g5-yCxVK8';
+    } else {
+        userId = userId.id;
+    }
+
+    if (title === '' || date === '') {
+        titlequery();
+        datequery();
+        console.log("error")
+        return;
+    }
+
+    try {
+        await postData('/users/' + userId + '/tasks', {
+            'title': title,
+            'description': description,
+            'assigned': selectedAssigned,
+            'date': date,
+            'priority': prio,
+            'category': category,
+            'subtasks': subtasks,
+            'status': 'open'
+        });
+
+        displaySuccsessfullyMessage()
+        clearFrom();
+
+    } catch (error) {
+        console.error('Error saving task:', error);
+    }
+
+    closeAddTaskOnBoard();
+};
