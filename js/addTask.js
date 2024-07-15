@@ -378,8 +378,10 @@ function displaySuccsessfullyMessage() {
 
 function addTaskClearTask() {
     // location.reload();
-    document.getElementById('addTaskTitle').value = '';
-    document.getElementById('addTaskDescription').value = '';
-    document.getElementById('addTaskDueDate').value = '';
-    document.getElementById('addTaskCategory').value = '';   
+    // document.getElementById('addTaskTitle').value = '';
+    // document.getElementById('addTaskDescription').value = '';
+    // document.getElementById('addTaskDueDate').value = '';
+    // document.getElementById('addTaskCategory').value = '' 
+    
+    addNewTaskOnBoard()
 };
