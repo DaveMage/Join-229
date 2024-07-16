@@ -381,7 +381,6 @@ function displayAssignedProfileIcons(task) {
 
 
 function addNewTaskOnBoardHtml() {
-    console.log('test');
     return /*html*/ `
         <div class="floatingAddTask" id="addTaskChard">
             <div class="addTaskBoardDesktop">
