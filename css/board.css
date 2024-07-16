@@ -788,7 +788,6 @@ main {
     flex-direction: column;
     justify-content: center;
     padding: 74px;
-    animation: slideIn 0.17s both;
   }
 
   .headerAddTaskOnBoard {
