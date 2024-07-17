@@ -259,7 +259,7 @@ function taskCardEditHTML(task) {
         Subtasks
             <div class="inputImgContainer">
                 <input type="text" id="subtask${task.id}" name="subtask${task.id}" placeholder="Add new subtask" class="subtaskInput" readonly
-                ondblclick="focusSubtaskInput()"
+                onclick="focusSubtaskInput()"
                 
                 >
                 <div id="subtaskEditInputIconContainer" >
@@ -473,7 +473,7 @@ function addNewTaskOnBoardHtml() {
                         Subtasks
                         <div class="addTaskInputIconContainer">
                         <input id="addTaskSubtask" type="text" placeholder="Add new subtasks" class="addTaskInput focus-border"
-                            readonly ondblclick="focusSubtaskInput()" />
+                            readonly onclick="focusSubtaskInput()" />
                         <div class="addTaskSubtaskIconContainer" id="addTaskSubtaskIconContainer">
                             <img src="./img/Mobile/AddTask/closeIcon.png" id="closeSubtaskIcon" style="display: none"
                             class="subtaskIcon" onclick="emptySubtaskInput()" />
