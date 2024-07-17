@@ -259,7 +259,7 @@ function taskCardEditHTML(task) {
         Subtasks
             <div class="inputImgContainer">
                 <input type="text" id="subtask${task.id}" name="subtask${task.id}" placeholder="Add new subtask" class="subtaskInput" readonly
-                onclick="focusSubtaskInput()"
+                onclick="focusEditSubtaskInput('${task.id}')"
                 
                 >
                 <div id="subtaskEditInputIconContainer" >
@@ -274,7 +274,7 @@ function taskCardEditHTML(task) {
 
                 <span class="subtaskSeperator" id="subtaskEditInputSeperator" style="display: none;"></span>
 
-                <img src="./img/Mobile/Board/addSubtask.png" onclick="focusSubtaskInput()"
+                <img src="./img/Mobile/Board/addSubtask.png" onclick="focusEditSubtaskInput('${task.id}')"
                 id="addEditSubtaskIcon">
 
                 <img

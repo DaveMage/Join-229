@@ -1,15 +1,17 @@
 let currentDraggedElement = null; // drag and drop
 
-function boardInit() {
+async function boardInit() {
     displayMobileHeader();
     displayMobileMenu();
     displayDesktopMenu();
     loadGuestLogin();
     checkGuestLogin();
     loadUserInitial();
-    getContacts();
+    await getContacts();
     displayTaskCard();
     menuActive();
+    // dateTreshhold();
+    templateInit();
 };
 
 

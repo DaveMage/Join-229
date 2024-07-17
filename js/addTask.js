@@ -409,3 +409,19 @@ function addTaskClearTask() {
         location.reload();
     }        
 };
+
+
+function focusEditSubtaskInput(task) {                                           // Funktion zum Wechseln der Bilder und Entfernen des readonly-Attributs
+    const inputField = document.querySelector(`#subtask${task}`);
+    let checkIcon = document.getElementById('checkSubtaskIcon');
+    let closeIcon = document.getElementById('closeSubtaskIcon');
+    let addIcon = document.getElementById('addEditSubtaskIcon');
+    let seperator = document.getElementById('subtaskEditInputSeperator');
+
+    inputField.readOnly = false;
+    inputField.focus();
+    addIcon.style.display = 'none';
+    checkIcon.style.display = 'flex';
+    closeIcon.style.display = 'flex';
+    seperator.style.display = 'flex';
+};
