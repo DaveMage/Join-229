@@ -108,6 +108,30 @@ function getSelectedPriority() {                                         // Funk
 };
 
 
+function getSelectedPriorityEditTask(taskId) {                                         // Funktion, um die ausgewählte Priorität zu ermitteln
+    const priorities = document.getElementsByName(`priority${taskId}`);           // Holt alle Radio-Buttons mit dem Namen 'priority'
+    let selectedPriority = null;                                         // Variable zur Speicherung des ausgewählten Radio-Buttons
+
+    for (const priority of priorities) {                                 // Schleife durch alle Prioritäten (Radio-Buttons) 
+        if (priority.checked) {                                          // Überprüfen, ob der aktuelle Radio-Button ausgewählt ist
+            selectedPriority = priority;                                 // Speichere den ausgewählten Radio-Button
+            break;                                                       // Schleife abbrechen, da wir die Auswahl gefunden haben
+        }
+    }
+
+    if (selectedPriority) {                                              // Überprüfen, ob eine Priorität ausgewählt wurde
+        const priorityValue = selectedPriority.value;                    // Wert des ausgewählten Radio-Buttons
+        const priorityLabel = document.querySelector(`label[for=${selectedPriority.id}]`); // Holt das zugehörige Label-Element
+        const priorityImgSrc = priorityLabel.querySelector('img').src;   // Holt den Bildpfad des Bildes innerhalb des Labels
+
+        return {                                                         // Rückgabe eines Objekts mit dem Wert und dem Bildpfad 
+            value: priorityValue,
+            imgSrc: priorityImgSrc
+        };
+    }
+};
+
+
 function selectCategory(element) {                                      // Funktion zum Auswählen einer Kategorie und Übertragen in das Eingabefeld
     const categoryInput = document.getElementById('addTaskCategory');
     categoryInput.value = element.textContent.trim();                   // Setzt den Text des ausgewählten Elements in das Eingabefeld

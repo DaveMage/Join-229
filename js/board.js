@@ -399,7 +399,7 @@ async function saveEditTask(taskId) {
     let title = document.getElementById('title' + taskId).value;
     let description = document.getElementById('description' + taskId).value;
     let date = document.getElementById('date' + taskId).value;
-    let priority = getSelectedPriority(taskId);
+    let priority = getSelectedPriorityEditTask(taskId);
     let category = currentTask.category;
     let subtasks = currentTask.subtasks;
     let assigned = updateSelectedAssignedAndInputField(taskId);
