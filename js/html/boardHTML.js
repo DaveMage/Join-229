@@ -182,7 +182,7 @@ function overviewTaskCardSubtaskHtml(task) {
     for (let i = 0; i < task.subtasks.length; i++) {
         let subtaskItem = task.subtasks[i];
         let subtaskItemHtml = `
-            <div class="taskCardOverviewSubtask">
+            <div class="taskCardOverviewSubtask" onclick="saveEditSubtask('${i}', '${task.id}')">
                 <input type="checkbox" name="subtaskItem${i}" id="subtaskItem${i}">
                 <label for="subtaskItem${i}">${subtaskItem}</label>
             </div>`;

@@ -534,3 +534,48 @@ async function saveTaskOnBoard() {
 
     closeAddTaskOnBoard();
 };
+
+
+async function saveEditSubtask(subtaskNumber, taskId) {
+    subtaskItemChecked = document.getElementById(`subtaskItem${subtaskNumber}`).checked;
+    if (subtaskItemChecked == true) {
+        subtaskItemChecked = false;
+        document.getElementById(`subtaskItem${subtaskNumber}`).style.backgroundImage = 'url(/img/Mobile/Board/checkboxChecked24.png)';
+    } else if (subtaskItemChecked == false) {
+        subtaskItemChecked = true;
+        document.getElementById(`subtaskItem${subtaskNumber}`).style.backgroundImage = 'url(/img/Mobile/Board/checkboxGrey24.png)';
+    }
+
+    /*let currentTask = tasks.find(t => t.id === taskId);
+    if (!currentTask) {
+        console.error(`Task with id ${taskId} not found`);
+        return;
+    }
+    let subtasks = currentTask.subtasks;
+    let userEmailToken = localStorage.getItem('emailToken');
+    let userId = users.find(user => user.email === atob(userEmailToken));
+    userId = userId ? userId.id : null;
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
+
+    try {
+        if (guestLoggedIn === 'true') {
+            userId = '-O-Mr5g8976g5-yCxVK8';
+        }
+
+        if (!userId) {
+            throw new Error('User ID is not available.');
+        }
+        await putData('/users/' + userId + '/tasks/' + taskId, {
+            // 'category': category,
+            // 'title': title,
+            // 'description': description,
+            // 'date': date,
+            // 'priority': priority,
+            'subtasks': subtasks,
+            // 'assigned': assigned,
+            // 'status': 'open'
+        });
+    } catch (error) {
+        console.error('Error updating task:', error);
+    }*/
+};
