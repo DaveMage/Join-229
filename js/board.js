@@ -10,8 +10,13 @@ async function boardInit() {
     await getContacts();
     displayTaskCard();
     menuActive();
-    // dateTreshhold();
     templateInit();
+};
+
+
+function dateTreshholdEdit(taskId) {
+    let today = new Date().toISOString().split('T')[0];
+    document.getElementById(`date${taskId}`).setAttribute('min', today);
 };
 
 
@@ -214,7 +219,7 @@ function openEditTask(taskId) {
     if (task) {
         document.getElementById('mainBoard').innerHTML += taskCardEditHTML(task);
         fillSelectedAssigned(taskId);
-
+        dateTreshholdEdit(taskId);
         closeTaskCardOverview();
     } else {
         console.error('Task not found with ID:', taskId);
