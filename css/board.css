@@ -427,7 +427,6 @@ main {
   justify-content: center;
   flex-direction: column;
   gap: 16px;
-  height: calc(100vh - 340px);
   overflow: auto;
   scrollbar-width: none;
 }
