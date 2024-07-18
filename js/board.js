@@ -560,39 +560,13 @@ async function saveEditSubtaskChecked(task) {
     let title = task.title;
     let date = task.date;
     let description = task.description;
-    let prio = getSelectedPriorityEditTask(task.id); // getSelectedPriority();
+    let prio = task.priority;
     let category = task.category;
     let status = task.status;
-    console.log(title, date, description, prio, category, status)
-    /*await getUser();
-    let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
-    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
-    if (guestLoggedIn === 'true') {
-        userId = '-O-Mr5g8976g5-yCxVK8';
-    } else {
-        userId = userId.id;
-    }
-
-    if (title === '' || date === '') {
-        titlequery();
-        datequery();
-        console.log("error")
-        return;
-    }
-
-    try {
-        await putData('/users/' + userId + '/tasks', {
-            'title': title,
-            'description': description,
-            'assigned': selectedAssigned,
-            'date': date,
-            'priority': prio,
-            'category': category,
-            'subtasks': subtasks,
-            'status': status
-        });
-
-    } catch (error) {
-        console.error('Error saving task:', error);
-    }*/
+    let selectAssigned = task.assigned
+    let subtasks = task.subtasks
+    
+    console.log(title, date, description, prio, category, status, selectAssigned, subtasks);
+    // Daten müssen noch im Backend gespeichert werden
+    // Subtask True oder False
 }
