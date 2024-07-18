@@ -60,7 +60,7 @@ function taskCardCategoryHTML(task) {
         } else {
             categoryColor = 'style="background-color: #0038FF"';
         }
-        categoryText = `<div id="editTaskCategory" class="taskCardCategory" ${categoryColor}>${task.category}</div>`;
+        categoryText = `<div id="editCardCategory" class="taskCardCategory" ${categoryColor}>${task.category}</div>`;
     }
     return categoryText;
 };
@@ -115,7 +115,7 @@ function overviewTaskCardHTML(task) {
         <p id="editCardDescription" class="taskCardOverviewDescription">${task.description}</p>
         <div class="taskCardOverviewLabelContainer">
           <p class="taskCardOverviewLabel">Due date:</p>
-          <p id="editTaskDate" class="taskCardOverview">${task.date}</p>
+          <p id="editCardDate" class="taskCardOverview">${task.date}</p>
         </div>
 
         <div class="taskCardOverviewLabelContainer">
@@ -174,6 +174,7 @@ function overviewTaskCardAssignedHtml(task) {
 
 
 function overviewTaskCardSubtaskHtml(task) {
+    console.log(task)
     let subtaskItemsHtml = '';
     if (!task.subtasks || task.subtasks.length === 0) {
         return '';
@@ -182,7 +183,7 @@ function overviewTaskCardSubtaskHtml(task) {
     for (let i = 0; i < task.subtasks.length; i++) {
         let subtaskItem = task.subtasks[i];
         let subtaskItemHtml = `
-            <div class="taskCardOverviewSubtask" onclick="saveEditSubtask('${i}', '${task.id}')">
+            <div class="taskCardOverviewSubtask" onclick="saveEditSubtask('${i}', '${task}')">
                 <input type="checkbox" name="subtaskItem${i}" id="subtaskItem${i}">
                 <label for="subtaskItem${i}">${subtaskItem}</label>
             </div>`;

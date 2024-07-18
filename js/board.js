@@ -541,7 +541,8 @@ async function saveTaskOnBoard() {
 };
 
 
-async function saveEditSubtask(subtaskNumber, taskId) {
+async function saveEditSubtask(subtaskNumber, task) {
+    console.log(subtaskNumber, task);
     subtaskItemChecked = document.getElementById(`subtaskItem${subtaskNumber}`).checked;
     if (subtaskItemChecked == true) {
         subtaskItemChecked = false;
@@ -550,17 +551,17 @@ async function saveEditSubtask(subtaskNumber, taskId) {
         subtaskItemChecked = true;
         document.getElementById(`subtaskItem${subtaskNumber}`).style.backgroundImage = 'url(/img/Mobile/Board/checkboxGrey24.png)';
     }
-
-    saveEditSubtask(taskId);
+    // saveEditSubtaskChecked(task);
 };
 
 
-async function saveEditSubtask(taskId) {
+async function saveEditSubtaskChecked(taskId) {
     let title = document.getElementById('editCardTitle').value;
-    let date = document.getElementById('editTaskDate').value;
+    let date = document.getElementById('editCardDate').value;
     let description = document.getElementById('editCardDescription').value;
     let prio = getSelectedPriorityEditTask(taskId); // getSelectedPriority();
-    let category = document.getElementById('editTaskCategory').value;
+    let category = document.getElementById('editCardCategory').value;
+    let status = '';
     await getUser();
     let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
     let guestLoggedIn = localStorage.getItem('guestLoggedIn');
@@ -586,7 +587,7 @@ async function saveEditSubtask(taskId) {
             'priority': prio,
             'category': category,
             'subtasks': subtasks,
-            'status': 'open'
+            'status': status
         });
 
     } catch (error) {
