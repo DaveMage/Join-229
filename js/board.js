@@ -551,36 +551,45 @@ async function saveEditSubtask(subtaskNumber, taskId) {
         document.getElementById(`subtaskItem${subtaskNumber}`).style.backgroundImage = 'url(/img/Mobile/Board/checkboxGrey24.png)';
     }
 
-    /*let currentTask = tasks.find(t => t.id === taskId);
-    if (!currentTask) {
-        console.error(`Task with id ${taskId} not found`);
+    saveEditSubtask(taskId);
+};
+
+
+async function saveEditSubtask(taskId) {
+    let title = document.getElementById('editCardTitle').value;
+    let date = document.getElementById('editTaskDate').value;
+    let description = document.getElementById('editCardDescription').value;
+    let prio = getSelectedPriorityEditTask(taskId); // getSelectedPriority();
+    let category = document.getElementById('editTaskCategory').value;
+    await getUser();
+    let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
+    if (guestLoggedIn === 'true') {
+        userId = '-O-Mr5g8976g5-yCxVK8';
+    } else {
+        userId = userId.id;
+    }
+
+    if (title === '' || date === '') {
+        titlequery();
+        datequery();
+        console.log("error")
         return;
     }
-    let subtasks = currentTask.subtasks;
-    let userEmailToken = localStorage.getItem('emailToken');
-    let userId = users.find(user => user.email === atob(userEmailToken));
-    userId = userId ? userId.id : null;
-    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
 
     try {
-        if (guestLoggedIn === 'true') {
-            userId = '-O-Mr5g8976g5-yCxVK8';
-        }
-
-        if (!userId) {
-            throw new Error('User ID is not available.');
-        }
-        await putData('/users/' + userId + '/tasks/' + taskId, {
-            // 'category': category,
-            // 'title': title,
-            // 'description': description,
-            // 'date': date,
-            // 'priority': priority,
+        await putData('/users/' + userId + '/tasks', {
+            'title': title,
+            'description': description,
+            'assigned': selectedAssigned,
+            'date': date,
+            'priority': prio,
+            'category': category,
             'subtasks': subtasks,
-            // 'assigned': assigned,
-            // 'status': 'open'
+            'status': 'open'
         });
+
     } catch (error) {
-        console.error('Error updating task:', error);
-    }*/
-};
+        console.error('Error saving task:', error);
+    }
+}

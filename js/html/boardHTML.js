@@ -60,7 +60,7 @@ function taskCardCategoryHTML(task) {
         } else {
             categoryColor = 'style="background-color: #0038FF"';
         }
-        categoryText = `<div class="taskCardCategory" ${categoryColor}>${task.category}</div>`;
+        categoryText = `<div id="editTaskCategory" class="taskCardCategory" ${categoryColor}>${task.category}</div>`;
     }
     return categoryText;
 };
@@ -111,11 +111,11 @@ function overviewTaskCardHTML(task) {
           ${taskCardCategoryHTML(task)}
           <img src="./img/Mobile/Board/closeTask.png" onclick="closeTaskCardOverview()">
         </div>  
-        <h2 class="taskCardOverviewTitle">${task.title}</h2>
-        <p class="taskCardOverviewDescription">${task.description}</p>
+        <h2 id="editCardTitle" class="taskCardOverviewTitle">${task.title}</h2> <!-----------------------------------------------------------------*/-->
+        <p id="editCardDescription" class="taskCardOverviewDescription">${task.description}</p>
         <div class="taskCardOverviewLabelContainer">
           <p class="taskCardOverviewLabel">Due date:</p>
-          <p class="taskCardOverview">${task.date}</p>
+          <p id="editTaskDate" class="taskCardOverview">${task.date}</p>
         </div>
 
         <div class="taskCardOverviewLabelContainer">
