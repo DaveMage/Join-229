@@ -541,7 +541,8 @@ async function saveTaskOnBoard() {
 };
 
 
-async function saveEditSubtask(subtaskNumber, task) {
+async function saveEditSubtask(subtaskNumber, taskId) {
+    let task = tasks.find(t => t.id === taskId);
     console.log(subtaskNumber, task);
     subtaskItemChecked = document.getElementById(`subtaskItem${subtaskNumber}`).checked;
     if (subtaskItemChecked == true) {
@@ -551,18 +552,19 @@ async function saveEditSubtask(subtaskNumber, task) {
         subtaskItemChecked = true;
         document.getElementById(`subtaskItem${subtaskNumber}`).style.backgroundImage = 'url(/img/Mobile/Board/checkboxGrey24.png)';
     }
-    // saveEditSubtaskChecked(task);
+    saveEditSubtaskChecked(task);
 };
 
 
-async function saveEditSubtaskChecked(taskId) {
-    let title = document.getElementById('editCardTitle').value;
-    let date = document.getElementById('editCardDate').value;
-    let description = document.getElementById('editCardDescription').value;
-    let prio = getSelectedPriorityEditTask(taskId); // getSelectedPriority();
-    let category = document.getElementById('editCardCategory').value;
-    let status = '';
-    await getUser();
+async function saveEditSubtaskChecked(task) {
+    let title = task.title;
+    let date = task.date;
+    let description = task.description;
+    let prio = getSelectedPriorityEditTask(task.id); // getSelectedPriority();
+    let category = task.category;
+    let status = task.status;
+    console.log(title, date, description, prio, category, status)
+    /*await getUser();
     let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
     let guestLoggedIn = localStorage.getItem('guestLoggedIn');
     if (guestLoggedIn === 'true') {
@@ -592,5 +594,5 @@ async function saveEditSubtaskChecked(taskId) {
 
     } catch (error) {
         console.error('Error saving task:', error);
-    }
+    }*/
 }

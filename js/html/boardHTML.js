@@ -134,7 +134,7 @@ function overviewTaskCardHTML(task) {
      <div class="taskCardOverviewSubtaskContainer">
       <div class="taskCardOverviewLabel">Subtasks</div>
       <div class="taskCardOverviewSubtasks">
-        ${overviewTaskCardSubtaskHtml(task)}        
+        ${overviewTaskCardSubtaskHtml(task)}     
       </div>
      </div>
 
@@ -174,7 +174,6 @@ function overviewTaskCardAssignedHtml(task) {
 
 
 function overviewTaskCardSubtaskHtml(task) {
-    console.log(task)
     let subtaskItemsHtml = '';
     if (!task.subtasks || task.subtasks.length === 0) {
         return '';
@@ -183,7 +182,7 @@ function overviewTaskCardSubtaskHtml(task) {
     for (let i = 0; i < task.subtasks.length; i++) {
         let subtaskItem = task.subtasks[i];
         let subtaskItemHtml = `
-            <div class="taskCardOverviewSubtask" onclick="saveEditSubtask('${i}', '${task}')">
+            <div class="taskCardOverviewSubtask" onclick="saveEditSubtask('${i}', '${task.id}')">
                 <input type="checkbox" name="subtaskItem${i}" id="subtaskItem${i}">
                 <label for="subtaskItem${i}">${subtaskItem}</label>
             </div>`;
