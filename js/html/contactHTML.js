@@ -100,7 +100,7 @@ function successfullyHtml() {
 function successfullyDesktopHtml() {
   return /* html */`
     <div class="backgroundSuccessfullyMessage">
-    <div id="conctactSuccessfully" class="successfullyMessage slideInRight">
+    <div id="conctactSuccessfully" class="successfullyMessage slideInRightDesktop">
     Contact successfully created
     </div>
     </div>`;
