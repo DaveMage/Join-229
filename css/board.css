@@ -361,12 +361,12 @@ main {
   cursor: pointer;
 }
 
-/* .taskCardOverviewSubtask input:checked {
+.taskCardOverviewSubtask input:checked {
   appearance: none;
   background-image: url(/img/Mobile/Board/checkboxChecked24.png);
   height: 24px;
   width: 24px;
-} */
+}
 
 .taskCardOverviewBtnContainer {
   display: flex;
