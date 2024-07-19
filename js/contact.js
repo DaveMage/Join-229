@@ -77,7 +77,7 @@ async function saveContact() {
     try {
         await postData(`/users/${userId}/contacts`, { name: contactName, email: contactEmail, phone: contactPhone, initials: initials, profileColor: randomColor });
         await showSuccessMessage();
-        closeAddContact();
+        
         contactInit();
     } catch (error) {
         console.error('Error adding contact:', error);
@@ -93,9 +93,11 @@ function isValidName(name) {
 // Auslagerung der Erfolgsmeldung
 async function showSuccessMessage() {
     if (window.innerWidth >= 1100){
+        closeAddContactDesktop();
         document.getElementById('contactMain').innerHTML += successfullyDesktopHtml();
     setTimeout(() => document.getElementById('conctactSuccessfully').remove(), 800);
     } else {
+        closeAddContact();
         document.getElementById('contactMain').innerHTML += successfullyHtml();
     setTimeout(() => document.getElementById('conctactSuccessfully').remove(), 800);
     }
@@ -144,10 +146,13 @@ async function deleteContact(contactId) {
         return;
     }
     try {
-        await deleteData('/users/' + userId + '/contacts/' + contactId); // Delete the contact data from the server
-        window.location.href = 'contacts.html'; // Redirect to the contacts page after deleting the contact
+        // Delete the contact data from the server
+        await deleteData('/users/' + userId + '/contacts/' + contactId); 
+        // Redirect to the contacts page after deleting the contact
+        window.location.href = 'contacts.html'; 
     } catch (error) {
-        console.error('Error deleting contact:', error); // Log an error message if there is an error deleting the contact
+        // Log an error message if there is an error deleting the contact
+        console.error('Error deleting contact:', error); 
     }
 };
 
@@ -158,9 +163,12 @@ function goToContacts() {
 
 // Function to open the option container
 function openOption() {
-    document.getElementById('optionContainer').classList.remove('slideOutRight'); // Remove the 'slideOutRight' class from the option container
-    document.getElementById('optionContainer').classList.add('slideInRight'); // Add the 'slideInRight' class to the option container
-    document.getElementById('optionContainer').style.display = 'flex'; // Set the display property of the option container to 'flex'
+    // Remove the 'slideOutRight' class from the option container
+    document.getElementById('optionContainer').classList.remove('slideOutRight'); 
+    // Add the 'slideInRight' class to the option container
+    document.getElementById('optionContainer').classList.add('slideInRight'); 
+    // Set the display property of the option container to 'flex'
+    document.getElementById('optionContainer').style.display = 'flex'; 
 };
 
 // Function to close the option container
