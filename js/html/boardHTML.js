@@ -93,13 +93,13 @@ function subtaskProgressbarHTML(task) {
         subtaskContentHtml = `
             <div class="taskCardSubtaskContainer">
                 <div class="subtaskProgressbar">
-                    <div class="subtaskProgressbarFill" style="width: ${progressPercentage}%;"></div>
+                    <div class="subtaskProgressbarFill" id="progressbar${task.id}" style="width: ${progressPercentage}%;"></div>
                 </div>
                 <div class='subtaskText'>${completedSubtasks}/${task.subtasks.length} Subtasks</div>
             </div>`;
     }
     return subtaskContentHtml;
-};
+}
 
 //Task Card Overwiew 
 function overviewTaskCardHTML(task) {                     
@@ -182,8 +182,8 @@ function overviewTaskCardSubtaskHtml(task) {
     for (let i = 0; i < task.subtasks.length; i++) {
         let subtaskItem = task.subtasks[i];
         let subtaskItemHtml = `
-            <div class="taskCardOverviewSubtask" onclick="saveEditSubtask('${i}', '${task.id}')">
-                <input type="checkbox" name="subtaskItem${i}" id="subtaskItem${i}">
+            <div class="taskCardOverviewSubtask" onclick="toggleSubtask('${i}', '${task.id}')">
+                <input type="checkbox" name="subtaskItem${i}" id="subtaskItem${i}" ${subtaskItem.completed ? 'checked' : ''}>
                 <label for="subtaskItem${i}">${subtaskItem}</label>
             </div>`;
         subtaskItemsHtml += subtaskItemHtml;
