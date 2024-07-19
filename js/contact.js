@@ -28,7 +28,8 @@ function closeAddContact() {                                                    
 };
 
 function closeAddContactDesktop() { 
-    document.getElementById('background').remove(); // Remove the background element
+    // Remove the background element
+    document.getElementById('background').remove(); 
 };                                          
 
 
@@ -240,8 +241,12 @@ async function saveEditContact(contactId) {
         let contactViewProfileIcon = document.getElementById('contactViewProfileIcon');
         contactViewProfileIcon.style.backgroundColor = contact.profileColor;
         contactViewProfileIcon.innerHTML = contactDetails.initials;
-
-        closeEditContact();
+        if(window.innerWidth >= 1100) {
+            closeAddContactDesktop();
+        } else {
+            closeEditContact();
+        }
+        
     } catch (error) {
         console.error('Error editing contact:', error);
     }
