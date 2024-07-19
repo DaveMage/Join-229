@@ -72,6 +72,7 @@ async function saveTask() {
             'priority': prio,
             'category': category,
             'subtasks': subtasks,
+            'subtasksDone': subtasks.map(() => false),            
             'status': 'open'
         });
 
