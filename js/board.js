@@ -254,7 +254,7 @@ function changeEditColorAssignedItem(contactId) {
         assignedItem.style.backgroundColor = '#2A3647';
         contactName.style.color = '#fff';
         assignedCheckbox.style.backgroundImage = 'url(./img/Mobile/Board/checkButtonMobileChecked.png)';
-    }   else {
+    } else {
         assignedItem.style.backgroundColor = '#fff';
         contactName.style.color = '#000';
         assignedCheckbox.style.backgroundImage = 'url(./img/Mobile/Board/checkButtonMobile.png)';
@@ -527,6 +527,7 @@ async function saveTaskOnBoard() {
             'priority': prio,
             'category': category,
             'subtasks': subtasks,
+            'subtasksStatus': false,
             'status': 'open'
         });
 
@@ -541,32 +542,79 @@ async function saveTaskOnBoard() {
 };
 
 
+
 async function saveEditSubtask(subtaskNumber, taskId) {
-    let task = tasks.find(t => t.id === taskId);
-    console.log(subtaskNumber, task);
-    subtaskItemChecked = document.getElementById(`subtaskItem${subtaskNumber}`).checked;
-    if (subtaskItemChecked == true) {
-        subtaskItemChecked = false;
-        document.getElementById(`subtaskItem${subtaskNumber}`).style.backgroundImage = 'url(/img/Mobile/Board/checkboxChecked24.png)';
-    } else if (subtaskItemChecked == false) {
-        subtaskItemChecked = true;
-        document.getElementById(`subtaskItem${subtaskNumber}`).style.backgroundImage = 'url(/img/Mobile/Board/checkboxGrey24.png)';
+    try {
+        // Retrieve the current user
+        await getUser();
+        let user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
+        let guestLoggedIn = localStorage.getItem('guestLoggedIn');
+        let userId = guestLoggedIn === 'true' ? '-O-Mr5g8976g5-yCxVK8' : user.id;
+
+        // Fetch the task from the backend
+        let task = await getData('/users/' + userId + '/tasks/' + taskId);
+
+        // Debug: Check task and subtasks before update
+        console.log('Task before update:', task);
+
+        // Check if subtaskNumber is valid
+        if (subtaskNumber < 0 || subtaskNumber >= task.subtasks.length) {
+            console.error('Invalid subtask number:', subtaskNumber);
+            return;
+        }
+
+        // Toggle the specific subtask completion state
+        task.subtasks[subtaskNumber].completed = !task.subtasks[subtaskNumber].completed;
+
+        // Debug: Check specific subtask state
+        console.log('Updated subtask:', task.subtasks[subtaskNumber]);
+
+        // Update the task in the backend
+        await putData('/users/' + userId + '/tasks/' + taskId, {
+            'category': task.category,
+            'title': task.title,
+            'description': task.description,
+            'date': task.date,
+            'priority': task.priority,
+            'subtasks': task.subtasks,
+            'assigned': task.assigned,
+            'status': task.status
+        });
+
+        // Fetch the updated task to ensure changes are reflected
+        task = await getData('/users/' + userId + '/tasks/' + taskId);
+
+        // Calculate the progress
+        let totalSubtasks = task.subtasks.length;
+        let completedSubtasks = task.subtasks.filter(subtask => subtask.completed).length;
+        let progress = (completedSubtasks / totalSubtasks) * 100;
+
+        // Debug: Logs for progress calculation
+        console.log('Total Subtasks:', totalSubtasks);
+        console.log('Completed Subtasks:', completedSubtasks);
+        console.log('Progress:', progress);
+
+        // Update the progress bar in the UI
+        let progressBar = document.getElementById('progressbar' + taskId);
+        if (progressBar) {
+            progressBar.style.width = progress + '%';
+        } else {
+            console.error('Progress bar element not found for task ID:', taskId);
+        }
+
+        // Update the text displaying the progress
+        let subtaskText = document.querySelector(`#progressbar${taskId} + .subtaskText`);
+        if (subtaskText) {
+            subtaskText.textContent = `${completedSubtasks}/${totalSubtasks} Subtasks`;
+        }
+
+    } catch (error) {
+        console.error('Error saving subtask:', error);
     }
-    saveEditSubtaskChecked(task);
-};
-
-
-async function saveEditSubtaskChecked(task) {
-    let title = task.title;
-    let date = task.date;
-    let description = task.description;
-    let prio = task.priority;
-    let category = task.category;
-    let status = task.status;
-    let selectAssigned = task.assigned
-    let subtasks = task.subtasks
-    
-    console.log(title, date, description, prio, category, status, selectAssigned, subtasks);
-    // Daten müssen noch im Backend gespeichert werden
-    // Subtask True oder False
 }
+
+
+function toggleSubtask(subtaskIndex, taskId) {
+   
+}
+
