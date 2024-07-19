@@ -13,6 +13,12 @@ async function loadData(path = '') {
     console.log(responseToJson);
 };
 
+async function getData(path = '') {
+    let response = await fetch(BASE_URL + path + '.json');
+    let responseToJson = await response.json();
+    return responseToJson;
+};
+
 
 async function putData(path = '', data = {}) {
     try {
@@ -126,5 +132,17 @@ async function getTask() {
 
 
 
-
+async function setSubtaskTrue(taskId, subtaskId){
+    let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
+    if(guestLoggedIn === 'true'){
+        userId = '-O-Mr5g8976g5-yCxVK8';
+    } else {  
+        userId = userId.id;
+    }   
+    let task = tasks.find(task => task.id === taskId);
+    let subtask = task.subtasks.find(subtask => subtask.id === subtaskId);
+    subtask.done = true;
+    await putData('/users/' + userId + '/tasks/' + taskId + '/subtasks/' + subtaskId, subtask);
+}
 
