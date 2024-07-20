@@ -246,7 +246,7 @@ function taskCardEditHTML(task) {
                 <img id="assignedIcon" src="./img/Mobile/AddTask/arrowDropDownaa.png" onclick="toogleEditAssignedDropdown()">
             </div>
 
-            <div id="editAssignedDropdown" class="customDropdownBox">
+            <div id="editAssignedDropdown" class="customDropdownBox">       <!--der container für das dropdownmenü -->
                 ${displayAssignedDropdown(task)}
             </div>
 
