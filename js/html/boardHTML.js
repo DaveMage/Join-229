@@ -355,7 +355,7 @@ function displaySubtasksHTML(task) {
         for (let i = 0; i < task.subtasks.length; i++) {
             subtaskHtml += /*html*/ `
             <li class="subtaskItem">
-                <input type="text" class="subtaskItemInput" value="${task.subtasks[i]}" readonly id="subtaskEditInput">            
+                <input type="text" class="subtaskItemInput" value="${task.subtasks[i].name}" readonly id="subtaskEditInput">            
                     <div class="subtaskItemIconContainer">
                         <img src="./img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemLeftIcon">
                         <span class="subtaskSeperator"></span>
