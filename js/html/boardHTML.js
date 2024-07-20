@@ -182,9 +182,9 @@ function overviewTaskCardSubtaskHtml(task) {
     for (let i = 0; i < task.subtasks.length; i++) {
         let subtaskItem = task.subtasks[i];
         let subtaskItemHtml = `
-            <div class="taskCardOverviewSubtask" onclick="toggleSubtask('${i}', '${task.id}')">
+            <div class="taskCardOverviewSubtask" onclick="toggleSubtask(${i}, '${task.id}')">
                 <input type="checkbox" name="subtaskItem${i}" id="subtaskItem${i}" ${subtaskItem.completed ? 'checked' : ''}>
-                <label for="subtaskItem${i}">${subtaskItem}</label>
+                <label for="subtaskItem${i}">${subtaskItem.name}</label>
             </div>`;
         subtaskItemsHtml += subtaskItemHtml;
     }
@@ -495,7 +495,7 @@ function addNewTaskOnBoardHtml() {
                     <button onclick="addTaskClearTask()" class="addTaskClearBtn">
                         Clear x
                     </button>
-                    <button onclick="saveTaskOnBoard()" class="primaryBtn createTaskBtn">
+                    <button onclick="saveTask()" class="primaryBtn createTaskBtn">
                         Create Task
                         <img src="./img/Mobile/AddTask/checkMarkIconAddTask.png" />
                     </button>
