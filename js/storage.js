@@ -180,4 +180,7 @@ async function saveTask() {
     if (document.getElementById('addTaskChard')){
         document.getElementById('addTaskChard').remove();
     }
+    if(window.location.pathname === '/addTask.html'){
+        window.location.href = '/board.html';
+    }
 }
