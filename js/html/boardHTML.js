@@ -203,7 +203,7 @@ function taskCardEditHTML(task) {
 
         <div class="labelInputContainer">
             <label for="title${task.id}">Title</label>
-            <input type="text" id="title${task.id}" name="title${task.id}" value="${task.title}" class="inputText">
+            <input type="text" id="title${task.id}" name="title${task.id}" value="${task.title}" class="inputText focus-border">
         </div>
 
         <div class="labelInputContainer">
