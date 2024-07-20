@@ -136,7 +136,7 @@ function closeTaskCardOverview() {
 
 async function deleteTask(taskId) {
     let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); // Find the user object with the specified email
-    userId = userId.id; // Get the user ID from the user object    
+    userId = users.id; // Get the user ID from the user object    
     let guestLoggedIn = localStorage.getItem('guestLoggedIn'); // Get the guestLoggedIn value from local storage
     if (guestLoggedIn === 'true') {
         userId = '-O-Mr5g8976g5-yCxVK8'; // Set the user ID to the guest user ID if the guest is logged in
@@ -491,12 +491,11 @@ function closeAddTaskOnBoardX() {
 
 
 function closeAddTaskOnBoard() {
-    document.getElementById('addTaskChard').remove();
-    location.reload();
+    document.getElementById('addTaskChard').remove();    
 }
 
-
-async function saveTaskOnBoard() {
+//kann weg nachdem saveTask angepasst wurde
+/* async function saveTaskOnBoard() {
     let title = document.getElementById('addTaskTitle').value;
     let date = document.getElementById('addTaskDueDate').value;
     let description = document.getElementById('addTaskDescription').value;
@@ -539,7 +538,7 @@ async function saveTaskOnBoard() {
     }
 
     closeAddTaskOnBoard();
-};
+}; */
 
 
 
@@ -614,7 +613,39 @@ async function saveEditSubtask(subtaskNumber, taskId) {
 }
 
 
-function toggleSubtask(subtaskIndex, taskId) {
-   
+async function toggleSubtask(subtaskIndex, taskId) {
+    try {
+        await getUser();
+        let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
+        let guestLoggedIn = localStorage.getItem('guestLoggedIn');
+        userId = guestLoggedIn === 'true' ? '-O-Mr5g8976g5-yCxVK8' : userId.id;
+
+        let task = tasks.find(task => task.id === taskId);
+        if (!task) {
+            console.error('Task not found');
+            return;
+        }
+
+        // Toggle the completion status of the subtask
+        task.subtasks[subtaskIndex].completed = !task.subtasks[subtaskIndex].completed;
+
+        // Update the entire task object
+        await putData(`/users/${userId}/tasks/${taskId}`, {
+            ...task // Kopiert alle Eigenschaften des task-Objekts
+        });
+
+        // Update the progress bar
+        let completedSubtasks = task.subtasks.filter(subtask => subtask.completed).length;
+        let progressPercentage = (completedSubtasks / task.subtasks.length) * 100;
+        document.getElementById(`progressbar${task.id}`).style.width = `${progressPercentage}%`;
+
+        // Optionally update the task in the local list
+        tasks = tasks.map(t => t.id === taskId ? task : t);
+
+        console.log('Subtask status updated successfully');
+    } catch (error) {
+        console.error('Error toggling subtask:', error);
+    }
 }
+
 
