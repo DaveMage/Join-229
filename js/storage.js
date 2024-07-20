@@ -22,23 +22,18 @@ async function getData(path = '') {
 
 async function putData(path = '', data = {}) {
     try {
-        let response = await fetch(BASE_URL + path + '.json', {
+        let response = await fetch(`${BASE_URL}${path}.json`, {
             method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         });
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        let responseToJson = await response.json();
-        return responseToJson;
+        if (!response.ok) throw new Error('Network response was not ok');
+        return await response.json();
     } catch (error) {
         console.error('Error putting data:', error);
-        throw error; // Re-throw the error so caller can handle it
+        throw error;
     }
-};
+}
 
 
 async function deleteData(path = '') {
@@ -146,3 +141,43 @@ async function setSubtaskTrue(taskId, subtaskId){
     await putData('/users/' + userId + '/tasks/' + taskId + '/subtasks/' + subtaskId, subtask);
 }
 
+async function saveTask() {
+    let title = document.getElementById('addTaskTitle').value;
+    let date = document.getElementById('addTaskDueDate').value;
+    let description = document.getElementById('addTaskDescription').value;
+    let prio = getSelectedPriority();
+    let category = document.getElementById('addTaskCategory').value;
+    await getUser();
+    let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
+    userId = guestLoggedIn === 'true' ? '-O-Mr5g8976g5-yCxVK8' : userId.id;
+
+    if (title === '' || date === '') {
+        titlequery();
+        datequery();
+        console.log("error");
+        return;
+    }
+    //Shorthand-Syntax können wir das kürzer schreiben, wenn die Namen der Variablen und der Objekt-Schlüssel übereinstimmen:
+    try {
+        await postData(`/users/${userId}/tasks`, {
+            title,
+            description,
+            assigned: selectedAssigned,
+            date,
+            priority: prio,
+            category,
+            subtasks: subtasks.map(subtask => ({ name: subtask, completed: false })), // Ensure subtasks are stored as objects
+            status: 'open'
+        });
+
+        //displaySuccsessfullyMessage();
+        //clearForm();
+
+    } catch (error) {
+        console.error('Error saving task:', error);
+    }
+    if (document.getElementById('addTaskChard')){
+        document.getElementById('addTaskChard').remove();
+    }
+}
