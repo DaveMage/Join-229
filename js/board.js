@@ -22,11 +22,13 @@ function dateTreshholdEdit(taskId) {
 
 function addActiveClass() {
     document.getElementById('searchBar').classList.add('inputActive');
+    document.getElementById('searchBarDesktop').classList.add('inputActive');
 };
 
 
 function removeActiveClass() {
     document.getElementById('searchBar').classList.remove('inputActive');
+    document.getElementById('searchBarDesktop').classList.remove('inputActive');
 };
 
 

@@ -743,7 +743,7 @@ main {
     width: 100%;
   }
 
-  .headlineContainer img:active {
+  .addTaskBtn:active {
     content: url("/img/Desktop/board/addTaskOnBoardDesktopActive.png");
   }
 
