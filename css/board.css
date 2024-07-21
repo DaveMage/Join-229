@@ -634,7 +634,7 @@ main {
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
   padding-top: 8px;
   margin-top: -16px;
-  height: 200px;
+  max-height: 200px;
   overflow: auto; 
 }
 
@@ -648,7 +648,7 @@ main {
   align-items: center;
   display: flex;
   border-radius: 10px;
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 .assignedIconNameContainer{
@@ -675,7 +675,7 @@ main {
 }
 
 .show{
-  display: flex;
+  display: flex !important;
 }
 
 .nameWhite {

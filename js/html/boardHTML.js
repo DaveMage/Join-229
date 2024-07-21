@@ -241,9 +241,9 @@ function taskCardEditHTML(task) {
             Assigned to
 
             <div class="inputImgContainer">
-                <input type="text" id="assigned${task.id}" name="assigned${task.id}" placeholder="Select contacts to assign" readonly onclick="toogleEditAssignedDropdown()"
+                <input type="text" id="assigned${task.id}" name="assigned${task.id}" placeholder="Select contacts to assign" readonly onclick="toggleEditAssignedDropdown('${task.id}')"
                 value="An: ${assignedContactsString}">
-                <img id="assignedIcon" src="./img/Mobile/AddTask/arrowDropDownaa.png" onclick="toogleEditAssignedDropdown()">
+                <img id="assignedIcon" src="./img/Mobile/AddTask/arrowDropDownaa.png" onclick="toggleEditAssignedDropdown('${task.id}')">
             </div>
 
             <div id="editAssignedDropdown" class="customDropdownBox">       <!--der container für das dropdownmenü -->
@@ -309,6 +309,7 @@ function displayAssignedDropdown(task) {
     // Es wird angenommen, dass task.assigned ein Array von Kontakt-IDs ist, die bereits zugewiesen wurden.
     const assignedIds = task.assigned ? task.assigned.map(contact => contact.id) : [];
 
+    console.log(task)
     for (let i = 0; i < contacts.length; i++) {
         // Überprüfen, ob der aktuelle Kontakt bereits zugewiesen wurde
         const isChecked = assignedIds.includes(contacts[i].id) ? 'checked' : '';
@@ -328,7 +329,8 @@ function displayAssignedDropdown(task) {
 };
 
 
-function toogleEditAssignedDropdown() {
+function toggleEditAssignedDropdown(taskId) {
+    let task = tasks.find(task => task.id === taskId);
     let dropdown = document.getElementById('editAssignedDropdown');
     dropdown.classList.toggle('show');
     if (dropdown.classList.contains('show')) {
@@ -336,6 +338,8 @@ function toogleEditAssignedDropdown() {
     } else {
         document.getElementById('assignedIcon').style.transform = 'rotate(0deg)';
     }
+
+    displayAssignedDropdown(task);
 };
 
 
