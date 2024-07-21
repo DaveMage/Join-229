@@ -536,4 +536,8 @@ h1 {
   #greetingName {
     font-size: 64px;
   }
+
+  #greetingMain {
+    display: none;
+  }
 }
