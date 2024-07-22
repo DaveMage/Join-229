@@ -214,5 +214,6 @@ async function saveTask() {
     if(window.location.pathname === '/board.html'){
         displaySuccsessfullyBoardMessage();
     }
+    updateBoardHtml();
 }
 
