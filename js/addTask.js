@@ -354,9 +354,11 @@ function successfullyNewTask() {
 function displaySuccsessfullyMessage() {
     let mainContainer = document.getElementById('mainContainerId');
     mainContainer.innerHTML += successfullyNewTask();
+    
+    // Remove the success message after 900 milliseconds
     setTimeout(() => {
-        document.getElementById('newTaskBGMessage').remove();
-        window.location.href = '/board.html'; // Remove the success message after 800 milliseconds
+        document.getElementById('newTaskBGMessage').remove();        
+        window.location.href = '/board.html'; 
     }, 900);
 };
 
