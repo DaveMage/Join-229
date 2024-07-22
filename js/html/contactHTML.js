@@ -146,7 +146,7 @@ function contactEditForm(contact) {
 function contactViewDesktop(contact) {
   return /* html */`  
           <div class="cvdIconName">
-            <div id="profileIconDesktop">${contact.initials}</div>
+            <div id="profileIconDesktop" style="background-color: ${contact.profileColor};">${contact.initials}</div>
             <div class="cvdNameBtnContainer">
               <h2 id="cvdName">${contact.name}</h2>
               <div class="cvdBtns">
@@ -195,7 +195,7 @@ function editContactDesktop(contact) {
     <div class="contactEditDesktopRight">
       <img onclick="closeAddContactDesktop()" class="closeBtn" src="img/Mobile/Board/closeTask.png">
       <div class="contactEditDesktopIconForm">
-        <div class="profileIconDesktop" style="background-color: ${contact.profileColor};">${contact.initials}</div>
+        <div class="profileIconDesktop" id="profileIconEditDesktop" style="background-color: ${contact.profileColor};">${contact.initials}</div>
         <form class="contactEditDesktopForm" onsubmit="return false;">          
         
       <label for="contactName${contact.id}" class="contactLabel">
