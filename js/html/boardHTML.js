@@ -511,3 +511,13 @@ function addNewTaskOnBoardHtml() {
         </div>
     `;
 }
+
+function successfullyTaskDesktopHtml() {
+    return /* html */`
+      <div class="backgroundSuccessfullyMessage" id="background">
+      <div id="conctactSuccessfully" class="successfullyMessage slideInRightDesktop">
+      Task added to board
+      <img src="./img/Mobile/AddTask/addTaskBoardIcons.png">
+      </div>
+      </div>`;
+  };
