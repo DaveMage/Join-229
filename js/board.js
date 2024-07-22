@@ -353,13 +353,13 @@ function addEditSubtask(taskId) {
     }
     // Retrieve the value of the subtask input field
     let subtaskInput = document.getElementById('subtask' + taskId);
-    let subtask = subtaskInput.value.trim();
-    if (subtask === '') {
+    let subtaskName = subtaskInput.value.trim();
+    if (subtaskName === '') {
         console.error('Subtask cannot be empty');
         return;
     }
-    // Add the new subtask to the task's subtasks array
-    task.subtasks.push(subtask);
+    // Add the new subtask as an object to the task's subtasks array
+    task.subtasks.push({ name: subtaskName, completed: false });
     // Retrieve the subtask list element
     let subtaskList = document.getElementById('subtaskContainer' + taskId);
     // Update the subtask list HTML using a function that generates HTML for subtasks
@@ -370,7 +370,7 @@ function addEditSubtask(taskId) {
     if (typeof onBlurSubtaskInput === 'function') {
         onBlurSubtaskInput();
     }
-};
+}
 
 
 function displaySubtasksHTML(task) {
@@ -398,6 +398,28 @@ function emptySubtaskInput(taskId) {
     onBlurSubtaskInput();
 };
 
+function getEditFormData(taskId, currentTask) {
+    // Bestehende Unteraufgaben beibehalten
+    let existingSubtasks = currentTask.subtasks.map(subtask => ({ name: subtask.name, completed: subtask.completed }));
+    
+    // Neue Unteraufgaben hinzufügen
+    let newSubtasks = subtasks.map(subtask => ({ name: subtask, completed: false }));
+    
+    // Kombinieren der alten und neuen Unteraufgaben
+    let combinedSubtasks = [...existingSubtasks, ...newSubtasks];
+
+    return {
+        title: document.getElementById('title' + taskId).value,
+        description: document.getElementById('description' + taskId).value,
+        date: document.getElementById('date' + taskId).value,
+        priority: getSelectedPriorityEditTask(taskId),
+        category: currentTask.category,
+        subtasks: combinedSubtasks, // Ensure subtasks are stored as objects
+        assigned: updateSelectedAssignedAndInputField(taskId),
+        status: currentTask.status,
+    };
+}
+
 
 async function saveEditTask(taskId) {
     let currentTask = tasks.find(t => t.id === taskId);
@@ -405,43 +427,32 @@ async function saveEditTask(taskId) {
         console.error(`Task with id ${taskId} not found`);
         return;
     }
-    let title = document.getElementById('title' + taskId).value;
-    let description = document.getElementById('description' + taskId).value;
-    let date = document.getElementById('date' + taskId).value;
-    let priority = getSelectedPriorityEditTask(taskId);
-    let category = currentTask.category;
-    let subtasks = currentTask.subtasks;
-    let assigned = updateSelectedAssignedAndInputField(taskId);
-    let status = currentTask.status;
-    let userEmailToken = localStorage.getItem('emailToken');
-    let userId = users.find(user => user.email === atob(userEmailToken));
-    userId = userId ? userId.id : null;
-    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
+    let formData = getEditFormData(taskId, currentTask);
 
     try {
-        if (guestLoggedIn === 'true') {
-            userId = '-O-Mr5g8976g5-yCxVK8';
-        }
+        let userId = await getUserId();
 
         if (!userId) {
-            throw new Error('User ID is not available.');
+            throw new Error('User ID not found');
         }
-        await putData('/users/' + userId + '/tasks/' + taskId, {
-            'category': category,
-            'title': title,
-            'description': description,
-            'date': date,
-            'priority': priority,
-            'subtasks': subtasks,
-            'assigned': assigned,
-            'status': status
+
+        await putData(`/users/${userId}/tasks/${taskId}`, {
+           title: formData.title,
+           description: formData.description,
+           assigned: formData.assigned,
+           date: formData.date,
+           priority: formData.priority,
+           category: formData.category,
+           subtasks: formData.subtasks,
+           status: formData.status
         });
+        
         closeEditTask();
         window.location.reload();
     } catch (error) {
         console.error('Error updating task:', error);
     }
-};
+}
 
 
 function getSelectedPriority(taskId) {  // Funktion, um die ausgewählte Priorität basierend auf der Aufgaben-ID zu ermitteln
@@ -493,79 +504,7 @@ function closeAddTaskOnBoardX() {
 
 
 function closeAddTaskOnBoard() {
-    document.getElementById('addTaskChard').remove();    
-}
-
-
-
-async function saveEditSubtask(subtaskNumber, taskId) {
-    try {
-        // Retrieve the current user
-        await getUser();
-        let user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
-        let guestLoggedIn = localStorage.getItem('guestLoggedIn');
-        let userId = guestLoggedIn === 'true' ? '-O-Mr5g8976g5-yCxVK8' : user.id;
-
-        // Fetch the task from the backend
-        let task = await getData('/users/' + userId + '/tasks/' + taskId);
-
-        // Debug: Check task and subtasks before update
-        console.log('Task before update:', task);
-
-        // Check if subtaskNumber is valid
-        if (subtaskNumber < 0 || subtaskNumber >= task.subtasks.length) {
-            console.error('Invalid subtask number:', subtaskNumber);
-            return;
-        }
-
-        // Toggle the specific subtask completion state
-        task.subtasks[subtaskNumber].completed = !task.subtasks[subtaskNumber].completed;
-
-        // Debug: Check specific subtask state
-        console.log('Updated subtask:', task.subtasks[subtaskNumber]);
-
-        // Update the task in the backend
-        await putData('/users/' + userId + '/tasks/' + taskId, {
-            'category': task.category,
-            'title': task.title,
-            'description': task.description,
-            'date': task.date,
-            'priority': task.priority,
-            'subtasks': task.subtasks,
-            'assigned': task.assigned,
-            'status': task.status
-        });
-
-        // Fetch the updated task to ensure changes are reflected
-        task = await getData('/users/' + userId + '/tasks/' + taskId);
-
-        // Calculate the progress
-        let totalSubtasks = task.subtasks.length;
-        let completedSubtasks = task.subtasks.filter(subtask => subtask.completed).length;
-        let progress = (completedSubtasks / totalSubtasks) * 100;
-
-        // Debug: Logs for progress calculation
-        console.log('Total Subtasks:', totalSubtasks);
-        console.log('Completed Subtasks:', completedSubtasks);
-        console.log('Progress:', progress);
-
-        // Update the progress bar in the UI
-        let progressBar = document.getElementById('progressbar' + taskId);
-        if (progressBar) {
-            progressBar.style.width = progress + '%';
-        } else {
-            console.error('Progress bar element not found for task ID:', taskId);
-        }
-
-        // Update the text displaying the progress
-        let subtaskText = document.querySelector(`#progressbar${taskId} + .subtaskText`);
-        if (subtaskText) {
-            subtaskText.textContent = `${completedSubtasks}/${totalSubtasks} Subtasks`;
-        }
-
-    } catch (error) {
-        console.error('Error saving subtask:', error);
-    }
+    document.getElementById('addTaskChard').remove();
 }
 
 
@@ -607,11 +546,11 @@ async function toggleSubtask(subtaskIndex, taskId) {
 function displaySuccsessfullyBoardMessage() {
     let mainContainer = document.getElementById('mainBoard');
     mainContainer.innerHTML += successfullyTaskDesktopHtml();
-    
+
     // Remove the success message after 900 milliseconds
     setTimeout(() => {
-        document.getElementById('background').remove();        
-        
+        document.getElementById('background').remove();
+
     }, 900);
 };
 
