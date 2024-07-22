@@ -294,7 +294,10 @@ main {
 .taskCardOverviewLabelContainer {
   display: flex;
   gap: 25px;
-  align-items: center;
+}
+
+.priorityLabel {
+  margin-left: 15px
 }
 
 .taskCardOverviewLabel {
@@ -616,7 +619,7 @@ main {
   display: flex;
   justify-content: flex-end;
   gap: 8px;
-  margin-top: 12px;
+  margin-top: 24px;
 }
 
 .customDropdownBox {
@@ -848,6 +851,23 @@ main {
   
   #taskCardOverviewDeleteBtn:hover img {
     content: url(/img/Mobile/Board/deleteBlue24.png);
+  }
+
+  .taskCardOverviewMain {
+    gap: 24px;
+  }
+
+  .taskCardOverviewBody {
+    padding: 48px 40px;
+  }
+
+  .taskCardEditBody {
+    width: auto;
+    padding: 48px 40px;
+  }
+
+  .editTaskForm {
+    gap: 24px;
   }
 }
 

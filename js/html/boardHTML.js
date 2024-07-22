@@ -120,7 +120,7 @@ function overviewTaskCardHTML(task) {
 
         <div class="taskCardOverviewLabelContainer">
             <p class="taskCardOverviewLabel">Priority:</p>
-            <p class="taskCardOverview">${task.priority.value}</p>
+            <p class="taskCardOverview priorityLabel">${task.priority.value}</p>
             <img src="${task.priority.imgSrc}">
         </div>
 
