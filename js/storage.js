@@ -106,14 +106,7 @@ async function getContacts() {
 
 
 async function getTask() {
-    await getUser();
-    let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
-    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
-    if(guestLoggedIn === 'true'){
-        userId = '-O-Mr5g8976g5-yCxVK8';
-    } else {  
-        userId = userId.id;
-    }   
+    let userId = await getUserId();  
     let response = await fetch(BASE_URL + '/users/' + userId + '/tasks.json'); // Fetch tasks from the server
     let responseToJson = await response.json(); // Convert the response to JSON format
     tasks = [];
@@ -128,59 +121,98 @@ async function getTask() {
 
 
 async function setSubtaskTrue(taskId, subtaskId){
-    let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
-    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
-    if(guestLoggedIn === 'true'){
-        userId = '-O-Mr5g8976g5-yCxVK8';
-    } else {  
-        userId = userId.id;
-    }   
+    let userId = await getUserId();   
     let task = tasks.find(task => task.id === taskId);
     let subtask = task.subtasks.find(subtask => subtask.id === subtaskId);
     subtask.done = true;
     await putData('/users/' + userId + '/tasks/' + taskId + '/subtasks/' + subtaskId, subtask);
 }
 
-async function saveTask() {
-    let title = document.getElementById('addTaskTitle').value;
-    let date = document.getElementById('addTaskDueDate').value;
-    let description = document.getElementById('addTaskDescription').value;
-    let prio = getSelectedPriority();
-    let category = document.getElementById('addTaskCategory').value;
-    await getUser();
-    let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
-    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
-    userId = guestLoggedIn === 'true' ? '-O-Mr5g8976g5-yCxVK8' : userId.id;
 
-    if (title === '' || date === '') {
+
+// Funktion zum Abrufen von Formulardaten
+function getFormData() {
+    return {
+        title: document.getElementById('addTaskTitle').value,
+        date: document.getElementById('addTaskDueDate').value,
+        description: document.getElementById('addTaskDescription').value,
+        prio: getSelectedPriority(),
+        category: document.getElementById('addTaskCategory').value,
+        assigned: selectedAssigned,
+        subtasks: subtasks.map(subtask => ({ name: subtask, completed: false })) // Ensure subtasks are stored as objects
+    };
+}
+
+// Funktion zum Abrufen der Benutzer-ID
+async function getUserId() {
+    await getUser();
+    let emailToken = localStorage.getItem('emailToken');
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
+    
+    if (guestLoggedIn === 'true') {
+        return '-O-Mr5g8976g5-yCxVK8';
+    } else {
+        let decodedEmail = atob(emailToken);
+        let user = users.find(user => user.email === decodedEmail);
+        return user ? user.id : null;
+    }
+}
+
+// Funktion zum Überprüfen der Formulardaten
+function validateFormData(formData) {
+    if (formData.title === '' || formData.date === '') {
         titlequery();
         datequery();
         console.log("error");
+        return false;
+    }
+    return true;
+}
+
+// Funktion zum Speichern der Aufgabe
+async function saveTask() {
+    let formData = getFormData();
+
+    if (!validateFormData(formData)) {
         return;
     }
-    //Shorthand-Syntax können wir das kürzer schreiben, wenn die Namen der Variablen und der Objekt-Schlüssel übereinstimmen:
+
     try {
+        let userId = await getUserId();
+
+        if (!userId) {
+            throw new Error('User ID not found');
+        }
+
         await postData(`/users/${userId}/tasks`, {
-            title,
-            description,
-            assigned: selectedAssigned,
-            date,
-            priority: prio,
-            category,
-            subtasks: subtasks.map(subtask => ({ name: subtask, completed: false })), // Ensure subtasks are stored as objects
+            title: formData.title,
+            description: formData.description,
+            assigned: formData.assigned,
+            date: formData.date,
+            priority: formData.prio,
+            category: formData.category,
+            subtasks: formData.subtasks,
             status: 'open'
         });
-
-        //displaySuccsessfullyMessage();
-        //clearForm();
-
+        
+        
+        
+        if (document.getElementById('addTaskChard')) {
+            document.getElementById('addTaskChard').remove();
+        }
+        if (window.location.pathname === '/addTask.html') {
+            window.location.href = '/board.html';
+        }
+         
     } catch (error) {
         console.error('Error saving task:', error);
     }
-    if (document.getElementById('addTaskChard')){
-        document.getElementById('addTaskChard').remove();
+
+    if (window.location.pathname === '/addTask.html') {
+        displaySuccsessfullyMessage();
     }
-    if(window.location.pathname === '/addTask.html'){
-        window.location.href = '/board.html';
+    if(window.location.pathname === '/board.html'){
+        displaySuccsessfullyBoardMessage();
     }
 }
+
