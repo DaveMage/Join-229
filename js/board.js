@@ -64,6 +64,9 @@ async function moveTo(status) {
 };
 
 
+/**
+ * Updates the HTML representation of the board based on the tasks' statuses.
+ */
 function updateBoardHtml() {
     const statuses = {
         open: { html: '', containerId: 'toDoContainer' },
