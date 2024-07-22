@@ -819,8 +819,8 @@ main {
     border-radius: 30px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 74px;
+    padding: 64px 74px;
+    position: relative;
   }
 
   .headerAddTaskOnBoard {

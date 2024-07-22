@@ -421,6 +421,11 @@
 
   .addTaskBtnContainer {
     height: 80px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 74px;
   }
 
   .addTaskBtnContainer p,

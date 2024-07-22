@@ -472,7 +472,7 @@ function addNewTaskOnBoardHtml() {
                         </div>
                         </div>
                     </label>
-                    <label class="addTaskLabel">
+                    <label class="addTaskLabel addSubtaskLabel">
                         <!-- Subtasks -->
                         Subtasks
                         <div class="addTaskInputIconContainer">
