@@ -27,10 +27,10 @@ function closeAddContact() {                                                    
     }, 300);
 };
 
-function closeAddContactDesktop() { 
+function closeAddContactDesktop() {
     // Remove the background element
-    document.getElementById('background').remove(); 
-};                                          
+    document.getElementById('background').remove();
+};
 
 
 /**
@@ -78,7 +78,7 @@ async function saveContact() {
     try {
         await postData(`/users/${userId}/contacts`, { name: contactName, email: contactEmail, phone: contactPhone, initials: initials, profileColor: randomColor });
         await showSuccessMessage();
-        
+
         contactInit();
     } catch (error) {
         console.error('Error adding contact:', error);
@@ -93,16 +93,16 @@ function isValidName(name) {
 
 // Auslagerung der Erfolgsmeldung
 async function showSuccessMessage() {
-    if (window.innerWidth >= 1100){
+    if (window.innerWidth >= 1100) {
         closeAddContactDesktop();
         document.getElementById('contactMain').innerHTML += successfullyDesktopHtml();
-    setTimeout(() => document.getElementById('conctactSuccessfully').remove(), 800);
+        setTimeout(() => document.getElementById('conctactSuccessfully').remove(), 800);
     } else {
         closeAddContact();
         document.getElementById('contactMain').innerHTML += successfullyHtml();
-    setTimeout(() => document.getElementById('conctactSuccessfully').remove(), 800);
+        setTimeout(() => document.getElementById('conctactSuccessfully').remove(), 800);
     }
-    
+
 }
 
 
@@ -148,12 +148,12 @@ async function deleteContact(contactId) {
     }
     try {
         // Delete the contact data from the server
-        await deleteData('/users/' + userId + '/contacts/' + contactId); 
+        await deleteData('/users/' + userId + '/contacts/' + contactId);
         // Redirect to the contacts page after deleting the contact
-        window.location.href = 'contacts.html'; 
+        window.location.href = 'contacts.html';
     } catch (error) {
         // Log an error message if there is an error deleting the contact
-        console.error('Error deleting contact:', error); 
+        console.error('Error deleting contact:', error);
     }
 };
 
@@ -165,26 +165,31 @@ function goToContacts() {
 // Function to open the option container
 function openOption() {
     // Remove the 'slideOutRight' class from the option container
-    document.getElementById('optionContainer').classList.remove('slideOutRight'); 
+    document.getElementById('optionContainer').classList.remove('slideOutRight');
     // Add the 'slideInRight' class to the option container
-    document.getElementById('optionContainer').classList.add('slideInRight'); 
+    document.getElementById('optionContainer').classList.add('slideInRight');
     // Set the display property of the option container to 'flex'
-    document.getElementById('optionContainer').style.display = 'flex'; 
+    document.getElementById('optionContainer').style.display = 'flex';
 };
 
 // Function to close the option container
 function closeOption() {
     if (document.getElementById('optionContainer')) {
-    document.getElementById('optionContainer').classList.remove('slideInRight'); // Remove the 'slideInRight' class from the option container
-    document.getElementById('optionContainer').classList.add('slideOutRight'); // Add the 'slideOutRight' class to the option container
-    setTimeout(() => {
-        document.getElementById('optionContainer').style.display = 'none'; // Set the display property of the option container to 'none' after a delay of 300 milliseconds
-    }, 300);
+        document.getElementById('optionContainer').classList.remove('slideInRight'); // Remove the 'slideInRight' class from the option container
+        document.getElementById('optionContainer').classList.add('slideOutRight'); // Add the 'slideOutRight' class to the option container
+        setTimeout(() => {
+            document.getElementById('optionContainer').style.display = 'none'; // Set the display property of the option container to 'none' after a delay of 300 milliseconds
+        }, 300);
 
     }
 };
 
 // Function to open the edit contact form for a specific contact
+/**
+ * Opens the edit contact form for the specified contactId.
+ *
+ * @param {string} contactId - The ID of the contact to edit.
+ */
 function openEditContact(contactId) {
     let container;
     closeOption(); // Close the option container
@@ -193,7 +198,7 @@ function openEditContact(contactId) {
     if (window.innerWidth >= 1100) {
         container = document.getElementById('contactMain'); // Get the container element for the contact view
         container.innerHTML += editContactDesktop(contact); // Append the edit contact form to the container
-    } else if(document.getElementById('contactViewContainer' + contactId)) {
+    } else if (document.getElementById('contactViewContainer' + contactId)) {
         container = document.getElementById('contactViewContainer' + contactId); // Get the container element for the contact view
         container.innerHTML += contactEditForm(contact); // Append the edit contact form to the container
     }
@@ -219,40 +224,51 @@ async function getContactById(contactId) {
 
 async function saveEditContact(contactId) {
     let contact = await getContactById(contactId);
-    let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')))?.id || '-O-Mr5g8976g5-yCxVK8';
-    let guestLoggedIn = localStorage.getItem('guestLoggedIn') === 'true';
-    let contactDetails = ['Name', 'Email', 'Phone'].reduce((details, field) => {
-        details[field.toLowerCase()] = document.getElementById(`contact${field}${contactId}`).value;
-        return details;
-    }, {});
-    contactDetails.initials = contactDetails.name.split(' ').map((n) => n[0]).join('');
-    contactDetails.profileColor = contact.profileColor;
+    let name = document.getElementById('contactName' + contactId).value;
+    let email = document.getElementById('contactEmail' + contactId).value;
+    let phone = document.getElementById('contactPhone' + contactId).value;
+    let profileColor = contact.profileColor;
+    let initials = name.split(' ').map(n => n[0]).join('');
+
 
     try {
-        if (guestLoggedIn) {
-            userId = '-O-Mr5g8976g5-yCxVK8';
-        }
-        await putData(`/users/${userId}/contacts/${contactId}`, contactDetails);
+        userId = await getUserId();
 
-        ['Email', 'Phone', 'Name'].forEach(field => {
-            document.getElementById(`contactView${field}`).innerHTML = contactDetails[field.toLowerCase()];
-        });
+        await putData(`/users/${userId}/contacts/${contactId}`,
+            {
+                name: name,
+                email: email,
+                phone: phone,
+                profileColor: profileColor,
+                initials: initials
+            });
 
-        let contactViewProfileIcon = document.getElementById('contactViewProfileIcon');
+
+
+        let contactViewProfileIcon = document.getElementById('profileIconEditDesktop');
         contactViewProfileIcon.style.backgroundColor = contact.profileColor;
-        contactViewProfileIcon.innerHTML = contactDetails.initials;
-        if(window.innerWidth >= 1100) {
+        contactViewProfileIcon.innerHTML = contact.initials;
+        if (window.innerWidth >= 1100) {
             closeAddContactDesktop();
+            updateContactsSite();
         } else {
-            closeEditContact();
+            closeEditContact();            
+            
         }
-        
+
     } catch (error) {
         console.error('Error editing contact:', error);
     }
+
+   
+    
 };
 
 
 
+
+function updateContactsSite(){
+    location.reload();
+}
 
 
