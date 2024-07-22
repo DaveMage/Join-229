@@ -452,6 +452,7 @@ async function saveEditTask(taskId) {
     } catch (error) {
         console.error('Error updating task:', error);
     }
+    updateBoardHtml();
 }
 
 
@@ -541,6 +542,7 @@ async function toggleSubtask(subtaskIndex, taskId) {
     } catch (error) {
         console.error('Error toggling subtask:', error);
     }
+    updateBoardHtml();
 }
 
 function displaySuccsessfullyBoardMessage() {
