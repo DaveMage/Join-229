@@ -99,7 +99,8 @@ function subtaskProgressbarHTML(task) {
             </div>`;
     }
     return subtaskContentHtml;
-}
+};
+
 
 //Task Card Overwiew 
 function overviewTaskCardHTML(task) {                     
@@ -191,7 +192,7 @@ function overviewTaskCardSubtaskHtml(task) {
         subtaskItemsHtml += subtaskItemHtml;
     }
     return subtaskItemsHtml;
-}
+};
 
 
 function taskCardEditHTML(task) {
@@ -515,7 +516,8 @@ function addNewTaskOnBoardHtml() {
         </div>
         <div class="backgroundOverlay" id="backgroundOverlay" onclick="closeAddTaskOnBoard()"></div>
     `;
-}
+};
+
 
 function successfullyTaskDesktopHtml() {
     return /* html */`
@@ -525,4 +527,4 @@ function successfullyTaskDesktopHtml() {
       <img src="./img/Mobile/AddTask/addTaskBoardIcons.png">
       </div>
       </div>`;
-  };
+};

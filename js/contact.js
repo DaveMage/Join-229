@@ -27,6 +27,7 @@ function closeAddContact() {                                                    
     }, 300);
 };
 
+
 function closeAddContactDesktop() {
     // Remove the background element
     document.getElementById('background').remove();
@@ -83,13 +84,15 @@ async function saveContact() {
     } catch (error) {
         console.error('Error adding contact:', error);
     }
-}
+};
+
 
 // Auslagerung der Validierung
 function isValidName(name) {
     const namePattern = /^[A-Za-zÄäÖöÜüß]+(?:\s[A-Za-zÄäÖöÜüß]+)+$/;
     return namePattern.test(name);
-}
+};
+
 
 // Auslagerung der Erfolgsmeldung
 async function showSuccessMessage() {
@@ -102,11 +105,7 @@ async function showSuccessMessage() {
         document.getElementById('contactMain').innerHTML += successfullyHtml();
         setTimeout(() => document.getElementById('conctactSuccessfully').remove(), 800);
     }
-
-}
-
-
-
+};
 
 
 // Function to open the contact view for a specific contact
@@ -133,6 +132,7 @@ async function openContactView(contactId) {
     }
 };
 
+
 // Function to delete a contact
 async function deleteContact(contactId) {
     await getUser(); // Fetch users if not already fetched
@@ -157,10 +157,12 @@ async function deleteContact(contactId) {
     }
 };
 
+
 // Function to navigate to the contacts page
 function goToContacts() {
     window.location.href = 'contacts.html';
 };
+
 
 // Function to open the option container
 function openOption() {
@@ -171,6 +173,7 @@ function openOption() {
     // Set the display property of the option container to 'flex'
     document.getElementById('optionContainer').style.display = 'flex';
 };
+
 
 // Function to close the option container
 function closeOption() {
@@ -183,6 +186,7 @@ function closeOption() {
 
     }
 };
+
 
 // Function to open the edit contact form for a specific contact
 /**
@@ -204,6 +208,7 @@ function openEditContact(contactId) {
     }
 };
 
+
 // Function to close the edit contact form
 function closeEditContact() {
     document.getElementById('editContactContainer').classList.remove('slideInBottom'); // Remove the 'slideInBottom' class from the edit contact container
@@ -212,6 +217,7 @@ function closeEditContact() {
         document.getElementById('contactEditFormBackground').remove(); // Remove the contact edit form background element after a delay of 300 milliseconds
     }, 300);
 };
+
 
 // Function to retrieve a contact by its ID
 async function getContactById(contactId) {
@@ -230,10 +236,8 @@ async function saveEditContact(contactId) {
     let profileColor = contact.profileColor;
     let initials = name.split(' ').map(n => n[0]).join('');
 
-
     try {
         userId = await getUserId();
-
         await putData(`/users/${userId}/contacts/${contactId}`,
             {
                 name: name,
@@ -242,9 +246,6 @@ async function saveEditContact(contactId) {
                 profileColor: profileColor,
                 initials: initials
             });
-
-
-
         let contactViewProfileIcon = document.getElementById('profileIconEditDesktop');
         contactViewProfileIcon.style.backgroundColor = contact.profileColor;
         contactViewProfileIcon.innerHTML = contact.initials;
@@ -255,20 +256,14 @@ async function saveEditContact(contactId) {
             closeEditContact();            
             
         }
-
     } catch (error) {
         console.error('Error editing contact:', error);
-    }
-
-   
-    
+    }   
 };
-
-
 
 
 function updateContactsSite(){
     location.reload();
-}
+};
 
 

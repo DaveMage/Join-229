@@ -97,6 +97,7 @@ function successfullyHtml() {
     </div>`;
 };
 
+
 function successfullyDesktopHtml() {
   return /* html */`
     <div class="backgroundSuccessfullyMessage">
@@ -143,6 +144,7 @@ function contactEditForm(contact) {
 </div>`;
 };
 
+
 function contactViewDesktop(contact) {
   return /* html */`  
           <div class="cvdIconName">
@@ -179,7 +181,8 @@ function contactViewDesktop(contact) {
             </div>
           </div>
         `;
-}
+};
+
 
 function editContactDesktop(contact) {
   return /* html */`
@@ -219,7 +222,8 @@ function editContactDesktop(contact) {
     </div>
   </div>
 </div>`;
-}
+};
+
 
 function addContactDesktop() {
   return /* html */`
@@ -259,4 +263,4 @@ function addContactDesktop() {
           </div>
         </div>
       </div>`;
-}
+};

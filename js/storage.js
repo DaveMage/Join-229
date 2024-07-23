@@ -13,6 +13,7 @@ async function loadData(path = '') {
     console.log(responseToJson);
 };
 
+
 async function getData(path = '') {
     let response = await fetch(BASE_URL + path + '.json');
     let responseToJson = await response.json();
@@ -33,7 +34,7 @@ async function putData(path = '', data = {}) {
         console.error('Error putting data:', error);
         throw error;
     }
-}
+};
 
 
 async function deleteData(path = '') {
@@ -126,8 +127,7 @@ async function setSubtaskTrue(taskId, subtaskId){
     let subtask = task.subtasks.find(subtask => subtask.id === subtaskId);
     subtask.done = true;
     await putData('/users/' + userId + '/tasks/' + taskId + '/subtasks/' + subtaskId, subtask);
-}
-
+};
 
 
 // Funktion zum Abrufen von Formulardaten
@@ -141,7 +141,8 @@ function getFormData() {
         assigned: selectedAssigned,
         subtasks: subtasks.map(subtask => ({ name: subtask, completed: false })) // Ensure subtasks are stored as objects
     };
-}
+};
+
 
 // Funktion zum Abrufen der Benutzer-ID
 async function getUserId() {
@@ -156,7 +157,8 @@ async function getUserId() {
         let user = users.find(user => user.email === decodedEmail);
         return user ? user.id : null;
     }
-}
+};
+
 
 // Funktion zum Überprüfen der Formulardaten
 function validateFormData(formData) {
@@ -167,7 +169,8 @@ function validateFormData(formData) {
         return false;
     }
     return true;
-}
+};
+
 
 // Funktion zum Speichern der Aufgabe
 async function saveTask() {
@@ -176,14 +179,12 @@ async function saveTask() {
     if (!validateFormData(formData)) {
         return;
     }
-
     try {
         let userId = await getUserId();
 
         if (!userId) {
             throw new Error('User ID not found');
         }
-
         await postData(`/users/${userId}/tasks`, {
             title: formData.title,
             description: formData.description,
@@ -194,9 +195,7 @@ async function saveTask() {
             subtasks: formData.subtasks,
             status: 'open'
         });
-        
-        
-        
+                
         if (document.getElementById('addTaskChard')) {
             document.getElementById('addTaskChard').remove();
         }
@@ -215,5 +214,5 @@ async function saveTask() {
         displaySuccsessfullyBoardMessage();
     }
     updateBoardHtml();
-}
+};
 

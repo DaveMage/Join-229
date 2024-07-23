@@ -128,7 +128,7 @@ function logout() {
 };
 
 
-function addClassActive() {
+function addClassActive() {     //kann die weg?-------------------------------------------------------------------------------------------
 };
 
 

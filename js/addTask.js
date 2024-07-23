@@ -41,10 +41,6 @@ function dateTreshhold() {
 };
 
 
-
-
-
-
 function getSelectedPriority() {                                         // Funktion, um die ausgewählte Priorität zu ermitteln
     const priorities = document.getElementsByName('priority');           // Holt alle Radio-Buttons mit dem Namen 'priority'
     let selectedPriority = null;                                         // Variable zur Speicherung des ausgewählten Radio-Buttons
@@ -183,6 +179,7 @@ function titlequery() {
         document.getElementById('errorSpanTitle').style.display = 'none';
     }
 };
+
 
 function datequery() {
     let date = document.getElementById("addTaskDueDate");

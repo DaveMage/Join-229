@@ -397,7 +397,7 @@ function addEditSubtask(taskId) {
     if (typeof onBlurSubtaskInput === 'function') {
         onBlurSubtaskInput();
     }
-}
+};
 
 
 function displaySubtasksHTML(task) {
@@ -425,6 +425,7 @@ function emptySubtaskInput(taskId) {
     onBlurSubtaskInput();
 };
 
+
 function getEditFormData(taskId, currentTask) {
     // Bestehende Unteraufgaben beibehalten
     let existingSubtasks = currentTask.subtasks.map(subtask => ({ name: subtask.name, completed: subtask.completed }));
@@ -445,7 +446,7 @@ function getEditFormData(taskId, currentTask) {
         assigned: updateSelectedAssignedAndInputField(taskId),
         status: currentTask.status,
     };
-}
+};
 
 
 async function saveEditTask(taskId) {
@@ -480,7 +481,7 @@ async function saveEditTask(taskId) {
         console.error('Error updating task:', error);
     }
     updateBoardHtml();
-}
+};
 
 
 function getSelectedPriority(taskId) {  // Funktion, um die ausgewählte Priorität basierend auf der Aufgaben-ID zu ermitteln
@@ -523,7 +524,7 @@ function goToAddTask() {
 function addNewTaskOnBoard() {
     let main = document.getElementById('mainBoard');
     main.innerHTML += addNewTaskOnBoardHtml();
-}
+};
 
 
 function closeAddTaskOnBoard() {
@@ -535,7 +536,7 @@ function closeAddTaskOnBoard() {
         addTaskChard.remove();
         overlay.remove();
     });
-}
+};
 
 
 async function toggleSubtask(subtaskIndex, taskId) {
@@ -572,7 +573,8 @@ async function toggleSubtask(subtaskIndex, taskId) {
         console.error('Error toggling subtask:', error);
     }
     updateBoardHtml();
-}
+};
+
 
 function displaySuccsessfullyBoardMessage() {
     let mainContainer = document.getElementById('mainBoard');
