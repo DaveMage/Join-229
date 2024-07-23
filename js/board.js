@@ -135,11 +135,11 @@ function displayOverviewTaskCard(taskId) {
 
 
 function closeTaskCardOverview() {
-    let float = document.getElementById('taskCardOverviewBodyId');
-    let addTaskChard = document.getElementById('taskCardOverviewBackground');
-    float.classList.add('closing');
-    float.addEventListener('animationend', () => {
-        addTaskChard.remove();
+    let floatId = document.getElementById('taskCardOverviewBodyId');
+    let removeBackground = document.getElementById('taskCardOverviewBackground');
+    floatId.classList.add('closing');
+    floatId.addEventListener('animationend', () => {
+        removeBackground.remove();
     });
 };
 
