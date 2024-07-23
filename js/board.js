@@ -517,11 +517,6 @@ function closeAddTaskOnBoardX() {
 }
 
 
-function closeAddTaskOnBoard() {
-    document.getElementById('addTaskChard').remove();
-}
-
-
 async function toggleSubtask(subtaskIndex, taskId) {
     try {
         await getUser();
