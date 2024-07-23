@@ -137,11 +137,20 @@ function displayOverviewTaskCard(taskId) {
 function closeTaskCardOverview() {
     let floatId = document.getElementById('taskCardOverviewBodyId');
     let removeBackground = document.getElementById('taskCardOverviewBackground');
+    let overlay = document.getElementById('backgroundOverlay');
+
     floatId.classList.add('closing');
     floatId.addEventListener('animationend', () => {
         removeBackground.remove();
+        overlay.remove();
     });
 };
+
+
+function closeTaskCardOverviewWithoutAnimation() {
+    document.getElementById('taskCardOverviewBackground').remove();
+    document.getElementById('backgroundOverlay').remove();
+}
 
 
 async function deleteTask(taskId) {
@@ -230,7 +239,7 @@ function openEditTask(taskId) {
         document.getElementById('mainBoard').innerHTML += taskCardEditHTML(task);
         fillSelectedAssigned(taskId);
         dateTreshholdEdit(taskId);
-        closeTaskCardOverview();
+        closeTaskCardOverviewWithoutAnimation();
     } else {
         console.error('Task not found with ID:', taskId);
     }
@@ -238,7 +247,17 @@ function openEditTask(taskId) {
 
 
 function closeEditTask() {
-    document.getElementById('taskCardEditBackground').remove();
+    //document.getElementById('taskCardEditBackground').remove();
+
+    let floatId = document.getElementById('taskCardEditBackgroundFloat');
+    let removeBackground = document.getElementById('taskCardEditBackground');
+    let overlay = document.getElementById('backgroundOverlayEdit');
+
+    floatId.classList.add('closing');
+    floatId.addEventListener('animationend', () => {
+        removeBackground.remove();
+        overlay.remove();
+    });
 };
 
 
@@ -507,12 +526,14 @@ function addNewTaskOnBoard() {
 }
 
 
-function closeAddTaskOnBoardX() {
+function closeAddTaskOnBoard() {
     let float = document.getElementById('forAnimationFloating');
     let addTaskChard = document.getElementById('addTaskChard');
+    let overlay = document.getElementById('backgroundOverlay');
     float.classList.add('closing');
     float.addEventListener('animationend', () => {
         addTaskChard.remove();
+        overlay.remove();
     });
 }
 
