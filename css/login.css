@@ -2,6 +2,17 @@ body {
   background-color: #F6F7F8;
 }
 
+.errorMessage {
+  color: #ff8190;
+  font-size: 12px;
+  display: none;
+  margin: -20px 0;
+}
+
+.errorInput {
+  border: 1px solid #ff8190 !important;
+}
+
 .loginAnimation {
   display: none;
 }

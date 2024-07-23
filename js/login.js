@@ -35,23 +35,49 @@ async function login() {
     let password = document.getElementById('loginPassword').value;
     let rememberMe = document.getElementById('checkboxRemember').checked;
 
-    try {
-        let users = await getUser();
-        let user = users.find(user => user.email === email && user.password === password);
-        if (user) {
-            if (rememberMe) {
-                localStorage.setItem('emailToken', btoa(email));
-                localStorage.setItem('passwordToken', btoa(password));
+    if (email == '' && password == '') {
+        showError('loginLabelEmail', 'emailErrorSpan', 'Please enter your email address!')
+        showError('loginLabelPassword', 'passwordErrorSpan', 'Please enter your password!')
+    } else if (password == '') {
+        showError('loginLabelPassword', 'passwordErrorSpan', 'Please enter your password!')
+    } else if (email == '') {
+        showError('loginLabelEmail', 'emailErrorSpan', 'Please enter your email address!')
+    } else {
+        try {
+            let users = await getUser();
+            let user = users.find(user => user.email === email && user.password === password);
+            if (user) {
+                if (rememberMe) {
+                    localStorage.setItem('emailToken', btoa(email));
+                    localStorage.setItem('passwordToken', btoa(password));
+                } else {
+                    localStorage.removeItem('emailToken');
+                    localStorage.removeItem('passwordToken');
+                }
+                window.location.href = "/greeting.html";
             } else {
-                localStorage.removeItem('emailToken');
-                localStorage.removeItem('passwordToken');
+                showError('', 'passwordAndMailErrorSpan', 'Please enter your correct email address and password!')
+                console.log('User not found');
             }
-            window.location.href = "/greeting.html";
-        } else {
-            console.log('User not found');
+        } catch (error) {
+            console.error('Error during login:', error);
         }
-    } catch (error) {
-        console.error('Error during login:', error);
+    }
+};
+
+
+function showError(labelId, errorSpanId, message) {
+    if (labelId == '') {
+        document.getElementById('loginLabelEmail').classList.add("errorInput");
+        document.getElementById('loginLabelPassword').classList.add("errorInput");
+        let errorSpan = document.getElementById(errorSpanId);
+        errorSpan.style.display = "block";
+        errorSpan.textContent = message;
+    } else {
+        document.getElementById(labelId).classList.add("errorInput");
+        let errorSpan = document.getElementById(errorSpanId);
+        errorSpan.style.display = "block";
+        errorSpan.textContent = message;
     }
 };
 

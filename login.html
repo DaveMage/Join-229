@@ -50,6 +50,7 @@
           />
           <img src="./img/Mobile/LogIn/mailIconLogIn.png" alt="Email Icon" />
         </label>
+        <span id="emailErrorSpan" class="errorMessage"></span>
         <label for="loginPassword" class="loginLabel" id="loginLabelPassword">
           <input
             type="password"
@@ -60,10 +61,12 @@
           />
           <img src="./img/Mobile/LogIn/lockIconLogIn.png" alt="Lock Icon" />
         </label>
+        <span id="passwordErrorSpan" class="errorMessage"></span>
         <label for="checkboxRemember" class="checkboxLabel">
           <input type="checkbox" id="checkboxRemember" class="customCheckbox" checked/>
           Remember me
         </label>
+        <span id="passwordAndMailErrorSpan" class="errorMessage"></span>
         <div class="loginBtnContainer">
           <button class="primaryBtn" onclick="login()">Log in</button>
           <button class="secondaryBtn" onclick="guestLogin()">
