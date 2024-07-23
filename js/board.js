@@ -508,7 +508,6 @@ function addNewTaskOnBoard() {
 
 
 function closeAddTaskOnBoardX() {
-
     let float = document.getElementById('forAnimationFloating');
     let addTaskChard = document.getElementById('addTaskChard');
     float.classList.add('closing');
