@@ -105,7 +105,7 @@ function subtaskProgressbarHTML(task) {
 function overviewTaskCardHTML(task) {                     
     return /* html */`
     <div class="background" id="taskCardOverviewBackground">
-    <div class="taskCardOverviewBody">
+    <div class="taskCardOverviewBody" id="taskCardOverviewBodyId">
       <div class="taskCardOverviewMain">
         <div class="taskCardOverviewCategoryCloseContainer">
           ${taskCardCategoryHTML(task)}
@@ -387,7 +387,7 @@ function displayAssignedProfileIcons(task) {
 function addNewTaskOnBoardHtml() {
     return /*html*/ `
         <div class="floatingAddTask" id="addTaskChard">
-            <div class="addTaskBoardDesktop">
+            <div class="addTaskBoardDesktop" id="forAnimationFloating">
                 <div class="headerAddTaskOnBoard">
                     <h1 class="addTaskHeadline">Add Task</h1>
                     <img src="./img/Desktop/board/closeAddTask.png" class="closeButtonAddTask" onclick="closeAddTaskOnBoardX()">

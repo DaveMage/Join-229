@@ -262,7 +262,11 @@ main {
   background-color: white;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
   position: relative;
-  animation: slideIn 0.17s both;
+  animation: slideIn 400ms both;
+}
+
+.closing {
+  animation: slideOut 500ms forwards !important;
 }
 
 .taskCardOverviewCategoryCloseContainer {
@@ -810,6 +814,10 @@ main {
     justify-content: center;
   }
 
+  #forAnimationFloating {
+    animation: slideIn 400ms forwards;
+  }
+
   .addTaskBoardDesktop {
     width: 100%;
     max-width: 1116px;
@@ -928,14 +936,23 @@ main {
   }
 }
 
-/* Animation */
+/* Animationen */
 
 @keyframes slideIn {
   from {
-    transform: translateX(100%);
+    transform: translateX(100vw);
   }
   
   to {
     transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100vw);
   }
 }

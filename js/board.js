@@ -135,7 +135,12 @@ function displayOverviewTaskCard(taskId) {
 
 
 function closeTaskCardOverview() {
-    document.getElementById('taskCardOverviewBackground').remove();
+    let float = document.getElementById('taskCardOverviewBodyId');
+    let addTaskChard = document.getElementById('taskCardOverviewBackground');
+    float.classList.add('closing');
+    float.addEventListener('animationend', () => {
+        addTaskChard.remove();
+    });
 };
 
 
@@ -503,7 +508,13 @@ function addNewTaskOnBoard() {
 
 
 function closeAddTaskOnBoardX() {
-    document.getElementById('addTaskChard').remove();
+
+    let float = document.getElementById('forAnimationFloating');
+    let addTaskChard = document.getElementById('addTaskChard');
+    float.classList.add('closing');
+    float.addEventListener('animationend', () => {
+        addTaskChard.remove();
+    });
 }
 
 
