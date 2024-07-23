@@ -80,7 +80,6 @@ function successfullyMessageHTML() {
 
 
 async function signUp() {
-    // validateInputs()
     let initials = getInitials();
     let name = document.getElementById('signUpName').value;
     let email = document.getElementById('signUpEmail').value;
@@ -168,11 +167,4 @@ async function createUser(user) {
     }
 };
 
-// function validateInputs() {
-//     let validate = document.forms["validateSignUp"]["validateName"]
-//     if (validate == "") {
-//         alert("da fehlt was")
-//         return false;
-//     }
-// }
 

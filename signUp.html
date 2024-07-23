@@ -65,8 +65,10 @@
           id="signUpLabelPassword"
         >
           <input
+            required title="Mindestens 3 Zeichen eingeben"
             type="password"
             id="signUpPassword"
+            pattern=".{3,}"
             placeholder="Password"
             onfocus="focusInput('signUpLabelPassword')"
             onblur="resetFocus('signUpLabelPassword')"
@@ -84,8 +86,10 @@
           id="signUpLabelConfirmPassword"
         >
           <input
+            required title="Mindestens 3 Zeichen eingeben"
             type="password"
             id="signUpConfirmPassword"
+            pattern=".{3,}"
             placeholder="Confrim Password"
             onfocus="focusInput('signUpLabelConfirmPassword')"
             onblur="resetFocus('signUpLabelConfirmPassword')"
