@@ -364,6 +364,7 @@ function addTaskClearTask() {
     let addTaskChard = document.getElementById('addTaskChard');
     if (addTaskChard) {
         addTaskChard.remove();
+        document.getElementById('backgroundOverlay').remove();
         addNewTaskOnBoard();
     } else{
         location.reload();
