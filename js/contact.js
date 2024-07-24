@@ -10,7 +10,7 @@ async function contactInit() {
 };
 
 
-function openAddContact() {                                                             
+function openAddContact() {
     if (window.innerWidth >= 1100) {
         document.getElementById('contactMain').innerHTML += addContactDesktop(); 
     } else {
@@ -35,9 +35,15 @@ function closeAddContact() {
  * Closes the add contact desktop view.
  */
 function closeAddContactDesktop() {
-    // Remove the background element
-    document.getElementById('background').remove();
-};
+    let floatId = document.getElementById('background');
+    let overlay = document.getElementById('backgroundOverlay');
+
+    floatId.classList.add('closing');
+    floatId.addEventListener('animationend', () => {
+        floatId.remove();
+        overlay.remove();
+    });
+}
 
 
 /**
@@ -95,6 +101,11 @@ async function saveContact() {
     } catch (error) {
         console.error('Error adding contact:', error);
     }
+
+    if (window.innerWidth >= 1100) {
+        closeAddContactDesktop();
+    }
+    
 };
 
 

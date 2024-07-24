@@ -19,11 +19,22 @@
   left: 0;
   right: 0;
   bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.backgroundMobile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.25);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  z-index: 10;
 }
 
 .addContactContainer {
@@ -66,6 +77,7 @@
   border-radius: 10px;
   width: 202px;
   margin-top: 17px;
+  transition: ease-in-out 100ms;
 }
 
 .addContactContainerBottom {
@@ -414,6 +426,7 @@ span {
   height: 51px;
   padding: 18px 10px;
   font-size: 20px;
+  transition: ease-in-out 100ms;
 }
 
 .saveContactBtn {
@@ -422,6 +435,7 @@ span {
   gap: 4px;
   font-weight: 700;
   font-size: 21px;
+  transition: ease-in-out 100ms;
 }
 
 #contactBtnContainer {
@@ -569,6 +583,8 @@ span {
   height: 594px;
   display: flex;
   align-items: center;
+  z-index: 902;
+  animation: slideIn 400ms both;
 }
 .contactEditDesktopLeft{
   padding: 66px 48px;
@@ -645,6 +661,17 @@ span {
   font-size: 27px;
 }
 
+.backgroundOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 901;
+}
+
+
 @keyframes slideInRightDesktop {
   0% {
     transform: translateX(100%);
@@ -675,12 +702,17 @@ span {
   .addContactDesktopBtn {
     padding: 12px 0;
     border-radius: 10px;
-    border: 1px solid #2a3647;
     width: 352px;
     gap: 16px;
     font-weight: 700;
     font-size: 21px;
     display: flex !important;
+    transition: ease-in-out 100ms;
+  }
+
+  .addContactDesktopBtn:hover, .createContactBtn:hover, .saveContactBtn:hover {
+    background-color: #29abe2;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   }
 
   #contactBtnContainer {
@@ -697,5 +729,30 @@ span {
 
   #contactbtnWrap {
     width: 500px;
+  }
+}
+
+.closing {
+  animation: slideOut 500ms forwards !important;
+}
+
+/* Animationen */
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100vw);
+  }
+  
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100vw);
   }
 }

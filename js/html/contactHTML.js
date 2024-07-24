@@ -1,35 +1,36 @@
 function addContactHtml() {
   return /* html */`
-    <div class="background" id="contactAddFormBackground">
-            <div class="addContactContainer slideInBottom" id="addContactContainer">
-                <div class="addContainerTopContainer">
-                    <img class="closeBtn" src="/img/Mobile/Contacts/closeWhite.png" onclick="closeAddContact()">
-                    <h1 class="contactHeadline">Add Contact</h1>
-                    <span class="contactText">Tasks are bette with a team</span>
-                    <span class="headlineUnderline"></span>
-                </div>            
-                <div class="addContactContainerBottom">
-                    <form onsubmit="return false;">
-                        <div class="contactProfileIcon">
-                            <img src="/img/Mobile/Contacts/personProfileIcon.png">
-                        </div>
-                        <label for="contactName" class="contactLabel">
-                            <input type="text" id="contactName" placeholder="Name" required>
-                            <img src="/img/Mobile/Contacts/personIconContacts.png">
-                        </label>
-                        <label for="contactEmail" class="contactLabel">
-                            <input type="email" id="contactEmail" placeholder="Email">
-                            <img src="/img/Mobile/Contacts/mailIconContacts.png">
-                        </label>
-                        <label for="contactPhone" class="contactLabel">
-                            <input type="tel" id="contactPhone" placeholder="Phone">
-                            <img src="/img/Mobile/Contacts/callIconContacts.png" >
-                        </label>
-                        <button type="submit" class="primaryBtn createContactBtn" onclick="saveContact()" >Create contact <img src="/img/Mobile/Contacts/checkWhite.png"></button>
-                    </form>
-                </div>
+    <div class="background backgroundMobile" id="contactAddFormBackground">
+        <div class="addContactContainer slideInBottom" id="addContactContainer">
+            <div class="addContainerTopContainer">
+                <img class="closeBtn" src="/img/Mobile/Contacts/closeWhite.png" onclick="closeAddContact()">
+                <h1 class="contactHeadline">Add Contact</h1>
+                <span class="contactText">Tasks are bette with a team</span>
+                <span class="headlineUnderline"></span>
+            </div>            
+            <div class="addContactContainerBottom">
+                <form onsubmit="return false;">
+                    <div class="contactProfileIcon">
+                        <img src="/img/Mobile/Contacts/personProfileIcon.png">
+                    </div>
+                    <label for="contactName" class="contactLabel">
+                        <input type="text" id="contactName" placeholder="Name" required>
+                        <img src="/img/Mobile/Contacts/personIconContacts.png">
+                    </label>
+                    <label for="contactEmail" class="contactLabel">
+                        <input type="email" id="contactEmail" placeholder="Email">
+                        <img src="/img/Mobile/Contacts/mailIconContacts.png">
+                    </label>
+                    <label for="contactPhone" class="contactLabel">
+                        <input type="tel" id="contactPhone" placeholder="Phone">
+                        <img src="/img/Mobile/Contacts/callIconContacts.png" >
+                    </label>
+                    <button type="submit" class="primaryBtn createContactBtn" onclick="saveContact()" >Create contact <img src="/img/Mobile/Contacts/checkWhite.png"></button>
+                </form>
             </div>
-        </div>`;
+        </div>
+    </div>
+  `;
 };
 
 
@@ -146,7 +147,7 @@ function contactEditForm(contact) {
 
 
 function contactViewDesktop(contact) {
-  return /* html */`  
+  return /* html */ `  
           <div class="cvdIconName">
             <div id="profileIconDesktop" style="background-color: ${contact.profileColor};">${contact.initials}</div>
             <div class="cvdNameBtnContainer">
@@ -186,81 +187,85 @@ function contactViewDesktop(contact) {
 
 function editContactDesktop(contact) {
   return /* html */`
-  <div class="background" id="background">
-  <div class="contactEditDesktopBody">
-    <div class="contactEditDesktopLeft">
-      <img class="logo55px" src="./img/Desktop/contact/logo55px.png" />
-      <div class="contactEditDesktopText">
-        <h1>Edit contact</h1>              
-        <span class="horizontal"></span>
+    <div class="background" id="background">
+      <div class="contactEditDesktopBody">
+        <div class="contactEditDesktopLeft">
+          <img class="logo55px" src="./img/Desktop/contact/logo55px.png" />
+          <div class="contactEditDesktopText">
+            <h1>Edit contact</h1>              
+            <span class="horizontal"></span>
+          </div>
+        </div>
+        <div class="contactEditDesktopRight">
+          <img onclick="closeAddContactDesktop()" class="closeBtn" src="img/Mobile/Board/closeTask.png">
+          <div class="contactEditDesktopIconForm">
+            <div class="profileIconDesktop" id="profileIconEditDesktop" style="background-color: ${contact.profileColor};">${contact.initials}</div>
+            <form class="contactEditDesktopForm" onsubmit="return false;">          
+            
+          <label for="contactName${contact.id}" class="contactLabel">
+              <input type="text" id="contactName${contact.id}" placeholder="Name" required value="${contact.name}">
+              <img src="/img/Mobile/Contacts/personIconContacts.png">
+          </label>
+          <label for="contactEmail${contact.id}" class="contactLabel">
+              <input type="email" id="contactEmail${contact.id}" placeholder="Email" value="${contact.email}">
+              <img src="/img/Mobile/Contacts/mailIconContacts.png">
+          </label>
+          <label for="contactPhone${contact.id}" class="contactLabel">
+              <input type="tel" id="contactPhone${contact.id}" placeholder="Phone" value="${contact.phone}">
+              <img src="/img/Mobile/Contacts/callIconContacts.png" >
+          </label>
+          <div class="contactEditFormBtnContainer">
+            <button class="secondaryBtn" onclick="deleteContact('${contact.id}')">Delete</button>
+            <button onclick="saveEditContact('${contact.id}')" class="primaryBtn saveContactBtn">Save<img src="/img/Mobile/Contacts/checkWhite.png"></button>
+          </div>       
+            </form>
+          </div>      
+        </div>
       </div>
     </div>
-    <div class="contactEditDesktopRight">
-      <img onclick="closeAddContactDesktop()" class="closeBtn" src="img/Mobile/Board/closeTask.png">
-      <div class="contactEditDesktopIconForm">
-        <div class="profileIconDesktop" id="profileIconEditDesktop" style="background-color: ${contact.profileColor};">${contact.initials}</div>
-        <form class="contactEditDesktopForm" onsubmit="return false;">          
-        
-      <label for="contactName${contact.id}" class="contactLabel">
-          <input type="text" id="contactName${contact.id}" placeholder="Name" required value="${contact.name}">
-          <img src="/img/Mobile/Contacts/personIconContacts.png">
-      </label>
-      <label for="contactEmail${contact.id}" class="contactLabel">
-          <input type="email" id="contactEmail${contact.id}" placeholder="Email" value="${contact.email}">
-          <img src="/img/Mobile/Contacts/mailIconContacts.png">
-      </label>
-      <label for="contactPhone${contact.id}" class="contactLabel">
-          <input type="tel" id="contactPhone${contact.id}" placeholder="Phone" value="${contact.phone}">
-          <img src="/img/Mobile/Contacts/callIconContacts.png" >
-      </label>
-      <div class="contactEditFormBtnContainer">
-        <button class="secondaryBtn" onclick="deleteContact('${contact.id}')">Delete</button>
-        <button onclick="saveEditContact('${contact.id}')" class="primaryBtn saveContactBtn">Save<img src="/img/Mobile/Contacts/checkWhite.png"></button>
-      </div>       
-        </form>
-      </div>      
-    </div>
-  </div>
-</div>`;
+    <div class="backgroundOverlay" id="backgroundOverlay" onclick="closeAddContactDesktop()"></div>
+  `;
 };
 
 
 function addContactDesktop() {
   return /* html */`
-  <div class="background" id="background">
-        <div class="contactEditDesktopBody">
-          <div class="contactEditDesktopLeft">
-            <img  class="logo55px" src="./img/Desktop/contact/logo55px.png" />
-            <div class="contactEditDesktopText">
-              <h1>Add Contact</h1>
-              <p>Tasks are better withe a team!</p>
-              <span class="horizontal"></span>
-            </div>
-          </div>
-          <div class="contactEditDesktopRight">
-            <img onclick="closeAddContactDesktop()" class="closeBtn" src="img/Mobile/Board/closeTask.png">
-            <div class="contactEditDesktopIconForm">
-              <img class="userIcon120px" src="/img/Desktop/contact/userLogo120px.png">
-              <form class="contactEditDesktopForm" onsubmit="return false;">               
-                  <label for="contactName" class="contactLabel">
-                      <input type="text" id="contactName" placeholder="Name" required>
-                      <img src="/img/Mobile/Contacts/personIconContacts.png">
-                  </label>
-                  <label for="contactEmail" class="contactLabel">
-                      <input type="email" id="contactEmail" placeholder="Email">
-                      <img src="/img/Mobile/Contacts/mailIconContacts.png">
-                  </label>
-                  <label for="contactPhone" class="contactLabel">
-                      <input type="tel" id="contactPhone" placeholder="Phone">
-                      <img src="/img/Mobile/Contacts/callIconContacts.png" >
-                  </label>
-                  <div class="contactEditDesktopFormBtns">
-                    <button class="secondaryBtn" onclick="closeAddContactDesktop()">Cancel <img src="/img/Mobile/AddTask/closeIcon.png"></button>
-                    <button onclick="saveContact()" type="submit" class="primaryBtn createContactBtn">Create contact <img src="/img/Mobile/Contacts/checkWhite.png" ></button>
-                  </div>              
-              </form>
-            </div>            
+    <div class="background" id="background">
+      <div class="contactEditDesktopBody" id="floatBackground">
+        <div class="contactEditDesktopLeft">
+          <img  class="logo55px" src="./img/Desktop/contact/logo55px.png" />
+          <div class="contactEditDesktopText">
+            <h1>Add Contact</h1>
+            <p>Tasks are better withe a team!</p>
+            <span class="horizontal"></span>
           </div>
         </div>
-      </div>`;
+        <div class="contactEditDesktopRight">
+          <img onclick="closeAddContactDesktop()" class="closeBtn" src="img/Mobile/Board/closeTask.png">
+          <div class="contactEditDesktopIconForm">
+            <img class="userIcon120px" src="/img/Desktop/contact/userLogo120px.png">
+            <form class="contactEditDesktopForm" onsubmit="return false;">               
+                <label for="contactName" class="contactLabel">
+                    <input type="text" id="contactName" placeholder="Name" required>
+                    <img src="/img/Mobile/Contacts/personIconContacts.png">
+                </label>
+                <label for="contactEmail" class="contactLabel">
+                    <input type="email" id="contactEmail" placeholder="Email">
+                    <img src="/img/Mobile/Contacts/mailIconContacts.png">
+                </label>
+                <label for="contactPhone" class="contactLabel">
+                    <input type="tel" id="contactPhone" placeholder="Phone">
+                    <img src="/img/Mobile/Contacts/callIconContacts.png" >
+                </label>
+                <div class="contactEditDesktopFormBtns">
+                  <button class="secondaryBtn" onclick="closeAddContactDesktop()">Cancel <img src="/img/Mobile/AddTask/closeIcon.png"></button>
+                  <button onclick="saveContact()" type="submit" class="primaryBtn createContactBtn">Create contact <img src="/img/Mobile/Contacts/checkWhite.png" ></button>
+                </div>              
+            </form>
+          </div>            
+        </div>
+      </div>
+    </div>
+    <div class="backgroundOverlay" id="backgroundOverlay" onclick="closeAddContactDesktop()"></div>
+  `;
 };
