@@ -524,6 +524,7 @@ function goToAddTask() {
 function addNewTaskOnBoard() {
     let main = document.getElementById('mainBoard');
     main.innerHTML += addNewTaskOnBoardHtml();
+    dateTreshhold();
 };
 
 
