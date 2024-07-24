@@ -10,7 +10,7 @@ let subtasks = [];
 async function loadData(path = '') {
     let response = await fetch(BASE_URL + path + '.json');
     let responseToJson = await response.json();
-    console.log(responseToJson);
+    // console.log(responseToJson);
 };
 
 
@@ -165,7 +165,7 @@ function validateFormData(formData) {
     if (formData.title === '' || formData.date === '') {
         titlequery();
         datequery();
-        console.log("error");
+        // console.log("error");
         return false;
     }
     return true;
