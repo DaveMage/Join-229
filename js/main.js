@@ -128,10 +128,6 @@ function logout() {
 };
 
 
-function addClassActive() {     //kann die weg?-------------------------------------------------------------------------------------------
-};
-
-
 function menuActive() {
     pagesArray();
     const currentPage = pages.find(page => window.location.pathname === page.path);
