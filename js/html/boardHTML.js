@@ -113,27 +113,27 @@ function overviewTaskCardHTML(task) {
                 <img src="./img/Mobile/Board/closeTask.png" onclick="closeTaskCardOverview()">
                 </div>  
                 <h2 id="editCardTitle" class="taskCardOverviewTitle">${task.title}</h2>
-                <p id="editCardDescription" class="taskCardOverviewDescription">${task.description}</p>
+                <p id="editCardDescription" class="taskCardOverviewDescription fsize20">${task.description}</p>
                 <div class="taskCardOverviewLabelContainer">
-                <p class="taskCardOverviewLabel">Due date:</p>
-                <p id="editCardDate" class="taskCardOverview">${task.date}</p>
+                <p class="taskCardOverviewLabel fsize20">Due date:</p>
+                <p id="editCardDate" class="taskCardOverview fsize20">${task.date}</p>
                 </div>
 
                 <div class="taskCardOverviewLabelContainer">
-                    <p class="taskCardOverviewLabel">Priority:</p>
-                    <p class="taskCardOverview priorityLabel">${task.priority.value}</p>
-                    <img src="${task.priority.imgSrc}">
+                    <p class="taskCardOverviewLabel fsize20">Priority:</p>
+                    <p class="taskCardOverview priorityLabel fsize20">${task.priority.value}</p>
+                    <img class="imgWidth24" src="${task.priority.imgSrc}">
                 </div>
 
             <div class="taskCardOverviewAssignedContainer">
-            <p class="taskCardOverviewLabel">Assigned To:</p>
+            <p class="taskCardOverviewLabel fsize20">Assigned To:</p>
             <div class="taskCardOverviewAssigneds">
                 ${overviewTaskCardAssignedHtml(task)}     
             </div>
             </div>
 
             <div class="taskCardOverviewSubtaskContainer">
-            <div class="taskCardOverviewLabel">Subtasks</div>
+            <div class="taskCardOverviewLabel fsize20">Subtasks</div>
             <div class="taskCardOverviewSubtasks">
                 ${overviewTaskCardSubtaskHtml(task)}     
             </div>
@@ -167,8 +167,8 @@ function overviewTaskCardAssignedHtml(task) {
         if (task.assigned[i]) {
             assignedProfilesHtml += /*html*/ `          
                 <div class="taskCardOverviewContact">
-                <div class="taskCardOverviewProfileIcon" style="background-color:${task.assigned[i].profileColor};">${task.assigned[i].initials}</div>
-                <p class="taskCardOverviewAssignedName">${task.assigned[i].name}</p>
+                <div class="taskCardOverviewProfileIcon profileIcon42" style="background-color:${task.assigned[i].profileColor};">${task.assigned[i].initials}</div>
+                <p class="taskCardOverviewAssignedName fzise19">${task.assigned[i].name}</p>
               </div>`;
         }
     }
