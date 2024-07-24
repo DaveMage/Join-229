@@ -307,6 +307,7 @@ main {
 .taskCardOverviewLabelContainer {
   display: flex;
   gap: 25px;
+  align-items: center;
 }
 
 .priorityLabel {
@@ -798,11 +799,34 @@ main {
     transition: ease-in-out 100ms;
   }
 
+  .taskCardOverviewTitle{
+    font-size: 61px;
+  }
+
   .addTaskOnBoard:hover, .taskCardEditBtn:hover, .createTaskBtn:hover {
     background-color: #29abe2;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   }
 
+  .fsize20 {
+    font-size: 20px;
+  }
+
+  .fzise19 {
+    font-size: 19px;
+  }
+
+  .profileIcon42 {
+    height: 45px;
+    width: 45px;
+    font-size: 16px;
+  }
+  
+  .imgWidth24 {
+    width: 21px;
+    height: 15px;
+    
+  }
   .addTaskOnBoard:active, .taskCardEditBtn:active {
     background-color: #091931;
   }
@@ -871,6 +895,8 @@ main {
 
   .taskCardOverviewBody {
     padding: 48px 40px;
+    width: 525px;
+    gap: 24px;
   }
 
   .taskCardEditBody {
