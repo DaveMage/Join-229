@@ -98,7 +98,6 @@ async function saveContact() {
 };
 
 
-
 /**
  * Checks if a name is valid.
  *
@@ -109,7 +108,6 @@ function isValidName(name) {
     const namePattern = /^[A-Za-zÄäÖöÜüß]+(?:\s[A-Za-zÄäÖöÜüß]+)+$/;
     return namePattern.test(name);
 };
-
 
 
 /**
@@ -256,6 +254,9 @@ function openEditContact(contactId) {
 
 
 // Function to close the edit contact form
+/**
+ * Closes the edit contact form.
+ */
 function closeEditContact() {
     document.getElementById('editContactContainer').classList.remove('slideInBottom'); // Remove the 'slideInBottom' class from the edit contact container
     document.getElementById('editContactContainer').classList.add('slideOutBottom'); // Add the 'slideOutBottom' class to the edit contact container
@@ -266,6 +267,11 @@ function closeEditContact() {
 
 
 // Function to retrieve a contact by its ID
+/**
+ * Retrieves a contact by its ID.
+ * @param {number} contactId - The ID of the contact to retrieve.
+ * @returns {Object|undefined} - The contact object if found, or undefined if not found.
+ */
 async function getContactById(contactId) {
     if (contacts.length === 0) {
         getContacts(); 
