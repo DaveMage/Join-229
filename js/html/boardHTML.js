@@ -65,6 +65,20 @@ function taskCardCategoryHTML(task) {
     return categoryText;
 };
 
+function overviewTaskCardCategoryHTML(task) {
+    let categoryColor = '';
+    let categoryText = '';
+    if (task.category) {
+        if (task.category === 'Technical Task') {
+            categoryColor = 'style="background-color: #1FD7C1"';
+        } else {
+            categoryColor = 'style="background-color: #0038FF"';
+        }
+        categoryText = `<div id="editCardCategory" class="taskCardCategory fsize23 px4y24" ${categoryColor}>${task.category}</div>`;
+    }
+    return categoryText;
+};
+
 
 function assingedProfileIconHtml(task) {
     // Überprüfen, ob task.assigned leer ist
@@ -109,7 +123,7 @@ function overviewTaskCardHTML(task) {
         <div class="taskCardOverviewBody" id="taskCardOverviewBodyId">
             <div class="taskCardOverviewMain">
                 <div class="taskCardOverviewCategoryCloseContainer">
-                ${taskCardCategoryHTML(task)}
+                ${overviewTaskCardCategoryHTML(task)}
                 <img src="./img/Mobile/Board/closeTask.png" onclick="closeTaskCardOverview()">
                 </div>  
                 <h2 id="editCardTitle" class="taskCardOverviewTitle">${task.title}</h2>
