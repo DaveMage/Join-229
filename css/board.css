@@ -899,6 +899,14 @@ main {
     gap: 24px;
   }
 
+  .fsize23{
+    font-size: 23px;
+  }
+
+  .px4y24 {
+    padding: 4px 24px;
+  }
+
   .taskCardEditBody {
     width: auto;
     padding: 48px 40px;
