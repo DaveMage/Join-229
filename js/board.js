@@ -237,9 +237,9 @@ function openEditTask(taskId) {
 
     if (task) {
         document.getElementById('mainBoard').innerHTML += taskCardEditHTML(task);
-        fillSelectedAssigned(taskId);
-        dateTreshholdEdit(taskId);
         closeTaskCardOverviewWithoutAnimation();
+        fillSelectedAssigned(taskId);
+        dateTreshholdEdit(taskId);        
     } else {
         console.error('Task not found with ID:', taskId);
     }
