@@ -10,24 +10,30 @@ async function contactInit() {
 };
 
 
-function openAddContact() {                                                             // Function to open the add contact form
+function openAddContact() {                                                             
     if (window.innerWidth >= 1100) {
-        document.getElementById('contactMain').innerHTML += addContactDesktop(); // Append the HTML for the add contact form to the contactViewDesktop element
+        document.getElementById('contactMain').innerHTML += addContactDesktop(); 
     } else {
-        document.getElementById('contactMain').innerHTML += addContactHtml();           // Append the HTML for the add contact form to the contactMain element
+        document.getElementById('contactMain').innerHTML += addContactHtml();           
     }
 };
 
 
-function closeAddContact() {                                                            // Function to close the add contact form
-    document.getElementById('addContactContainer').classList.remove('slideInBottom');   // Remove the 'slideInBottom' class from the addContactContainer element
-    document.getElementById('addContactContainer').classList.add('slideOutBottom');     // Add the 'slideOutBottom' class to the addContactContainer element
+/**
+ * Closes the add contact container and removes the background form.
+ */
+function closeAddContact() {                                                            
+    document.getElementById('addContactContainer').classList.remove('slideInBottom');   
+    document.getElementById('addContactContainer').classList.add('slideOutBottom');     
     setTimeout(() => {
-        document.getElementById('contactAddFormBackground').remove();                   // Remove the contactAddFormBackground element after a delay of 300 milliseconds
+        document.getElementById('contactAddFormBackground').remove();                   
     }, 300);
 };
 
 
+/**
+ * Closes the add contact desktop view.
+ */
 function closeAddContactDesktop() {
     // Remove the background element
     document.getElementById('background').remove();
@@ -41,23 +47,23 @@ function closeAddContactDesktop() {
  * @param {Array} contacts - The array of contacts to be displayed.
  */
 function displayContacts(contacts) {
-    let container = document.getElementById('contacts');                                // Get the container element
+    let container = document.getElementById('contacts');
 
-    if (container) {                                                                    // Check if the container element exists
-        container.innerHTML = '';                                                       // Clear the container
-        contacts.sort((a, b) => a.name.localeCompare(b.name));                          // Sort the contacts array alphabetically by name
-        let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');                          // Create an array of letters from A to Z
+    if (container) {
+        container.innerHTML = '';
+        contacts.sort((a, b) => a.name.localeCompare(b.name));
+        let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
-        for (let i = 0; i < alphabet.length; i++) {                                     // Iterate through each letter
-            let letter = alphabet[i];                                                   // Get the current letter
-            let contactsByLetter = contacts.filter(contact => contact.name.toUpperCase().startsWith(letter)); // Filter contacts that start with the current letter
+        for (let i = 0; i < alphabet.length; i++) {
+            let letter = alphabet[i];
+            let contactsByLetter = contacts.filter(contact => contact.name.toUpperCase().startsWith(letter));
 
-            if (contactsByLetter.length > 0) {                                          // Check if there are contacts for the current letter
-                container.innerHTML += `<div class="contactAlphabet">${letter}</div><div class="contactSeperator"></div>`; // Add the letter section to the container
+            if (contactsByLetter.length > 0) {
+                container.innerHTML += `<div class="contactAlphabet">${letter}</div><div class="contactSeperator"></div>`;
 
-                for (let j = 0; j < contactsByLetter.length; j++) {                     // Iterate through each contact for the current letter
-                    let contact = contactsByLetter[j];                                  // Get the current contact
-                    container.innerHTML += contactListItemHtml(contact);                // Add the contact item to the container
+                for (let j = 0; j < contactsByLetter.length; j++) {
+                    let contact = contactsByLetter[j];
+                    container.innerHTML += contactListItemHtml(contact);
                 }
             }
         }
@@ -65,6 +71,11 @@ function displayContacts(contacts) {
 };
 
 
+/**
+ * Saves a contact by sending a POST request to the server.
+ * @async
+ * @function saveContact
+ */
 async function saveContact() {
     let contactName = document.getElementById('contactName').value;
     if (!isValidName(contactName)) return;
@@ -87,14 +98,27 @@ async function saveContact() {
 };
 
 
-// Auslagerung der Validierung
+
+/**
+ * Checks if a name is valid.
+ *
+ * @param {string} name - The name to be validated.
+ * @returns {boolean} - Returns true if the name is valid, otherwise false.
+ */
 function isValidName(name) {
     const namePattern = /^[A-Za-zÄäÖöÜüß]+(?:\s[A-Za-zÄäÖöÜüß]+)+$/;
     return namePattern.test(name);
 };
 
 
-// Auslagerung der Erfolgsmeldung
+
+/**
+ * Displays a success message based on the window size.
+ * If the window width is greater than or equal to 1100, it closes the desktop version of the add contact form,
+ * adds the success message to the 'contactMain' element, and removes the message after 800 milliseconds.
+ * If the window width is less than 1100, it closes the mobile version of the add contact form,
+ * adds the success message to the 'contactMain' element, and removes the message after 800 milliseconds.
+ */
 async function showSuccessMessage() {
     if (window.innerWidth >= 1100) {
         closeAddContactDesktop();
@@ -109,6 +133,12 @@ async function showSuccessMessage() {
 
 
 // Function to open the contact view for a specific contact
+/**
+ * Opens the contact view for the specified contact ID.
+ * 
+ * @param {number} contactId - The ID of the contact to open the view for.
+ * @returns {Promise<void>} - A promise that resolves when the contact view is opened.
+ */
 async function openContactView(contactId) {
     // Find the contact with the given id
     let contact = contacts.find(contact => contact.id === contactId);
@@ -134,16 +164,21 @@ async function openContactView(contactId) {
 
 
 // Function to delete a contact
+/**
+ * Deletes a contact from the user's contact list.
+ * @param {string} contactId - The ID of the contact to be deleted.
+ * @returns {Promise<void>} - A promise that resolves when the contact is successfully deleted.
+ */
 async function deleteContact(contactId) {
-    await getUser(); // Fetch users if not already fetched
-    let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); // Find the user object with the specified email
-    userId = users.id; // Get the user ID from the user object    
-    let guestLoggedIn = localStorage.getItem('guestLoggedIn'); // Get the guestLoggedIn value from local storage
+    await getUser(); 
+    let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); 
+    userId = users.id;    
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn'); 
     if (guestLoggedIn === 'true') {
-        userId = '-O-Mr5g8976g5-yCxVK8'; // Set the user ID to the guest user ID if the guest is logged in
+        userId = '-O-Mr5g8976g5-yCxVK8'; 
     }
     if (!userId) {
-        console.error('User not found'); // Log an error message if user ID is not found
+        console.error('User not found'); 
         return;
     }
     try {
@@ -159,12 +194,19 @@ async function deleteContact(contactId) {
 
 
 // Function to navigate to the contacts page
+/**
+ * Redirects the user to the contacts.html page.
+ */
 function goToContacts() {
     window.location.href = 'contacts.html';
 };
 
 
 // Function to open the option container
+/**
+ * Opens the option container by removing the 'slideOutRight' class and adding the 'slideInRight' class.
+ * Also sets the display property of the option container to 'flex'.
+ */
 function openOption() {
     // Remove the 'slideOutRight' class from the option container
     document.getElementById('optionContainer').classList.remove('slideOutRight');
@@ -176,6 +218,10 @@ function openOption() {
 
 
 // Function to close the option container
+/**
+ * Closes the option container by removing the 'slideInRight' class, adding the 'slideOutRight' class,
+ * and setting the display property to 'none' after a delay of 300 milliseconds.
+ */
 function closeOption() {
     if (document.getElementById('optionContainer')) {
         document.getElementById('optionContainer').classList.remove('slideInRight'); // Remove the 'slideInRight' class from the option container
@@ -222,12 +268,19 @@ function closeEditContact() {
 // Function to retrieve a contact by its ID
 async function getContactById(contactId) {
     if (contacts.length === 0) {
-        getContacts(); // Fetch contacts if not already fetched
+        getContacts(); 
     }
-    return contacts.find(contact => contact.id === contactId); // Find the contact with the specified ID
+    return contacts.find(contact => contact.id === contactId); 
 };
 
 
+/**
+ * Saves the edited contact information.
+ * 
+ * @param {string} contactId - The ID of the contact to be edited.
+ * @returns {Promise<void>} - A promise that resolves when the contact information is successfully edited.
+ * @throws {Error} - If there is an error editing the contact information.
+ */
 async function saveEditContact(contactId) {
     let contact = await getContactById(contactId);
     let name = document.getElementById('contactName' + contactId).value;
@@ -253,16 +306,16 @@ async function saveEditContact(contactId) {
             closeAddContactDesktop();
             updateContactsSite();
         } else {
-            closeEditContact();            
-            
+            closeEditContact();
+
         }
     } catch (error) {
         console.error('Error editing contact:', error);
-    }   
+    }
 };
 
 
-function updateContactsSite(){
+function updateContactsSite() {
     location.reload();
 };
 
