@@ -201,7 +201,7 @@ function overviewTaskCardSubtaskHtml(task) {
         let subtaskItemHtml = `
             <div class="taskCardOverviewSubtask" onclick="toggleSubtask(${i}, '${task.id}')">
                 <input type="checkbox" name="subtaskItem${i}" id="subtaskItem${i}" ${subtaskItem.completed ? 'checked' : ''}>
-                <label for="subtaskItem${i}">${subtaskItem.name}</label>
+                <label class="subtaskItemInTask" for="subtaskItem${i}" onclick="toggleSubtask(${i}, '${task.id}')">${subtaskItem.name}</label>
             </div>`;
         subtaskItemsHtml += subtaskItemHtml;
     }
