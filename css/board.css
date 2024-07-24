@@ -378,10 +378,6 @@ main {
   cursor: pointer;
 }
 
-.taskCardOverviewSubtask:hover input {
-  background-image: url(/img/Mobile/Board/checkboxChecked24.png);
-}
-
 .taskCardOverviewSubtask input:checked {
   appearance: none;
   background-image: url(/img/Mobile/Board/checkboxChecked24.png);
