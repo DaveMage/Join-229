@@ -586,5 +586,3 @@ function displaySuccsessfullyBoardMessage() {
         document.getElementById('backgroundOverlay').remove();
     }, 900);
 };
-
-
