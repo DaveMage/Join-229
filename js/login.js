@@ -57,7 +57,7 @@ async function login() {
                 window.location.href = "/greeting.html";
             } else {
                 showError('', 'passwordAndMailErrorSpan', 'Please enter your correct email address and password!')
-                console.log('User not found');
+                // console.log('User not found');
             }
         } catch (error) {
             console.error('Error during login:', error);

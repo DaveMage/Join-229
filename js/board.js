@@ -90,6 +90,7 @@ function displayNoTasks() {
     let inProgress = document.getElementById('progressContainer');
     let awaitFeedback = document.getElementById('feedbackContainer');
     let done = document.getElementById('doneContainer');
+    showEmptyWarning(toDo, inProgress, awaitFeedback, done);
     if (toDo.innerHTML === '') {
         toDo.innerHTML = displayNoTasksToDo();
     }
@@ -103,6 +104,15 @@ function displayNoTasks() {
         done.innerHTML = displayNoTasksDone();
     }
 };
+
+
+function showEmptyWarning(toDo, inProgress, awaitFeedback, done) {
+    if (toDo.innerHTML == '' && inProgress.innerHTML == '' && awaitFeedback.innerHTML == '' && done.innerHTML == '') {
+        document.getElementById('noSearchResults').classList.add('d-block');
+    } else {
+        document.getElementById('noSearchResults').classList.remove('d-block');
+    }
+}
 
 
 async function displayTaskCard() {
@@ -569,7 +579,7 @@ async function toggleSubtask(subtaskIndex, taskId) {
         // Optionally update the task in the local list
         tasks = tasks.map(t => t.id === taskId ? task : t);
 
-        console.log('Subtask status updated successfully');
+        // console.log('Subtask status updated successfully');
     } catch (error) {
         console.error('Error toggling subtask:', error);
     }
