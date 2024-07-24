@@ -583,7 +583,7 @@ function displaySuccsessfullyBoardMessage() {
     // Remove the success message after 900 milliseconds
     setTimeout(() => {
         document.getElementById('background').remove();
-
+        document.getElementById('backgroundOverlay').remove();
     }, 900);
 };
 
