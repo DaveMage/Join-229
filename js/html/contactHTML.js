@@ -57,19 +57,19 @@ function contactViewHtml(contact) {
     </div>
     <div class="contactViewBody">
       <div class="contactViewProfileIconName">
-        <div class="contactViewProfileIcon" id="contactViewProfileIcon"
+        <div class="contactViewProfileIcon" id="contactViewProfileIcon${contact.id}"
         style="background-color:${contact.profileColor};">${contact.initials}</div>
-        <div class="contactViewName" id="contactViewName">${contact.name}</div>
+        <div class="contactViewName" id="contactViewName${contact.id}">${contact.name}</div>
       </div>
       <span class="contactViewSubheadline">Contact Information</span>
       <div class="contactViewInfo">
         <div class="contactViewSubContainer">
           <span class="contactViewLabel">Email</span>
-          <a href="mailto:${contact.email}" target="_blank" class="contactViewLink" id="contactViewEmail">${contact.email}</a>
+          <a href="mailto:${contact.email}" target="_blank" class="contactViewLink" id="contactViewEmail${contact.id}">${contact.email}</a>
         </div>
         <div class="contactViewSubContainer">
           <span class="contactViewLabel">Phone</span>
-          <a href="tel:${contact.phone}" class="contactViewLink" id="contactViewPhone">${contact.phone}</a>
+          <a href="tel:${contact.phone}" class="contactViewLink" id="contactViewPhone${contact.id}">${contact.phone}</a>
         </div>
       </div>
     </div>
