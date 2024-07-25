@@ -37,10 +37,10 @@ function addContactHtml() {
 function contactListItemHtml(contact) {
   return /* html */`    
     <div id="contactItem${contact.id}"  class="contactProfileContainer" onclick="openContactView('${contact.id}')">
-      <div class="profileIcon" style="background-color: ${contact.profileColor};">${contact.initials}</div>
+      <div class="profileIcon" id="profileIconItemInitial${contact.id}" style="background-color: ${contact.profileColor};">${contact.initials}</div>
       <div class="contactNameEmailContainer">
-        <p class="contactName">${contact.name}</p>
-        <p class="contactEmail">${contact.email}</p>
+        <p class="contactName" id="contactItemName${contact.id}">${contact.name}</p>
+        <p class="contactEmail" id="contactItemEmail${contact.id}">${contact.email}</p>
       </div>
     </div>`;
 };
@@ -112,14 +112,14 @@ function successfullyDesktopHtml() {
 function contactEditForm(contact) {
   return /* html */`
     <div class="background " id="contactEditFormBackground">
-    <div class="addContactContainer slideInBottom" id="editContactContainer">
+    <div  class="addContactContainer slideInBottom" id="editContactContainer">
         <div class="addContainerTopContainer">
             <img class="closeBtn" src="/img/Mobile/Contacts/closeWhite.png" onclick="closeEditContact()">
             <h1 class="contactHeadline">Add Contact</h1>                
             <span class="headlineUnderline"></span>
         </div>            
         <div class="addContactContainerBottom">
-            <form>
+            <form onsubmit="return false">
                 <div class="contactProfileIcon" style="background-color: ${contact.profileColor};">
                   ${contact.initials}
                 </div>
@@ -149,9 +149,9 @@ function contactEditForm(contact) {
 function contactViewDesktop(contact) {
   return /* html */ `  
           <div class="cvdIconName">
-            <div id="profileIconDesktop" style="background-color: ${contact.profileColor};">${contact.initials}</div>
+            <div id="profileIconDesktop${contact.id}" class="profileIconDesktop" style="background-color: ${contact.profileColor};">${contact.initials}</div>
             <div class="cvdNameBtnContainer">
-              <h2 id="cvdName">${contact.name}</h2>
+              <h2 class="cvdName" id="cvdName${contact.id}">${contact.name}</h2>
               <div class="cvdBtns">
                 <button
                   class="contactBtnTransparent"
@@ -174,11 +174,11 @@ function contactViewDesktop(contact) {
           <div class="cvdEmailPhone">
             <div class="cvdEmail">
               <p class="cvdInfoText">Email</p>
-              <a href="mailto:${contact.email}.de" id="cvdEmail">${contact.email}</a>
+              <a href="mailto:${contact.email}.de" id="cvdEmail${contact.id}">${contact.email}</a>
             </div>
             <div class="cvdPhone">
               <p class="cvdInfoText">Phone</p>
-              <a href="tel:${contact.phone}" id="cvdPhone">${contact.phone}</a>
+              <a href="tel:${contact.phone}" id="cvdPhone${contact.id}">${contact.phone}</a>
             </div>
           </div>
         `;
