@@ -386,3 +386,33 @@ function focusEditSubtaskInput(task) {                                          
     closeIcon.style.display = 'flex';
     seperator.style.display = 'flex';
 };
+
+/**
+ * eventListener sorgt dafür, dass eine Subtask mit der Entertaste hinzugefügt werden kann
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    
+    if (window.location.pathname.endsWith('addTask.html')) {
+
+        const form = document.getElementById('addTaskForm');
+        if (form) {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+            });
+        }
+
+        const inputFields = document.querySelectorAll('.addTaskInput, .addTaskDescription');
+        inputFields.forEach(input => {
+            if (input) {
+                input.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter') {
+                        event.preventDefault();
+                        if (input.id === 'addTaskSubtask') {
+                            addSubtaskItem();
+                        }
+                    }
+                });
+            }
+        });
+    }
+});
