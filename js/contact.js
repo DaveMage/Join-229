@@ -12,9 +12,9 @@ async function contactInit() {
 
 function openAddContact() {
     if (window.innerWidth >= 1100) {
-        document.getElementById('contactMain').innerHTML += addContactDesktop(); 
+        document.getElementById('contactMain').innerHTML += addContactDesktop();
     } else {
-        document.getElementById('contactMain').innerHTML += addContactHtml();           
+        document.getElementById('contactMain').innerHTML += addContactHtml();
     }
 };
 
@@ -22,11 +22,11 @@ function openAddContact() {
 /**
  * Closes the add contact container and removes the background form.
  */
-function closeAddContact() {                                                            
-    document.getElementById('addContactContainer').classList.remove('slideInBottom');   
-    document.getElementById('addContactContainer').classList.add('slideOutBottom');     
+function closeAddContact() {
+    document.getElementById('addContactContainer').classList.remove('slideInBottom');
+    document.getElementById('addContactContainer').classList.add('slideOutBottom');
     setTimeout(() => {
-        document.getElementById('contactAddFormBackground').remove();                   
+        document.getElementById('contactAddFormBackground').remove();
     }, 300);
 };
 
@@ -105,7 +105,7 @@ async function saveContact() {
     if (window.innerWidth >= 1100) {
         closeAddContactDesktop();
     }
-    
+
 };
 
 
@@ -179,15 +179,15 @@ async function openContactView(contactId) {
  * @returns {Promise<void>} - A promise that resolves when the contact is successfully deleted.
  */
 async function deleteContact(contactId) {
-    await getUser(); 
-    let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); 
-    userId = users.id;    
-    let guestLoggedIn = localStorage.getItem('guestLoggedIn'); 
+    await getUser();
+    let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
+    userId = users.id;
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
     if (guestLoggedIn === 'true') {
-        userId = '-O-Mr5g8976g5-yCxVK8'; 
+        userId = '-O-Mr5g8976g5-yCxVK8';
     }
     if (!userId) {
-        console.error('User not found'); 
+        console.error('User not found');
         return;
     }
     try {
@@ -222,7 +222,7 @@ function openOption() {
     // Add the 'slideInRight' class to the option container
     document.getElementById('optionContainer').classList.add('slideInRight');
     // Set the display property of the option container to 'flex'
-    document.getElementById('optionContainer').style.display = 'flex';
+    document.getElementById('optionContainer').style.display = 'block';
 };
 
 
@@ -285,9 +285,9 @@ function closeEditContact() {
  */
 async function getContactById(contactId) {
     if (contacts.length === 0) {
-        getContacts(); 
+        getContacts();
     }
-    return contacts.find(contact => contact.id === contactId); 
+    return contacts.find(contact => contact.id === contactId);
 };
 
 
@@ -306,6 +306,15 @@ async function saveEditContact(contactId) {
     let profileColor = contact.profileColor;
     let initials = name.split(' ').map(n => n[0]).join('');
 
+    let updatedName = document.getElementById(`cvdName${contactId}`).value;
+    let updatedEmail = document.getElementById(`cvdEmail${contactId}`).value;
+    let updatedPhone = document.getElementById(`cvdPhone${contactId}`).value;
+    let updatedInitials = document.getElementById(`profileIconDesktop${contactId}`);
+
+    let itemName = document.getElementById(`contactItemName${contactId}`);
+    let itemEmail = document.getElementById(`contactItemEmail${contactId}`);
+    let itemInitials = document.getElementById(`profileIconItemInitial${contactId}`);
+
     try {
         userId = await getUserId();
         await putData(`/users/${userId}/contacts/${contactId}`,
@@ -316,20 +325,28 @@ async function saveEditContact(contactId) {
                 profileColor: profileColor,
                 initials: initials
             });
-        let contactViewProfileIcon = document.getElementById('profileIconEditDesktop');
-        contactViewProfileIcon.style.backgroundColor = contact.profileColor;
-        contactViewProfileIcon.innerHTML = contact.initials;
-        if (window.innerWidth >= 1100) {
-            closeAddContactDesktop();
-            updateContactsSite();
-        } else {
-            closeEditContact();
 
+        if (window.innerWidth >= 1100) {
+            await getContacts();
+            closeAddContactDesktop();
+            updatedName.textContent = contact.name;
+            updatedEmail.textContent = contact.email;
+            updatedPhone.textContent = contact.phone;
+            updatedInitials.textContent = contact.initials;
+
+            itemName.textContent = contact.name;
+            itemEmail.textContent = contact.email;
+            itemInitials.textContent = contact.initials;
         }
     } catch (error) {
         console.error('Error editing contact:', error);
     }
+
+
 };
+
+
+
 
 
 function updateContactsSite() {
