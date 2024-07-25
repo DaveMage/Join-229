@@ -99,6 +99,10 @@ function loadGuestLogin() {
     if (localStorage.getItem('guestLoggedIn') === 'true') {
         document.getElementById('profileInitial').innerHTML = 'G';
         document.getElementById('menu').style.display = 'flex';
+        if (window.innerWidth >= 1100) {
+            document.getElementById('privacyLink').target = '_blank';
+            document.getElementById('legalLink').target = '_blank';
+        }
     }
 };
 
