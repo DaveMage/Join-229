@@ -121,8 +121,7 @@
   justify-content: space-between;
   padding: 13px 21px;
   gap: 10px;
-  height: 41px;
-  cursor: pointer;
+  height: 41px;  
 }
 
 .contactLabel input {
@@ -130,8 +129,7 @@
   background-color: transparent;
   font-size: 20px;
   width: 100%;
-  outline: none;
-  cursor: pointer;
+  outline: none;  
 }
 
 .contactLabel:focus-within {
@@ -191,6 +189,7 @@
   gap: 35px;
   align-items: center;
   cursor: pointer;
+  position: relative;
 }
 
 .contactProfileContainer:hover {
@@ -465,20 +464,7 @@ span {
   border-radius: 3px;
 }
 
-#profileIconDesktop {
-  min-height: 120px;
-  min-width: 120px;
-  border-radius: 100%;
-  border: 3px solid #ffffff;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
-  background-color: orange;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 47px;
-  font-weight: 500;
-  color: #ffffff;
-}
+
 
 .profileIconDesktop {
   min-height: 120px;
@@ -566,7 +552,7 @@ span {
   content: url(/img/Mobile/Contacts/trashBlue.png);
 }
 
-#cvdName {
+.cvdName {
   font-size: 47px;
   font-weight: 500;
 }
@@ -671,6 +657,10 @@ span {
   z-index: 901;
 }
 
+#desktopContactView{
+  display: none;
+}
+
 
 @keyframes slideInRightDesktop {
   0% {
@@ -686,6 +676,23 @@ span {
   animation: slideInRightDesktop 300ms ease-out 0s 1 normal forwards;
 }
 
+@media (max-width: 380px){
+  .contactEmail{
+    font-size: 12px;    
+  }
+
+  .contactName{
+    font-size: 16px;
+  }
+
+  .contactsListContainer{
+    padding: 8px;
+  }
+
+  .contactProfileContainer{
+    padding: 8px 24px;
+  }
+}
 
 @media (min-width: 1100px) {
   .contactsListContainer {
@@ -693,6 +700,10 @@ span {
     padding: 32px 24px;
     height: calc(100vh - 160px);
     scrollbar-width: thin;
+  }
+
+  #desktopContactView{
+    display: block;
   }
 
   #addContactMobileBtn {
