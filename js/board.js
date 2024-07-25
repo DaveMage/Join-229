@@ -532,12 +532,6 @@ function goToAddTask() {
 
 
 function addNewTaskOnBoard(taskStatus) {
-    /*if (taskStatus == 'inProgress') {
-        console.log(taskStatus);
-    } else if (taskStatus == 'awaitFeedback') {
-        console.log(taskStatus);
-    }*/
-
     let main = document.getElementById('mainBoard');
     main.innerHTML += addNewTaskOnBoardHtml(taskStatus);
     dateTreshhold();
