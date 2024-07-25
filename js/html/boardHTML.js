@@ -216,7 +216,7 @@ function taskCardEditHTML(task) {
         <div class="taskCardEditBody" id="taskCardEditBackgroundFloat">
             <div class="taskCardEditMain">
                 <div class="closeBtnContainer"><img src="./img/Mobile/Board/closeTask.png" onclick="closeEditTask()"></div>
-                <form class="editTaskForm">
+                <form class="editTaskForm" id="addTaskForm">
 
                 <div class="labelInputContainer">
                     <label for="title${task.id}">Title</label>
@@ -410,7 +410,7 @@ function addNewTaskOnBoardHtml(taskStatus) {
                     <h1 class="addTaskHeadline">Add Task</h1>
                     <img src="./img/Desktop/board/closeAddTask.png" class="closeButtonAddTask" onclick="closeAddTaskOnBoard()">
                 </div>
-                <form onsubmit="return false;" class="addTaskForm">
+                <form onsubmit="return false" id="addTaskForm" class="addTaskForm">
                 <div class="formInputsContainer">
                     <div class="addTaskDesktopColumns">
                     <!-- linker teil für desktop version-->

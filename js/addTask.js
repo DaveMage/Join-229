@@ -232,7 +232,10 @@ function onBlurSubtaskInput() {
     let addIcon = document.getElementById('addEditSubtaskIcon');
     let seperator = document.getElementById('subtaskEditInputSeperator');
 
-    inputField.readOnly = true;
+    if (inputField != null) {
+        inputField.readOnly = true;
+    }
+
     addIcon.style.display = 'flex';
     checkIcon.style.display = 'none';
     closeIcon.style.display = 'none';
