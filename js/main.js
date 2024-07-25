@@ -99,6 +99,10 @@ function loadGuestLogin() {
     if (localStorage.getItem('guestLoggedIn') === 'true') {
         document.getElementById('profileInitial').innerHTML = 'G';
         document.getElementById('menu').style.display = 'flex';
+        if (window.innerWidth >= 1100) {
+            document.getElementById('privacyLink').target = '_blank';
+            document.getElementById('legalLink').target = '_blank';
+        }
     }
 };
 
@@ -106,7 +110,7 @@ function loadGuestLogin() {
 function checkGuestLogin() {
     let notLoggedIn = document.getElementById('profileInitial');
     if (notLoggedIn.innerHTML === '') {
-        document.getElementById('menu').style.display = 'none';
+        // document.getElementById('menu').style.display = 'none';
         if (document.getElementById('mainPolicy')) {
             document.getElementById('mainPolicy').style.height = '100vh';
         }

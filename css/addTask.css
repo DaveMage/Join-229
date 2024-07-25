@@ -328,6 +328,7 @@ body {
 
 .focus-border:focus {
   border-color: #29abe2;
+  outline: none;
 }
 
 .addToBoard {

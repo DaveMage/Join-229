@@ -216,7 +216,7 @@ function taskCardEditHTML(task) {
         <div class="taskCardEditBody" id="taskCardEditBackgroundFloat">
             <div class="taskCardEditMain">
                 <div class="closeBtnContainer"><img src="./img/Mobile/Board/closeTask.png" onclick="closeEditTask()"></div>
-                <form class="editTaskForm">
+                <form class="editTaskForm" id="addTaskForm">
 
                 <div class="labelInputContainer">
                     <label for="title${task.id}">Title</label>
@@ -225,12 +225,12 @@ function taskCardEditHTML(task) {
 
                 <div class="labelInputContainer">
                     <label for="description${task.id}">Description</label>
-                    <textarea  id="description${task.id}" name="description${task.id}" class="inputTextarea">${task.description}</textarea>
+                    <textarea  id="description${task.id}" name="description${task.id}" class="inputTextarea focus-border">${task.description}</textarea>
                 </div>
             
                 <div class="labelInputContainer">
                     <label for="date${task.id}">Due date</label>
-                    <input type="date" id="date${task.id}" name="date${task.id}" value="${task.date}" class="inputDate inputText">
+                    <input type="date" id="date${task.id}" name="date${task.id}" value="${task.date}" class="inputDate inputText focus-border">
                 </div>
 
                 <div class="labelInputContainer">
@@ -263,7 +263,7 @@ function taskCardEditHTML(task) {
                         <img id="assignedIcon" src="./img/Mobile/AddTask/arrowDropDownaa.png" onclick="toggleEditAssignedDropdown('${task.id}')">
                     </div>
 
-                    <div id="editAssignedDropdown" class="customDropdownBox">       <!--der container für das dropdownmenü -->
+                    <div id="editAssignedDropdown" class="customDropdownBox">
                         ${displayAssignedDropdown(task)}
                     </div>
 
@@ -277,9 +277,8 @@ function taskCardEditHTML(task) {
                     <div class="inputImgContainer">
                         <input type="text" id="subtask${task.id}" name="subtask${task.id}" placeholder="Add new subtask" class="subtaskInput" readonly
                         onclick="focusEditSubtaskInput('${task.id}')"
-                        
                         >
-                        <div id="subtaskEditInputIconContainer" >
+                        <div id="subtaskEditInputIconContainer">
                         
                         <img
                         src="./img/Mobile/AddTask/closeIcon.png"
@@ -403,7 +402,7 @@ function displayAssignedProfileIcons(task) {
 };
 
 
-function addNewTaskOnBoardHtml() {
+function addNewTaskOnBoardHtml(taskStatus) {
     return /*html*/ `
         <div class="floatingAddTask" id="addTaskChard">
             <div class="addTaskBoardDesktop" id="forAnimationFloating">
@@ -411,7 +410,7 @@ function addNewTaskOnBoardHtml() {
                     <h1 class="addTaskHeadline">Add Task</h1>
                     <img src="./img/Desktop/board/closeAddTask.png" class="closeButtonAddTask" onclick="closeAddTaskOnBoard()">
                 </div>
-                <form onsubmit="return false;" class="addTaskForm">
+                <form onsubmit="return false" id="addTaskForm" class="addTaskForm">
                 <div class="formInputsContainer">
                     <div class="addTaskDesktopColumns">
                     <!-- linker teil für desktop version-->
@@ -518,7 +517,7 @@ function addNewTaskOnBoardHtml() {
                     <button onclick="addTaskClearTask()" class="addTaskClearBtn">
                         Clear x
                     </button>
-                    <button onclick="saveTask()" class="primaryBtn createTaskBtn">
+                    <button onclick="saveTask('${taskStatus}')" class="primaryBtn createTaskBtn">
                         Create Task
                         <img src="./img/Mobile/AddTask/checkMarkIconAddTask.png" />
                     </button>

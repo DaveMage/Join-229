@@ -232,7 +232,10 @@ function onBlurSubtaskInput() {
     let addIcon = document.getElementById('addEditSubtaskIcon');
     let seperator = document.getElementById('subtaskEditInputSeperator');
 
-    inputField.readOnly = true;
+    if (inputField != null) {
+        inputField.readOnly = true;
+    }
+
     addIcon.style.display = 'flex';
     checkIcon.style.display = 'none';
     closeIcon.style.display = 'none';
@@ -386,3 +389,33 @@ function focusEditSubtaskInput(task) {                                          
     closeIcon.style.display = 'flex';
     seperator.style.display = 'flex';
 };
+
+/**
+ * eventListener sorgt dafür, dass eine Subtask mit der Entertaste hinzugefügt werden kann
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    
+    if (window.location.pathname.endsWith('addTask.html')) {
+
+        const form = document.getElementById('addTaskForm');
+        if (form) {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+            });
+        }
+
+        const inputFields = document.querySelectorAll('.addTaskInput, .addTaskDescription');
+        inputFields.forEach(input => {
+            if (input) {
+                input.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter') {
+                        event.preventDefault();
+                        if (input.id === 'addTaskSubtask') {
+                            addSubtaskItem();
+                        }
+                    }
+                });
+            }
+        });
+    }
+});

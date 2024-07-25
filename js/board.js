@@ -249,7 +249,8 @@ function openEditTask(taskId) {
         document.getElementById('mainBoard').innerHTML += taskCardEditHTML(task);
         closeTaskCardOverviewWithoutAnimation();
         fillSelectedAssigned(taskId);
-        dateTreshholdEdit(taskId);        
+        dateTreshholdEdit(taskId);
+        addTaskEditEventListeners(taskId);
     } else {
         console.error('Task not found with ID:', taskId);
     }
@@ -531,11 +532,61 @@ function goToAddTask() {
 };
 
 
-function addNewTaskOnBoard() {
+function addNewTaskOnBoard(taskStatus) {
     let main = document.getElementById('mainBoard');
-    main.innerHTML += addNewTaskOnBoardHtml();
+    main.innerHTML += addNewTaskOnBoardHtml(taskStatus);
     dateTreshhold();
+    addEventListeners();
 };
+
+
+function addEventListeners() {
+    const form = document.getElementById('addTaskForm');
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Verhindert das Neuladen der Seite
+        });
+    }
+
+    const inputFields = document.querySelectorAll('.addTaskInput, .addTaskDescription');
+    inputFields.forEach(input => {
+        if (input) {
+            input.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault(); // Verhindert das Neuladen der Seite
+                    if (input.id === 'addTaskSubtask') {
+                        addSubtaskItem();
+                    }
+                }
+            });
+        }
+    });
+}
+
+
+function addTaskEditEventListeners(taskId) {
+    const form = document.getElementById(`editTaskForm${taskId}`);
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+        });
+    }
+
+    const inputFields = document.querySelectorAll(`#title${taskId}, #description${taskId}, #date${taskId}, #subtask${taskId}`);
+    inputFields.forEach(input => {
+        if (input) {
+            input.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+
+                    if (input.id.startsWith('subtask')) {
+                        addEditSubtask(taskId);
+                    }
+                }
+            });
+        }
+    });
+}
 
 
 function closeAddTaskOnBoard() {
