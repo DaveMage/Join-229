@@ -299,58 +299,64 @@ async function getContactById(contactId) {
  * @throws {Error} - If there is an error editing the contact information.
  */
 async function saveEditContact(contactId) {
-    let contact = await getContactById(contactId);
-    let name = document.getElementById('contactName' + contactId).value;
-    let email = document.getElementById('contactEmail' + contactId).value;
-    let phone = document.getElementById('contactPhone' + contactId).value;
-    let profileColor = contact.profileColor;
-    let initials = name.split(' ').map(n => n[0]).join('');
-
-    let updatedName = document.getElementById(`cvdName${contactId}`).value;
-    let updatedEmail = document.getElementById(`cvdEmail${contactId}`).value;
-    let updatedPhone = document.getElementById(`cvdPhone${contactId}`).value;
-    let updatedInitials = document.getElementById(`profileIconDesktop${contactId}`);
-
-    let itemName = document.getElementById(`contactItemName${contactId}`);
-    let itemEmail = document.getElementById(`contactItemEmail${contactId}`);
-    let itemInitials = document.getElementById(`profileIconItemInitial${contactId}`);
-
     try {
-        userId = await getUserId();
-        await putData(`/users/${userId}/contacts/${contactId}`,
-            {
-                name: name,
-                email: email,
-                phone: phone,
-                profileColor: profileColor,
-                initials: initials
-            });
+        const contact = await getContactById(contactId);
+        const userId = await getUserId();
+
+        const name = document.getElementById(`contactName${contactId}`).value;
+        const email = document.getElementById(`contactEmail${contactId}`).value;
+        const phone = document.getElementById(`contactPhone${contactId}`).value;
+        const initials = name.split(' ').map(n => n[0]).join('');
+        const profileColor = contact.profileColor;
+
+        await putData(`/users/${userId}/contacts/${contactId}`, {
+            name,
+            email,
+            phone,
+            profileColor,
+            initials
+        });
 
         if (window.innerWidth >= 1100) {
+            updateContactDisplay(contactId, name, email, phone, initials);
             await getContacts();
             closeAddContactDesktop();
-            updatedName.textContent = contact.name;
-            updatedEmail.textContent = contact.email;
-            updatedPhone.textContent = contact.phone;
-            updatedInitials.textContent = contact.initials;
-
-            itemName.textContent = contact.name;
-            itemEmail.textContent = contact.email;
-            itemInitials.textContent = contact.initials;
+        }
+        if(document.getElementById('contactViewContainer' + contactId)) {
+            console.log('here');
+            updateContactDisplayMobile(contactId, name, email, phone, initials);
+            await getContacts();
+            closeEditContact();
         }
     } catch (error) {
         console.error('Error editing contact:', error);
     }
+}
 
 
-};
+function updateContactDisplay(contactId, name, email, phone, initials) {
+    document.getElementById(`cvdName${contactId}`).textContent = name;
+    document.getElementById(`cvdEmail${contactId}`).textContent = email;
+    document.getElementById(`cvdPhone${contactId}`).textContent = phone;
+    document.getElementById(`profileIconDesktop${contactId}`).textContent = initials;
+
+    document.getElementById(`contactItemName${contactId}`).textContent = name;
+    document.getElementById(`contactItemEmail${contactId}`).textContent = email;
+    document.getElementById(`profileIconItemInitial${contactId}`).textContent = initials;
+}
+
+
+function updateContactDisplayMobile(contactId, name, email, phone, initials) {
+    document.getElementById(`contactViewName${contactId}`).textContent = name;
+    document.getElementById(`contactViewEmail${contactId}`).textContent = email;
+    document.getElementById(`contactViewPhone${contactId}`).textContent = phone;
+    document.getElementById(`contactViewProfileIcon${contactId}`).textContent = initials;
+}
 
 
 
 
 
-function updateContactsSite() {
-    location.reload();
-};
+
 
 
