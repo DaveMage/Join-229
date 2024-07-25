@@ -402,7 +402,7 @@ function displayAssignedProfileIcons(task) {
 };
 
 
-function addNewTaskOnBoardHtml() {
+function addNewTaskOnBoardHtml(taskStatus) {
     return /*html*/ `
         <div class="floatingAddTask" id="addTaskChard">
             <div class="addTaskBoardDesktop" id="forAnimationFloating">
@@ -517,7 +517,7 @@ function addNewTaskOnBoardHtml() {
                     <button onclick="addTaskClearTask()" class="addTaskClearBtn">
                         Clear x
                     </button>
-                    <button onclick="saveTask()" class="primaryBtn createTaskBtn">
+                    <button onclick="saveTask('${taskStatus}')" class="primaryBtn createTaskBtn">
                         Create Task
                         <img src="./img/Mobile/AddTask/checkMarkIconAddTask.png" />
                     </button>

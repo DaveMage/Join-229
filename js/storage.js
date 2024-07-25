@@ -173,7 +173,7 @@ function validateFormData(formData) {
 
 
 // Funktion zum Speichern der Aufgabe
-async function saveTask() {
+async function saveTask(taskStatus) {
     let formData = getFormData();
 
     if (!validateFormData(formData)) {
@@ -193,7 +193,7 @@ async function saveTask() {
             priority: formData.prio,
             category: formData.category,
             subtasks: formData.subtasks,
-            status: 'open'
+            status: ((taskStatus == 'inProgress') ? ('inProgress') : (taskStatus == 'awaitFeedback') ? ('awaitFeedback') : ('open'))
         });
                 
         if (document.getElementById('addTaskChard')) {
