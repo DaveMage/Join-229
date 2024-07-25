@@ -106,7 +106,7 @@ function loadGuestLogin() {
 function checkGuestLogin() {
     let notLoggedIn = document.getElementById('profileInitial');
     if (notLoggedIn.innerHTML === '') {
-        document.getElementById('menu').style.display = 'none';
+        // document.getElementById('menu').style.display = 'none';
         if (document.getElementById('mainPolicy')) {
             document.getElementById('mainPolicy').style.height = '100vh';
         }
