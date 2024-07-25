@@ -546,6 +546,11 @@ main {
   background-color: #ffffff;
 }
 
+.inputImgContainer:has(input:focus) {
+  border-color: #29abe2;
+  outline: none;
+}
+
 .inputImgContainer input {
   border: none;
   outline: none;
