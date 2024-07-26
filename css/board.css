@@ -749,6 +749,11 @@ main {
   color: red;
 }
 
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 .d-block {
 display: block;
 }
