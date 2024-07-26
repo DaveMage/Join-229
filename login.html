@@ -13,7 +13,7 @@
       type="image/x-icon"
     />
   </head>
-  <body onload="displayUserEmailPassword()">
+  <body onload="displayUserEmailPassword(); disableLoginButton()">
     <header>
       <div class="headerLogin">
         <img
@@ -35,7 +35,7 @@
     </div>
 
     <main>
-      <form autocomplete="off" class="loginForm" onsubmit="return false;">
+      <form autocomplete="off" class="loginForm" id="loginForm" onsubmit="return false">
         <h1 class="loginHeader">
           Log in
           <span class="headlineUnderline"></span>
@@ -68,7 +68,7 @@
         </label>
         <span id="passwordAndMailErrorSpan" class="errorMessage"></span>
         <div class="loginBtnContainer">
-          <button class="primaryBtn" onclick="login()">Log in</button>
+          <button class="primaryBtn" id="submitBtn" onclick="login()">Log in</button>
           <button class="secondaryBtn" onclick="guestLogin()">
             Guest Log in
           </button>

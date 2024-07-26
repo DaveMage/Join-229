@@ -106,6 +106,24 @@ function displayUserEmailPassword() {
 };
 
 
+function disableLoginButton() {
+    let form = document.getElementById('loginForm');
+    let fields = form.querySelectorAll('#loginEmail, #loginPassword');
+    let submitBtn = document.getElementById('submitBtn');
 
+    function checkFormCompletion() {
+        let allFilled = true;
+        fields.forEach(field => {
+            if (!field.value.trim()) {
+                allFilled = false;
+                }
+            });
+            submitBtn.disabled = !allFilled;
+        }
 
+        fields.forEach(field => {
+            field.addEventListener('input', checkFormCompletion);
+    });
 
+    checkFormCompletion();
+};

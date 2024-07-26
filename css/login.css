@@ -107,6 +107,12 @@ body {
     font-weight: 700;
 }
 
+.primaryBtn:disabled {
+  background-color: #091931;
+  opacity: 0.5;
+  box-shadow: none;
+}
+
 .secondaryBtn{
     padding: 4px 0;
     height: 51px;
