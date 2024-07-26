@@ -157,3 +157,30 @@ function menuActive() {
         }
     }
 };
+
+function showError(labelId, errorSpanId, message) {
+    document.getElementById(labelId).classList.add("errorInput");
+    let errorSpan = document.getElementById(errorSpanId);
+    errorSpan.textContent = message;
+    errorSpan.style.display = "flex";
+};
+
+async function checkEmailAvailability(email) {
+    try {
+        const response = await fetch(BASE_URL + '/users.json');
+        const data = await response.json();
+        const users = Object.values(data);
+        // Überprüfen Sie, ob ein Benutzer mit der gleichen E-Mail gefunden wurde
+        const emailExists = users.some(user => user.email === email);
+        // console.log('Email exists:', emailExists);
+        return emailExists;
+    } catch (error) {
+        console.error('Error checking email availability:', error);
+        return false;
+    }
+};
+
+function clearError(labelId, errorSpanId) {
+    document.getElementById(labelId).classList.remove("errorInput");
+    document.getElementById(errorSpanId).style.display = "none";
+};
