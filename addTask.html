@@ -5,9 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Join</title>
+  <link rel="stylesheet" href="./css/landscape.css" />
   <link rel="stylesheet" href="./css/main.css" />
   <link rel="stylesheet" href="./css/mainDesktop.css" />
   <link rel="icon" href="./img/favicon/favicon_with_bg.png" type="image/x-icon" />
+  <script src="./js/landscape.js"></script>
   <script src="./js/addTask.js"></script>
   <script src="./js/storage.js"></script>
   <script src="./js/main.js"></script>
@@ -17,6 +19,9 @@
 
 <body id="template" onload="addTaskInit()">
   <header id="header" class="headerMenu"></header>
+  <div class="landscape-warning">
+    Landscape mode is not supported. Please rotate your device.
+  </div>
   <main class="mainContainer" id="mainContainerId">
     <h1 class="addTaskHeadline">Add Task</h1>
     <form id="addTaskForm" onsubmit="return false" class="addTaskForm">
