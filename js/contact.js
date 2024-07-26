@@ -7,6 +7,7 @@ async function contactInit() {
     await getContacts();
     displayContacts(contacts);
     loadUserInitial();
+    
 };
 
 
@@ -93,8 +94,43 @@ async function saveContact() {
     let user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
     let userId = localStorage.getItem('guestLoggedIn') === 'true' ? '-O-Mr5g8976g5-yCxVK8' : user.id;
 
+    // Check if email is available
     try {
-        await postData(`/users/${userId}/contacts`, { name: contactName, email: contactEmail, phone: contactPhone, initials: initials, profileColor: randomColor });
+        let isEmailAvailable = await checkEmailAvailability(contactEmail);
+        if (!isEmailAvailable) {
+            showError('contactLabelEmail', 'emailErrorSpan', "This email is already taken");
+            return;
+        }
+        if (contactEmail === '') {
+            showError('contactLabelEmail', 'emailErrorSpan', "Please enter an email address");
+            return;
+        }
+
+        clearError('contactLabelEmail', 'emailErrorSpan');
+    } catch (error) {
+        console.error('Error checking email:', error);
+        return;
+    }
+
+    // Validate phone number
+    if (contactPhone === '') {
+        showError('contactPhone', 'phoneErrorSpan', "Please enter a phone number");
+        return;
+    }
+    if (!isValidPhoneNumber(contactPhone)) {
+        showError('contactPhone', 'phoneErrorSpan', "Please enter a valid phone number");
+        return;
+    }
+    clearError('contactPhone', 'phoneErrorSpan');
+
+    try {
+        await postData(`/users/${userId}/contacts`, {
+            name: contactName,
+            email: contactEmail,
+            phone: contactPhone,
+            initials: initials,
+            profileColor: randomColor
+        });
         await showSuccessMessage();
 
         contactInit();
@@ -105,8 +141,22 @@ async function saveContact() {
     if (window.innerWidth >= 1100) {
         closeAddContactDesktop();
     }
-
 };
+
+// Example validation function for phone numbers
+function isValidPhoneNumber(phone) {
+    // A simple example, you can implement more robust validation
+    return /^\+?[1-9]\d{1,14}$/.test(phone);
+}
+
+
+
+
+
+
+
+
+
 
 
 /**
@@ -117,7 +167,27 @@ async function saveContact() {
  */
 function isValidName(name) {
     const namePattern = /^[A-Za-zÄäÖöÜüß]+(?:\s[A-Za-zÄäÖöÜüß]+)+$/;
-    return namePattern.test(name);
+    if (!namePattern.test(name)) {
+        showError('contactLabelName', 'nameErrorSpan', "Please enter your full name");
+        return false;
+    }
+    clearError('contactLabelName', 'nameErrorSpan');
+    return true;
+};
+
+async function checkEmail(email) {
+    let isEmailAvailable = await checkEmailAvailability(email);
+    if (isEmailAvailable) {
+        showError('contactLabelEmail', 'emailErrorSpan', "This email is already taken");
+        return false;
+    }
+    if (document.getElementById('contactEmail') === '') {
+        showError('contactLabelEmail', 'emailErrorSpan', "Please enter an email address");
+        return false;
+    }
+    
+    clearError('contactLabelEmail', 'emailErrorSpan');
+    return true;
 };
 
 
