@@ -16,79 +16,80 @@
     />
   </head>
   <body onload="displayUserEmailPassword(); disableLoginButton()">
-    <header>
-      <div class="headerLogin">
-        <img
-          src="./img/Desktop/login/joinLogoLogin100x122.png"
-          class="loginLogo"
-          alt="Join Logo"
-        />
-        <div class="registerContainerDesktop">
+    <div class="landscape-warning">
+      Landscape mode is not supported. Please rotate your device.
+    </div>
+    <div class="noLandscapeMode">
+      <header>
+        <div class="headerLogin">
+          <img
+            src="./img/Desktop/login/joinLogoLogin100x122.png"
+            class="loginLogo"
+            alt="Join Logo"
+          />
+          <div class="registerContainerDesktop">
+            <p>Not a Join user?</p>
+            <button class="primaryBtn signUpBtn" onclick="goToSighUp()">
+              Sign up
+            </button>
+          </div>
+        </div>
+      </header>
+      <div class="loginAnimation">
+        <img class="animatedLogo" src="./img/Desktop/login/joinLogoBig.png">
+      </div>
+      <main class="mainContainer">
+        <form autocomplete="off" class="loginForm" id="loginForm" onsubmit="return false">
+          <h1 class="loginHeader">
+            Log in
+            <span class="headlineUnderline"></span>
+          </h1>
+          <label for="loginEmail" class="loginLabel" id="loginLabelEmail">
+            <input
+              type="email"
+              placeholder="Email"
+              id="loginEmail"
+              onfocus="focusInput('loginLabelEmail')"
+              onblur="resetFocus('loginLabelEmail')"
+            />
+            <img src="./img/Mobile/LogIn/mailIconLogIn.png" alt="Email Icon" />
+          </label>
+          <span id="emailErrorSpan" class="errorMessage"></span>
+          <label for="loginPassword" class="loginLabel" id="loginLabelPassword">
+            <input
+              type="password"
+              placeholder="Password"
+              id="loginPassword"
+              onfocus="focusInput('loginLabelPassword')"
+              onblur="resetFocus('loginLabelPassword')"
+            />
+            <img src="./img/Mobile/LogIn/lockIconLogIn.png" alt="Lock Icon" />
+          </label>
+          <span id="passwordErrorSpan" class="errorMessage"></span>
+          <label for="checkboxRemember" class="checkboxLabel">
+            <input type="checkbox" id="checkboxRemember" class="customCheckbox" checked/>
+            Remember me
+          </label>
+          <span id="passwordAndMailErrorSpan" class="errorMessage"></span>
+          <div class="loginBtnContainer">
+            <button class="primaryBtn" id="submitBtn" onclick="login()">Log in</button>
+            <button class="secondaryBtn" onclick="guestLogin()">
+              Guest Log in
+            </button>
+          </div>
+        </form>
+        <div class="registerContainerMobile">
           <p>Not a Join user?</p>
           <button class="primaryBtn signUpBtn" onclick="goToSighUp()">
             Sign up
           </button>
         </div>
-      </div>
-    </header>
-
-    <div class="loginAnimation">
-      <img class="animatedLogo" src="./img/Desktop/login/joinLogoBig.png">
+      </main>
+      <footer class="footerLogin">
+        <a href="./privacyPolice.html">Privacy Policy</a>
+        <a href="./legalNotice.html">Legal notice</a>
+      </footer>
     </div>
-    <div class="landscape-warning">
-      Landscape mode is not supported. Please rotate your device.
-    </div>
-    <main class="mainContainer">
-      <form autocomplete="off" class="loginForm" id="loginForm" onsubmit="return false">
-        <h1 class="loginHeader">
-          Log in
-          <span class="headlineUnderline"></span>
-        </h1>
-        <label for="loginEmail" class="loginLabel" id="loginLabelEmail">
-          <input
-            type="email"
-            placeholder="Email"
-            id="loginEmail"
-            onfocus="focusInput('loginLabelEmail')"
-            onblur="resetFocus('loginLabelEmail')"
-          />
-          <img src="./img/Mobile/LogIn/mailIconLogIn.png" alt="Email Icon" />
-        </label>
-        <span id="emailErrorSpan" class="errorMessage"></span>
-        <label for="loginPassword" class="loginLabel" id="loginLabelPassword">
-          <input
-            type="password"
-            placeholder="Password"
-            id="loginPassword"
-            onfocus="focusInput('loginLabelPassword')"
-            onblur="resetFocus('loginLabelPassword')"
-          />
-          <img src="./img/Mobile/LogIn/lockIconLogIn.png" alt="Lock Icon" />
-        </label>
-        <span id="passwordErrorSpan" class="errorMessage"></span>
-        <label for="checkboxRemember" class="checkboxLabel">
-          <input type="checkbox" id="checkboxRemember" class="customCheckbox" checked/>
-          Remember me
-        </label>
-        <span id="passwordAndMailErrorSpan" class="errorMessage"></span>
-        <div class="loginBtnContainer">
-          <button class="primaryBtn" id="submitBtn" onclick="login()">Log in</button>
-          <button class="secondaryBtn" onclick="guestLogin()">
-            Guest Log in
-          </button>
-        </div>
-      </form>
-      <div class="registerContainerMobile">
-        <p>Not a Join user?</p>
-        <button class="primaryBtn signUpBtn" onclick="goToSighUp()">
-          Sign up
-        </button>
-      </div>
-    </main>
-    <footer class="footerLogin">
-      <a href="./privacyPolice.html">Privacy Policy</a>
-      <a href="./legalNotice.html">Legal notice</a>
-    </footer>
     <script src="./js/storage.js"></script>
     <script src="./js/login.js"></script>
   </body>
