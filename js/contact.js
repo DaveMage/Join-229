@@ -7,7 +7,7 @@ async function contactInit() {
     await getContacts();
     displayContacts(contacts);
     loadUserInitial();
-    
+
 };
 
 
@@ -84,44 +84,18 @@ function displayContacts(contacts) {
  * @function saveContact
  */
 async function saveContact() {
-    let contactName = document.getElementById('contactName').value;
-    if (!isValidName(contactName)) return;
+    // Validate form inputs
+    if (!validateForm()) {
+        return; // Stop execution if validation fails
+    }
 
+    let contactName = document.getElementById('contactName').value;
     let contactEmail = document.getElementById('contactEmail').value;
     let contactPhone = document.getElementById('contactPhone').value;
     let randomColor = profileColor[Math.floor(Math.random() * profileColor.length)];
     let initials = contactName.split(' ').map(n => n[0]).join('');
     let user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
     let userId = localStorage.getItem('guestLoggedIn') === 'true' ? '-O-Mr5g8976g5-yCxVK8' : user.id;
-
-    // Check if email is available
-    try {
-        let isEmailAvailable = await checkEmailAvailability(contactEmail);
-        if (!isEmailAvailable) {
-            showError('contactLabelEmail', 'emailErrorSpan', "This email is already taken");
-            return;
-        }
-        if (contactEmail === '') {
-            showError('contactLabelEmail', 'emailErrorSpan', "Please enter an email address");
-            return;
-        }
-
-        clearError('contactLabelEmail', 'emailErrorSpan');
-    } catch (error) {
-        console.error('Error checking email:', error);
-        return;
-    }
-
-    // Validate phone number
-    if (contactPhone === '') {
-        showError('contactPhone', 'phoneErrorSpan', "Please enter a phone number");
-        return;
-    }
-    if (!isValidPhoneNumber(contactPhone)) {
-        showError('contactPhone', 'phoneErrorSpan', "Please enter a valid phone number");
-        return;
-    }
-    clearError('contactPhone', 'phoneErrorSpan');
 
     try {
         await postData(`/users/${userId}/contacts`, {
@@ -132,7 +106,6 @@ async function saveContact() {
             profileColor: randomColor
         });
         await showSuccessMessage();
-
         contactInit();
     } catch (error) {
         console.error('Error adding contact:', error);
@@ -141,54 +114,68 @@ async function saveContact() {
     if (window.innerWidth >= 1100) {
         closeAddContactDesktop();
     }
-};
-
-// Example validation function for phone numbers
-function isValidPhoneNumber(phone) {
-    // A simple example, you can implement more robust validation
-    return /^\+?[1-9]\d{1,14}$/.test(phone);
 }
 
 
-
-
-
-
-
-
-
-
+/**
+ * Displays an error message for a form field.
+ * @function displayError
+ * @param {string} labelId - The ID of the label element to highlight.
+ * @param {string} errorSpanId - The ID of the span element to display the error message.
+ * @param {string} errorMessage - The error message to display.
+ */
+function displayError(labelId, errorSpanId, errorMessage) {
+    document.getElementById(labelId).style.borderColor = '#ff8190';
+    document.getElementById(errorSpanId).innerHTML = errorMessage;
+}
 
 /**
- * Checks if a name is valid.
- *
- * @param {string} name - The name to be validated.
- * @returns {boolean} - Returns true if the name is valid, otherwise false.
+ * Clears an error message for a form field.
+ * @function clearError
+ * @param {string} labelId - The ID of the label element to clear the highlight.
+ * @param {string} errorSpanId - The ID of the span element to clear the error message.
  */
-function isValidName(name) {
-    const namePattern = /^[A-Za-zÄäÖöÜüß]+(?:\s[A-Za-zÄäÖöÜüß]+)+$/;
-    if (!namePattern.test(name)) {
-        showError('contactLabelName', 'nameErrorSpan', "Please enter your full name");
-        return false;
-    }
-    clearError('contactLabelName', 'nameErrorSpan');
-    return true;
-};
+function clearError(labelId, errorSpanId) {
+    document.getElementById(labelId).style.borderColor = '';
+    document.getElementById(errorSpanId).innerHTML = '';
+}
 
-async function checkEmail(email) {
-    let isEmailAvailable = await checkEmailAvailability(email);
-    if (isEmailAvailable) {
-        showError('contactLabelEmail', 'emailErrorSpan', "This email is already taken");
-        return false;
+/**
+ * Validates the form fields and displays errors if necessary.
+ * @function validateForm
+ * @returns {boolean} - Whether the form is valid.
+ */
+function validateForm() {
+    const contactName = document.getElementById('contactName').value.trim();
+    const contactEmail = document.getElementById('contactEmail').value.trim();
+    const contactPhone = document.getElementById('contactPhone').value.trim();
+
+    let isValid = true;
+
+    if (contactName === '') {
+        displayError('contactLabelName', 'nameErrorSpan', 'Please enter a name');
+        isValid = false;
+    } else {
+        clearError('contactLabelName', 'nameErrorSpan');
     }
-    if (document.getElementById('contactEmail') === '') {
-        showError('contactLabelEmail', 'emailErrorSpan', "Please enter an email address");
-        return false;
+
+    if (contactEmail === '') {
+        displayError('contactLabelEmail', 'emailErrorSpan', 'Please enter an email');
+        isValid = false;
+    } else {
+        clearError('contactLabelEmail', 'emailErrorSpan');
     }
-    
-    clearError('contactLabelEmail', 'emailErrorSpan');
-    return true;
-};
+
+    if (contactPhone === '') {
+        displayError('contactLabelPhone', 'phoneErrorSpan', 'Please enter a phone number');
+        isValid = false;
+    } else {
+        clearError('contactLabelPhone', 'phoneErrorSpan');
+    }
+
+    return isValid;
+}
+
 
 
 /**
@@ -392,7 +379,7 @@ async function saveEditContact(contactId) {
             await getContacts();
             closeAddContactDesktop();
         }
-        if(document.getElementById('contactViewContainer' + contactId)) {            
+        if (document.getElementById('contactViewContainer' + contactId)) {
             updateContactDisplayMobile(contactId, name, email, phone, initials);
             await getContacts();
             closeEditContact();
