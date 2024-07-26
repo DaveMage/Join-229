@@ -775,6 +775,12 @@ span {
   text-align: left!important;
 }
 
+.errorMessageDesktop{
+  color: #ff8190;
+  font-size: 12px;  
+  margin: -24px 0;
+}
+
 
 .errorInput {
   border: 1px solid #ff8190 !important;
