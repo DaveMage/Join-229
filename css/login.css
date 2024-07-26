@@ -185,7 +185,7 @@ body {
   }
 
   main {
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
     margin-top: 63px;
