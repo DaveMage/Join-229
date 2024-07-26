@@ -152,9 +152,6 @@ function showError(labelId, errorSpanId, message) {
 };
 
 
-
-
-
 async function postData(path = '', data = {}) {
     let response = await fetch(BASE_URL + path + '.json', {
         method: 'POST',
@@ -178,3 +175,24 @@ async function createUser(user) {
 };
 
 
+document.addEventListener('DOMContentLoaded', function () {
+    let form = document.getElementById('signUpForm');
+    let submitBtn = document.getElementById('submitBtn');
+    let fields = form.querySelectorAll('#signUpName, #signUpEmail, #signUpPassword, #signUpConfirmPassword');
+
+    function checkFormCompletion() {
+        let allFilled = true;
+        fields.forEach(field => {
+            if (!field.value.trim()) {
+                allFilled = false;
+            }
+        });
+        submitBtn.disabled = !allFilled;
+    }
+
+    fields.forEach(field => {
+        field.addEventListener('input', checkFormCompletion);
+    });
+
+    checkFormCompletion();
+});
