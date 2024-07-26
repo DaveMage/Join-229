@@ -775,6 +775,7 @@ display: block;
     top: 0;
     background-color: #F6F7F8;
     z-index: 99;
+    margin-top: 48px !important;
   }
 
   .searchAndAddTask {
