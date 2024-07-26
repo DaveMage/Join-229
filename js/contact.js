@@ -322,8 +322,7 @@ async function saveEditContact(contactId) {
             await getContacts();
             closeAddContactDesktop();
         }
-        if(document.getElementById('contactViewContainer' + contactId)) {
-            console.log('here');
+        if(document.getElementById('contactViewContainer' + contactId)) {            
             updateContactDisplayMobile(contactId, name, email, phone, initials);
             await getContacts();
             closeEditContact();
@@ -334,6 +333,15 @@ async function saveEditContact(contactId) {
 }
 
 
+/**
+ * Updates the contact display with the provided information.
+ *
+ * @param {string} contactId - The ID of the contact.
+ * @param {string} name - The name of the contact.
+ * @param {string} email - The email of the contact.
+ * @param {string} phone - The phone number of the contact.
+ * @param {string} initials - The initials of the contact.
+ */
 function updateContactDisplay(contactId, name, email, phone, initials) {
     document.getElementById(`cvdName${contactId}`).textContent = name;
     document.getElementById(`cvdEmail${contactId}`).textContent = email;
@@ -346,6 +354,15 @@ function updateContactDisplay(contactId, name, email, phone, initials) {
 }
 
 
+/**
+ * Updates the display of a contact on a mobile device.
+ *
+ * @param {string} contactId - The ID of the contact.
+ * @param {string} name - The name of the contact.
+ * @param {string} email - The email of the contact.
+ * @param {string} phone - The phone number of the contact.
+ * @param {string} initials - The initials of the contact.
+ */
 function updateContactDisplayMobile(contactId, name, email, phone, initials) {
     document.getElementById(`contactViewName${contactId}`).textContent = name;
     document.getElementById(`contactViewEmail${contactId}`).textContent = email;
