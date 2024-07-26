@@ -212,7 +212,8 @@ async function saveTask(taskStatus) {
     }
     if(window.location.pathname === '/board.html'){
         displaySuccsessfullyBoardMessage();
+        window.location.reload();
     }
-    updateBoardHtml();
+    
 };
 
