@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join</title>
+    <link rel="stylesheet" href="./css/landscape.css" />
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/mainDesktop.css" />
     <link
@@ -12,6 +13,7 @@
       type="image/x-icon"
     />
     <script src="./js/main.js"></script>
+    <script src="./js/landscape.js"></script>
     <script src="./js/html/mainHTML.js"></script>
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/contact.css" />
@@ -19,7 +21,10 @@
 
   <body id="template" onload="contactInit()">
     <header id="header" class="headerMenu"></header>
-    <main id="contactMain">
+    <div class="landscape-warning">
+      Landscape mode is not supported. Please rotate your device.
+    </div>
+    <main id="contactMain" class="mainContainer">
       <section id="contactbtnWrap">
         <div id="contactBtnContainer">
           <button

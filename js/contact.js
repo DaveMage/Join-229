@@ -428,6 +428,74 @@ function updateContactDisplayMobile(contactId, name, email, phone, initials) {
 }
 
 
+function validateForm() {
+    // Clear previous errors
+    document.getElementById('nameErrorSpan').style.display = 'none';
+    document.getElementById('emailErrorSpan').style.display = 'none';
+    document.getElementById('phoneErrorSpan').style.display = 'none';
+
+    let isValid = true;
+
+    // Validate Name
+    const name = document.getElementById('contactName').value;
+    if (!name) {
+        document.getElementById('nameErrorSpan').style.display = 'block';
+        isValid = false;
+    }
+
+    // Validate Email
+    const email = document.getElementById('contactEmail').value;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        document.getElementById('emailErrorSpan').style.display = 'block';
+        isValid = false;
+    }
+
+    // Validate Phone
+    const phone = document.getElementById('contactPhone').value;
+    const phoneRegex = /^\+?\d{10,15}$/;
+    if (!phoneRegex.test(phone)) {
+        document.getElementById('phoneErrorSpan').style.display = 'block';
+        isValid = false;
+    }
+
+    if (isValid) {
+        saveContactmobile();
+    }
+
+    return false; // Prevent form submission for demonstration purposes
+}
+
+async function saveContactmobile() {
+
+    let contactName = document.getElementById('contactName').value;
+    let contactEmail = document.getElementById('contactEmail').value;
+    let contactPhone = document.getElementById('contactPhone').value;
+    let randomColor = profileColor[Math.floor(Math.random() * profileColor.length)];
+    let initials = contactName.split(' ').map(n => n[0]).join('');
+    let user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
+    let userId = localStorage.getItem('guestLoggedIn') === 'true' ? '-O-Mr5g8976g5-yCxVK8' : user.id;
+
+    try {
+        await postData(`/users/${userId}/contacts`, {
+            name: contactName,
+            email: contactEmail,
+            phone: contactPhone,
+            initials: initials,
+            profileColor: randomColor
+        });
+        await showSuccessMessage();
+        contactInit();
+    } catch (error) {
+        console.error('Error adding contact:', error);
+    }
+
+    if (window.innerWidth >= 1100) {
+        closeAddContactDesktop();
+    }
+}
+
+
 
 
 

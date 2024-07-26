@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/mainDesktop.css"/>
     <link rel="stylesheet" href="./css/summary.css">
+    <link rel="stylesheet" href="./css/landscape.css" />
+    <script src="./js/landscape.js"></script>
     <script src="./js/storage.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/summary.js"></script>
@@ -19,6 +21,9 @@
 </head>
 <body id="template" onload="onloadInit(), greetingSummary()">
   <header id="header" class="headerMenu"></header>
+  <div class="landscape-warning">
+    Landscape mode is not supported. Please rotate your device.
+  </div>
     <main class="mainContainer" id="summaryMain"> 
       <div class="summaryOverview">
         <div class="headlineContainer summaryMainContent">
