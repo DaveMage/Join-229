@@ -80,6 +80,17 @@
   transition: ease-in-out 100ms;
 }
 
+.createContactBtn:disabled {
+  box-shadow: none;
+  opacity: 0.5;
+}
+
+.createContactBtn:hover:disabled {
+  background-color: #2A3647;
+  box-shadow: none;
+  opacity: 0.5;
+}
+
 .addContactContainerBottom {
   padding: 0 16px;
   padding-bottom: 80px;

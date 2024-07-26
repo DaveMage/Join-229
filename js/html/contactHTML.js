@@ -248,7 +248,7 @@ function addContactDesktop() {
           <img onclick="closeAddContactDesktop()" class="closeBtn" src="img/Mobile/Board/closeTask.png">
           <div class="contactEditDesktopIconForm">
             <img class="userIcon120px" src="/img/Desktop/contact/userLogo120px.png">
-            <form class="contactEditDesktopForm" onsubmit="return false;">               
+            <form class="contactEditDesktopForm" id="contactFormAddContact" onsubmit="return false">               
                 <label for="contactName" class="contactLabel" id="contactLabelName">
                     <input type="text" id="contactName" placeholder="Name" required>
                     <img src="/img/Mobile/Contacts/personIconContacts.png">
@@ -266,7 +266,7 @@ function addContactDesktop() {
                 <span id="phoneErrorSpan" class="errorMessageDesktop"></span>
                 <div class="contactEditDesktopFormBtns">
                   <button class="secondaryBtn" onclick="closeAddContactDesktop()">Cancel <img src="/img/Mobile/AddTask/closeIcon.png"></button>
-                  <button onclick="saveContact()" type="submit" class="primaryBtn createContactBtn">Create contact <img src="/img/Mobile/Contacts/checkWhite.png" ></button>
+                  <button onclick="saveContact()" type="submit" id="submitBtnAddContact" class="primaryBtn createContactBtn">Create contact <img src="/img/Mobile/Contacts/checkWhite.png" ></button>
                 </div>              
             </form>
           </div>            

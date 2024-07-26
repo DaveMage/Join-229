@@ -7,15 +7,16 @@ async function contactInit() {
     await getContacts();
     displayContacts(contacts);
     loadUserInitial();
-
 };
 
 
 function openAddContact() {
     if (window.innerWidth >= 1100) {
         document.getElementById('contactMain').innerHTML += addContactDesktop();
+        disableCreateContactButton();
     } else {
         document.getElementById('contactMain').innerHTML += addContactHtml();
+        disableCreateContactButton();
     }
 };
 
@@ -496,9 +497,24 @@ async function saveContactmobile() {
 }
 
 
+function disableCreateContactButton() {
+    let form = document.getElementById('contactFormAddContact');
+    let submitBtn = document.getElementById('submitBtnAddContact');
+    let fields = form.querySelectorAll('#contactName, #contactEmail, #contactPhone');
 
+    function checkFormCompletion() {
+        let allFilled = true;
+        fields.forEach(field => {
+            if (!field.value.trim()) {
+                allFilled = false;
+            }
+        });
+        submitBtn.disabled = !allFilled;
+    }
 
+    fields.forEach(field => {
+        field.addEventListener('input', checkFormCompletion);
+    });
 
-
-
-
+    checkFormCompletion();
+}
