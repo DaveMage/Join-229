@@ -21,7 +21,8 @@
         name="validateSignUp"
         autocomplete="off"
         class="signUpForm"
-        onsubmit="signUp(); return false; "
+        onsubmit="signUp(); return false"
+        id="signUpForm"
       >
         <img
           class="arrowBack"
@@ -38,6 +39,7 @@
           name="validateName"
             type="text"
             id="signUpName"
+            class="signUpFormLabel"
             placeholder="Name"
             onfocus="focusInput('signUpLabelName')"
             onblur="resetFocus('signUpLabelName')"
@@ -48,10 +50,11 @@
           />
         </label>
         <span id="nameErrorSpan" class="errorMessage"></span>
-        <label for="signUpEmail" class="signUpLabel" id="signUpLabelEmail">
+        <label for="signUpEmail" class="signUpLabel signUpFormLabel" id="signUpLabelEmail">
           <input
             type="email"
             id="signUpEmail"
+            class="signUpFormLabel"
             placeholder="Email"
             onfocus="focusInput('signUpLabelEmail')"
             onblur="resetFocus('signUpLabelEmail')"
@@ -61,13 +64,14 @@
         <span id="emailErrorSpan" class="errorMessage"></span>
         <label
           for="signUpPassword"
-          class="signUpLabel"
+          class="signUpLabel signUpFormLabel"
           id="signUpLabelPassword"
         >
           <input
             required title="Mindestens 3 Zeichen eingeben"
             type="password"
             id="signUpPassword"
+            class="signUpFormLabel"
             pattern=".{3,}"
             placeholder="Password"
             onfocus="focusInput('signUpLabelPassword')"
@@ -82,13 +86,14 @@
         </label>
         <label
           for="signUpConfirmPassword"
-          class="signUpLabel"
+          class="signUpLabel signUpFormLabel"
           id="signUpLabelConfirmPassword"
         >
           <input
             required title="Mindestens 3 Zeichen eingeben"
             type="password"
             id="signUpConfirmPassword"
+            class="signUpFormLabel"
             pattern=".{3,}"
             placeholder="Confrim Password"
             onfocus="focusInput('signUpLabelConfirmPassword')"
@@ -103,7 +108,7 @@
         </label>
 
         <span id="passwordErrorSpan" class="errorMessage"></span>
-        <label for="checkboxPrivacyPolicy" class="signUpCheckboxLabel">
+        <label for="checkboxPrivacyPolicy" class="signUpCheckboxLabel signUpFormLabel">
           <input
             type="checkbox"
             class="customCheckbox"
@@ -113,7 +118,7 @@
           I accept the<a href="./privacyPolice.html"> Privacy Policy</a>
         </label>
         <div class="signUpBtnContainer">
-          <button class="primaryBtn" type="submit">Sign up</button>
+          <button class="primaryBtn" type="submit" id="submitBtn">Sign up</button>
         </div>
       </form> 
     </main>

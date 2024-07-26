@@ -123,6 +123,12 @@ body {
   padding: 4px 0;
 }
 
+.primaryBtn:disabled {
+  opacity: 0.5;
+  background-color: #091931;
+  box-shadow: none;
+}
+
 .footerLogin {
   display: flex;
   align-items: center;
