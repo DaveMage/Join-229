@@ -9,7 +9,7 @@ function addContactHtml() {
                 <span class="headlineUnderline"></span>
             </div>            
             <div class="addContactContainerBottom">
-                <form onsubmit="return false; saveContact()">
+                <form onsubmit="return validateForm()">
                     <div class="contactProfileIcon">
                         <img src="/img/Mobile/Contacts/personProfileIcon.png">
                     </div>
@@ -28,7 +28,7 @@ function addContactHtml() {
                       <img src="/img/Mobile/Contacts/callIconContacts.png">
                     </label>
                     <span id="phoneErrorSpan" class="errorMessage"></span>
-                    <button type="submit" onclick="saveContact()" class="primaryBtn createContactBtn" id="createContactBtn">Create contact <img src="/img/Mobile/Contacts/checkWhite.png"></button>
+                    <button type="submit" onclick="validateForm()" class="primaryBtn createContactBtn" id="createContactBtn">Create contact <img src="/img/Mobile/Contacts/checkWhite.png"></button>
 
                 </form>
             </div>
