@@ -174,8 +174,7 @@ async function createUser(user) {
     }
 };
 
-
-document.addEventListener('DOMContentLoaded', function () {
+function disableSignButton() {
     let form = document.getElementById('signUpForm');
     let submitBtn = document.getElementById('submitBtn');
     let fields = form.querySelectorAll('#signUpName, #signUpEmail, #signUpPassword, #signUpConfirmPassword');
@@ -195,4 +194,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     checkFormCompletion();
-});
+};
