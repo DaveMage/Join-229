@@ -20,49 +20,51 @@
   </head>
 
   <body id="template" onload="contactInit()">
-    <header id="header" class="headerMenu"></header>
     <div class="landscape-warning">
       Landscape mode is not supported. Please rotate your device.
     </div>
-    <main id="contactMain" class="mainContainer">
-      <section id="contactbtnWrap">
-        <div id="contactBtnContainer">
-          <button
-            class="primaryBtn addContactDesktopBtn"
-            onclick="openAddContact()"
-            id="addContactDesktopBtn"
-          >
-            Add new Contact
-            <img
-              id="contactBtnImg"
-              src="./img/Mobile/Contacts/personAddIconContacts.png"
-            />
-          </button>
-        </div>
-        <div class="contactsListContainer" id="contacts"></div>
-      </section>
-      <section id="desktopContactView">
-        <div class="contacsHeadlineContainer">
-          <h1>Contacts</h1>
-          <span class="seperatorBlue"></span>
-          <p>Better with a team</p>
-        </div>
-        <div id="contactViewDesktop"></div>
-      </section>
-      <button
-        class="primaryBtn addContactBtn"
-        onclick="openAddContact()"
-        id="addContactMobileBtn"
-      >
-        <img
-          id="contactBtnImg"
-          src="./img/Mobile/Contacts/personAddIconContacts.png"
-        />
-      </button>
+    <div class="noLandscapeMode">
+      <header id="header" class="headerMenu"></header>
+      <main id="contactMain" class="mainContainer">
+        <section id="contactbtnWrap">
+          <div id="contactBtnContainer">
+            <button
+              class="primaryBtn addContactDesktopBtn"
+              onclick="openAddContact()"
+              id="addContactDesktopBtn"
+            >
+              Add new Contact
+              <img
+                id="contactBtnImg"
+                src="./img/Mobile/Contacts/personAddIconContacts.png"
+              />
+            </button>
+          </div>
+          <div class="contactsListContainer" id="contacts"></div>
+        </section>
+        <section id="desktopContactView">
+          <div class="contacsHeadlineContainer">
+            <h1>Contacts</h1>
+            <span class="seperatorBlue"></span>
+            <p>Better with a team</p>
+          </div>
+          <div id="contactViewDesktop"></div>
+        </section>
+        <button
+          class="primaryBtn addContactBtn"
+          onclick="openAddContact()"
+          id="addContactMobileBtn"
+        >
+          <img
+            id="contactBtnImg"
+            src="./img/Mobile/Contacts/personAddIconContacts.png"
+          />
+        </button>
       
-    </main>
-    <section id="menuDesktop" class="sidebar"></section>
-    <footer id="menu" class="footer"></footer>
+      </main>
+      <section id="menuDesktop" class="sidebar"></section>
+      <footer id="menu" class="footer"></footer>
+    </div>
     <script src="./js/storage.js"></script>
     <script src="./js/html/contactHTML.js"></script>
     <script src="./js/contact.js"></script>

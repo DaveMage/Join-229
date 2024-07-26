@@ -21,75 +21,73 @@
 </head>
 
 <body id="template" onload="boardInit()">
-  <header id="header" class="headerMenu"></header>
   <div class="landscape-warning">
     Landscape mode is not supported. Please rotate your device.
   </div>
-  <main id="mainBoard" class="mainContainer">
-    <div class="headerBoardMobile">
-      <div class="headlineContainer">
-        <h1 class="headline">Board</h1>
-        <img class="addTaskOnBoard" onclick="goToAddTask()" src="./img/Mobile/Board/plusAddTaskMobile.png" />
-      </div>
-      <div class="searchContainer" id="searchBar">
-        <input id="seachFieldBoard" type="search" placeholder="Find Task" onfocus="addActiveClass()"
-          onblur="removeActiveClass()" onkeyup="searchForTasks()" />
-        <span class="seperator"></span>
-        <img src="./img/Mobile/Board/search.png" />
-      </div>
-    </div>
-    <div class="headlineContainer headerBoardDesktop">
-      <h1 class="headline">Board</h1>
-      <div class="searchAndAddTask">
-        <div class="searchContainer" id="searchBarDesktop">
-          <input id="seachFieldBoardDesktop" type="search" placeholder="Find Task" onfocus="addActiveClass()"
-            onblur="removeActiveClass()" onkeyup="searchForTasksDesktop()" />
+  <div class="noLandscapeMode">
+    <header id="header" class="headerMenu"></header>
+    <main id="mainBoard" class="mainContainer">
+      <div class="headerBoardMobile">
+        <div class="headlineContainer">
+          <h1 class="headline">Board</h1>
+          <img class="addTaskOnBoard" onclick="goToAddTask()" src="./img/Mobile/Board/plusAddTaskMobile.png" />
+        </div>
+        <div class="searchContainer" id="searchBar">
+          <input id="seachFieldBoard" type="search" placeholder="Find Task" onfocus="addActiveClass()"
+            onblur="removeActiveClass()" onkeyup="searchForTasks()" />
           <span class="seperator"></span>
           <img src="./img/Mobile/Board/search.png" />
         </div>
-        <div class="addTaskOnBoard" onclick="addNewTaskOnBoard('')">Add task <img src="./img/Desktop/board/addIcon.png" class="addIcon addTaskBtn"></div>
       </div>
-    </div>
+      <div class="headlineContainer headerBoardDesktop">
+        <h1 class="headline">Board</h1>
+        <div class="searchAndAddTask">
+          <div class="searchContainer" id="searchBarDesktop">
+            <input id="seachFieldBoardDesktop" type="search" placeholder="Find Task" onfocus="addActiveClass()"
+              onblur="removeActiveClass()" onkeyup="searchForTasksDesktop()" />
+            <span class="seperator"></span>
+            <img src="./img/Mobile/Board/search.png" />
+          </div>
+          <div class="addTaskOnBoard" onclick="addNewTaskOnBoard('')">Add task <img src="./img/Desktop/board/addIcon.png" class="addIcon addTaskBtn"></div>
+        </div>
+      </div>
     
-    <div id="noSearchResults" class="nothingFound">Keine Suchergebnisse gefunden</div>
-    <div class="tasksContainer">
-      <div class="taskSubContainer">
-        <div class="taskSubContainerHeader">
-          <h2 class="subHeadline">To do</h2>
-          <img class="addTaskDesktopIcon" onclick="addNewTaskOnBoard('')" src="./img/Mobile/Board/plusButtonMobile.png" />
+      <div id="noSearchResults" class="nothingFound">Keine Suchergebnisse gefunden</div>
+      <div class="tasksContainer">
+        <div class="taskSubContainer">
+          <div class="taskSubContainerHeader">
+            <h2 class="subHeadline">To do</h2>
+            <img class="addTaskDesktopIcon" onclick="addNewTaskOnBoard('')" src="./img/Mobile/Board/plusButtonMobile.png" />
+          </div>
+          <div id="toDoContainer" class="taskCardContainer" ondrop="moveTo('open')" ondragover="allowDrop(event)"></div>
         </div>
-        <div id="toDoContainer" class="taskCardContainer" ondrop="moveTo('open')" ondragover="allowDrop(event)"></div>
-      </div>
-
-      <div class="taskSubContainer">
-        <div class="taskSubContainerHeader">
-          <h2 class="subHeadline">In progress</h2>
-          <img class="addTaskDesktopIcon" onclick="addNewTaskOnBoard('inProgress')" src="./img/Mobile/Board/plusButtonMobile.png" />
+        <div class="taskSubContainer">
+          <div class="taskSubContainerHeader">
+            <h2 class="subHeadline">In progress</h2>
+            <img class="addTaskDesktopIcon" onclick="addNewTaskOnBoard('inProgress')" src="./img/Mobile/Board/plusButtonMobile.png" />
+          </div>
+          <div id="progressContainer" class="taskCardContainer" ondrop="moveTo('inProgress')"
+            ondragover="allowDrop(event)"></div>
         </div>
-        <div id="progressContainer" class="taskCardContainer" ondrop="moveTo('inProgress')"
-          ondragover="allowDrop(event)"></div>
-      </div>
-
-      <div class="taskSubContainer">
-        <div class="taskSubContainerHeader">
-          <h2 class="subHeadline">Await feedback</h2>
-          <img class="addTaskDesktopIcon" i onclick="addNewTaskOnBoard('awaitFeedback')" src="./img/Mobile/Board/plusButtonMobile.png" />
+        <div class="taskSubContainer">
+          <div class="taskSubContainerHeader">
+            <h2 class="subHeadline">Await feedback</h2>
+            <img class="addTaskDesktopIcon" i onclick="addNewTaskOnBoard('awaitFeedback')" src="./img/Mobile/Board/plusButtonMobile.png" />
+          </div>
+          <div id="feedbackContainer" class="taskCardContainer" ondrop="moveTo('awaitFeedback')"
+            ondragover="allowDrop(event)"></div>
         </div>
-        <div id="feedbackContainer" class="taskCardContainer" ondrop="moveTo('awaitFeedback')"
-          ondragover="allowDrop(event)"></div>
-      </div>
-
-      <div class="taskSubContainer">
-        <div class="taskSubContainerHeader">
-          <h2 class="subHeadline">Done</h2>
+        <div class="taskSubContainer">
+          <div class="taskSubContainerHeader">
+            <h2 class="subHeadline">Done</h2>
+          </div>
+          <div id="doneContainer" class="taskCardContainer" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
         </div>
-        <div id="doneContainer" class="taskCardContainer" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
       </div>
-    </div>
-  </main>
-
-  <section id="menuDesktop" class="sidebar"></section>
-  <footer id="menu" class="footer"></footer>
+    </main>
+    <section id="menuDesktop" class="sidebar"></section>
+    <footer id="menu" class="footer"></footer>
+  </div>
 </body>
 
 </html>
