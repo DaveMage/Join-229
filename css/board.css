@@ -965,9 +965,8 @@ display: block;
   .taskCardContainer {
     flex-direction: column;
     width: 252px;
+    padding-bottom: 400px;
   }
-
- 
 
   .addTaskDesktopIcon {
     width: 24px;
