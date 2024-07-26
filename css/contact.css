@@ -770,12 +770,11 @@ span {
 
 .errorMessage {
   color: #ff8190;
-  font-size: 12px;
-  display: none;
+  font-size: 12px;  
   margin: -12px 0;
-  margin-left: -146px;
-  
+  text-align: left!important;
 }
+
 
 .errorInput {
   border: 1px solid #ff8190 !important;
