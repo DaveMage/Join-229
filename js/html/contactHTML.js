@@ -9,23 +9,27 @@ function addContactHtml() {
                 <span class="headlineUnderline"></span>
             </div>            
             <div class="addContactContainerBottom">
-                <form onsubmit="return false;">
+                <form onsubmit="return false; saveContact()">
                     <div class="contactProfileIcon">
                         <img src="/img/Mobile/Contacts/personProfileIcon.png">
                     </div>
-                    <label for="contactName" class="contactLabel">
+                    <label for="contactName" class="contactLabel" id="contactLabelName" contactLabelName>
                         <input type="text" id="contactName" placeholder="Name" required>
                         <img src="/img/Mobile/Contacts/personIconContacts.png">
                     </label>
-                    <label for="contactEmail" class="contactLabel">
+                    <span id="nameErrorSpan" class="errorMessage"></span>
+                    <label for="contactEmail" class="contactLabel" id="contactLabelEmail">
                         <input type="email" id="contactEmail" placeholder="Email">
                         <img src="/img/Mobile/Contacts/mailIconContacts.png">
                     </label>
+                    <span id="emailErrorSpan" class="errorMessage"></span>
                     <label for="contactPhone" class="contactLabel">
-                        <input type="tel" id="contactPhone" placeholder="Phone">
-                        <img src="/img/Mobile/Contacts/callIconContacts.png" >
+                      <input type="tel" id="contactPhone" placeholder="Phone">
+                      <img src="/img/Mobile/Contacts/callIconContacts.png">
                     </label>
-                    <button type="submit" class="primaryBtn createContactBtn" onclick="saveContact()" >Create contact <img src="/img/Mobile/Contacts/checkWhite.png"></button>
+                    <span id="phoneErrorSpan" class="errorMessage"></span>
+                    <button type="submit" class="primaryBtn createContactBtn" id="createContactBtn">Create contact <img src="/img/Mobile/Contacts/checkWhite.png"></button>
+
                 </form>
             </div>
         </div>
