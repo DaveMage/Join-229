@@ -13,8 +13,8 @@ function addContactHtml() {
                     <div class="contactProfileIcon">
                         <img src="/img/Mobile/Contacts/personProfileIcon.png">
                     </div>
-                    <label for="contactName" class="contactLabel" id="contactLabelName" contactLabelName>
-                        <input type="text" id="contactName" placeholder="Name" required>
+                    <label for="contactName" class="contactLabel" id="contactLabelName">
+                        <input type="text" id="contactName" placeholder="Name" >
                         <img src="/img/Mobile/Contacts/personIconContacts.png">
                     </label>
                     <span id="nameErrorSpan" class="errorMessage"></span>
@@ -23,12 +23,12 @@ function addContactHtml() {
                         <img src="/img/Mobile/Contacts/mailIconContacts.png">
                     </label>
                     <span id="emailErrorSpan" class="errorMessage"></span>
-                    <label for="contactPhone" class="contactLabel">
+                    <label for="contactPhone" class="contactLabel" id=contactLabelPhone>
                       <input type="tel" id="contactPhone" placeholder="Phone">
                       <img src="/img/Mobile/Contacts/callIconContacts.png">
                     </label>
                     <span id="phoneErrorSpan" class="errorMessage"></span>
-                    <button type="submit" class="primaryBtn createContactBtn" id="createContactBtn">Create contact <img src="/img/Mobile/Contacts/checkWhite.png"></button>
+                    <button type="submit" onclick="saveContact()" class="primaryBtn createContactBtn" id="createContactBtn">Create contact <img src="/img/Mobile/Contacts/checkWhite.png"></button>
 
                 </form>
             </div>
