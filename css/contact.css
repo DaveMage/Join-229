@@ -767,3 +767,16 @@ span {
     transform: translateX(100vw);
   }
 }
+
+.errorMessage {
+  color: #ff8190;
+  font-size: 12px;
+  display: none;
+  margin: -12px 0;
+  margin-left: -146px;
+  
+}
+
+.errorInput {
+  border: 1px solid #ff8190 !important;
+}
