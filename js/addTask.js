@@ -13,7 +13,7 @@ async function addTaskInit() {
 
     // Set the minimum allowable date for the task due date
     dateThreshold();
-}
+};
 
 
 /**
@@ -47,7 +47,7 @@ function toggleAssignedDropdown() {
     // Refresh the content of the dropdown
     displayAssignedTo();
     setCheckedAssigned();
-}
+};
 
 
 /**
