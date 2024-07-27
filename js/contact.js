@@ -45,7 +45,7 @@ function closeAddContactDesktop() {
         floatId.remove();
         overlay.remove();
     });
-}
+};
 
 
 /**
@@ -85,9 +85,8 @@ function displayContacts(contacts) {
  * @function saveContact
  */
 async function saveContact() {
-    // Validate form inputs
     if (!validateForm()) {
-        return // Stop execution if validation fails
+        return
     }
 
     let contactName = document.getElementById('contactName').value;
@@ -111,11 +110,10 @@ async function saveContact() {
     } catch (error) {
         console.error('Error adding contact:', error);
     }
-
     if (window.innerWidth >= 1100) {
         closeAddContactDesktop();
     }
-}
+};
 
 
 /**
@@ -128,7 +126,8 @@ async function saveContact() {
 function displayError(labelId, errorSpanId, errorMessage) {
     document.getElementById(labelId).style.borderColor = '#ff8190';
     document.getElementById(errorSpanId).innerHTML = errorMessage;
-}
+};
+
 
 /**
  * Clears an error message for a form field.
@@ -139,7 +138,8 @@ function displayError(labelId, errorSpanId, errorMessage) {
 function clearError(labelId, errorSpanId) {
     document.getElementById(labelId).style.borderColor = '';
     document.getElementById(errorSpanId).innerHTML = '';
-}
+};
+
 
 /**
  * Validates the form fields and displays errors if necessary.
@@ -150,7 +150,6 @@ function validateForm() {
     const contactName = document.getElementById('contactName').value.trim();
     const contactEmail = document.getElementById('contactEmail');
     const contactPhone = document.getElementById('contactPhone').value.trim();
-
     let isValid = true;
 
     if (contactName === '') {
@@ -173,12 +172,11 @@ function validateForm() {
     } else {
         clearError('contactLabelPhone', 'phoneErrorSpan');
     }
-
     return isValid;
-}
+};
 
 
-function validateEmail(emailField){
+function validateEmail(emailField) {
     let pattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
     if (pattern.test(emailField.value) == false) {
@@ -186,7 +184,7 @@ function validateEmail(emailField){
     }
 
     return true;
-}
+};
 
 
 /**
@@ -217,23 +215,17 @@ async function showSuccessMessage() {
  * @returns {Promise<void>} - A promise that resolves when the contact view is opened.
  */
 async function openContactView(contactId) {
-    // Find the contact with the given id
     let contact = contacts.find(contact => contact.id === contactId);
-
-    // If the contact was found, update the HTML
     if (contact) {
         if (window.innerWidth >= 1100) {
             document.getElementById('contactViewDesktop').innerHTML = contactViewDesktop(contact);
-            // Remove the 'current' class from all items
             let items = document.querySelectorAll('.contactItemActive');
             items.forEach(item => item.classList.remove('contactItemActive'));
-            // Add the 'current' class to the current item
             let currentItem = document.getElementById(`contactItem${contactId}`);
             if (currentItem) {
                 currentItem.classList.add('contactItemActive');
             }
         } else {
-            // Update the HTML with the contact view
             document.getElementById('contactMain').innerHTML = contactViewHtml(contact);
         }
     }
@@ -397,7 +389,7 @@ async function saveEditContact(contactId) {
     } catch (error) {
         console.error('Error editing contact:', error);
     }
-}
+};
 
 
 /**
@@ -418,7 +410,7 @@ function updateContactDisplay(contactId, name, email, phone, initials) {
     document.getElementById(`contactItemName${contactId}`).textContent = name;
     document.getElementById(`contactItemEmail${contactId}`).textContent = email;
     document.getElementById(`profileIconItemInitial${contactId}`).textContent = initials;
-}
+};
 
 
 /**
@@ -435,75 +427,7 @@ function updateContactDisplayMobile(contactId, name, email, phone, initials) {
     document.getElementById(`contactViewEmail${contactId}`).textContent = email;
     document.getElementById(`contactViewPhone${contactId}`).textContent = phone;
     document.getElementById(`contactViewProfileIcon${contactId}`).textContent = initials;
-}
-
-
-/*function validateInputForm() {
-    // Clear previous errors
-    document.getElementById('nameErrorSpan').style.display = 'none';
-    document.getElementById('emailErrorSpan').style.display = 'none';
-    document.getElementById('phoneErrorSpan').style.display = 'none';
-
-    let isValid = true;
-
-    // Validate Name
-    const name = document.getElementById('contactName').value;
-    if (!name) {
-        document.getElementById('nameErrorSpan').style.display = 'block';
-        isValid = false;
-    }
-
-    // Validate Email
-    const email = document.getElementById('contactEmail').value;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        document.getElementById('emailErrorSpan').style.display = 'block';
-        isValid = false;
-    }
-
-    // Validate Phone
-    const phone = document.getElementById('contactPhone').value;
-    const phoneRegex = /^\+?\d{10,15}$/;
-    if (!phoneRegex.test(phone)) {
-        document.getElementById('phoneErrorSpan').style.display = 'block';
-        isValid = false;
-    }
-
-    if (isValid) {
-        saveContactmobile();
-    }
-
-    return false; // Prevent form submission for demonstration purposes
-}*/
-
-/*async function saveContactmobile() {
-
-    let contactName = document.getElementById('contactName').value;
-    let contactEmail = document.getElementById('contactEmail').value;
-    let contactPhone = document.getElementById('contactPhone').value;
-    let randomColor = profileColor[Math.floor(Math.random() * profileColor.length)];
-    let initials = contactName.split(' ').map(n => n[0]).join('');
-    let user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
-    let userId = localStorage.getItem('guestLoggedIn') === 'true' ? '-O-Mr5g8976g5-yCxVK8' : user.id;
-
-    try {
-        await postData(`/users/${userId}/contacts`, {
-            name: contactName,
-            email: contactEmail,
-            phone: contactPhone,
-            initials: initials,
-            profileColor: randomColor
-        });
-        await showSuccessMessage();
-        contactInit();
-    } catch (error) {
-        console.error('Error adding contact:', error);
-    }
-
-    if (window.innerWidth >= 1100) {
-        closeAddContactDesktop();
-    }
-}*/
+};
 
 
 function disableCreateContactButton() {
@@ -523,7 +447,7 @@ function disableCreateContactButton() {
             submitBtn.disabled = !allFilled;
         } else if (submitBtn == null) {
             submitBtnMobile.disabled = !allFilled;
-        }        
+        }
     }
 
     fields.forEach(field => {
@@ -531,4 +455,4 @@ function disableCreateContactButton() {
     });
 
     checkFormCompletion();
-}
+};

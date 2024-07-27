@@ -110,7 +110,6 @@ function loadGuestLogin() {
 function checkGuestLogin() {
     let notLoggedIn = document.getElementById('profileInitial');
     if (notLoggedIn.innerHTML === '') {
-        // document.getElementById('menu').style.display = 'none';
         if (document.getElementById('mainPolicy')) {
             document.getElementById('mainPolicy').style.height = '100vh';
         }
@@ -119,16 +118,16 @@ function checkGuestLogin() {
 
 
 function logout() {
-    const emailToken = localStorage.getItem('emailToken');    // Store the tokens before clearing local storage
+    const emailToken = localStorage.getItem('emailToken');   
     const passwordToken = localStorage.getItem('passwordToken');
-    localStorage.clear();    // Clear all local storage
-    if (emailToken) {    // Restore the tokens
+    localStorage.clear();   
+    if (emailToken) {   
         localStorage.setItem('emailToken', emailToken);
     }
     if (passwordToken) {
         localStorage.setItem('passwordToken', passwordToken);
     }
-    window.location.href = "./login.html";    // Redirect to the login page
+    window.location.href = "./login.html";   
 };
 
 

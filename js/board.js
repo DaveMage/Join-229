@@ -1,4 +1,5 @@
-let currentDraggedElement = null; // drag and drop
+let currentDraggedElement = null;
+
 
 async function boardInit() {
     displayMobileHeader();
@@ -38,15 +39,15 @@ function allowDrop(ev) {
 
 
 function startDragging(event, taskId) {
-    event.dataTransfer.setData('text/plain', taskId); // Legt die zu übertragende Daten (Task-ID) fest    
-    currentDraggedElement = taskId; // Speichert die Task-ID des aktuell gezogenen Elements
+    event.dataTransfer.setData('text/plain', taskId);
+    currentDraggedElement = taskId;
 };
 
 
 async function moveTo(status) {
     await getUser();
     let user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
-    let userId = user ? user.id : '-O-Mr5g8976g5-yCxVK8'; // Setzen Sie einen Standardwert für userId, wenn kein Benutzer gefunden wurde
+    let userId = user ? user.id : '-O-Mr5g8976g5-yCxVK8';
     const task = tasks.find(t => t.id === currentDraggedElement);
     let guestLoggedIn = localStorage.getItem('guestLoggedIn');
 
@@ -57,7 +58,7 @@ async function moveTo(status) {
     if (task) {
         task.status = status;
         updateBoardHtml();
-        await putData('/users/' + userId + '/tasks/' + currentDraggedElement, task); // Übergeben Sie die spezifische Aufgabe        
+        await putData('/users/' + userId + '/tasks/' + currentDraggedElement, task);
     } else {
         console.error('Task not found with ID:', currentDraggedElement);
     }
@@ -112,7 +113,7 @@ function showEmptyWarning(toDo, inProgress, awaitFeedback, done) {
     } else {
         document.getElementById('noSearchResults').classList.remove('d-block');
     }
-}
+};
 
 
 async function displayTaskCard() {
@@ -160,41 +161,41 @@ function closeTaskCardOverview() {
 function closeTaskCardOverviewWithoutAnimation() {
     document.getElementById('taskCardOverviewBackground').remove();
     document.getElementById('backgroundOverlay').remove();
-}
+};
 
 
 async function deleteTask(taskId) {
-    let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken'))); // Find the user object with the specified email
-    userId = users.id; // Get the user ID from the user object    
-    let guestLoggedIn = localStorage.getItem('guestLoggedIn'); // Get the guestLoggedIn value from local storage
+    let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
+    userId = users.id;
+    let guestLoggedIn = localStorage.getItem('guestLoggedIn');
     if (guestLoggedIn === 'true') {
-        userId = '-O-Mr5g8976g5-yCxVK8'; // Set the user ID to the guest user ID if the guest is logged in
+        userId = '-O-Mr5g8976g5-yCxVK8';
     }
     if (!userId) {
-        console.error('User not found'); // Log an error message if user ID is not found
+        console.error('User not found');
         return;
     }
     try {
-        await deleteData('/users/' + userId + '/tasks/' + taskId); // Delete the contact data from the server
-        closeTaskCardOverview(); // Close the task card overview
-        window.location.reload(); // Reload the page        
+        await deleteData('/users/' + userId + '/tasks/' + taskId);
+        closeTaskCardOverview();
+        window.location.reload();
     } catch (error) {
-        console.error('Error deleting contact:', error); // Log an error message if there is an error deleting the contact
+        console.error('Error deleting contact:', error);
     }
 };
 
 
-function searchForTasks() {     // Such Funktion
-    let search = document.getElementById('seachFieldBoard').value.toLowerCase();    //suche die value aus dem feld
-    let todo = document.getElementById('toDoContainer');        // ziehe den inhalt aus den feldern
+function searchForTasks() {
+    let search = document.getElementById('seachFieldBoard').value.toLowerCase();
+    let todo = document.getElementById('toDoContainer');
     let inProgress = document.getElementById('progressContainer');
     let awaitFeedback = document.getElementById('feedbackContainer');
     let done = document.getElementById('doneContainer');
-    clearEveryCategorie(todo, inProgress, awaitFeedback, done);  // lösche alles
-    tasks.forEach(task => {  //durchsuche die tasks
-        if (task.title.toLowerCase().includes(search) || task.description.toLowerCase().includes(search)) {  //suche nach dem wort
+    clearEveryCategorie(todo, inProgress, awaitFeedback, done);
+    tasks.forEach(task => {
+        if (task.title.toLowerCase().includes(search) || task.description.toLowerCase().includes(search)) {
             if (task.status === 'open') {
-                todo.innerHTML += taskCardHTML(task);  //füge es in die kategorie ein
+                todo.innerHTML += taskCardHTML(task);
             } else if (task.status === 'inProgress') {
                 inProgress.innerHTML += taskCardHTML(task);
             } else if (task.status === 'awaitFeedback') {
@@ -203,23 +204,22 @@ function searchForTasks() {     // Such Funktion
                 done.innerHTML += taskCardHTML(task);
             }
         }
-
     });
     displayNoTasks();
 };
 
 
-function searchForTasksDesktop() {     // Such Funktion
-    let search = document.getElementById('seachFieldBoardDesktop').value.toLowerCase();    //suche die value aus dem feld
-    let todo = document.getElementById('toDoContainer');        // ziehe den inhalt aus den feldern
+function searchForTasksDesktop() {
+    let search = document.getElementById('seachFieldBoardDesktop').value.toLowerCase();
+    let todo = document.getElementById('toDoContainer');
     let inProgress = document.getElementById('progressContainer');
     let awaitFeedback = document.getElementById('feedbackContainer');
     let done = document.getElementById('doneContainer');
-    clearEveryCategorie(todo, inProgress, awaitFeedback, done);  // lösche alles
-    tasks.forEach(task => {  //durchsuche die tasks
-        if (task.title.toLowerCase().includes(search) || task.description.toLowerCase().includes(search)) {  //suche nach dem wort
+    clearEveryCategorie(todo, inProgress, awaitFeedback, done);
+    tasks.forEach(task => {
+        if (task.title.toLowerCase().includes(search) || task.description.toLowerCase().includes(search)) {
             if (task.status === 'open') {
-                todo.innerHTML += taskCardHTML(task);  //füge es in die kategorie ein
+                todo.innerHTML += taskCardHTML(task);
             } else if (task.status === 'inProgress') {
                 inProgress.innerHTML += taskCardHTML(task);
             } else if (task.status === 'awaitFeedback') {
@@ -228,7 +228,6 @@ function searchForTasksDesktop() {     // Such Funktion
                 done.innerHTML += taskCardHTML(task);
             }
         }
-
     });
     displayNoTasks();
 };
@@ -258,8 +257,6 @@ function openEditTask(taskId) {
 
 
 function closeEditTask() {
-    //document.getElementById('taskCardEditBackground').remove();
-
     let floatId = document.getElementById('taskCardEditBackgroundFloat');
     let removeBackground = document.getElementById('taskCardEditBackground');
     let overlay = document.getElementById('backgroundOverlayEdit');
@@ -275,9 +272,7 @@ function closeEditTask() {
 function fillSelectedAssigned(taskId) {
     let task = tasks.find(t => t.id === taskId);
     if (task) {
-        selectedAssigned = task.assigned; // Angenommen, task.assigned ist ein Array von zugewiesenen Kontaktnamen
-
-        // Nach dem Füllen von selectedAssigned, die Hintergrundfarbe ändern
+        selectedAssigned = task.assigned;
         for (let i = 0; i < selectedAssigned.length; i++) {
             changeEditColorAssignedItem(selectedAssigned[i].id);
         }
@@ -303,44 +298,30 @@ function changeEditColorAssignedItem(contactId) {
 
 
 function updateSelectedAssignedAndInputField(taskId) {
-    // Clear the selectedAssigned array at the beginning
     selectedAssigned = [];
 
-    // Get all the checkboxes that indicate assigned contacts
     let checkboxes = document.querySelectorAll('.assignedCheckbox');
 
-    // Iterate over each checkbox
     checkboxes.forEach(checkbox => {
-        // Get the data-value attribute of the checkbox
         let contactId = checkbox.getAttribute('data-value');
 
-        // Check if the checkbox is checked
         if (checkbox.checked) {
-            // Find the contact object in the contacts array that matches the contact ID
             let contact = contacts.find(c => c.id === contactId);
-            // Add the contact object to the selectedAssigned array
             if (contact) {
                 selectedAssigned.push(contact);
             }
         }
     });
-
-    // Update the inputAssigned element with the names of the selected contacts
-    let inputAssigned = document.getElementById('assigned' + taskId); // Adjusted to match your example
+    let inputAssigned = document.getElementById('assigned' + taskId);
     inputAssigned.value = selectedAssigned.length > 0 ? 'An: ' + selectedAssigned.map(c => c.name).join(', ') : '';
-
-    // Return the array of selected assigned contacts
     return selectedAssigned;
 };
 
 
 function deleteSubtask(taskId, subtaskIndex) {
-    // Find the task by taskId
     const task = tasks.find(t => t.id === taskId);
     if (task) {
-        // Remove the subtask at subtaskIndex
         task.subtasks.splice(subtaskIndex, 1);
-        // Update the subtask HTML
         const subtaskContainer = document.getElementById(`subtaskContainer${taskId}`);
         if (subtaskContainer) {
             subtaskContainer.innerHTML = displaySubtasksHTML(task);
@@ -379,44 +360,35 @@ function onBlurSubtaskInput() {
 
 
 function addEditSubtask(taskId) {
-    // Retrieve the task by taskId
     const task = tasks.find(t => t.id === taskId);
     if (!task) {
         console.error(`Task with id ${taskId} not found`);
         return;
     }
-    // Ensure that the task has a subtasks array
     if (!task.subtasks) {
         task.subtasks = [];
     }
-    // Retrieve the value of the subtask input field
     let subtaskInput = document.getElementById('subtask' + taskId);
     let subtaskName = subtaskInput.value.trim();
     if (subtaskName === '') {
         console.error('Subtask cannot be empty');
         return;
     }
-    // Add the new subtask as an object to the task's subtasks array
     task.subtasks.push({ name: subtaskName, completed: false });
-    // Retrieve the subtask list element
     let subtaskList = document.getElementById('subtaskContainer' + taskId);
-    // Update the subtask list HTML using a function that generates HTML for subtasks
     subtaskList.innerHTML = displaySubtasksHTML(task);
-    // Clear the input field
     subtaskInput.value = '';
-    // Optionally call a function to handle UI changes after input field is cleared
     if (typeof onBlurSubtaskInput === 'function') {
         onBlurSubtaskInput();
     }
 };
 
-function editSubtask(taskId, subtaskIndex) {
-    // Finde das Eingabefeld des Subtasks
-    const subtaskInput = document.getElementById(`subtaskEditInput${taskId}-${subtaskIndex}`);
-    subtaskInput.removeAttribute('disabled'); // Machen Sie das Eingabefeld editierbar
-    subtaskInput.focus(); // Setze den Fokus auf das Eingabefeld
-}
 
+function editSubtask(taskId, subtaskIndex) {
+    const subtaskInput = document.getElementById(`subtaskEditInput${taskId}-${subtaskIndex}`);
+    subtaskInput.removeAttribute('disabled');
+    subtaskInput.focus();
+};
 
 
 function emptySubtaskInput(taskId) {
@@ -427,13 +399,8 @@ function emptySubtaskInput(taskId) {
 
 
 function getEditFormData(taskId, currentTask) {
-    // Bestehende Unteraufgaben beibehalten
     let existingSubtasks = currentTask.subtasks.map(subtask => ({ name: subtask.name, completed: subtask.completed }));
-    
-    // Neue Unteraufgaben hinzufügen
     let newSubtasks = subtasks.map(subtask => ({ name: subtask, completed: false }));
-    
-    // Kombinieren der alten und neuen Unteraufgaben
     let combinedSubtasks = [...existingSubtasks, ...newSubtasks];
 
     return {
@@ -442,7 +409,7 @@ function getEditFormData(taskId, currentTask) {
         date: document.getElementById('date' + taskId).value,
         priority: getSelectedPriorityEditTask(taskId),
         category: currentTask.category,
-        subtasks: combinedSubtasks, // Ensure subtasks are stored as objects
+        subtasks: combinedSubtasks,
         assigned: updateSelectedAssignedAndInputField(taskId),
         status: currentTask.status,
     };
@@ -455,10 +422,7 @@ async function saveEditTask(taskId) {
         console.error(`Task with id ${taskId} not found`);
         return;
     }
-
     let formData = getEditFormData(taskId, currentTask);
-
-    // Sammle die bearbeiteten Subtasks
     let editedSubtasks = currentTask.subtasks.map((subtask, index) => {
         let inputElement = document.getElementById(`subtaskEditInput${taskId}-${index}`);
         return {
@@ -475,16 +439,15 @@ async function saveEditTask(taskId) {
         }
 
         await putData(`/users/${userId}/tasks/${taskId}`, {
-           title: formData.title,
-           description: formData.description,
-           assigned: formData.assigned,
-           date: formData.date,
-           priority: formData.priority,
-           category: formData.category,
-           subtasks: editedSubtasks, // Verwende die aktualisierten Subtasks
-           status: formData.status
+            title: formData.title,
+            description: formData.description,
+            assigned: formData.assigned,
+            date: formData.date,
+            priority: formData.priority,
+            category: formData.category,
+            subtasks: editedSubtasks,
+            status: formData.status
         });
-        
         closeEditTask();
         window.location.reload();
     } catch (error) {
@@ -495,34 +458,26 @@ async function saveEditTask(taskId) {
 
 
 
-function getSelectedPriority(taskId) {  // Funktion, um die ausgewählte Priorität basierend auf der Aufgaben-ID zu ermitteln
-    // Holt alle Radio-Buttons mit dem Namen, der der Aufgaben-ID entspricht
+function getSelectedPriority(taskId) {  
     const priorities = document.getElementsByName(`priority${taskId}`);
-    let selectedPriority = null; // Variable zur Speicherung des ausgewählten Radio-Buttons
+    let selectedPriority = null; 
 
-    // Schleife durch alle Prioritäten (Radio-Buttons)
     for (const priority of priorities) {
-        // Überprüfen, ob der aktuelle Radio-Button ausgewählt ist
         if (priority.checked) {
-            selectedPriority = priority; // Speichere den ausgewählten Radio-Button
-            break; // Schleife abbrechen, da wir die Auswahl gefunden haben
+            selectedPriority = priority;
+            break;
         }
     }
-
-    // Überprüfen, ob eine Priorität ausgewählt wurde
     if (selectedPriority) {
-        const priorityValue = selectedPriority.value; // Wert des ausgewählten Radio-Buttons
-        const priorityLabel = document.querySelector(`label[for='${selectedPriority.id}']`); // Holt das zugehörige Label-Element
-        const priorityImgSrc = priorityLabel.querySelector('img').src; // Holt den Bildpfad des Bildes innerhalb des Labels
-
-        // Rückgabe eines Objekts mit dem Wert und dem Bildpfad
+        const priorityValue = selectedPriority.value; 
+        const priorityLabel = document.querySelector(`label[for='${selectedPriority.id}']`); 
+        const priorityImgSrc = priorityLabel.querySelector('img').src; 
         return {
             value: priorityValue,
             imgSrc: priorityImgSrc
         };
     } else {
-        // Falls keine Priorität ausgewählt wurde, können wir einen Standardwert oder eine Fehlerbehandlung zurückgeben
-        return null; // oder passende Fehlermeldung/Logik
+        return null;
     }
 };
 
@@ -543,17 +498,17 @@ function addNewTaskOnBoard(taskStatus) {
 function addEventListeners() {
     const form = document.getElementById('addTaskForm');
     if (form) {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Verhindert das Neuladen der Seite
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); 
         });
     }
 
     const inputFields = document.querySelectorAll('.addTaskInput, .addTaskDescription');
     inputFields.forEach(input => {
         if (input) {
-            input.addEventListener('keydown', function(event) {
+            input.addEventListener('keydown', function (event) {
                 if (event.key === 'Enter') {
-                    event.preventDefault(); // Verhindert das Neuladen der Seite
+                    event.preventDefault(); 
                     if (input.id === 'addTaskSubtask') {
                         addSubtaskItem();
                     }
@@ -561,21 +516,20 @@ function addEventListeners() {
             });
         }
     });
-}
+};
 
 
 function addTaskEditEventListeners(taskId) {
     const form = document.getElementById(`editTaskForm${taskId}`);
     if (form) {
-        form.addEventListener('submit', function(event) {
+        form.addEventListener('submit', function (event) {
             event.preventDefault();
         });
     }
-
     const inputFields = document.querySelectorAll(`#title${taskId}, #description${taskId}, #date${taskId}, #subtask${taskId}`);
     inputFields.forEach(input => {
         if (input) {
-            input.addEventListener('keydown', function(event) {
+            input.addEventListener('keydown', function (event) {
                 if (event.key === 'Enter') {
                     event.preventDefault();
 
@@ -586,7 +540,7 @@ function addTaskEditEventListeners(taskId) {
             });
         }
     });
-}
+};
 
 
 function closeAddTaskOnBoard() {
@@ -613,23 +567,16 @@ async function toggleSubtask(subtaskIndex, taskId) {
             console.error('Task not found');
             return;
         }
-
-        // Toggle the completion status of the subtask
         task.subtasks[subtaskIndex].completed = !task.subtasks[subtaskIndex].completed;
 
-        // Update the entire task object
         await putData(`/users/${userId}/tasks/${taskId}`, {
-            ...task // Kopiert alle Eigenschaften des task-Objekts
+            ...task
         });
 
-        // Update the progress bar
         let completedSubtasks = task.subtasks.filter(subtask => subtask.completed).length;
         let progressPercentage = (completedSubtasks / task.subtasks.length) * 100;
         document.getElementById(`progressbar${task.id}`).style.width = `${progressPercentage}%`;
-
-        // Optionally update the task in the local list
         tasks = tasks.map(t => t.id === taskId ? task : t);
-
     } catch (error) {
         console.error('Error toggling subtask:', error);
     }
@@ -640,8 +587,6 @@ async function toggleSubtask(subtaskIndex, taskId) {
 function displaySuccsessfullyBoardMessage() {
     let mainContainer = document.getElementById('mainBoard');
     mainContainer.innerHTML += successfullyTaskDesktopHtml();
-
-    // Remove the success message after 900 milliseconds
     setTimeout(() => {
         document.getElementById('background').remove();
         document.getElementById('backgroundOverlay').remove();
