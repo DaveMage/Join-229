@@ -145,6 +145,15 @@ function setCheckedAssigned() {
     });
 };
 
+function clearAssignedCheckboxes() {
+    // Get all the checkboxes that indicate assigned contacts
+    let checkboxes = document.querySelectorAll('.checkboxAssigned'); 
+
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = false;                                     // Uncheck each checkbox
+        assignedItemCheckBackgroundColor(checkbox, checkbox.parentNode.querySelector('.assignedName').id); // Update the background color
+    });
+}
 
 function selectAssigned() {
     selectedAssigned = [];                                                  // Clear the selectedAssigned array at the beginning
