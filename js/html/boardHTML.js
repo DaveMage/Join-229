@@ -549,7 +549,7 @@ function addNewTaskOnBoardHtml(taskStatus) {
                     <div class="addTaskBtnContainer">
                             <p><span class="required">*</span>This field is required</p>
                             <div class="addTaskDesktopBtnArea">
-                            <button onclick="clearFrom()" class="addTaskClearBtn">
+                            <button onclick="clearForm()" class="addTaskClearBtn">
                                 Clear x
                             </button>
                             <button onclick="saveTask('${taskStatus}')" class="primaryBtn createTaskBtn">
