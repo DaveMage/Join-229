@@ -209,7 +209,6 @@ async function greetingSummary() {
         username = '';
     }
     if (user && user.name && guestLoggedIn !== 'true') {
-        // console.log(user)
         username = user.name;
     }    
     let greeting = '';   

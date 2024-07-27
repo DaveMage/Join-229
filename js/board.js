@@ -630,7 +630,6 @@ async function toggleSubtask(subtaskIndex, taskId) {
         // Optionally update the task in the local list
         tasks = tasks.map(t => t.id === taskId ? task : t);
 
-        // console.log('Subtask status updated successfully');
     } catch (error) {
         console.error('Error toggling subtask:', error);
     }

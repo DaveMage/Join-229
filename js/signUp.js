@@ -112,8 +112,7 @@ async function checkEmailAvailability(email) {
         const data = await response.json();
         const users = Object.values(data);
         // Überprüfen Sie, ob ein Benutzer mit der gleichen E-Mail gefunden wurde
-        const emailExists = users.some(user => user.email === email);
-        // console.log('Email exists:', emailExists);
+        const emailExists = users.some(user => user.email === email);s
         return emailExists;
     } catch (error) {
         console.error('Error checking email availability:', error);
