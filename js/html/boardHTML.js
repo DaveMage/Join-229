@@ -350,15 +350,32 @@ function displayAssignedDropdown(task) {
 function toggleEditAssignedDropdown(taskId) {
     let task = tasks.find(task => task.id === taskId);
     let dropdown = document.getElementById('editAssignedDropdown');
+    let icon = document.getElementById('assignedIcon');
+
     dropdown.classList.toggle('show');
     if (dropdown.classList.contains('show')) {
-        document.getElementById('assignedIcon').style.transform = 'rotate(180deg)';
+        icon.style.transform = 'rotate(180deg)';
+        setTimeout(() => {
+            document.addEventListener('click', handleClickOutside);
+        }, 0); // Verzögerung hinzufügen, um sicherzustellen, dass der Klick-Event-Listener nach dem Öffnen des Dropdowns hinzugefügt wird
     } else {
-        document.getElementById('assignedIcon').style.transform = 'rotate(0deg)';
+        icon.style.transform = 'rotate(0deg)';
+        document.removeEventListener('click', handleClickOutside);
     }
 
     displayAssignedDropdown(task);
-};
+}
+
+function handleClickOutside(event) {
+    let dropdown = document.getElementById('editAssignedDropdown');
+    let icon = document.getElementById('assignedIcon');
+
+    if (!dropdown.contains(event.target) && !icon.contains(event.target)) {
+        dropdown.classList.remove('show');
+        icon.style.transform = 'rotate(0deg)';
+        document.removeEventListener('click', handleClickOutside);
+    }
+}
 
 
 function changeBgColorAssignedItem(contactId) {
