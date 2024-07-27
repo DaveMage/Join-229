@@ -121,6 +121,7 @@ async function saveContact() {
             profileColor: randomColor
         });
         await showSuccessMessage();
+        document.getElementById('backgroundOverlay').remove();
         contactInit();
     } catch (error) {
         console.error('Error adding contact:', error);
