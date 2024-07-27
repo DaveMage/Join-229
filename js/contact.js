@@ -1,3 +1,9 @@
+/**
+ * Initializes the contact page by setting up various UI components and loading necessary data.
+ *
+ * This asynchronous function sets up the initial state of the contact page, including displaying
+ * mobile and desktop menus, loading guest login information, and displaying the user's contacts.
+ */
 async function contactInit() {
     displayMobileHeader();
     displayMobileMenu();
@@ -10,19 +16,27 @@ async function contactInit() {
 }
 
 
+/**
+ * Opens the add contact form, adapting the layout based on the screen width.
+ *
+ * This function checks the window width and displays the add contact form
+ * accordingly, either in a desktop or mobile layout.
+ */
 function openAddContact() {
     if (window.innerWidth >= 1100) {
         document.getElementById('contactMain').innerHTML += addContactDesktop();
-        disableCreateContactButton();
     } else {
         document.getElementById('contactMain').innerHTML += addContactHtml();
-        disableCreateContactButton();
     }
+    disableCreateContactButton();
 }
 
 
 /**
- * Closes the add contact container and removes the background form.
+ * Closes the add contact form and removes the background overlay.
+ *
+ * This function adds an animation class to slide out the add contact form and then removes
+ * the form's background element from the DOM after the animation completes.
  */
 function closeAddContact() {
     document.getElementById('addContactContainer').classList.remove('slideInBottom');
@@ -34,7 +48,10 @@ function closeAddContact() {
 
 
 /**
- * Closes the add contact desktop view.
+ * Closes the add contact form in the desktop view.
+ *
+ * This function adds an animation class to fade out the desktop add contact form and then
+ * removes the form's background and overlay elements from the DOM after the animation completes.
  */
 function closeAddContactDesktop() {
     let floatId = document.getElementById('background');
@@ -49,44 +66,42 @@ function closeAddContactDesktop() {
 
 
 /**
- * Displays the contacts in the provided array in alphabetical order.
- * Each contact is displayed under the corresponding letter section.
- * 
+ * Displays the contacts in alphabetical order.
+ *
+ * This function sorts the contacts array alphabetically and displays each contact under
+ * the corresponding letter section in the contact list.
+ *
  * @param {Array} contacts - The array of contacts to be displayed.
  */
 function displayContacts(contacts) {
     let container = document.getElementById('contacts');
-
     if (container) {
         container.innerHTML = '';
         contacts.sort((a, b) => a.name.localeCompare(b.name));
         let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
-        for (let i = 0; i < alphabet.length; i++) {
-            let letter = alphabet[i];
+        alphabet.forEach(letter => {
             let contactsByLetter = contacts.filter(contact => contact.name.toUpperCase().startsWith(letter));
-
             if (contactsByLetter.length > 0) {
                 container.innerHTML += `<div class="contactAlphabet">${letter}</div><div class="contactSeperator"></div>`;
-
-                for (let j = 0; j < contactsByLetter.length; j++) {
-                    let contact = contactsByLetter[j];
+                contactsByLetter.forEach(contact => {
                     container.innerHTML += contactListItemHtml(contact);
-                }
+                });
             }
-        }
+        });
     }
 }
 
 
 /**
- * Saves a contact by sending a POST request to the server.
- * @async
- * @function saveContact
+ * Saves a new contact by sending a POST request to the server.
+ *
+ * This asynchronous function gathers data from the form, validates it, and sends it to the server
+ * to create a new contact. It then reloads the contacts and shows a success message.
  */
 async function saveContact() {
     if (!validateForm()) {
-        return
+        return;
     }
 
     let contactName = document.getElementById('contactName').value;
@@ -110,28 +125,15 @@ async function saveContact() {
     } catch (error) {
         console.error('Error adding contact:', error);
     }
-    if (window.innerWidth >= 1100) {
-        closeAddContactDesktop();
-    }
-}
-
-
-/**
- * Displays an error message for a form field.
- * @function displayError
- * @param {string} labelId - The ID of the label element to highlight.
- * @param {string} errorSpanId - The ID of the span element to display the error message.
- * @param {string} errorMessage - The error message to display.
- */
-function displayError(labelId, errorSpanId, errorMessage) {
-    document.getElementById(labelId).style.borderColor = '#ff8190';
-    document.getElementById(errorSpanId).innerHTML = errorMessage;
 }
 
 
 /**
  * Clears an error message for a form field.
- * @function clearError
+ *
+ * This function resets the border color of the input field and clears the error message
+ * in the corresponding error span element.
+ *
  * @param {string} labelId - The ID of the label element to clear the highlight.
  * @param {string} errorSpanId - The ID of the span element to clear the error message.
  */
@@ -143,6 +145,10 @@ function clearError(labelId, errorSpanId) {
 
 /**
  * Validates the form fields and displays errors if necessary.
+ * 
+ * This function checks the form fields for a contact name, a valid email, and a phone number.
+ * It displays appropriate error messages if any validation checks fail.
+ * 
  * @function validateForm
  * @returns {boolean} - Whether the form is valid.
  */
@@ -176,11 +182,19 @@ function validateForm() {
 }
 
 
+/**
+ * Validates an email address using a regular expression pattern.
+ * 
+ * This function checks if the provided email field contains a valid email address format.
+ * 
+ * @param {HTMLInputElement} emailField - The email input field element to validate.
+ * @returns {boolean} - True if the email is valid, otherwise false.
+ */
 function validateEmail(emailField) {
     let pattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
     if (pattern.test(emailField.value) == false) {
-        return false
+        return false;
     }
 
     return true;
@@ -189,10 +203,9 @@ function validateEmail(emailField) {
 
 /**
  * Displays a success message based on the window size.
- * If the window width is greater than or equal to 1100, it closes the desktop version of the add contact form,
- * adds the success message to the 'contactMain' element, and removes the message after 800 milliseconds.
- * If the window width is less than 1100, it closes the mobile version of the add contact form,
- * adds the success message to the 'contactMain' element, and removes the message after 800 milliseconds.
+ * 
+ * This function displays a success message after a contact is added. It handles both desktop and mobile views,
+ * removing the message after a short delay.
  */
 async function showSuccessMessage() {
     if (window.innerWidth >= 1100) {
@@ -207,9 +220,11 @@ async function showSuccessMessage() {
 }
 
 
-// Function to open the contact view for a specific contact
 /**
  * Opens the contact view for the specified contact ID.
+ * 
+ * This function displays the detailed view of a contact. It adjusts the display based on the window width,
+ * using different layouts for desktop and mobile views.
  * 
  * @param {number} contactId - The ID of the contact to open the view for.
  * @returns {Promise<void>} - A promise that resolves when the contact view is opened.
@@ -232,15 +247,18 @@ async function openContactView(contactId) {
 }
 
 
-// Function to delete a contact
 /**
  * Deletes a contact from the user's contact list.
+ * 
+ * This asynchronous function deletes a contact by sending a DELETE request to the server.
+ * It then redirects to the contacts page upon successful deletion.
+ * 
  * @param {string} contactId - The ID of the contact to be deleted.
  * @returns {Promise<void>} - A promise that resolves when the contact is successfully deleted.
  */
 async function deleteContact(contactId) {
     await getUser();
-    let = userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
+    let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
     userId = users.id;
     let guestLoggedIn = localStorage.getItem('guestLoggedIn');
     if (guestLoggedIn === 'true') {
@@ -251,100 +269,103 @@ async function deleteContact(contactId) {
         return;
     }
     try {
-        // Delete the contact data from the server
         await deleteData('/users/' + userId + '/contacts/' + contactId);
-        // Redirect to the contacts page after deleting the contact
         window.location.href = 'contacts.html';
     } catch (error) {
-        // Log an error message if there is an error deleting the contact
         console.error('Error deleting contact:', error);
     }
 }
 
 
-// Function to navigate to the contacts page
 /**
  * Redirects the user to the contacts.html page.
+ * 
+ * This function navigates the browser to the contacts page.
  */
 function goToContacts() {
     window.location.href = 'contacts.html';
 }
 
 
-// Function to open the option container
 /**
- * Opens the option container by removing the 'slideOutRight' class and adding the 'slideInRight' class.
- * Also sets the display property of the option container to 'flex'.
+ * Opens the option container.
+ * 
+ * This function displays the option container by applying the appropriate CSS classes for a slide-in animation.
  */
 function openOption() {
-    // Remove the 'slideOutRight' class from the option container
     document.getElementById('optionContainer').classList.remove('slideOutRight');
-    // Add the 'slideInRight' class to the option container
     document.getElementById('optionContainer').classList.add('slideInRight');
-    // Set the display property of the option container to 'flex'
     document.getElementById('optionContainer').style.display = 'block';
 }
 
 
-// Function to close the option container
 /**
- * Closes the option container by removing the 'slideInRight' class, adding the 'slideOutRight' class,
- * and setting the display property to 'none' after a delay of 300 milliseconds.
+ * Closes the option container.
+ * 
+ * This function hides the option container by applying a slide-out animation and then
+ * setting the display property to 'none' after a short delay.
  */
 function closeOption() {
     if (document.getElementById('optionContainer')) {
-        document.getElementById('optionContainer').classList.remove('slideInRight'); // Remove the 'slideInRight' class from the option container
-        document.getElementById('optionContainer').classList.add('slideOutRight'); // Add the 'slideOutRight' class to the option container
+        document.getElementById('optionContainer').classList.remove('slideInRight');
+        document.getElementById('optionContainer').classList.add('slideOutRight');
         setTimeout(() => {
-            document.getElementById('optionContainer').style.display = 'none'; // Set the display property of the option container to 'none' after a delay of 300 milliseconds
+            document.getElementById('optionContainer').style.display = 'none';
         }, 300);
     }
 }
 
 
-// Function to open the edit contact form for a specific contact
 /**
  * Opens the edit contact form for the specified contactId.
- *
+ * 
+ * This function displays the edit form for a contact. It handles both desktop and mobile views,
+ * appending the form to the appropriate container.
+ * 
  * @param {string} contactId - The ID of the contact to edit.
  */
 function openEditContact(contactId) {
     let container;
-    closeOption(); // Close the option container
-    let contact = contacts.find(contact => contact.id === contactId); // Find the contact object with the specified contactId
+    closeOption();
+    let contact = contacts.find(contact => contact.id === contactId);
 
     if (window.innerWidth >= 1100) {
-        container = document.getElementById('contactMain'); // Get the container element for the contact view
-        container.innerHTML += editContactDesktop(contact); // Append the edit contact form to the container
+        container = document.getElementById('contactMain');
+        container.innerHTML += editContactDesktop(contact);
     } else if (document.getElementById('contactViewContainer' + contactId)) {
-        container = document.getElementById('contactViewContainer' + contactId); // Get the container element for the contact view
-        container.innerHTML += contactEditForm(contact); // Append the edit contact form to the container
+        container = document.getElementById('contactViewContainer' + contactId);
+        container.innerHTML += contactEditForm(contact);
     }
 }
 
 
-// Function to close the edit contact form
 /**
  * Closes the edit contact form.
+ * 
+ * This function hides the edit contact form by applying a slide-out animation and then
+ * removing the form elements from the DOM after a short delay.
  */
 function closeEditContact() {
-    document.getElementById('editContactContainer').classList.remove('slideInBottom'); // Remove the 'slideInBottom' class from the edit contact container
-    document.getElementById('editContactContainer').classList.add('slideOutBottom'); // Add the 'slideOutBottom' class to the edit contact container
+    document.getElementById('editContactContainer').classList.remove('slideInBottom');
+    document.getElementById('editContactContainer').classList.add('slideOutBottom');
     setTimeout(() => {
-        document.getElementById('contactEditFormBackground').remove(); // Remove the contact edit form background element after a delay of 300 milliseconds
+        document.getElementById('contactEditFormBackground').remove();
     }, 300);
 }
 
 
-// Function to retrieve a contact by its ID
 /**
  * Retrieves a contact by its ID.
+ * 
+ * This function fetches the contact data from the global contacts array. If the array is empty,
+ * it first retrieves the contacts from the server.
+ * 
  * @param {number} contactId - The ID of the contact to retrieve.
  * @returns {Object|undefined} - The contact object if found, or undefined if not found.
  */
 async function getContactById(contactId) {
     if (contacts.length === 0) {
-        getContacts();
+        await getContacts();
     }
     return contacts.find(contact => contact.id === contactId);
 }
@@ -352,6 +373,9 @@ async function getContactById(contactId) {
 
 /**
  * Saves the edited contact information.
+ * 
+ * This asynchronous function gathers the edited contact details from the form and updates the contact
+ * on the server. It updates the display with the new contact information upon success.
  * 
  * @param {string} contactId - The ID of the contact to be edited.
  * @returns {Promise<void>} - A promise that resolves when the contact information is successfully edited.
@@ -394,7 +418,10 @@ async function saveEditContact(contactId) {
 
 /**
  * Updates the contact display with the provided information.
- *
+ * 
+ * This function updates the contact details displayed on the screen after a contact has been edited.
+ * It handles updates for both the contact view and the contact list.
+ * 
  * @param {string} contactId - The ID of the contact.
  * @param {string} name - The name of the contact.
  * @param {string} email - The email of the contact.
@@ -415,7 +442,10 @@ function updateContactDisplay(contactId, name, email, phone, initials) {
 
 /**
  * Updates the display of a contact on a mobile device.
- *
+ * 
+ * This function updates the contact details displayed on the screen after a contact has been edited,
+ * specifically for mobile view.
+ * 
  * @param {string} contactId - The ID of the contact.
  * @param {string} name - The name of the contact.
  * @param {string} email - The email of the contact.
@@ -430,6 +460,12 @@ function updateContactDisplayMobile(contactId, name, email, phone, initials) {
 }
 
 
+/**
+ * Disables the create contact button until the form is filled.
+ * 
+ * This function checks if all required fields in the add contact form are filled.
+ * It enables or disables the submit button based on the form's completeness.
+ */
 function disableCreateContactButton() {
     let form = document.getElementById('contactFormAddContact');
     let submitBtn = document.getElementById('submitBtnAddContact');
