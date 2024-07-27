@@ -410,24 +410,13 @@ function addEditSubtask(taskId) {
     }
 };
 
+function editSubtask(taskId, subtaskIndex) {
+    // Finde das Eingabefeld des Subtasks
+    const subtaskInput = document.getElementById(`subtaskEditInput${taskId}-${subtaskIndex}`);
+    subtaskInput.removeAttribute('disabled'); // Machen Sie das Eingabefeld editierbar
+    subtaskInput.focus(); // Setze den Fokus auf das Eingabefeld
+}
 
-function displaySubtasksHTML(task) {
-    let subtaskHtml = '';
-    if (task.subtasks && task.subtasks.length > 0) {
-        for (let i = 0; i < task.subtasks.length; i++) {
-            subtaskHtml += /*html*/ `
-            <li class="subtaskItem">
-                <input type="text" class="subtaskItemInput" value="${task.subtasks[i].name}" readonly id="subtaskEditInput${task.id}-${i}">
-                <div class="subtaskItemIconContainer">
-                    <img src="/img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemLeftIcon" onclick="focusSubtaskInput(${task.id}, ${i})">
-                    <span class="subtaskSeperator"></span>
-                    <img src="/img/Mobile/AddTask/trashIcon.png" alt="Trash Icon" class="subtaskItemIcon" id="subtaskItemRightIcon" onclick="deleteSubtask(${task.id}, ${i})">
-                </div>
-            </li>`;
-        }
-    }
-    return subtaskHtml;
-};
 
 
 function emptySubtaskInput(taskId) {
@@ -466,7 +455,17 @@ async function saveEditTask(taskId) {
         console.error(`Task with id ${taskId} not found`);
         return;
     }
+
     let formData = getEditFormData(taskId, currentTask);
+
+    // Sammle die bearbeiteten Subtasks
+    let editedSubtasks = currentTask.subtasks.map((subtask, index) => {
+        let inputElement = document.getElementById(`subtaskEditInput${taskId}-${index}`);
+        return {
+            ...subtask,
+            name: inputElement ? inputElement.value : subtask.name
+        };
+    });
 
     try {
         let userId = await getUserId();
@@ -482,7 +481,7 @@ async function saveEditTask(taskId) {
            date: formData.date,
            priority: formData.priority,
            category: formData.category,
-           subtasks: formData.subtasks,
+           subtasks: editedSubtasks, // Verwende die aktualisierten Subtasks
            status: formData.status
         });
         
@@ -493,6 +492,7 @@ async function saveEditTask(taskId) {
     }
     updateBoardHtml();
 };
+
 
 
 function getSelectedPriority(taskId) {  // Funktion, um die ausgewählte Priorität basierend auf der Aufgaben-ID zu ermitteln
