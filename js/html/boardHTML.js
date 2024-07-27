@@ -377,9 +377,9 @@ function displaySubtasksHTML(task) {
         for (let i = 0; i < task.subtasks.length; i++) {
             subtaskHtml += /*html*/ `
             <li class="subtaskItem">
-                <input type="text" class="subtaskItemInput" value="${task.subtasks[i].name}" readonly id="subtaskEditInput">            
+                <input type="text" class="subtaskItemInput" value="${task.subtasks[i].name}"  id="subtaskEditInput${task.id}-${i}">            
                     <div class="subtaskItemIconContainer">
-                        <img src="./img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemLeftIcon">
+                        <img src="./img/Mobile/AddTask/editIcon.png" alt="Edit Icon" class="subtaskItemIcon" id="subtaskItemLeftIcon" onclick="editSubtask('${task.id}', '${i}')">
                         <span class="subtaskSeperator"></span>
                         <img src="./img/Mobile/AddTask/trashIcon.png" alt="Trash Icon" class="subtaskItemIcon" id="subtaskItemRightIcon" onclick="deleteSubtask('${task.id}', ${i})">
                     </div>
