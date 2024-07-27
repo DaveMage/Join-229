@@ -272,7 +272,7 @@ function assignedItemHtml(contact) {
                 id="addTaskFromAssignedCheckbox${contact.id}"
                 type="checkbox"
                 class="checkboxAssigned"
-                onchange="assignedItemChackBackgroundColor(this, 'name${contact.id}'); selectAssigned()"/>
+                onchange="assignedItemCheckBackgroundColor(this, 'name${contact.id}'); selectAssigned()"/>
         </label>`;
 }
 
