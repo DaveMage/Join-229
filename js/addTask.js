@@ -19,11 +19,12 @@ function toggleAssignedDropdown() {
         icon.style.transform = 'rotate(180deg)';
         setTimeout(() => {
             document.addEventListener('click', handleClickOutside);
-        }, 0); // Verzögerung hinzufügen, um sicherzustellen, dass der Klick-Event-Listener nach dem Öffnen des Dropdowns hinzugefügt wird
+        }, 0); 
     }
     displayAssignedTo();
     setCheckedAssigned();
 }
+
 
 function handleClickOutside(event) {
     let dropdown = document.getElementById('dropdownAssigned');
@@ -36,12 +37,6 @@ function handleClickOutside(event) {
         document.removeEventListener('click', handleClickOutside);
     }
 }
-
-
-
-
-
-
 
 function handleClickOutside(event) {
     let dropdown = document.getElementById('dropdownAssigned');
@@ -75,23 +70,23 @@ function dateTreshhold() {
 };
 
 
-function getSelectedPriority() {                                         // Funktion, um die ausgewählte Priorität zu ermitteln
-    const priorities = document.getElementsByName('priority');           // Holt alle Radio-Buttons mit dem Namen 'priority'
-    let selectedPriority = null;                                         // Variable zur Speicherung des ausgewählten Radio-Buttons
+function getSelectedPriority() {                                         
+    const priorities = document.getElementsByName('priority');           
+    let selectedPriority = null;                                         
 
-    for (const priority of priorities) {                                 // Schleife durch alle Prioritäten (Radio-Buttons) 
-        if (priority.checked) {                                          // Überprüfen, ob der aktuelle Radio-Button ausgewählt ist
-            selectedPriority = priority;                                 // Speichere den ausgewählten Radio-Button
-            break;                                                       // Schleife abbrechen, da wir die Auswahl gefunden haben
+    for (const priority of priorities) {                                 
+        if (priority.checked) {                                          
+            selectedPriority = priority;                                 
+            break;                                                      
         }
     }
 
-    if (selectedPriority) {                                              // Überprüfen, ob eine Priorität ausgewählt wurde
-        const priorityValue = selectedPriority.value;                    // Wert des ausgewählten Radio-Buttons
-        const priorityLabel = document.querySelector(`label[for=${selectedPriority.id}]`); // Holt das zugehörige Label-Element
-        const priorityImgSrc = priorityLabel.querySelector('img').src;   // Holt den Bildpfad des Bildes innerhalb des Labels
+    if (selectedPriority) {                                              
+        const priorityValue = selectedPriority.value;                    
+        const priorityLabel = document.querySelector(`label[for=${selectedPriority.id}]`); 
+        const priorityImgSrc = priorityLabel.querySelector('img').src;   
 
-        return {                                                         // Rückgabe eines Objekts mit dem Wert und dem Bildpfad 
+        return {                                                          
             value: priorityValue,
             imgSrc: priorityImgSrc
         };
@@ -99,20 +94,20 @@ function getSelectedPriority() {                                         // Funk
 };
 
 
-function getSelectedPriorityEditTask(taskId) {                                         // Funktion, um die ausgewählte Priorität zu ermitteln
-    const priorities = document.getElementsByName(`priority${taskId}`);           // Holt alle Radio-Buttons mit dem Namen 'priority'
-    let selectedPriority = null;                                         // Variable zur Speicherung des ausgewählten Radio-Buttons
+function getSelectedPriorityEditTask(taskId) {                                         
+    const priorities = document.getElementsByName(`priority${taskId}`);           
+    let selectedPriority = null;                                         
 
-    for (const priority of priorities) {                                 // Schleife durch alle Prioritäten (Radio-Buttons) 
-        if (priority.checked) {                                          // Überprüfen, ob der aktuelle Radio-Button ausgewählt ist
-            selectedPriority = priority;                                 // Speichere den ausgewählten Radio-Button
-            break;                                                       // Schleife abbrechen, da wir die Auswahl gefunden haben
+    for (const priority of priorities) {                                 
+        if (priority.checked) {                                          
+            selectedPriority = priority;                                 
+            break;                                                      
         }
     }
 
-    if (selectedPriority) {                                              // Überprüfen, ob eine Priorität ausgewählt wurde
-        const priorityValue = selectedPriority.value;                    // Wert des ausgewählten Radio-Buttons
-        const priorityLabel = document.querySelector(`label[for=${selectedPriority.id}]`); // Holt das zugehörige Label-Element
+    if (selectedPriority) {                                              
+        const priorityValue = selectedPriority.value;                    
+        const priorityLabel = document.querySelector(`label[for=${selectedPriority.id}]`); 
         const priorityImgSrc = priorityLabel.querySelector('img').src;   // Holt den Bildpfad des Bildes innerhalb des Labels
 
         return {                                                         // Rückgabe eines Objekts mit dem Wert und dem Bildpfad 
