@@ -6,11 +6,11 @@ function handleOrientationChange() {
         document.querySelector('.landscape-warning').style.display = 'none';
         document.querySelector('.noLandscapeMode').style.display = 'block';
     }
-};
+}
 
 
 window.addEventListener('orientationchange', handleOrientationChange);
 
 document.addEventListener('DOMContentLoaded', function () {
     handleOrientationChange();
-});
+})
