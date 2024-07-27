@@ -59,9 +59,27 @@ function closeAddContactDesktop() {
 
     floatId.classList.add('closing');
     floatId.addEventListener('animationend', () => {
-        floatId.remove();
-        overlay.remove();
+        if (floatId) {
+            floatId.remove();
+        }
+
+        if (overlay) {
+            overlay.remove();
+        }       
     });
+}
+
+
+/**
+ * Displays an error message for a form field.
+ * @function displayError
+ * @param {string} labelId - The ID of the label element to highlight.
+ * @param {string} errorSpanId - The ID of the span element to display the error message.
+ * @param {string} errorMessage - The error message to display.
+ */
+function displayError(labelId, errorSpanId, errorMessage) {
+    document.getElementById(labelId).style.borderColor = '#ff8190';
+    document.getElementById(errorSpanId).innerHTML = errorMessage;
 }
 
 
