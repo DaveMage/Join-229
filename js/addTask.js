@@ -2,6 +2,7 @@ async function addTaskInit() {
     templateInit();
     await getContacts();
     dateTreshhold();
+    
 };
 
 
@@ -12,13 +13,46 @@ function toggleAssignedDropdown() {
     if (dropdown.style.display === 'flex') {
         dropdown.style.display = 'none';
         icon.style.transform = 'rotate(0deg)';
+        document.removeEventListener('click', handleClickOutside);
     } else {
         dropdown.style.display = 'flex';
         icon.style.transform = 'rotate(180deg)';
+        setTimeout(() => {
+            document.addEventListener('click', handleClickOutside);
+        }, 0); // Verzögerung hinzufügen, um sicherzustellen, dass der Klick-Event-Listener nach dem Öffnen des Dropdowns hinzugefügt wird
     }
     displayAssignedTo();
     setCheckedAssigned();
-};
+}
+
+function handleClickOutside(event) {
+    let dropdown = document.getElementById('dropdownAssigned');
+    let icon = document.getElementById('assignedDropdownArrow');
+    let input = document.getElementById('addTaskFormAssignedInput');
+
+    if (!dropdown.contains(event.target) && !icon.contains(event.target) && !input.contains(event.target)) {
+        dropdown.style.display = 'none';
+        icon.style.transform = 'rotate(0deg)';
+        document.removeEventListener('click', handleClickOutside);
+    }
+}
+
+
+
+
+
+
+
+function handleClickOutside(event) {
+    let dropdown = document.getElementById('dropdownAssigned');
+    let icon = document.getElementById('assignedDropdownArrow');
+
+    if (!dropdown.contains(event.target) && !icon.contains(event.target)) {
+        dropdown.style.display = 'none';
+        icon.style.transform = 'rotate(0deg)';
+        document.removeEventListener('click', handleClickOutside);
+    }
+}
 
 
 function toggleCategoryDropdown() {
