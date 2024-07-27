@@ -9,7 +9,7 @@ function addContactHtml() {
                 <span class="headlineUnderline"></span>
             </div>            
             <div class="addContactContainerBottom">
-                <form id="contactFormAddContact" onsubmit="saveContact()">
+                <form id="contactFormAddContact" onsubmit="return false">
                     <div class="contactProfileIcon">
                         <img src="/img/Mobile/Contacts/personProfileIcon.png">
                     </div>
@@ -19,7 +19,7 @@ function addContactHtml() {
                     </label>
                     <span id="nameErrorSpan" class="errorMessage"></span>
                     <label for="contactEmail" class="contactLabel" id="contactLabelEmail">
-                        <input type="email" id="contactEmail" placeholder="Email">
+                        <input type="email" required id="contactEmail" placeholder="Email">
                         <img src="/img/Mobile/Contacts/mailIconContacts.png">
                     </label>
                     <span id="emailErrorSpan" class="errorMessage"></span>
@@ -61,7 +61,7 @@ function addContactDesktop() {
                 </label>
                 <span id="nameErrorSpan" class="errorMessageDesktop"></span>
                 <label for="contactEmail" class="contactLabel" id="contactLabelEmail">
-                    <input type="email" pattern=".+@example\.com" required id="contactEmail" placeholder="Email">
+                    <input type="email" required id="contactEmail" placeholder="Email">
                     <img src="/img/Mobile/Contacts/mailIconContacts.png">
                 </label>
                 <span id="emailErrorSpan" class="errorMessageDesktop"></span>

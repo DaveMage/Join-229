@@ -87,7 +87,7 @@ function displayContacts(contacts) {
 async function saveContact() {
     // Validate form inputs
     if (!validateForm()) {
-        return; // Stop execution if validation fails
+        return // Stop execution if validation fails
     }
 
     let contactName = document.getElementById('contactName').value;
@@ -476,7 +476,7 @@ function updateContactDisplayMobile(contactId, name, email, phone, initials) {
     return false; // Prevent form submission for demonstration purposes
 }*/
 
-async function saveContactmobile() {
+/*async function saveContactmobile() {
 
     let contactName = document.getElementById('contactName').value;
     let contactEmail = document.getElementById('contactEmail').value;
@@ -503,7 +503,7 @@ async function saveContactmobile() {
     if (window.innerWidth >= 1100) {
         closeAddContactDesktop();
     }
-}
+}*/
 
 
 function disableCreateContactButton() {
