@@ -38,7 +38,7 @@ async function boardInit() {
 
     // Initialize any templates used in the interface
     templateInit();
-};
+}
 
 
 /**
@@ -1166,4 +1166,4 @@ function displaySuccsessfullyBoardMessage() {
         document.getElementById('background').remove();
         document.getElementById('backgroundOverlay').remove();
     }, 900);
-};
+}
