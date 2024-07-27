@@ -448,9 +448,9 @@ function addNewTaskOnBoardHtml(taskStatus) {
                         onblur="datequery()" />
                         <span id="errorSpanDate" class="errorSpan">This field is required</span>
                     </label>
-                    <label for="addTaskPriority" class="addTaskLabelPriority">
-                        Priority
-                    </label>
+                    <div class="addTaskLabelPriority">
+                        <span>Priority</span>
+                    </div>
                     <!-- Priority -->
                     <div class="prioContainer">
                         <!-- Prio input Radio als btn -->
