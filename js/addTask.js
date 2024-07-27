@@ -536,7 +536,7 @@ function addSubtaskItem() {
 
     // Loop through the subtasks array and generate the HTML for each subtask
     for (let i = 0; i < subtasks.length; i++) {
-        document.getElementById('subtaskContainer').innerHTML += addSubtaskItemHTML();
+        document.getElementById('subtaskContainer').innerHTML += addSubtaskItemHTML(i);
     }
 
     // Clear the input field after adding the subtask
@@ -555,7 +555,7 @@ function addSubtaskItem() {
  *
  * @return {string} HTML string representing a subtask item.
  */
-function addSubtaskItemHTML() {
+function addSubtaskItemHTML(i) {
     return /*html*/ `
     <li class="addTaskSubtaskItem">
         <input type="text" class="subtaskItemInput" value="${subtasks[i]}" readonly>
