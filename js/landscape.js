@@ -16,8 +16,8 @@ function handleOrientationChange() {
     }
 }
 
-window.addEventListener('orientationchange', handleOrientationChange);
 
+window.addEventListener('orientationchange', handleOrientationChange);
 
 document.addEventListener('DOMContentLoaded', function () {
     handleOrientationChange();
