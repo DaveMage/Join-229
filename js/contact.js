@@ -148,7 +148,7 @@ function clearError(labelId, errorSpanId) {
  */
 function validateForm() {
     const contactName = document.getElementById('contactName').value.trim();
-    const contactEmail = document.getElementById('contactEmail').value.trim();
+    const contactEmail = document.getElementById('contactEmail');
     const contactPhone = document.getElementById('contactPhone').value.trim();
 
     let isValid = true;
@@ -160,8 +160,8 @@ function validateForm() {
         clearError('contactLabelName', 'nameErrorSpan');
     }
 
-    if (contactEmail === '') {
-        displayError('contactLabelEmail', 'emailErrorSpan', 'Please enter an email');
+    if (!validateEmail(contactEmail)) {
+        displayError('contactLabelEmail', 'emailErrorSpan', 'Please enter a correct email (example@mail.com)');
         isValid = false;
     } else {
         clearError('contactLabelEmail', 'emailErrorSpan');
@@ -177,6 +177,16 @@ function validateForm() {
     return isValid;
 }
 
+
+function validateEmail(emailField){
+    let pattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+    if (pattern.test(emailField.value) == false) {
+        return false
+    }
+
+    return true;
+}
 
 
 /**
@@ -296,7 +306,6 @@ function closeOption() {
         setTimeout(() => {
             document.getElementById('optionContainer').style.display = 'none'; // Set the display property of the option container to 'none' after a delay of 300 milliseconds
         }, 300);
-
     }
 };
 
@@ -429,7 +438,7 @@ function updateContactDisplayMobile(contactId, name, email, phone, initials) {
 }
 
 
-function validateForm() {
+/*function validateInputForm() {
     // Clear previous errors
     document.getElementById('nameErrorSpan').style.display = 'none';
     document.getElementById('emailErrorSpan').style.display = 'none';
@@ -465,7 +474,7 @@ function validateForm() {
     }
 
     return false; // Prevent form submission for demonstration purposes
-}
+}*/
 
 async function saveContactmobile() {
 
@@ -500,6 +509,7 @@ async function saveContactmobile() {
 function disableCreateContactButton() {
     let form = document.getElementById('contactFormAddContact');
     let submitBtn = document.getElementById('submitBtnAddContact');
+    let submitBtnMobile = document.getElementById('createContactBtn');
     let fields = form.querySelectorAll('#contactName, #contactEmail, #contactPhone');
 
     function checkFormCompletion() {
@@ -509,7 +519,11 @@ function disableCreateContactButton() {
                 allFilled = false;
             }
         });
-        submitBtn.disabled = !allFilled;
+        if (submitBtnMobile == null) {
+            submitBtn.disabled = !allFilled;
+        } else if (submitBtn == null) {
+            submitBtnMobile.disabled = !allFilled;
+        }        
     }
 
     fields.forEach(field => {
