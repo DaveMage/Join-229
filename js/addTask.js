@@ -344,7 +344,6 @@ function saveSubtaskItem(event) {
     if (subtaskIndex !== -1) {
         subtasks[subtaskIndex] = subtaskItemInput.value;
     }
-    // console.log(subtasks);
     subtaskItemInput.setAttribute('readonly', 'readonly');                          // Setzen des Inputs auf "readonly"
 
     leftIcon.src = './img/Mobile/AddTask/editIcon.png';                              // Anpassen der Icons und deren Click-Handler

@@ -327,7 +327,6 @@ function displayAssignedDropdown(task) {
     // Es wird angenommen, dass task.assigned ein Array von Kontakt-IDs ist, die bereits zugewiesen wurden.
     const assignedIds = task.assigned ? task.assigned.map(contact => contact.id) : [];
 
-    console.log(task)
     for (let i = 0; i < contacts.length; i++) {
         // Überprüfen, ob der aktuelle Kontakt bereits zugewiesen wurde
         const isChecked = assignedIds.includes(contacts[i].id) ? 'checked' : '';
