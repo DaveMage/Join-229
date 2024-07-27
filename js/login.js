@@ -34,7 +34,6 @@ async function login() {
     let email = document.getElementById('loginEmail').value;
     let password = document.getElementById('loginPassword').value;
     let rememberMe = document.getElementById('checkboxRemember').checked;
-
     if (email == '' && password == '') {
         showError('loginLabelEmail', 'emailErrorSpan', 'Please enter your email address!')
         showError('loginLabelPassword', 'passwordErrorSpan', 'Please enter your password!')
@@ -115,14 +114,12 @@ function disableLoginButton() {
         fields.forEach(field => {
             if (!field.value.trim()) {
                 allFilled = false;
-                }
-            });
-            submitBtn.disabled = !allFilled;
-        }
-
-        fields.forEach(field => {
-            field.addEventListener('input', checkFormCompletion);
+            }
+        });
+        submitBtn.disabled = !allFilled;
+    }
+    fields.forEach(field => {
+        field.addEventListener('input', checkFormCompletion);
     });
-
     checkFormCompletion();
 };

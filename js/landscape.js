@@ -6,12 +6,11 @@ function handleOrientationChange() {
         document.querySelector('.landscape-warning').style.display = 'none';
         document.querySelector('.noLandscapeMode').style.display = 'block';
     }
-}
+};
 
-// JavaScript zur Überwachung von Änderungen der Ausrichtung
+
 window.addEventListener('orientationchange', handleOrientationChange);
 
-// Initiale Überprüfung
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     handleOrientationChange();
 });
