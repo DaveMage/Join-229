@@ -38,7 +38,7 @@ async function boardInit() {
 
     // Initialize any templates used in the interface
     templateInit();
-}
+};
 
 
 /**
