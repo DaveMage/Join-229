@@ -7,14 +7,21 @@
 function handleOrientationChange() {
     const orientation = screen.orientation || screen.mozOrientation || screen.msOrientation;
 
-    if (orientation.type.includes('landscape')) {
-        // Device is in landscape mode
-        document.querySelector('.landscape-warning').style.display = 'block';
-        document.querySelector('.noLandscapeMode').style.display = 'none';
-    } else if (orientation.type.includes('portrait')) {
-        // Device is in portrait mode
-        document.querySelector('.landscape-warning').style.display = 'none';
-        document.querySelector('.noLandscapeMode').style.display = 'block';
+    // Select elements
+    const landscapeWarning = document.querySelector('.landscape-warning');
+    const noLandscapeMode = document.querySelector('.noLandscapeMode');
+
+    // Ensure elements exist before accessing their styles
+    if (landscapeWarning && noLandscapeMode) {
+        if (orientation.type.includes('landscape')) {
+            // Device is in landscape mode
+            landscapeWarning.style.display = 'block';
+            noLandscapeMode.style.display = 'none';
+        } else if (orientation.type.includes('portrait')) {
+            // Device is in portrait mode
+            landscapeWarning.style.display = 'none';
+            noLandscapeMode.style.display = 'block';
+        }
     }
 }
 
