@@ -4,7 +4,7 @@ function goToBoardUsual(mark) {
 
 
 function goToBoard() {
-    window.location.href = './board.html';       
+    window.location.href = './board.html';
 };
 
 
@@ -15,8 +15,8 @@ async function displayUserName() {
     let guestLoggedIn = localStorage.getItem('guestLoggedIn');
 
     if (mainContainer) {
-        if(guestLoggedIn === 'true'){
-            document.getElementById('greetingName').innerHTML = '';                     
+        if (guestLoggedIn === 'true') {
+            document.getElementById('greetingName').innerHTML = '';
         }
         if (user && user.name && guestLoggedIn !== 'true') {
 
@@ -38,27 +38,27 @@ async function displayUserName() {
 };
 
 
-function greeting(){
+function greeting() {
     let greetingContainer = document.getElementById('greetingText');
     let date = new Date();
     let hour = date.getHours();
     let greeting = '';
     let guestLoggedIn = localStorage.getItem('guestLoggedIn');
-    if(hour >= 0 && hour < 10){
+    if (hour >= 0 && hour < 10) {
         if (guestLoggedIn === 'true') {
             greeting = 'Good morning!';
         } else {
             greeting = 'Good morning,';
-        }       
+        }
     }
-    if(hour >= 10 && hour < 18){
+    if (hour >= 10 && hour < 18) {
         if (guestLoggedIn === 'true') {
             greeting = 'Good noon!';
         } else {
             greeting = 'Good noon,';
         }
     }
-    if(hour >= 18){
+    if (hour >= 18) {
         if (guestLoggedIn === 'true') {
             greeting = 'Good evening!';
         } else {
@@ -100,64 +100,64 @@ function countTasks(tasks) {
 
 
 async function displayCountToDo() {
-    let tasks = await getTask(); // Fetch the tasks    
-    let openTasksCount = countOpenTasks(tasks); // Count the 'open' tasks
+    let tasks = await getTask();
+    let openTasksCount = countOpenTasks(tasks);
     document.getElementById('openTasks').innerHTML = openTasksCount;
 };
 
 
 async function displayCountInProgress() {
-    let tasks = await getTask(); // Fetch the tasks
-    let inProgressTasksCount = countInProgressTasks(tasks); // Count the 'inProgress' tasks
+    let tasks = await getTask();
+    let inProgressTasksCount = countInProgressTasks(tasks);
     document.getElementById('inProgressTasks').innerHTML = inProgressTasksCount;
 };
 
 
 async function displayCountAwaitFeedback() {
-    let tasks = await getTask(); // Fetch the tasks
-    let awaitFeedbackTasksCount = countAwaitFeedbackTasks(tasks); // Count the 'awaitFeedback' tasks
+    let tasks = await getTask();
+    let awaitFeedbackTasksCount = countAwaitFeedbackTasks(tasks);
     document.getElementById('awaitFeedbackTasks').innerHTML = awaitFeedbackTasksCount;
 };
 
 
 async function displayCountDone() {
-    let tasks = await getTask(); // Fetch the tasks
-    let doneTasksCount = countDoneTasks(tasks); // Count the 'done' tasks
+    let tasks = await getTask();
+    let doneTasksCount = countDoneTasks(tasks);
     document.getElementById('doneTasks').innerHTML = doneTasksCount;
 };
 
 
 async function displayCountUrgent() {
-    let tasks = await getTask(); // Fetch the tasks
-    let urgentTasksCount = countUrgentTasks(tasks); // Count the 'urgent' tasks
+    let tasks = await getTask();
+    let urgentTasksCount = countUrgentTasks(tasks);
     document.getElementById('urgentTasks').innerHTML = urgentTasksCount;
 };
 
 
 async function displayCountAllTasks() {
-    let tasks = await getTask(); // Fetch the tasks
-    let allTasksCount = countTasks(tasks); // Count all tasks
+    let tasks = await getTask();
+    let allTasksCount = countTasks(tasks);
     document.getElementById('allTasks').innerHTML = allTasksCount;
 };
 
 
-async function displayDeadline() {     
+async function displayDeadline() {
     let tasks = await getTask();
     let deadlineDate = document.getElementById('deadlineDate');
     let urgentTasks = tasks.filter(task => task.priority.value === 'Urgent');
     let getDeadline = urgentTasks.map(task => new Date(task.date));
     let sortedDeadline = getDeadline.sort((a, b) => a - b);
-    let earliestDeadline = sortedDeadline[0]; 
-       
-    if(!getDeadline.length){
+    let earliestDeadline = sortedDeadline[0];
+
+    if (!getDeadline.length) {
         deadlineDate.innerHTML = '';
-    } else { 
-        deadlineDate.innerHTML = earliestDeadline.toLocaleDateString('en-EN', {month: 'long', day: 'numeric',year: 'numeric' });
+    } else {
+        deadlineDate.innerHTML = earliestDeadline.toLocaleDateString('en-EN', { month: 'long', day: 'numeric', year: 'numeric' });
     }
 };
 
 
-function countInit(){
+function countInit() {
     displayCountToDo();
     displayCountInProgress();
     displayCountAwaitFeedback();
@@ -202,32 +202,32 @@ async function greetingSummary() {
     await getUser();
     let guestLoggedIn = localStorage.getItem('guestLoggedIn');
     let greetingScreen = document.getElementById('greetingScreen');
-    let username = '';    
+    let username = '';
     let user = users.find(user => user.email && user.email === atob(localStorage.getItem('emailToken')));
 
-    if (guestLoggedIn === 'true'){
+    if (guestLoggedIn === 'true') {
         username = '';
     }
     if (user && user.name && guestLoggedIn !== 'true') {
         username = user.name;
-    }    
-    let greeting = '';   
+    }
+    let greeting = '';
     let hour = new Date().getHours();
-    if(hour >= 0 && hour < 10){
+    if (hour >= 0 && hour < 10) {
         if (guestLoggedIn === 'true') {
             greeting = 'Good morning!';
         } else {
             greeting = 'Good morning,';
         }
     }
-    if(hour >= 10 && hour < 18){
+    if (hour >= 10 && hour < 18) {
         if (guestLoggedIn === 'true') {
             greeting = 'Good noon!';
         } else {
             greeting = 'Good noon,';
         }
     }
-    if(hour >= 18){
+    if (hour >= 18) {
         if (guestLoggedIn === 'true') {
             greeting = 'Good evening!';
         } else {

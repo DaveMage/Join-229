@@ -2,7 +2,7 @@ const BASE_URL = 'https://join-229-c9c59-default-rtdb.europe-west1.firebasedatab
 let profileColor = ['#FF7A00', '#FF5EB3', '#6E52FF', '#9327FF', '#00BEE8', '#1FD7C1', '#FF745E', '#FFA35E', '#FC71FF', '#FFC701', '#0038FF', '#C3FF2B', '#FFE62B', '#FF4646', '#FFBB2B']
 let contacts = [];
 let tasks = [];
-let users = []; 
+let users = [];
 let selectedAssigned = [];
 let subtasks = [];
 
@@ -56,31 +56,31 @@ async function postData(path = '', data = {}) {
 };
 
 
-async function getUser(){  // Funktion, um Benutzerdaten abzurufen
-    let response = await fetch(BASE_URL + '/users.json'); // API-Anfrage, um Benutzerdaten abzurufen
-    let responseToJson = await response.json(); // Antwort in JSON-Format umwandeln
-    users = []; // Array für abgerufene Benutzerdaten erstellen
+async function getUser() {
+    let response = await fetch(BASE_URL + '/users.json');
+    let responseToJson = await response.json();
+    users = [];
 
-    for (const key in responseToJson) {    // Schleife durch die abgerufenen Benutzerdaten
-        let user = responseToJson[key]; // Benutzerobjekt für den aktuellen Schlüssel erhalten
-        user.id = key; // Benutzer-ID zum Benutzerobjekt hinzufügen
-        users.push(user); // Benutzerobjekt mit ID und E-Mail-Adresse zum Array hinzufügen
-    }    
-    return users; // Abgerufene Benutzerdaten zurückgeben  
+    for (const key in responseToJson) {
+        let user = responseToJson[key];
+        user.id = key;
+        users.push(user);
+    }
+    return users;
 };
 
 
-function loginSuccess(user, rememberMe) {       // Funktion, die aufgerufen wird, wenn der Login erfolgreich ist
-    if (rememberMe) {    // Überprüfen, ob "rememberMe" aktiviert ist
-        localStorage.setItem('userEmail', user.email);        // Benutzerdaten im lokalen Speicher speichern
+function loginSuccess(user, rememberMe) {
+    if (rememberMe) {
+        localStorage.setItem('userEmail', user.email);
         localStorage.setItem('userPassword', user.password);
         localStorage.setItem('userId', user.id);
     } else {
-        localStorage.setItem('userEmail', user.email);        // Nur die E-Mail-Adresse im lokalen Speicher speichern
+        localStorage.setItem('userEmail', user.email);
     }
-    localStorage.setItem('user', JSON.stringify(user));    // Benutzerobjekt im lokalen Speicher als JSON speichern
-    currentUser.push(user.id);    // Aktualisieren der "currentUser" Variable
-    window.location.href = "/summary.html";    // Nach erfolgreichem Login zur Dashboard-Seite oder einer anderen Seite weiterleiten
+    localStorage.setItem('user', JSON.stringify(user));
+    currentUser.push(user.id);
+    window.location.href = "/summary.html";
 };
 
 
@@ -88,40 +88,40 @@ async function getContacts() {
     await getUser();
     let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
     let guestLoggedIn = localStorage.getItem('guestLoggedIn');
-    if(guestLoggedIn === 'true'){
+    if (guestLoggedIn === 'true') {
         userId = '-O-Mr5g8976g5-yCxVK8';
-    } else { 
+    } else {
         userId = userId.id;
-    }       
-    let response = await fetch(BASE_URL + '/users/' + userId + '/contacts.json'); // Fetch contacts from the server
-    let contactsJson = await response.json(); // Convert the response to JSON format
-    contacts = []; // Define an array to store the contacts
-    for (const key in contactsJson) { // Iterate through each key in the response JSON object
-        let contact = contactsJson[key]; // Get the contact object
-        contact.id = key; // Assign the key as the contact ID
-        contacts.push(contact); // Add the contact to the fetchedContacts array
-    }   
-    return contacts; // Return the fetched contacts array
+    }
+    let response = await fetch(BASE_URL + '/users/' + userId + '/contacts.json');
+    let contactsJson = await response.json();
+    contacts = [];
+    for (const key in contactsJson) {
+        let contact = contactsJson[key];
+        contact.id = key;
+        contacts.push(contact);
+    }
+    return contacts;
 };
 
 
 async function getTask() {
-    let userId = await getUserId();  
-    let response = await fetch(BASE_URL + '/users/' + userId + '/tasks.json'); // Fetch tasks from the server
-    let responseToJson = await response.json(); // Convert the response to JSON format
+    let userId = await getUserId();
+    let response = await fetch(BASE_URL + '/users/' + userId + '/tasks.json');
+    let responseToJson = await response.json();
     tasks = [];
-    for (const key in responseToJson) { // Iterate through each key in the response JSON object
-        let task = responseToJson[key]; // Get the task object
-        task.id = key; // Assign the key as the task ID
-        tasks.push(task); // Add the task to the fetchedtask array
+    for (const key in responseToJson) {
+        let task = responseToJson[key];
+        task.id = key;
+        tasks.push(task);
     }
-    return tasks; // Return the fetched tasks array
+    return tasks;
 };
 
 
 
-async function setSubtaskTrue(taskId, subtaskId){
-    let userId = await getUserId();   
+async function setSubtaskTrue(taskId, subtaskId) {
+    let userId = await getUserId();
     let task = tasks.find(task => task.id === taskId);
     let subtask = task.subtasks.find(subtask => subtask.id === subtaskId);
     subtask.done = true;
@@ -129,7 +129,6 @@ async function setSubtaskTrue(taskId, subtaskId){
 };
 
 
-// Funktion zum Abrufen von Formulardaten
 function getFormData() {
     return {
         title: document.getElementById('addTaskTitle').value,
@@ -143,12 +142,11 @@ function getFormData() {
 };
 
 
-// Funktion zum Abrufen der Benutzer-ID
 async function getUserId() {
     await getUser();
     let emailToken = localStorage.getItem('emailToken');
     let guestLoggedIn = localStorage.getItem('guestLoggedIn');
-    
+
     if (guestLoggedIn === 'true') {
         return '-O-Mr5g8976g5-yCxVK8';
     } else {
@@ -159,7 +157,6 @@ async function getUserId() {
 };
 
 
-// Funktion zum Überprüfen der Formulardaten
 function validateFormData(formData) {
     if (formData.title === '' || formData.date === '') {
         titlequery();
@@ -170,7 +167,6 @@ function validateFormData(formData) {
 };
 
 
-// Funktion zum Speichern der Aufgabe
 async function saveTask(taskStatus) {
     let formData = getFormData();
 
@@ -193,14 +189,14 @@ async function saveTask(taskStatus) {
             subtasks: formData.subtasks,
             status: ((taskStatus == 'inProgress') ? ('inProgress') : (taskStatus == 'awaitFeedback') ? ('awaitFeedback') : ('open'))
         });
-                
+
         if (document.getElementById('addTaskChard')) {
             document.getElementById('addTaskChard').remove();
         }
         if (window.location.pathname === '/addTask.html') {
             window.location.href = '/board.html';
         }
-         
+
     } catch (error) {
         console.error('Error saving task:', error);
     }
@@ -208,10 +204,9 @@ async function saveTask(taskStatus) {
     if (window.location.pathname === '/addTask.html') {
         displaySuccsessfullyMessage();
     }
-    if(window.location.pathname === '/board.html'){
+    if (window.location.pathname === '/board.html') {
         displaySuccsessfullyBoardMessage();
         window.location.reload();
     }
-    
 };
 
