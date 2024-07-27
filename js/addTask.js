@@ -566,7 +566,7 @@ function addSubtaskItemHTML() {
         </div>
     </li>
     `;
-};
+}
 
 
 /**
@@ -718,7 +718,7 @@ function clearForm() {
 
     // Set the default priority level (medium) checkbox to checked
     document.getElementById('medium').checked = true;
-};
+}
 
 
 /**
@@ -739,7 +739,7 @@ function successfullyNewTask() {
           </div>
         </div>
     `;
-};
+}
 
 
 /**
@@ -763,7 +763,7 @@ function displaySuccsessfullyMessage() {
         // Redirects to the board page
         window.location.href = '/board.html';
     }, 900);
-};
+}
 
 
 /**
@@ -794,7 +794,7 @@ function focusEditSubtaskInput(task) {
     checkIcon.style.display = 'flex';
     closeIcon.style.display = 'flex';
     separator.style.display = 'flex';
-};
+}
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -822,4 +822,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-});
+})
