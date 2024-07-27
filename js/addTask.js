@@ -145,15 +145,7 @@ function setCheckedAssigned() {
     });
 };
 
-function clearAssignedCheckboxes() {
-    // Get all the checkboxes that indicate assigned contacts
-    let checkboxes = document.querySelectorAll('.checkboxAssigned'); 
 
-    checkboxes.forEach(checkbox => {
-        checkbox.checked = false;                                     // Uncheck each checkbox
-        assignedItemCheckBackgroundColor(checkbox, checkbox.parentNode.querySelector('.assignedName').id); // Update the background color
-    });
-}
 
 function selectAssigned() {
     selectedAssigned = [];                                                  // Clear the selectedAssigned array at the beginning
@@ -372,37 +364,7 @@ function displaySuccsessfullyMessage() {
 };
 
 
-function addTaskClearTask() {
-    document.getElementById('addTaskTitle').value = '';
-    document.getElementById('addTaskDescription').value = '';
-    document.getElementById('addTaskFormAssignedInput').value = '';
-    document.getElementById('addTaskDueDate').value = '';
-    document.getElementById('medium').checked = true;
-    document.getElementById('addTaskCategory').value = '';
-    document.getElementById('addTaskSubtask').value = '';
-    document.getElementById('subtaskContainer').children.value = '';
-    let assigendName = document.getElementById('addTaskFromAssignedCheckbox-O2d32YA6D_cNM5b05h7');
-    let label = document.getElementById('label-O2d32YA6D_cNM5b05h7');
-    let name = document.getElementById('name-O2d32YA6D_cNM5b05h7');
 
-
-    label.closest('.dropdownItemAssigned');
-
-    label.style.backgroundColor = 'white';
-    name.classList.remove('nameWhite');
-
-    assigendName.checked = false;
-    
-    /* ALT 
-    let addTaskChard = document.getElementById('addTaskChard');
-    if (addTaskChard) { // für addTask on Board
-        addTaskChard.remove();
-        document.getElementById('backgroundOverlay').remove();
-        addNewTaskOnBoard();
-    } else{
-        location.reload();
-    }*/ 
-};
 
 
 function focusEditSubtaskInput(task) {                                           // Funktion zum Wechseln der Bilder und Entfernen des readonly-Attributs
