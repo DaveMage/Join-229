@@ -368,16 +368,22 @@ function addTaskClearTask() {
     document.getElementById('addTaskDescription').value = '';
     document.getElementById('addTaskFormAssignedInput').value = '';
     document.getElementById('addTaskDueDate').value = '';
-    let prioUrgent = document.getElementById('prioUrgent');
-    let prioMedium = document.getElementById('prioMedium');
-    let prioLow = document.getElementById('prioLow');
-    let category = document.getElementById('addTaskCategory');
+    document.getElementById('medium').checked = true;
+    document.getElementById('addTaskCategory').value = '';
     document.getElementById('addTaskSubtask').value = '';
-    document.getElementById('subtaskContainer').value = '';
+    document.getElementById('subtaskContainer').children.value = '';
+    let assigendName = document.getElementById('addTaskFromAssignedCheckbox-O2d32YA6D_cNM5b05h7');
+    let label = document.getElementById('label-O2d32YA6D_cNM5b05h7');
+    let name = document.getElementById('name-O2d32YA6D_cNM5b05h7');
 
+
+    label.closest('.dropdownItemAssigned');
+
+    label.style.backgroundColor = 'white';
+    name.classList.remove('nameWhite');
+
+    assigendName.checked = false;
     
-
-
     /* ALT 
     let addTaskChard = document.getElementById('addTaskChard');
     if (addTaskChard) { // für addTask on Board
