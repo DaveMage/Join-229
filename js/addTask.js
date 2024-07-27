@@ -375,6 +375,9 @@ function addTaskClearTask() {
     document.getElementById('addTaskSubtask').value = '';
     document.getElementById('subtaskContainer').value = '';
 
+    
+
+
     /* ALT 
     let addTaskChard = document.getElementById('addTaskChard');
     if (addTaskChard) { // für addTask on Board
