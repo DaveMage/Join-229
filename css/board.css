@@ -936,8 +936,9 @@ display: block;
   }
 
   .taskCardEditBody {
-    width: auto;
+    width: 525px;
     padding: 48px 40px;
+    height: calc(100vh - 100px);
   }
 
   .editTaskForm {
