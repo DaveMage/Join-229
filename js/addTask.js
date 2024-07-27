@@ -114,9 +114,9 @@ function assignedItemHtml(contact) {
             </div>
             <input
                 id="addTaskFromAssignedCheckbox${contact.id}"
-                type="checkbox"                
+                type="checkbox"
                 class="checkboxAssigned"
-                onchange="assignedItemChackBackgroundColor(this, 'name${contact.id}'); selectAssigned()"/>  
+                onchange="assignedItemChackBackgroundColor(this, 'name${contact.id}'); selectAssigned()"/>
         </label>`;
 };
 
@@ -364,14 +364,26 @@ function displaySuccsessfullyMessage() {
 
 
 function addTaskClearTask() {
+    document.getElementById('addTaskTitle').value = '';
+    document.getElementById('addTaskDescription').value = '';
+    document.getElementById('addTaskFormAssignedInput').value = '';
+    document.getElementById('addTaskDueDate').value = '';
+    let prioUrgent = document.getElementById('prioUrgent');
+    let prioMedium = document.getElementById('prioMedium');
+    let prioLow = document.getElementById('prioLow');
+    let category = document.getElementById('addTaskCategory');
+    document.getElementById('addTaskSubtask').value = '';
+    document.getElementById('subtaskContainer').value = '';
+
+    /* ALT 
     let addTaskChard = document.getElementById('addTaskChard');
-    if (addTaskChard) {
+    if (addTaskChard) { // für addTask on Board
         addTaskChard.remove();
         document.getElementById('backgroundOverlay').remove();
         addNewTaskOnBoard();
     } else{
         location.reload();
-    }        
+    }*/ 
 };
 
 
