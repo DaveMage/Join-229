@@ -563,7 +563,7 @@ function fillSelectedAssigned(taskId) {
     let task = tasks.find(t => t.id === taskId);
 
     // If the task is found, proceed to fill selectedAssigned and update the UI
-    if (task) {
+    if (task && selectedAssigned[0] != null) {
         // Fill the selectedAssigned array with the assigned contacts of the task
         selectedAssigned = task.assigned;
 
