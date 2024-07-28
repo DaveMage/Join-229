@@ -341,7 +341,9 @@ function taskCardEditHTML(task) {
 function displayAssignedDropdown(task) {
   let assignedDropdownHtml = "";
 
-  const assignedIds = task.assigned ? task.assigned.map((contact) => contact.id) : [];
+  const assignedIds = task.assigned
+    ? task.assigned.map((contact) => contact.id)
+    : [];
 
   for (let i = 0; i < contacts.length; i++) {
 
@@ -372,18 +374,18 @@ function toggleEditAssignedDropdown(taskId) {
   if (dropdown.classList.contains("show")) {
     icon.style.transform = "rotate(180deg)";
     setTimeout(() => {
-      document.addEventListener("click", handleClickOutsideEdit);
+      document.addEventListener("click", handleClickOutside);
     }, 0);
   } else {
     icon.style.transform = "rotate(0deg)";
-    document.removeEventListener("click", handleClickOutsideEdit);
+    document.removeEventListener("click", handleClickOutside);
   }
 
   displayAssignedDropdown(task);
 };
 
 
-function handleClickOutsideEdit(event) {
+function handleClickOutside(event) {
   let dropdown = document.getElementById("editAssignedDropdown");
   let icon = document.getElementById("assignedIcon");
 
