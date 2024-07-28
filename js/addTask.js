@@ -5,13 +5,8 @@
  * It sets up the task template, fetches contact data, and sets the minimum date for the due date input.
  */
 async function addTaskInit() {
-    // Initialize the task template
     templateInit();
-
-    // Fetch contact data asynchronously
     await getContacts();
-
-    // Set the minimum allowable date for the task due date
     dateThreshold();
 };
 
@@ -29,22 +24,17 @@ function toggleAssignedDropdown() {
     let icon = document.getElementById('assignedDropdownArrow');
 
     if (dropdown.style.display === 'flex') {
-        // Hide the dropdown and reset the icon rotation
         dropdown.style.display = 'none';
         icon.style.transform = 'rotate(0deg)';
         document.removeEventListener('click', handleClickOutside);
     } else {
-        // Show the dropdown and rotate the icon
         dropdown.style.display = 'flex';
         icon.style.transform = 'rotate(180deg)';
 
-        // Add an event listener to close the dropdown when clicking outside
         setTimeout(() => {
             document.addEventListener('click', handleClickOutside);
-        }, 0); 
+        }, 0);
     }
-
-    // Refresh the content of the dropdown
     displayAssignedTo();
     setCheckedAssigned();
 };
@@ -60,22 +50,13 @@ function toggleAssignedDropdown() {
  * @param {Event} event - The click event object.
  */
 function handleClickOutside(event) {
-    // Get the dropdown menu element by its ID
     let dropdown = document.getElementById('dropdownAssigned');
-
-    // Get the dropdown arrow icon element by its ID
     let icon = document.getElementById('assignedDropdownArrow');
-
-    // Get the input field element by its ID
     let input = document.getElementById('addTaskFormAssignedInput');
 
-    // Check if the click was outside the dropdown, icon, and input elements
     if (!dropdown.contains(event.target) && !icon.contains(event.target) && !input.contains(event.target)) {
-        // Hide the dropdown menu and reset the icon rotation
         dropdown.style.display = 'none';
         icon.style.transform = 'rotate(0deg)';
-
-        // Remove the click event listener to stop further handling
         document.removeEventListener('click', handleClickOutside);
     }
 }
@@ -89,19 +70,12 @@ function handleClickOutside(event) {
  * of the dropdown (expanded or collapsed).
  */
 function toggleCategoryDropdown() {
-    // Get the dropdown menu element by its ID
     const dropdown = document.getElementById('dropdownCategory');
-
-    // Get the dropdown arrow icon element by its ID
     let icon = document.getElementById('categoryDropdownArrow');
-
-    // Check the current display style of the dropdown menu and toggle it
     if (dropdown.style.display === 'flex') {
-        // If the dropdown is currently visible, hide it and reset the arrow icon
         dropdown.style.display = 'none';
         icon.style.transform = 'rotate(0deg)';
     } else {
-        // If the dropdown is currently hidden, show it and rotate the arrow icon
         dropdown.style.display = 'flex';
         icon.style.transform = 'rotate(180deg)';
     }
@@ -115,10 +89,7 @@ function toggleCategoryDropdown() {
  * It retrieves the current date and sets it as the minimum allowable date in the due date input field.
  */
 function dateThreshold() {
-    // Get today's date in YYYY-MM-DD format
     let today = new Date().toISOString().split('T')[0];
-
-    // Set the minimum attribute of the due date input field to today's date
     document.getElementById("addTaskDueDate").setAttribute('min', today);
 }
 
@@ -134,11 +105,9 @@ function dateThreshold() {
  *                       or null if no priority is selected.
  */
 function getSelectedPriority() {
-    // Get all radio buttons for priority selection
     const priorities = document.getElementsByName('priority');
     let selectedPriority = null;
 
-    // Find the radio button that is checked
     for (const priority of priorities) {
         if (priority.checked) {
             selectedPriority = priority;
@@ -146,7 +115,6 @@ function getSelectedPriority() {
         }
     }
 
-    // If a priority is selected, retrieve its value and associated image source
     if (selectedPriority) {
         const priorityValue = selectedPriority.value;
         const priorityLabel = document.querySelector(`label[for=${selectedPriority.id}]`);
@@ -157,8 +125,6 @@ function getSelectedPriority() {
             imgSrc: priorityImgSrc
         };
     }
-
-    // Return null if no priority is selected
     return null;
 }
 
@@ -176,19 +142,15 @@ function getSelectedPriority() {
  *                       or null if no priority is selected.
  */
 function getSelectedPriorityEditTask(taskId) {
-    // Get all radio buttons for priorities associated with the taskId
     const priorities = document.getElementsByName(`priority${taskId}`);
     let selectedPriority = null;
 
-    // Find the radio button that is checked
     for (const priority of priorities) {
         if (priority.checked) {
             selectedPriority = priority;
             break;
         }
     }
-
-    // If a priority is selected, retrieve its value and associated image source
     if (selectedPriority) {
         const priorityValue = selectedPriority.value;
         const priorityLabel = document.querySelector(`label[for=${selectedPriority.id}]`);
@@ -199,8 +161,6 @@ function getSelectedPriorityEditTask(taskId) {
             imgSrc: priorityImgSrc
         };
     }
-
-    // Return null if no priority is selected
     return null;
 }
 
@@ -214,10 +174,7 @@ function getSelectedPriorityEditTask(taskId) {
  * @param {HTMLElement} element - The HTML element representing the selected category.
  */
 function selectCategory(element) {
-    // Get the category input field where the selected category will be displayed
     const categoryInput = document.getElementById('addTaskCategory');
-
-    // Set the value of the category input field to the trimmed text content of the selected element
     categoryInput.value = element.textContent.trim();
 }
 
@@ -230,13 +187,9 @@ function selectCategory(element) {
  * the necessary HTML for each contact, which is then added to the dropdown container.
  */
 function displayAssignedTo() {
-    // Get the container element where assigned items will be displayed
     let container = document.getElementById('dropdownAssigned');
-
-    // Clear any existing content in the container
     container.innerHTML = '';
 
-    // Iterate through the contacts array and generate HTML for each contact
     for (let i = 0; i < contacts.length; i++) {
         container.innerHTML += assignedItemHtml(contacts[i]);
     }
@@ -289,19 +242,15 @@ function assignedItemHtml(contact) {
  * @param {string} nameId - The ID of the name element associated with the assigned item.
  */
 function assignedItemCheckBackgroundColor(checkbox, nameId) {
-    // Get the label element closest to the checkbox with the class 'dropdownItemAssigned'
     const label = checkbox.closest('.dropdownItemAssigned');
-    
-    // Get the name element by its ID
     const name = document.getElementById(nameId);
 
-    // Update the background and text color based on the checkbox state
     if (checkbox.checked) {
-        label.style.backgroundColor = '#2A3647'; // Set background color to dark
-        name.classList.add('nameWhite'); // Add class to change text color to white
+        label.style.backgroundColor = '#2A3647';
+        name.classList.add('nameWhite');
     } else {
-        label.style.backgroundColor = 'white'; // Set background color to white
-        name.classList.remove('nameWhite'); // Remove class to revert text color
+        label.style.backgroundColor = 'white';
+        name.classList.remove('nameWhite');
     }
 }
 
@@ -315,21 +264,12 @@ function assignedItemCheckBackgroundColor(checkbox, nameId) {
  * based on their checked state.
  */
 function setCheckedAssigned() {
-    // Get all checkboxes with the class 'checkboxAssigned'
     let checkboxes = document.querySelectorAll('.checkboxAssigned');
 
-    // Iterate through each checkbox
     checkboxes.forEach(checkbox => {
-        // Get the contact name associated with the checkbox
         let contactName = checkbox.parentNode.querySelector('.assignedName').getAttribute('data-value');
-
-        // Check if the contact name is in the selectedAssigned array
         let isSelected = selectedAssigned.some(contact => contact.name === contactName);
-
-        // Set the checked state of the checkbox based on whether the contact is selected
         checkbox.checked = isSelected;
-
-        // Update the background color of the assigned item
         assignedItemCheckBackgroundColor(checkbox, checkbox.parentNode.querySelector('.assignedName').id);
     });
 }
@@ -346,17 +286,12 @@ function setCheckedAssigned() {
  * @return {Array} Returns the array of selected contacts.
  */
 function selectAssigned() {
-    selectedAssigned = []; // Reset the selectedAssigned array
+    selectedAssigned = [];
 
-    // Get all checkboxes with the class 'checkboxAssigned'
     let checkboxes = document.querySelectorAll('.checkboxAssigned');
-
-    // Iterate through each checkbox
     checkboxes.forEach(checkbox => {
-        // Get the contact name associated with the checkbox
         let contactName = checkbox.parentNode.querySelector('.assignedName').getAttribute('data-value');
 
-        // If the checkbox is checked, find the contact and add to the selectedAssigned array
         if (checkbox.checked) {
             let contact = contacts.find(c => c.name === contactName);
             if (contact) {
@@ -364,8 +299,6 @@ function selectAssigned() {
             }
         }
     });
-
-    // Update the input field with the names of the selected contacts
     let inputAssigned = document.getElementById('addTaskFormAssignedInput');
     inputAssigned.value = selectedAssigned.length > 0 ? 'An: ' + selectedAssigned.map(c => c.name).join(', ') : '';
 
@@ -385,18 +318,15 @@ function selectAssigned() {
 function titlequery() {
     let title = document.getElementById("addTaskTitle");
 
-    // Check if the title input field is empty
     if (title.value === "") {
-        // Add error styling to the input field and show the error message
         title.classList.add('errorLabel');
         document.getElementById('errorSpanTitle').style.display = 'block';
         return false;
     } else {
-        // Remove error styling from the input field and hide the error message
         title.classList.remove('errorLabel');
         document.getElementById('errorSpanTitle').style.display = 'none';
     }
-    return true; // Added return statement for completeness
+    return true;
 }
 
 
@@ -411,19 +341,15 @@ function titlequery() {
  */
 function datequery() {
     let date = document.getElementById("addTaskDueDate");
-
-    // Check if the due date input field is empty
     if (date.value === "") {
-        // Add error styling to the input field and show the error message
         date.classList.add('errorLabel');
         document.getElementById('errorSpanDate').style.display = 'block';
         return false;
     } else {
-        // Remove error styling from the input field and hide the error message
         date.classList.remove('errorLabel');
         document.getElementById('errorSpanDate').style.display = 'none';
     }
-    return true; // Added return statement for completeness
+    return true;
 }
 
 
@@ -434,23 +360,18 @@ function datequery() {
  * It also updates the display of various icons to reflect the active editing state.
  */
 function focusSubtaskInput() {
-    // Get the subtask input field and related icons by their IDs
     const inputField = document.querySelector('#addTaskSubtask');
     let checkIcon = document.getElementById('checkSubtaskIcon');
     let closeIcon = document.getElementById('closeSubtaskIcon');
     let addIcon = document.getElementById('addEditSubtaskIcon');
     let separator = document.getElementById('subtaskEditInputSeparator');
 
-    // Make the input field editable and set focus on it
     inputField.readOnly = false;
     inputField.focus();
 
-    // Hide the add icon and show the check and close icons
     addIcon.style.display = 'none';
     checkIcon.style.display = 'flex';
     closeIcon.style.display = 'flex';
-
-    // Show the separator
     separator.style.display = 'flex';
 }
 
@@ -465,20 +386,15 @@ function focusSubtaskInput() {
  * @param {string | number} task - The ID or unique identifier of the task to which the subtask belongs.
  */
 function focusEditSubtaskInput(task) {
-    // Selects the subtask input field based on the provided task ID
     const inputField = document.querySelector(`#subtask${task}`);
-
-    // Selects the icons for confirming, canceling, and adding the edit
     let checkIcon = document.getElementById('checkSubtaskIcon');
     let closeIcon = document.getElementById('closeSubtaskIcon');
     let addIcon = document.getElementById('addEditSubtaskIcon');
     let separator = document.getElementById('subtaskEditInputSeparator');
 
-    // Sets the input field to editable and focuses on it
     inputField.readOnly = false;
     inputField.focus();
 
-    // Hides the add icon and shows the icons for confirming and canceling the edit
     addIcon.style.display = 'none';
     checkIcon.style.display = 'flex';
     closeIcon.style.display = 'flex';
@@ -494,20 +410,14 @@ function focusEditSubtaskInput(task) {
  * It typically signals the end of the subtask input process.
  */
 function deleteValueSubtask() {
-    // Get the subtask input field and icons by their IDs
     let subtaskInput = document.getElementById('addTaskSubtask');
     let firstSubtaskIcon = document.getElementById('firstSubtaskIcon');
     let secondSubtaskIcon = document.getElementById('secondSubtaskIcon');
 
-    // Clear the value of the subtask input field and set it to read-only
     subtaskInput.value = '';
     subtaskInput.setAttribute('readonly', 'readonly');
-
-    // Update the first icon to the add icon and set its click event to activate the subtask input
     firstSubtaskIcon.src = './img/Mobile/AddTask/addIconAddTask.png';
     firstSubtaskIcon.setAttribute('onclick', 'activateSubtaskInput()');
-
-    // Hide the second icon and the separator
     secondSubtaskIcon.style.display = 'none';
     document.getElementById('subtaskInputSeperator').style.display = 'none';
 }
@@ -521,25 +431,20 @@ function deleteValueSubtask() {
  * display of various icons and separators to reflect the inactive state of the input field.
  */
 function onBlurSubtaskInput() {
-    // Get the subtask input field by its ID
     const inputField = document.querySelector('#addTaskSubtask');
-    
-    // Get the UI elements related to the subtask input field
     let checkIcon = document.getElementById('checkSubtaskIcon');
     let closeIcon = document.getElementById('closeSubtaskIcon');
     let addIcon = document.getElementById('addEditSubtaskIcon');
     let separator = document.getElementById('subtaskEditInputSeparator');
 
-    // If the input field exists, set it to read-only
     if (inputField != null) {
         inputField.readOnly = true;
     }
 
-    // Adjust the display properties of the icons and separator
-    addIcon.style.display = 'flex';  // Show the add icon
-    checkIcon.style.display = 'none';  // Hide the check icon
-    closeIcon.style.display = 'none';  // Hide the close icon
-    separator.style.display = 'none';  // Hide the separator
+    addIcon.style.display = 'flex';
+    checkIcon.style.display = 'none';
+    closeIcon.style.display = 'none';
+    separator.style.display = 'none';
 }
 
 
@@ -554,26 +459,16 @@ function onBlurSubtaskInput() {
 function addSubtaskItem() {
     let subtaskInput = document.getElementById('addTaskSubtask');
 
-    // If the subtask input field is empty, exit the function early
     if (subtaskInput.value === '') {
         return;
     }
-
-    // Add the input value to the subtasks array
     subtasks.push(subtaskInput.value);
-
-    // Clear the existing subtask items in the subtask container
     document.getElementById('subtaskContainer').innerHTML = '';
 
-    // Loop through the subtasks array and generate the HTML for each subtask
     for (let i = 0; i < subtasks.length; i++) {
         document.getElementById('subtaskContainer').innerHTML += addSubtaskItemHTML(i);
     }
-
-    // Clear the input field after adding the subtask
     subtaskInput.value = '';
-
-    // Call the onBlurSubtaskInput function for any additional actions needed
     onBlurSubtaskInput();
 }
 
@@ -607,13 +502,8 @@ function addSubtaskItemHTML(i) {
  * `onBlurSubtaskInput` to handle any further actions needed after clearing the input.
  */
 function emptySubtaskInput() {
-    // Get the input field for adding a new subtask by its ID
     let subtaskInput = document.getElementById('addTaskSubtask');
-
-    // Clear the value of the subtask input field
     subtaskInput.value = '';
-
-    // Call the function to handle further actions after the input loses focus
     onBlurSubtaskInput();
 }
 
@@ -628,16 +518,9 @@ function emptySubtaskInput() {
  * @param {Event} event - The event object from the delete action, typically triggered by a button click.
  */
 function deleteSubtaskItem(event) {
-    // Get the closest parent element with the class 'addTaskSubtaskItem'
     let subtaskItem = event.target.closest('.addTaskSubtaskItem');
-
-    // Retrieve the value of the subtask item input
     let subtaskItemValue = subtaskItem.querySelector('.subtaskItemInput').value;
-
-    // Remove the subtask value from the subtasks array
     subtasks = subtasks.filter(subtask => subtask !== subtaskItemValue);
-
-    // Remove the subtask item from the DOM
     subtaskItem.remove();
 }
 
@@ -652,25 +535,15 @@ function deleteSubtaskItem(event) {
  * @param {Event} event - The event object from the edit action, typically triggered by a button click.
  */
 function editSubtaskItem(event) {
-    // Get the closest parent element with the class 'addTaskSubtaskItem'
     let subtaskItem = event.target.closest('.addTaskSubtaskItem');
-
-    // Find the icons and input within the subtask item
     let leftIcon = subtaskItem.querySelector('#subtaskItemLeftIcon');
     let rightIcon = subtaskItem.querySelector('#subtaskItemRightIcon');
     let subtaskItemInput = subtaskItem.querySelector('.subtaskItemInput');
 
-    // Make the input field editable and focus on it
     subtaskItemInput.removeAttribute('readonly');
     subtaskItemInput.focus();
-
-    // Remove the current value from the subtasks array
     subtasks = subtasks.filter(subtask => subtask !== subtaskItemInput.value);
-
-    // Add the current value to the beginning of the subtasks array
     subtasks.splice(0, 0, subtaskItemInput.value);
-
-    // Update the icons to reflect the save and delete actions
     leftIcon.src = './img/Mobile/AddTask/trashIcon.png';
     leftIcon.setAttribute('onclick', 'deleteSubtaskItem(event)');
     rightIcon.src = './img/Mobile/AddTask/checkIcon.png';
@@ -688,25 +561,19 @@ function editSubtaskItem(event) {
  * @param {Event} event - The event object from the save action, typically triggered by a button click.
  */
 function saveSubtaskItem(event) {
-    // Get the closest parent element with the class 'addTaskSubtaskItem'
     const subtaskItem = event.target.closest('.addTaskSubtaskItem');
-
-    // Find the icons and input within the subtask item
     const leftIcon = subtaskItem.querySelector('#subtaskItemLeftIcon');
     const rightIcon = subtaskItem.querySelector('#subtaskItemRightIcon');
     const subtaskItemInput = subtaskItem.querySelector('.subtaskItemInput');
-    const subtaskId = subtaskItem.dataset.id; // Get the unique identifier of the subtask
+    const subtaskId = subtaskItem.dataset.id;
 
-    // Find the index of the subtask in the subtasks array and update its value
     const subtaskIndex = subtasks.findIndex(subtask => subtask.id === subtaskId);
     if (subtaskIndex !== -1) {
         subtasks[subtaskIndex] = subtaskItemInput.value;
     }
 
-    // Set the input field to readonly to prevent further editing
     subtaskItemInput.setAttribute('readonly', 'readonly');
 
-    // Update the icons to reflect that the subtask can now be edited or deleted
     leftIcon.src = './img/Mobile/AddTask/editIcon.png';
     leftIcon.setAttribute('onclick', 'editSubtaskItem(event)');
     rightIcon.src = './img/Mobile/AddTask/trashIcon.png';
@@ -721,33 +588,18 @@ function saveSubtaskItem(event) {
  * It resets text inputs, selects, checkboxes, and arrays that track user selections.
  */
 function clearForm() {
-    // Clear the assigned input field and reset the selected assigned users array
     document.getElementById('addTaskFormAssignedInput').value = '';
     selectedAssigned = [];
 
-    // Clear the task title input field
     document.getElementById('addTaskTitle').value = '';
-
-    // Clear the due date input field
     document.getElementById('addTaskDueDate').value = '';
-
-    // Clear the task description input field
     document.getElementById('addTaskDescription').value = '';
-
-    // Clear the category input field
     document.getElementById('addTaskCategory').value = '';
-
-    // Clear the subtask input field
     document.getElementById('addTaskSubtask').value = '';
-
-    // Clear the assigned input field (duplicate, safe to keep for completeness)
     document.getElementById('addTaskFormAssignedInput').value = '';
 
-    // Clear the subtasks array and the subtask container in the DOM
     subtasks = [];
     document.getElementById('subtaskContainer').innerHTML = '';
-
-    // Set the default priority level (medium) checkbox to checked
     document.getElementById('medium').checked = true;
 }
 
@@ -780,30 +632,21 @@ function successfullyNewTask() {
  * period and redirects the user to the board page.
  */
 function displaySuccsessfullyMessage() {
-    // Selects the main container element by its ID
     let mainContainer = document.getElementById('mainContainerId');
-
-    // Appends the success message to the main container
     mainContainer.innerHTML += successfullyNewTask();
 
-    // Sets a timeout to remove the success message and redirect to the board page
     setTimeout(() => {
-        // Removes the success message element
         document.getElementById('newTaskBGMessage').remove();
-
-        // Redirects to the board page
         window.location.href = '/board.html';
     }, 900);
 }
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    
     if (window.location.pathname.endsWith('addTask.html')) {
-
         const form = document.getElementById('addTaskForm');
         if (form) {
-            form.addEventListener('submit', function(event) {
+            form.addEventListener('submit', function (event) {
                 event.preventDefault();
             });
         }
@@ -811,7 +654,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const inputFields = document.querySelectorAll('.addTaskInput, .addTaskDescription');
         inputFields.forEach(input => {
             if (input) {
-                input.addEventListener('keydown', function(event) {
+                input.addEventListener('keydown', function (event) {
                     if (event.key === 'Enter') {
                         event.preventDefault();
                         if (input.id === 'addTaskSubtask') {
