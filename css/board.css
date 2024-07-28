@@ -944,6 +944,11 @@ display: block;
   .editTaskForm {
     gap: 24px;
   }
+
+  .closeTaskBtnEditTask:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 100%;
+  }
 }
 
 @media (min-width: 1425px) {

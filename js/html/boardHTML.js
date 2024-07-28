@@ -221,7 +221,7 @@ function taskCardEditHTML(task) {
     <div class="background" id="taskCardEditBackground">
         <div class="taskCardEditBody" id="taskCardEditBackgroundFloat">
             <div class="taskCardEditMain">
-                <div class="closeBtnContainer"><img src="./img/Mobile/Board/closeTask.png" onclick="closeEditTask()"></div>
+                <div class="closeBtnContainer"><img src="./img/Mobile/Board/closeTask.png" class="closeTaskBtnEditTask" onclick="closeEditTask()"></div>
                 <form class="editTaskForm" id="addTaskForm">
                     <div class="labelInputContainer">
                         <label for="title${task.id}">Title</label>
