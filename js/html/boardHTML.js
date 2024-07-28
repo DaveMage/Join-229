@@ -216,7 +216,6 @@ function overviewTaskCardSubtaskHtml(task) {
 
 
 function taskCardEditHTML(task) {
-    console.log(task.description)
     let assignedContactsString = task.assigned ? task.assigned.map((contact) => contact.name).join(", ") : "";
     return /* html */ `
     <div class="background" id="taskCardEditBackground">
@@ -307,7 +306,7 @@ function taskCardEditHTML(task) {
                             onclick="emptySubtaskInput('${task.id}')"
                             />
 
-                            <span class="subtaskSeperator" id="subtaskEditInputSeperator" style="display: none;"></span>
+                            <span class="subtaskSeperator" id="subtaskEditInputSeparator" style="display: none;"></span>
 
                             <img src="./img/Mobile/Board/addSubtask.png" onclick="focusEditSubtaskInput('${task.id}')" id="addEditSubtaskIcon">
 
@@ -533,7 +532,7 @@ function addNewTaskOnBoardHtml(taskStatus) {
                                     <div class="addTaskSubtaskIconContainer" id="addTaskSubtaskIconContainer">
                                         <img src="./img/Mobile/AddTask/closeIcon.png" id="closeSubtaskIcon" style="display: none"
                                         class="subtaskIcon" onclick="emptySubtaskInput()" />
-                                        <span class="subtaskSeperator" id="subtaskEditInputSeperator" style="display: none"></span>
+                                        <span class="subtaskSeperator" id="subtaskEditInputSeparator" style="display: none"></span>
                                         <img src="./img/Mobile/Board/addSubtask.png" onclick="focusSubtaskInput()" id="addEditSubtaskIcon"
                                         class="subtaskIcon" />
                                         <img src="./img/Mobile/AddTask/checkIcon.png" id="checkSubtaskIcon" style="display: none"

@@ -439,7 +439,7 @@ function focusSubtaskInput() {
     let checkIcon = document.getElementById('checkSubtaskIcon');
     let closeIcon = document.getElementById('closeSubtaskIcon');
     let addIcon = document.getElementById('addEditSubtaskIcon');
-    let separator = document.getElementById('subtaskEditInputSeperator');
+    let separator = document.getElementById('subtaskEditInputSeparator');
 
     // Make the input field editable and set focus on it
     inputField.readOnly = false;
@@ -451,6 +451,37 @@ function focusSubtaskInput() {
     closeIcon.style.display = 'flex';
 
     // Show the separator
+    separator.style.display = 'flex';
+}
+
+
+/**
+ * Activates the editing mode for a subtask input field and displays corresponding icons.
+ *
+ * This function is called when the user starts editing a subtask.
+ * It makes the input field editable, sets the focus on it, and displays the
+ * icons for confirming or canceling the editing process.
+ *
+ * @param {string | number} task - The ID or unique identifier of the task to which the subtask belongs.
+ */
+function focusEditSubtaskInput(task) {
+    // Selects the subtask input field based on the provided task ID
+    const inputField = document.querySelector(`#subtask${task}`);
+
+    // Selects the icons for confirming, canceling, and adding the edit
+    let checkIcon = document.getElementById('checkSubtaskIcon');
+    let closeIcon = document.getElementById('closeSubtaskIcon');
+    let addIcon = document.getElementById('addEditSubtaskIcon');
+    let separator = document.getElementById('subtaskEditInputSeparator');
+
+    // Sets the input field to editable and focuses on it
+    inputField.readOnly = false;
+    inputField.focus();
+
+    // Hides the add icon and shows the icons for confirming and canceling the edit
+    addIcon.style.display = 'none';
+    checkIcon.style.display = 'flex';
+    closeIcon.style.display = 'flex';
     separator.style.display = 'flex';
 }
 
@@ -763,37 +794,6 @@ function displaySuccsessfullyMessage() {
         // Redirects to the board page
         window.location.href = '/board.html';
     }, 900);
-}
-
-
-/**
- * Activates the editing mode for a subtask input field and displays corresponding icons.
- *
- * This function is called when the user starts editing a subtask.
- * It makes the input field editable, sets the focus on it, and displays the
- * icons for confirming or canceling the editing process.
- *
- * @param {string | number} task - The ID or unique identifier of the task to which the subtask belongs.
- */
-function focusEditSubtaskInput(task) {
-    // Selects the subtask input field based on the provided task ID
-    const inputField = document.querySelector(`#subtask${task}`);
-
-    // Selects the icons for confirming, canceling, and adding the edit
-    let checkIcon = document.getElementById('checkSubtaskIcon');
-    let closeIcon = document.getElementById('closeSubtaskIcon');
-    let addIcon = document.getElementById('addEditSubtaskIcon');
-    let separator = document.getElementById('subtaskEditInputSeparator');
-
-    // Sets the input field to editable and focuses on it
-    inputField.readOnly = false;
-    inputField.focus();
-
-    // Hides the add icon and shows the icons for confirming and canceling the edit
-    addIcon.style.display = 'none';
-    checkIcon.style.display = 'flex';
-    closeIcon.style.display = 'flex';
-    separator.style.display = 'flex';
 }
 
 
