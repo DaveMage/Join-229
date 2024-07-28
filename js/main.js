@@ -89,9 +89,8 @@ async function templateInit() {
  */
 async function loadUserInitial() {
     let user = await getUser();
-    user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));  
-    
-    
+    user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
+
     if (localStorage.getItem('guestLoggedIn') === 'true') {
         document.getElementById('profileInitial').innerHTML = 'G';
     } else if (user) {
@@ -107,10 +106,9 @@ async function loadUserInitial() {
  */
 function displayMobileHeader() {
     let mobileHeader = document.getElementById("header");
-    if(mobileHeader) {
+    if (mobileHeader) {
         mobileHeader.innerHTML = headerMobileHtml();
     }
-    
 }
 
 
@@ -121,11 +119,9 @@ function displayMobileHeader() {
  */
 function displayMobileMenu() {
     let mobileMenu = document.getElementById("menu");
-    
-    
-    if(mobileMenu) {
+    if (mobileMenu) {
         mobileMenu.innerHTML = menuMobileHtml();
-    }    
+    }
 }
 
 
@@ -136,11 +132,9 @@ function displayMobileMenu() {
  */
 function displayDesktopMenu() {
     let desktopMenu = document.getElementById("menuDesktop");
-    if(desktopMenu) {
+    if (desktopMenu) {
         desktopMenu.innerHTML = menuDesktopHtml();
     }
-    
-    
 }
 
 
@@ -194,7 +188,6 @@ function loadGuestLogin() {
 }
 
 
-
 /**
  * Checks the guest login status and adjusts the UI accordingly.
  * 
@@ -234,7 +227,6 @@ function logout() {
 
     window.location.href = "./login.html";
 }
-
 
 
 /**

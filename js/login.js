@@ -80,7 +80,7 @@ async function login() {
             let users = await getUser();
             let user = users.find(user => user.email === email && user.password === password);
             if (user) {
-                localStorage.setItem('emailToken', btoa(email)); // Always store email
+                localStorage.setItem('emailToken', btoa(email)); 
 
                 if (rememberMe) {
                     localStorage.setItem('rememberMe', 'true');
@@ -89,7 +89,7 @@ async function login() {
                     localStorage.removeItem('passwordToken');
                     localStorage.setItem('rememberMe', 'false');
                 }
-                
+
                 window.location.href = "/greeting.html";
             } else {
                 showError('', 'passwordAndMailErrorSpan', 'Please enter your correct email address and password!');
