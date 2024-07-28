@@ -528,7 +528,7 @@ function onBlurSubtaskInput() {
     let checkIcon = document.getElementById('checkSubtaskIcon');
     let closeIcon = document.getElementById('closeSubtaskIcon');
     let addIcon = document.getElementById('addEditSubtaskIcon');
-    let separator = document.getElementById('subtaskEditInputSeperator');
+    let separator = document.getElementById('subtaskEditInputSeparator');
 
     // If the input field exists, set it to read-only
     if (inputField != null) {
