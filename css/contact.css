@@ -756,6 +756,16 @@ span {
   #contactbtnWrap {
     width: 500px;
   }
+
+  .closeBtn:active {
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 100%;
+  }
+
+  .closeBtn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 100%;
+  }
 }
 
 .closing {
