@@ -58,9 +58,9 @@ function greetingHTML(user) {
 
 function menuDesktopHtml() {            // -- Desktop -- //
     return /*html*/ `
-        <div class="logoLinks">
+        <div class="logoLinks" id="menuLinksDesktop">
             <img src="./img/Desktop/sidebar/joinLogoDesktop.png" alt="Join Logo" class="joinLogoDesktop">
-            <div class="quickNavLinks">
+            <div class="quickNavLinks" id="quickNavLinks">
                 <a class="menuDesktop" href="./summary.html" id="summaryLinkDesktop">
                     <img src="./img/Desktop/sidebar/summaryIconDesktop.png" alt="Summary Icon" id="summaryDesktopIcon" class="iconSidebar">
                     <p>Summary</p>
