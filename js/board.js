@@ -982,6 +982,7 @@ function addNewTaskOnBoard(taskStatus) {
 
     // Append the HTML for the new task to the main board
     main.innerHTML += addNewTaskOnBoardHtml(taskStatus);
+    clearForm();
 
     // Set the date threshold to prevent selection of past dates
     dateThreshold();
