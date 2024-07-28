@@ -62,7 +62,6 @@ function closeAddContactDesktop() {
         if (floatId) {
             floatId.remove();
         }
-
         if (overlay) {
             overlay.remove();
         }       
@@ -121,7 +120,6 @@ async function saveContact() {
     if (!validateForm()) {
         return;
     }
-
     let contactName = document.getElementById('contactName').value;
     let contactEmail = document.getElementById('contactEmail').value;
     let contactPhone = document.getElementById('contactPhone').value;
