@@ -832,26 +832,38 @@ function emptySubtaskInput(taskId) {
  * @return {Object} An object containing the updated task data.
  */
 function getEditFormData(taskId, currentTask) {
-    // Extract existing subtasks from the current task, keeping their names and completed statuses
-    let existingSubtasks = currentTask.subtasks.map(subtask => ({ name: subtask.name, completed: subtask.completed }));
+    if (currentTask.subtasks == null) {
+        return {
+            title: document.getElementById('title' + taskId).value,
+            description: document.getElementById('description' + taskId).value,
+            date: document.getElementById('date' + taskId).value,
+            priority: getSelectedPriorityEditTask(taskId),
+            category: currentTask.category,
+            assigned: updateSelectedAssignedAndInputField(taskId),
+            status: currentTask.status,
+        };
+    } else {
+        // Extract existing subtasks from the current task, keeping their names and completed statuses
+        let existingSubtasks = currentTask.subtasks.map(subtask => ({ name: subtask.name, completed: subtask.completed }));
 
-    // Map new subtasks, setting completed status to false
-    let newSubtasks = subtasks.map(subtask => ({ name: subtask, completed: false }));
+        // Map new subtasks, setting completed status to false
+        let newSubtasks = subtasks.map(subtask => ({ name: subtask, completed: false }));
 
-    // Combine existing and new subtasks
-    let combinedSubtasks = [...existingSubtasks, ...newSubtasks];
+        // Combine existing and new subtasks
+        let combinedSubtasks = [...existingSubtasks, ...newSubtasks];
 
-    // Return an object with the updated task data
-    return {
-        title: document.getElementById('title' + taskId).value,
-        description: document.getElementById('description' + taskId).value,
-        date: document.getElementById('date' + taskId).value,
-        priority: getSelectedPriorityEditTask(taskId),
-        category: currentTask.category,
-        subtasks: combinedSubtasks,
-        assigned: updateSelectedAssignedAndInputField(taskId),
-        status: currentTask.status,
-    };
+        // Return an object with the updated task data
+        return {
+            title: document.getElementById('title' + taskId).value,
+            description: document.getElementById('description' + taskId).value,
+            date: document.getElementById('date' + taskId).value,
+            priority: getSelectedPriorityEditTask(taskId),
+            category: currentTask.category,
+            subtasks: combinedSubtasks,
+            assigned: updateSelectedAssignedAndInputField(taskId),
+            status: currentTask.status,
+        }
+    }
 }
 
 
@@ -874,42 +886,72 @@ async function saveEditTask(taskId) {
     // Retrieve form data for the edited task
     let formData = getEditFormData(taskId, currentTask);
 
-    // Map through the current subtasks and update their names if edited
-    let editedSubtasks = currentTask.subtasks.map((subtask, index) => {
-        let inputElement = document.getElementById(`subtaskEditInput${taskId}-${index}`);
-        return {
-            ...subtask,
-            name: inputElement ? inputElement.value : subtask.name
-        };
-    });
+    if (currentTask.subtasks == null) {
+        try {
+            // Get the user ID
+            let userId = await getUserId();
 
-    try {
-        // Get the user ID
-        let userId = await getUserId();
+            if (!userId) {
+                throw new Error('User ID not found');
+            }
 
-        if (!userId) {
-            throw new Error('User ID not found');
+            // Send the updated task data to the server
+            await putData(`/users/${userId}/tasks/${taskId}`, {
+                title: formData.title,
+                description: formData.description,
+                assigned: formData.assigned,
+                date: formData.date,
+                priority: formData.priority,
+                category: formData.category,
+                status: formData.status
+            });
+
+            // Close the edit task modal or view
+            closeEditTask();
+
+            // Reload the page to reflect changes
+            window.location.reload();
+        } catch (error) {
+            console.error('Error updating task:', error);
         }
-
-        // Send the updated task data to the server
-        await putData(`/users/${userId}/tasks/${taskId}`, {
-            title: formData.title,
-            description: formData.description,
-            assigned: formData.assigned,
-            date: formData.date,
-            priority: formData.priority,
-            category: formData.category,
-            subtasks: editedSubtasks,
-            status: formData.status
+    } else {       
+        // Map through the current subtasks and update their names if edited
+        let editedSubtasks = currentTask.subtasks.map((subtask, index) => {
+            let inputElement = document.getElementById(`subtaskEditInput${taskId}-${index}`);
+            return {
+                ...subtask,
+                name: inputElement ? inputElement.value : subtask.name
+            };
         });
 
-        // Close the edit task modal or view
-        closeEditTask();
+        try {
+            // Get the user ID
+            let userId = await getUserId();
 
-        // Reload the page to reflect changes
-        window.location.reload();
-    } catch (error) {
-        console.error('Error updating task:', error);
+            if (!userId) {
+                throw new Error('User ID not found');
+            }
+
+            // Send the updated task data to the server
+            await putData(`/users/${userId}/tasks/${taskId}`, {
+                title: formData.title,
+                description: formData.description,
+                assigned: formData.assigned,
+                date: formData.date,
+                priority: formData.priority,
+                category: formData.category,
+                subtasks: editedSubtasks,
+                status: formData.status
+            });
+
+            // Close the edit task modal or view
+            closeEditTask();
+
+            // Reload the page to reflect changes
+            window.location.reload();
+        } catch (error) {
+            console.error('Error updating task:', error);
+        }
     }
 
     // Update the board UI
