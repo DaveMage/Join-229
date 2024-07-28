@@ -117,14 +117,11 @@ function displayMobileHeader() {
  */
 function displayMobileMenu() {
     let mobileMenu = document.getElementById("menu");
-    if(document.getElementById('profileInitial').innerHTML === null || document.getElementById('profileInitial').innerHTML === '') {
-        mobileMenu.style.display = 'none';
-    }
+    
     
     if(mobileMenu) {
         mobileMenu.innerHTML = menuMobileHtml();
-    }
-    
+    }    
 }
 
 
