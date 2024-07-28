@@ -37,8 +37,7 @@ async function displayUserName() {
     if (mainContainer) {
         if (guestLoggedIn === 'true') {
             document.getElementById('greetingName').innerHTML = '';
-        }
-        if (user && user.name && guestLoggedIn !== 'true') {
+        } else if (user && user.name && guestLoggedIn !== 'true') {
             document.getElementById('greetingName').innerHTML = user.name;
         } else {
             console.error('User or user name not found');

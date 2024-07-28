@@ -52,6 +52,10 @@ async function onloadInit() {
     countInit();
 }
 
+async function onloadInitGreeting() {
+    displayUserName();
+}
+
 
 /**
  * Initializes the common elements of the page template.
