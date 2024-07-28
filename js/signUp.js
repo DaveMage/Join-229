@@ -316,6 +316,5 @@ function disableSignButton() {
     fields.forEach(field => {
         field.addEventListener('input', checkFormCompletion);
     });
-
     checkFormCompletion();
 }

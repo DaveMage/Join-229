@@ -18,13 +18,8 @@ let subtasks = [];
  * @returns {Promise<Object>} A promise that resolves to the JSON data fetched from the specified path.
  */
 async function loadData(path = '') {
-    // Fetch data from the specified path appended to the base URL
     let response = await fetch(BASE_URL + path + '.json');
-
-    // Convert the response to JSON format
     let responseToJson = await response.json();
-
-    // Return the JSON data
     return responseToJson;
 }
 
@@ -39,13 +34,8 @@ async function loadData(path = '') {
  * @returns {Promise<Object>} A promise that resolves to the JSON data fetched from the specified path.
  */
 async function getData(path = '') {
-    // Fetch data from the specified path appended to the base URL
     let response = await fetch(BASE_URL + path + '.json');
-
-    // Convert the response to JSON format
     let responseToJson = await response.json();
-
-    // Return the JSON data
     return responseToJson;
 }
 
@@ -63,20 +53,14 @@ async function getData(path = '') {
  */
 async function putData(path = '', data = {}) {
     try {
-        // Send a PUT request to the specified path with the provided data
         let response = await fetch(`${BASE_URL}${path}.json`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         });
-
-        // Check if the response is not ok and throw an error if so
         if (!response.ok) throw new Error('Network response was not ok');
-
-        // Return the response data as JSON
         return await response.json();
     } catch (error) {
-        // Log any errors that occur and rethrow the error
         console.error('Error putting data:', error);
         throw error;
     }
