@@ -127,6 +127,7 @@ body {
   opacity: 0.5;
   background-color: #091931;
   box-shadow: none;
+  cursor: not-allowed;
 }
 
 .footerLogin {
