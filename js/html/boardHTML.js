@@ -216,9 +216,9 @@ function overviewTaskCardSubtaskHtml(task) {
 
 
 function taskCardEditHTML(task) {
-  let assignedContactsString = task.assigned
-    ? task.assigned.map((contact) => contact.name).join(", ") : "";
-  return /* html */ `
+    console.log(task.description)
+    let assignedContactsString = task.assigned ? task.assigned.map((contact) => contact.name).join(", ") : "";
+    return /* html */ `
     <div class="background" id="taskCardEditBackground">
         <div class="taskCardEditBody" id="taskCardEditBackgroundFloat">
             <div class="taskCardEditMain">
@@ -232,9 +232,7 @@ function taskCardEditHTML(task) {
 
                     <div class="labelInputContainer">
                         <label for="description${task.id}">Description</label>
-                        <textarea  id="description${task.id}" name="description${task.id}" class="inputTextarea focus-border">
-                            ${task.description}
-                        </textarea>
+                        <textarea  id="description${task.id}" name="description${task.id}" class="inputTextarea focus-border">${task.description}</textarea>
                     </div>
             
                     <div class="labelInputContainer">
