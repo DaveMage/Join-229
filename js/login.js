@@ -80,13 +80,16 @@ async function login() {
             let users = await getUser();
             let user = users.find(user => user.email === email && user.password === password);
             if (user) {
+                localStorage.setItem('emailToken', btoa(email)); // Always store email
+
                 if (rememberMe) {
-                    localStorage.setItem('emailToken', btoa(email));
+                    localStorage.setItem('rememberMe', 'true');
                     localStorage.setItem('passwordToken', btoa(password));
                 } else {
-                    localStorage.removeItem('emailToken');
                     localStorage.removeItem('passwordToken');
+                    localStorage.setItem('rememberMe', 'false');
                 }
+                
                 window.location.href = "/greeting.html";
             } else {
                 showError('', 'passwordAndMailErrorSpan', 'Please enter your correct email address and password!');
@@ -96,6 +99,7 @@ async function login() {
         }
     }
 }
+
 
 
 /**
@@ -149,15 +153,18 @@ async function guestLogin() {
  * and sets the values in the login form fields.
  */
 function displayUserEmailPassword() {
+    const rememberMe = localStorage.getItem('rememberMe');
     let emailToken = localStorage.getItem('emailToken');
     let passwordToken = localStorage.getItem('passwordToken');
-    if (emailToken && passwordToken) {
+
+    if (rememberMe === 'true' && emailToken && passwordToken) {
         const email = atob(emailToken);
         const password = atob(passwordToken);
         document.getElementById('loginEmail').value = email;
         document.getElementById('loginPassword').value = password;
     }
 }
+
 
 
 /**
