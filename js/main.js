@@ -89,7 +89,8 @@ async function loadUserInitial() {
     
     if (localStorage.getItem('guestLoggedIn') === 'true') {
         document.getElementById('profileInitial').innerHTML = 'G';
-    } else {
+    }
+    if (user) {
         document.getElementById('profileInitial').innerHTML = user.initials;
     }
 }
