@@ -52,6 +52,7 @@ async function onloadInit() {
     countInit();
 }
 
+
 async function onloadInitGreeting() {
     displayUserName();
 }
