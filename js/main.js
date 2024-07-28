@@ -146,6 +146,8 @@ function displayDesktopMenu() {
  */
 function displayMobileLogout() {
     let logout = document.getElementById("logout");
+    let footer = document.getElementById('menu');
+    let body = document.getElementById('template');
     if (logout.style.display === "flex") {
         logout.classList.remove('slideInRight');
         logout.classList.add('slideOutRight');
@@ -153,9 +155,11 @@ function displayMobileLogout() {
             logout.classList.remove('slideOutRight');
             logout.classList.add('slideInRight');
             logout.style.display = "none";
+            footer.style.position = "fixed";
         }, 250);
     } else {
         logout.style.display = "flex";
+        footer.style.position = "absolute";
     }
 }
 
