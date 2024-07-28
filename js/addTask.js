@@ -352,7 +352,6 @@ function datequery() {
     return true;
 }
 
-
 /**
  * Activates the subtask input field for editing and adjusts the visibility of related icons.
  *
