@@ -84,8 +84,9 @@ async function templateInit() {
  */
 async function loadUserInitial() {
     let user = await getUser();
-    user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
-
+    user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));  
+    
+    
     if (localStorage.getItem('guestLoggedIn') === 'true') {
         document.getElementById('profileInitial').innerHTML = 'G';
     } else {
@@ -200,15 +201,21 @@ function checkGuestLogin() {
 function logout() {
     const emailToken = localStorage.getItem('emailToken');
     const passwordToken = localStorage.getItem('passwordToken');
+    const rememberMe = localStorage.getItem('rememberMe');
+
     localStorage.clear();
-    if (emailToken) {
+
+    if (rememberMe === 'true') {
+        localStorage.setItem('emailToken', emailToken);
+        localStorage.setItem('passwordToken', passwordToken);
+        localStorage.setItem('rememberMe', 'true');
+    } else if (rememberMe === 'false') {
         localStorage.setItem('emailToken', emailToken);
     }
-    if (passwordToken) {
-        localStorage.setItem('passwordToken', passwordToken);
-    }
+
     window.location.href = "./login.html";
 }
+
 
 
 /**
