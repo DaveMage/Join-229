@@ -353,7 +353,6 @@ function closeTaskCardOverviewWithoutAnimation() {
  * @param {string} taskId - The unique identifier of the task to be deleted.
  */
 async function deleteTask(taskId) {
-    console.log(taskId);
     // Retrieve the user ID based on the email stored in localStorage
     let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')).id);
     let guestLoggedIn = localStorage.getItem('guestLoggedIn');
