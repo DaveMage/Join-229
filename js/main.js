@@ -102,7 +102,11 @@ async function loadUserInitial() {
  * This function sets the inner HTML of the header element to the mobile header template.
  */
 function displayMobileHeader() {
-    document.getElementById("header").innerHTML = headerMobileHtml();
+    let mobileHeader = document.getElementById("header");
+    if(mobileHeader) {
+        mobileHeader.innerHTML = headerMobileHtml();
+    }
+    
 }
 
 
@@ -112,7 +116,15 @@ function displayMobileHeader() {
  * This function sets the inner HTML of the menu element to the mobile menu template.
  */
 function displayMobileMenu() {
-    document.getElementById("menu").innerHTML = menuMobileHtml();
+    let mobileMenu = document.getElementById("menu");
+    if(document.getElementById('profileInitial').innerHTML === null || document.getElementById('profileInitial').innerHTML === '') {
+        mobileMenu.style.display = 'none';
+    }
+    
+    if(mobileMenu) {
+        mobileMenu.innerHTML = menuMobileHtml();
+    }
+    
 }
 
 
@@ -122,7 +134,12 @@ function displayMobileMenu() {
  * This function sets the inner HTML of the menu element to the desktop menu template.
  */
 function displayDesktopMenu() {
-    document.getElementById("menuDesktop").innerHTML = menuDesktopHtml();
+    let desktopMenu = document.getElementById("menuDesktop");
+    if(desktopMenu) {
+        desktopMenu.innerHTML = menuDesktopHtml();
+    }
+    
+    
 }
 
 
