@@ -204,12 +204,18 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-left: -9px;
 }
 
 .taskCardAssigned {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   margin-left: 8px;
+  max-width: 140px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  padding-left: 8px;
 }
 
 .taskCardPriority {
@@ -236,6 +242,7 @@ main {
   width: 32px;
   height: 32px;
   border-radius: 100%;
+  padding: 8px;
   background-color: aquamarine;
   display: flex;
   align-items: center;
