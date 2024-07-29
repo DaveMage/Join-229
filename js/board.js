@@ -283,16 +283,17 @@ function closeTaskCardOverviewWithoutAnimation() {
  * @param {string} taskId - The unique identifier of the task to be deleted.
  */
 async function deleteTask(taskId) {
-    let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')).id);
+    let userId = users.find(user => user.email == atob(localStorage.getItem('emailToken')));
+    userId = userId.id;
     let guestLoggedIn = localStorage.getItem('guestLoggedIn');
 
     if (guestLoggedIn === 'true') {
         userId = '-O-Mr5g8976g5-yCxVK8';
-    }
-    if (!userId) {
+    } else if (!userId) {
         console.error('User not found');
         return;
     }
+    
     try {
         await deleteData('/users/' + userId + '/tasks/' + taskId);
         closeTaskCardOverview();
