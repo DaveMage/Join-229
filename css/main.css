@@ -260,7 +260,7 @@ body {
 }
 
 .slideInRight {
-  animation: slideInRight 300ms ease-out 0s 1 normal forwards;
+  animation: slideInRight 0ms ease-out 0s 1 normal forwards; /* slide in mit mehr als 0ms erzeugt den fehler auf mobile  */
 }
 
 @keyframes slideInBottom {
