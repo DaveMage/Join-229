@@ -691,6 +691,17 @@ span {
   animation: slideInRightDesktop 300ms ease-out 0s 1 normal forwards;
 }
 
+@media (max-width: 1250px){
+  .contacsHeadlineContainer{
+    display: block;
+  }
+
+  .seperatorBlue {
+    height: 3px;
+    border-left: 280px solid #29abe2;
+  }
+}
+
 @media (max-width: 380px){
   .contactEmail{
     font-size: 12px;    
