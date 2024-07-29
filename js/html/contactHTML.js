@@ -9,7 +9,7 @@ function addContactHtml() {
                 <span class="headlineUnderline"></span>
             </div>            
             <div class="addContactContainerBottom">
-                <form id="contactFormAddContact">
+                <form id="contactFormAddContact"  onsubmit="return false">
                     <div class="contactProfileIcon">
                         <img src="/img/Mobile/Contacts/personProfileIcon.png">
                     </div>
@@ -54,7 +54,7 @@ function addContactDesktop() {
           <img onclick="closeAddContactDesktop()" class="closeBtn" src="img/Mobile/Board/closeTask.png">
           <div class="contactEditDesktopIconForm">
             <img class="userIcon120px" src="/img/Desktop/contact/userLogo120px.png">
-            <form class="contactEditDesktopForm" id="contactFormAddContact">               
+            <form class="contactEditDesktopForm" id="contactFormAddContact" onsubmit="return false">               
                 <label for="contactName" class="contactLabel" id="contactLabelName">
                     <input type="text" id="contactName" placeholder="Name" required>
                     <img src="/img/Mobile/Contacts/personIconContacts.png">
