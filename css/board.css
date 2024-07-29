@@ -261,6 +261,8 @@ main {
 .taskCardOverviewBody {
   max-width: 525px;
   min-width: 280px;
+  max-height: 90vh;
+  overflow-y: scroll;
   padding: 32px 24px;
   display: flex;
   flex-direction: column;
@@ -617,6 +619,7 @@ main {
   border: none;
   background-color: transparent;
   width: 100%;
+  max-width: 330px;
 }
 
 .subtaskItemIcon {
@@ -628,6 +631,15 @@ main {
 
 .subtaskItemIcon:active, .subtaskItemIcon:hover {
   background-color: #d1d1d1;
+}
+
+.subtaskList {
+  overflow: scroll;
+  max-height: 100px;
+}
+
+.subtaskList::-webkit-scrollbar-corner {
+  background-color: #F6F7F8;
 }
 
 .taskCardEditBtn{
@@ -1006,6 +1018,30 @@ display: block;
   
   #taskCardOverviewDeleteBtn:active img {
     content: url(/img/Mobile/Board/deleteBlue24.png);
+  }
+}
+
+@media (max-width: 470px) {
+  .subtaskItemInput {
+    width: 70%;
+  }
+}
+
+@media (max-width: 420px) {
+  .taskCardOverviewSubtask {
+    gap: 0;
+  }
+
+  .subtaskItemInTask {
+    margin-left: 12px;
+  }
+
+  .taskCardOverviewSubtask input:checked {
+    padding: 12px;
+  }
+
+  .taskCardOverviewSubtask input {
+    padding: 12px;
   }
 }
 
