@@ -42,7 +42,7 @@ function closeAddContact() {
     document.getElementById('addContactContainer').classList.remove('slideInBottom');
     document.getElementById('addContactContainer').classList.add('slideOutBottom');
     setTimeout(() => {
-        document.getElementById('contactAddFormBackground').remove();
+        document.getElementById('background').remove();
     }, 300);
 }
 
@@ -54,18 +54,7 @@ function closeAddContact() {
  * removes the form's background and overlay elements from the DOM after the animation completes.
  */
 function closeAddContactDesktop() {
-    let floatId = document.getElementById('background');
-    let overlay = document.getElementById('backgroundOverlay');
-
-    floatId.classList.add('closing');
-    floatId.addEventListener('animationend', () => {
-        if (floatId) {
-            floatId.remove();
-        }
-        if (overlay) {
-            overlay.remove();
-        }       
-    });
+    document.getElementById('background').remove();
 }
 
 
@@ -118,15 +107,15 @@ function displayContacts(contacts) {
  */
 async function saveContact() {
     if (!validateForm()) {
-        return;
+        return false;
     }
+
     let contactName = document.getElementById('contactName').value;
     let contactEmail = document.getElementById('contactEmail').value;
     let contactPhone = document.getElementById('contactPhone').value;
     let randomColor = profileColor[Math.floor(Math.random() * profileColor.length)];
     let initials = contactName.split(' ').map(n => n[0]).join('');
-    let user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
-    let userId = localStorage.getItem('guestLoggedIn') === 'true' ? '-O-Mr5g8976g5-yCxVK8' : user.id;
+    let userId = await getUserId();
 
     try {
         await postData(`/users/${userId}/contacts`, {
@@ -137,12 +126,15 @@ async function saveContact() {
             profileColor: randomColor
         });
         await showSuccessMessage();
-        document.getElementById('backgroundOverlay').remove();
-        contactInit();
+        await getContacts();
+        displayContacts(contacts);
+
     } catch (error) {
         console.error('Error adding contact:', error);
     }
+
 }
+
 
 
 /**
