@@ -282,7 +282,7 @@ function taskCardEditHTML(task) {
                             onclick="toggleEditAssignedDropdown('${task.id}')">
                         </div>
 
-                        <div id="editAssignedDropdown" class="customDropdownBox">
+                        <div id="editAssignedDropdown" class="customDropdownBox editTaskDropdownBox">
                             ${displayAssignedDropdown(task)}
                         </div>
 

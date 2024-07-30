@@ -33,6 +33,31 @@ function openAddContact() {
 
 
 /**
+ * Adds event listeners to the task addition form and its input fields for handling form submission and key events.
+ *
+ * This function attaches event listeners to the form used for adding a new task and its associated input fields.
+ * It prevents the default form submission behavior and provides functionality for handling 'Enter' key presses,
+ * specifically adding subtasks when the 'Enter' key is pressed in the subtask input field.
+ */
+function addEventListeners() {
+    const form = document.getElementById('editContactFormAddContact');
+
+    if (form) {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+        });
+
+        form.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter' && event.target.type !== 'textarea') {
+                event.preventDefault();
+                return false;
+            }
+        });
+    }
+}
+
+
+/**
  * Closes the add contact form and removes the background overlay.
  *
  * This function adds an animation class to slide out the add contact form and then removes
@@ -132,7 +157,6 @@ async function saveContact() {
     } catch (error) {
         console.error('Error adding contact:', error);
     }
-
 }
 
 
@@ -336,6 +360,7 @@ function closeOption() {
 function openEditContact(contactId) {
     let container;
     closeOption();
+    
     let contact = contacts.find(contact => contact.id === contactId);
 
     if (window.innerWidth >= 1100) {
@@ -345,6 +370,8 @@ function openEditContact(contactId) {
         container = document.getElementById('contactViewContainer' + contactId);
         container.innerHTML += contactEditForm(contact);
     }
+
+    addEventListeners();
 }
 
 
