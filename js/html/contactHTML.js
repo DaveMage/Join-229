@@ -9,7 +9,7 @@ function addContactHtml() {
                 <span class="headlineUnderline"></span>
             </div>            
             <div class="addContactContainerBottom">
-                <form id="contactFormAddContact"  onsubmit="return false">
+                <form id="contactFormAddContact" onsubmit="return false">
                     <div class="contactProfileIcon">
                         <img src="/img/Mobile/Contacts/personProfileIcon.png">
                     </div>
@@ -169,7 +169,7 @@ function contactEditForm(contact) {
             <span class="headlineUnderline"></span>
         </div>            
         <div class="addContactContainerBottom">
-            <form onsubmit="return false">
+            <form id="editContactFormAddContact" onsubmit="return false">
                 <div class="contactProfileIcon" style="background-color: ${contact.profileColor};">
                   ${contact.initials}
                 </div>
@@ -250,7 +250,7 @@ function editContactDesktop(contact) {
           <img onclick="closeAddContactDesktop()" class="closeBtn" src="img/Mobile/Board/closeTask.png">
           <div class="contactEditDesktopIconForm">
             <div class="profileIconDesktop" id="profileIconEditDesktop" style="background-color: ${contact.profileColor};">${contact.initials}</div>
-            <form class="contactEditDesktopForm" onsubmit="return false;">          
+            <form id="editContactFormAddContact" class="contactEditDesktopForm" onsubmit="return false;">          
               <label for="contactName${contact.id}" class="contactLabel">
                 <input type="text" id="contactName${contact.id}" placeholder="Name" required value="${contact.name}">
                 <img src="/img/Mobile/Contacts/personIconContacts.png">
