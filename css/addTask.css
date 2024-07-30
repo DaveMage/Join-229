@@ -51,6 +51,7 @@ body {
   flex-direction: column;
   gap: 8px;
   padding-bottom: 32px;
+  position: relative;
 }
 
 .addTaskLabelPriority {
@@ -97,6 +98,10 @@ body {
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
   padding-top: 8px;
   margin-top: -8px;
+  position: absolute !important;
+  top: 74px;
+  width: 100%;
+  z-index: 99;
 }
 
 .assignedItemWrap {
@@ -295,6 +300,10 @@ body {
   font-size: 12px;
   margin-top: -4px;
   color: #ff8190;
+}
+
+.addTaskCategoryContainer {
+  z-index: 100;
 }
 
 .addTaskSubtaskItem {

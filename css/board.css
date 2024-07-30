@@ -678,7 +678,19 @@ main {
   padding-top: 8px;
   margin-top: -16px;
   max-height: 200px;
-  overflow: auto; 
+  overflow: auto;
+  position: absolute !important;
+  top: 74px;
+  width: 100%;
+  z-index: 99;
+}
+
+.addTaskCategoryContainer {
+  z-index: 100;
+}
+
+.addTaskLabel {
+  position: relative;
 }
 
 .customDropdownCategory {

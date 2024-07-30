@@ -509,7 +509,7 @@ function addNewTaskOnBoardHtml(taskStatus) {
                             <label for="addTaskCategory" class="addTaskLabel">
                                 Category
                                 <div class="addTaskInputIconContainer">
-                                    <input id="addTaskCategory" type="text" placeholder="Select a Category" class="addTaskInput focus-border"
+                                    <input id="addTaskCategory" type="text" placeholder="Select a Category" class="addTaskInput addTaskCategoryContainer focus-border"
                                         readonly onclick="toggleCategoryDropdown()" />
                                     <img class="dropdownIcon" id="categoryDropdownArrow" src="./img/Mobile/AddTask/arrowDropDownaa.png" />
                                 </div>

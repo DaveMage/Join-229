@@ -29,7 +29,6 @@
       <form id="addTaskForm" onsubmit="return false" class="addTaskForm">
         <div class="formInputsContainer">
           <div class="addTaskDesktopColumns">
-            <!-- linker teil für desktop version-->
             <label for="addTaskTitle" class="addTaskLabel">
               <p>Title<span class="required">*</span></p>
               <input type="text" placeholder="Enter a Title" class="addTaskInput focus-border" id="addTaskTitle"
@@ -42,7 +41,6 @@
                 id="addTaskDescription" rows="4"></textarea>
             </label>
             <label for="addTaskFormAssignedInput" class="addTaskLabel">
-              <!-- dropdown Box Assigned -->
               Assigned To
               <div class="addTaskInputIconContainer">
                 <input id="addTaskFormAssignedInput" type="text" placeholder="Select contacts to assign"
@@ -50,15 +48,12 @@
                 <img class="dropdownIcon" id="assignedDropdownArrow" src="./img/Mobile/AddTask/arrowDropDownaa.png" />
               </div>
               <div class="customDropdownAssigned customDropdownBox" id="dropdownAssigned">
-                <!-- Assigend Item with Checkbox -->
               </div>
             </label>
           </div>
           <span class="addTaskDesktopSeperator"></span>
           <div class="addTaskDesktopColumns">
-            <!-- rechter teil für desktop version-->
             <label for="addTaskDueDate" class="addTaskLabel">
-              <!--Due Date -->
               <p>Due Date<span class="required">*</span></p>
               <input type="date" class="addTaskInput focus-border" id="addTaskDueDate" placeholder="Select a Date"
                 onblur="datequery()" />
@@ -67,33 +62,27 @@
             <div class="addTaskLabelPriority">
               <span id="addTaskPriority">Priority</span>
             </div>
-            <!-- Priority -->
             <div class="prioContainer">
-              <!-- Prio input Radio als btn -->
               <input type="radio" id="urgent" name="priority" value="Urgent" hidden />
-              <!-- Prio input Radio Urgent -->
               <label for="urgent" class="prioLabel" id="prioUrgent">
                 <span class="prioLabelText">Urgent</span>
                 <img src="./img/Mobile/AddTask/urgentIconAddTask.png" />
               </label>
               <input type="radio" id="medium" name="priority" value="Medium" hidden checked />
-              <!-- Prio input Radio Medium -->
               <label for="medium" class="prioLabel" id="prioMedium">
                 <span class="prioLabelText">Medium</span>
                 <img src="./img/Mobile/AddTask/mediumIconAddTask.png" />
               </label>
               <input type="radio" id="low" name="priority" value="Low" hidden />
-              <!-- Prio input Radio Low -->
               <label for="low" class="prioLabel" id="prioLow">
                 <span class="prioLabelText">Low</span>
                 <img src="./img/Mobile/AddTask/lowIconAddTask.png" />
               </label>
             </div>
             <label for="addTaskCategory" class="addTaskLabel">
-              <!-- Category -->
               Category
               <div class="addTaskInputIconContainer">
-                <input id="addTaskCategory" type="text" placeholder="Select a Category" class="addTaskInput focus-border"
+                <input id="addTaskCategory" type="text" placeholder="Select a Category" class="addTaskInput addTaskCategoryContainer focus-border"
                   readonly onclick="toggleCategoryDropdown()" />
                 <img class="dropdownIcon" id="categoryDropdownArrow" src="./img/Mobile/AddTask/arrowDropDownaa.png" />
               </div>
@@ -107,7 +96,6 @@
               </div>
             </label>
             <label class="addTaskLabel">
-              <!-- Subtasks -->
               Subtasks
               <div class="addTaskInputIconContainer">
                 <input id="addTaskSubtask" type="text" placeholder="Add new subtasks" class="addTaskInput focus-border"
@@ -127,7 +115,6 @@
           </div>
         </div>
         <div class="addTaskBtnContainer">
-          <!-- Buttons-->
           <p><span class="required">*</span>This field is required</p>
           <div class="addTaskDesktopBtnArea">
             <button onclick="clearForm()" class="addTaskClearBtn">
