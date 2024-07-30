@@ -679,8 +679,15 @@ main {
   margin-top: -16px;
   max-height: 200px;
   overflow: auto;
-  position: absolute !important;
+  position: absolute;
   top: 74px;
+  width: 100%;
+  z-index: 99;
+}
+
+.editTaskDropdownBox {
+  position: relative !important;
+  top: 0;
   width: 100%;
   z-index: 99;
 }
