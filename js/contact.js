@@ -142,6 +142,7 @@ async function saveContact() {
     } catch (error) {
         console.error('Error adding contact:', error);
     }
+    contactInit();
 }
 
 
