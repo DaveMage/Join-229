@@ -251,23 +251,22 @@ function editContactDesktop(contact) {
           <div class="contactEditDesktopIconForm">
             <div class="profileIconDesktop" id="profileIconEditDesktop" style="background-color: ${contact.profileColor};">${contact.initials}</div>
             <form class="contactEditDesktopForm" onsubmit="return false;">          
-            
-          <label for="contactName${contact.id}" class="contactLabel">
-              <input type="text" id="contactName${contact.id}" placeholder="Name" required value="${contact.name}">
-              <img src="/img/Mobile/Contacts/personIconContacts.png">
-          </label>
-          <label for="contactEmail${contact.id}" class="contactLabel">
-              <input type="email" id="contactEmail${contact.id}" placeholder="Email" value="${contact.email}">
-              <img src="/img/Mobile/Contacts/mailIconContacts.png">
-          </label>
-          <label for="contactPhone${contact.id}" class="contactLabel">
-              <input type="number" min=0  id="contactPhone${contact.id}" class="contactPhoneInput" placeholder="Phone" value="${contact.phone}">
-              <img src="/img/Mobile/Contacts/callIconContacts.png" >
-          </label>
-          <div class="contactEditFormBtnContainer">
-            <button class="secondaryBtn" onclick="deleteContact('${contact.id}')">Delete</button>
-            <button onclick="saveEditContact('${contact.id}')" class="primaryBtn saveContactBtn">Save<img src="/img/Mobile/Contacts/checkWhite.png"></button>
-          </div>       
+              <label for="contactName${contact.id}" class="contactLabel">
+                <input type="text" id="contactName${contact.id}" placeholder="Name" required value="${contact.name}">
+                <img src="/img/Mobile/Contacts/personIconContacts.png">
+              </label>
+              <label for="contactEmail${contact.id}" class="contactLabel">
+                <input type="email" id="contactEmail${contact.id}" placeholder="Email" value="${contact.email}">
+                <img src="/img/Mobile/Contacts/mailIconContacts.png">
+              </label>
+              <label for="contactPhone${contact.id}" class="contactLabel">
+                <input type="number" min=0  id="contactPhone${contact.id}" class="contactPhoneInput" placeholder="Phone" value="${contact.phone}">
+                <img src="/img/Mobile/Contacts/callIconContacts.png" >
+              </label>
+              <div class="contactEditFormBtnContainer">
+                <button class="secondaryBtn" onclick="deleteContact('${contact.id}')">Delete</button>
+                <button onclick="saveEditContact('${contact.id}')" class="primaryBtn saveContactBtn">Save<img src="/img/Mobile/Contacts/checkWhite.png"></button>
+              </div>       
             </form>
           </div>      
         </div>
