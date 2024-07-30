@@ -98,10 +98,7 @@ function startDragging(event, taskId) {
  * @param {string} status - The new status to which the task should be moved.
  */
 async function moveTo(status) {
-    await getUser();
-
-    let user = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
-    let userId = user ? user.id : '-O-Mr5g8976g5-yCxVK8';
+    userId = await getUserId();
     let guestLoggedIn = localStorage.getItem('guestLoggedIn');
 
     if (guestLoggedIn === 'true') {
