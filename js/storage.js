@@ -295,42 +295,31 @@ function validateFormData(formData) {
 async function saveTask(taskStatus) {
     let formData = getFormData();
 
-    if (!validateFormData(formData)) {
-        return;
-    }
+    if (!validateFormData(formData)) return;
+
     try {
         let userId = await getUserId();
+        if (!userId) throw new Error('User ID not found');
 
-        if (!userId) {
-            throw new Error('User ID not found');
-        }
         await postData(`/users/${userId}/tasks`, {
-            title: formData.title,
-            description: formData.description,
-            assigned: formData.assigned,
-            date: formData.date,
-            priority: formData.prio,
-            category: formData.category,
-            subtasks: formData.subtasks,
-            status: ((taskStatus == 'inProgress') ? ('inProgress') : (taskStatus == 'awaitFeedback') ? ('awaitFeedback') : ('open'))
+            ...formData,
+            status: taskStatus === 'inProgress' ? 'inProgress' : taskStatus === 'awaitFeedback' ? 'awaitFeedback' : 'open'
         });
 
         if (document.getElementById('addTaskChard')) {
             document.getElementById('addTaskChard').remove();
         }
+
         if (window.location.pathname === '/addTask.html') {
             window.location.href = '/board.html';
+        } else if (window.location.pathname === '/board.html') {
+            displaySuccsessfullyBoardMessage();
+            window.location.reload();
         }
 
     } catch (error) {
         console.error('Error saving task:', error);
     }
-
-    if (window.location.pathname === '/addTask.html') {
-        displaySuccsessfullyMessage();
-    }
-    if (window.location.pathname === '/board.html') {
-        displaySuccsessfullyBoardMessage();
-        window.location.reload();
-    }
 }
+
+
