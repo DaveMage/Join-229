@@ -306,19 +306,26 @@ async function saveTask(taskStatus) {
             status: taskStatus === 'inProgress' ? 'inProgress' : taskStatus === 'awaitFeedback' ? 'awaitFeedback' : 'open'
         });
 
-        if (document.getElementById('addTaskChard')) {
-            document.getElementById('addTaskChard').remove();
-        }
-
-        if (window.location.pathname === '/addTask.html') {
-            window.location.href = '/board.html';
-        } else if (window.location.pathname === '/board.html') {
-            displaySuccsessfullyBoardMessage();
-            window.location.reload();
-        }
+        handleAddTaskChard();
+        handlePageRedirection();
 
     } catch (error) {
         console.error('Error saving task:', error);
+    }
+}
+
+function handleAddTaskChard() {
+    if (document.getElementById('addTaskChard')) {
+        document.getElementById('addTaskChard').remove();
+    }
+}
+
+function handlePageRedirection() {
+    if (window.location.pathname === '/addTask.html') {
+        window.location.href = '/board.html';
+    } else if (window.location.pathname === '/board.html') {
+        displaySuccsessfullyBoardMessage();
+        window.location.reload();
     }
 }
 
