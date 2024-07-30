@@ -290,9 +290,7 @@ async function openContactView(contactId) {
  * @returns {Promise<void>} - A promise that resolves when the contact is successfully deleted.
  */
 async function deleteContact(contactId) {
-    await getUser();
-    let userId = users.find(user => user.email === atob(localStorage.getItem('emailToken')));
-    userId = users.id;
+    userId = await getUserId();
     let guestLoggedIn = localStorage.getItem('guestLoggedIn');
     if (guestLoggedIn === 'true') {
         userId = '-O-Mr5g8976g5-yCxVK8';
