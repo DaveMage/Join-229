@@ -1,6 +1,6 @@
 function addContactHtml() {
   return /* html */`
-    <div class="background backgroundMobile" id="contactAddFormBackground">
+    <div class="background backgroundMobile" id="background">
         <div class="addContactContainer slideInBottom" id="addContactContainer">
             <div class="addContainerTopContainer">
                 <img class="closeBtn" src="/img/Mobile/Contacts/closeWhite.png" onclick="closeAddContact()">
@@ -9,7 +9,7 @@ function addContactHtml() {
                 <span class="headlineUnderline"></span>
             </div>            
             <div class="addContactContainerBottom">
-                <form id="contactFormAddContact"  onsubmit="return false">
+                <form id="contactFormAddContact"  onsubmit="saveContact(); return false;">
                     <div class="contactProfileIcon">
                         <img src="/img/Mobile/Contacts/personProfileIcon.png">
                     </div>
@@ -28,7 +28,7 @@ function addContactHtml() {
                       <img src="/img/Mobile/Contacts/callIconContacts.png">
                     </label>
                     <span id="phoneErrorSpan" class="errorMessage"></span>
-                    <button type="submit" onclick="saveContact()" class="primaryBtn createContactBtn" id="createContactBtn">Create contact <img src="/img/Mobile/Contacts/checkWhite.png"></button>
+                    <button type="submit"  class="primaryBtn createContactBtn" id="createContactBtn">Create contact <img src="/img/Mobile/Contacts/checkWhite.png"></button>
 
                 </form>
             </div>
@@ -41,7 +41,9 @@ function addContactHtml() {
 function addContactDesktop() {
   return /* html */`
     <div class="background" id="background">
+
       <div class="contactEditDesktopBody" id="floatBackground">
+
         <div class="contactEditDesktopLeft">
           <img  class="logo55px" src="./img/Desktop/contact/logo55px.png" />
           <div class="contactEditDesktopText">
@@ -50,6 +52,7 @@ function addContactDesktop() {
             <span class="horizontal"></span>
           </div>
         </div>
+
         <div class="contactEditDesktopRight">
           <img onclick="closeAddContactDesktop()" class="closeBtn" src="img/Mobile/Board/closeTask.png">
           <div class="contactEditDesktopIconForm">
@@ -72,14 +75,17 @@ function addContactDesktop() {
                 <span id="phoneErrorSpan" class="errorMessageDesktop"></span>
                 <div class="contactEditDesktopFormBtns">
                   <button class="secondaryBtn" onclick="closeAddContactDesktop()">Cancel <img src="/img/Mobile/AddTask/closeIcon.png"></button>
-                  <button onclick="saveContact()" type="submit" id="submitBtnAddContact" class="primaryBtn createContactBtn">Create contact <img src="/img/Mobile/Contacts/checkWhite.png" ></button>
+                  <button type="submit" onclick="saveContact()" id="submitBtnAddContact" class="primaryBtn createContactBtn">Create contact <img src="/img/Mobile/Contacts/checkWhite.png" ></button>
                 </div>              
             </form>
           </div>            
         </div>
+
       </div>
+
     </div>
-    <div class="backgroundOverlay" id="backgroundOverlay" onclick="closeAddContactDesktop()"></div>
+
+    
   `;
 };
 
@@ -272,6 +278,6 @@ function editContactDesktop(contact) {
         </div>
       </div>
     </div>
-    <div class="backgroundOverlay" id="backgroundOverlay" onclick="closeAddContactDesktop()"></div>
+    
   `;
 };
