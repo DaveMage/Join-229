@@ -266,6 +266,7 @@ async function openContactView(contactId) {
     let contact = contacts.find(contact => contact.id === contactId);
     if (contact) {
         if (window.innerWidth >= 1100) {
+            document.getElementById('contactViewDesktop').style.display = 'flex';
             document.getElementById('contactViewDesktop').innerHTML = contactViewDesktop(contact);
             let items = document.querySelectorAll('.contactItemActive');
             items.forEach(item => item.classList.remove('contactItemActive'));
@@ -301,7 +302,10 @@ async function deleteContact(contactId) {
     }
     try {
         await deleteData('/users/' + userId + '/contacts/' + contactId);
-        window.location.href = 'contacts.html';
+        document.getElementById('contactViewDesktop').style.display = 'none';
+        await getContacts();
+        displayContacts(contacts);
+        
     } catch (error) {
         console.error('Error deleting contact:', error);
     }
