@@ -72,6 +72,10 @@
   -webkit-appearance: none;
 }
 
+.contactPhoneInput::-webkit-outer-spin-button, .contactPhoneInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 .createContactBtn {
   height: 51px;
   padding: 18px 10px;

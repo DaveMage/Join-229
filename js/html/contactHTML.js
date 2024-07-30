@@ -182,7 +182,7 @@ function contactEditForm(contact) {
                     <img src="/img/Mobile/Contacts/mailIconContacts.png">
                 </label>
                 <label for="contactPhone${contact.id}" class="contactLabel">
-                    <input type="number" min=0 id="contactPhone${contact.id}" placeholder="Phone" value="${contact.phone}">
+                    <input type="number" min=0 id="contactPhone${contact.id}" class="contactPhoneInput" placeholder="Phone" value="${contact.phone}">
                     <img src="/img/Mobile/Contacts/callIconContacts.png" >
                 </label>
                 <div class="contactEditFormBtnContainer">
@@ -261,7 +261,7 @@ function editContactDesktop(contact) {
               <img src="/img/Mobile/Contacts/mailIconContacts.png">
           </label>
           <label for="contactPhone${contact.id}" class="contactLabel">
-              <input type="number" min=0  id="contactPhone${contact.id}" placeholder="Phone" value="${contact.phone}">
+              <input type="number" min=0  id="contactPhone${contact.id}" class="contactPhoneInput" placeholder="Phone" value="${contact.phone}">
               <img src="/img/Mobile/Contacts/callIconContacts.png" >
           </label>
           <div class="contactEditFormBtnContainer">
