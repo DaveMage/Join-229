@@ -314,11 +314,13 @@ async function saveTask(taskStatus) {
     }
 }
 
+
 function handleAddTaskChard() {
     if (document.getElementById('addTaskChard')) {
         document.getElementById('addTaskChard').remove();
     }
 }
+
 
 function handlePageRedirection() {
     if (window.location.pathname === '/addTask.html') {
