@@ -33,7 +33,10 @@ function displayNoTasksProgress() {
 function menuMoveToHtml(taskId) {
     return /*html*/ `
     <div class="menuMoveTo" id="moveToMenu${taskId}">
-        <span class="menuMoveToText">Move to</span>
+            <div class="moveToHeader">
+                <span class="menuMoveToText">Move to</span>
+                <img src="./img/Mobile/Board/closeTask.png" onclick="event.stopPropagation(); closeMoveToMenu('${taskId}')">
+            </div>
         <div class="menuMoveToContainer">
             <div class="menuMoveToItem" onclick="event.stopPropagation();moveToClick('open', '${taskId}')">To do</div>
             <div class="menuMoveToItem" onclick="event.stopPropagation();moveToClick('inProgress', '${taskId}')">In progress</div>
@@ -63,7 +66,7 @@ function taskCardHTML(task) {
             <div class="taskCardAssigned">
                 ${assingedProfileIconHtml(task)} 
             </div>
-        <div class="taskCardPriority"><img src="${task.priority.imgSrc}"></div>  
+        <div class="taskCardPriority"><img src="${task.prio.imgSrc}"></div>  
         </div> 
         </div>
     </div>
@@ -160,8 +163,8 @@ function overviewTaskCardHTML(task) {
 
                 <div class="taskCardOverviewLabelContainer">
                     <p class="taskCardOverviewLabel fsize20">Priority:</p>
-                    <p class="taskCardOverview priorityLabel fsize20">${task.priority.value}</p>
-                    <img class="imgWidth24" src="${task.priority.imgSrc}">
+                    <p class="taskCardOverview priorityLabel fsize20">${task.prio.value}</p>
+                    <img class="imgWidth24" src="${task.prio.imgSrc}">
                 </div>
 
                 <div class="taskCardOverviewAssignedContainer">
@@ -263,7 +266,7 @@ function taskCardEditHTML(task) {
                         <div class = "prioRadioContainer">
                             <div class="prioRadio">
                                 <input class="inputUrgent" type="radio" id="urgent${task.id}" name="priority${task.id}" value="Urgent"
-                                    ${task.priority.value === "Urgent" ? "checked" : ""} hidden >
+                                    ${task.prio.value === "Urgent" ? "checked" : ""} hidden >
                                 <label id="labelUrgent" class="prioLabelImg" for="urgent${task.id}">
                                     Urgent
                                     <img src="./img/Mobile/AddTask/urgentIconAddTask.png" />
@@ -272,7 +275,7 @@ function taskCardEditHTML(task) {
 
                             <div class="prioRadio">
                                 <input class="inputMedium" type="radio" id="medium${task.id}" name="priority${task.id}" value="Medium"
-                                    ${task.priority.value === "Medium" ? "checked" : ""} hidden >
+                                    ${task.prio.value === "Medium" ? "checked" : ""} hidden >
                                 <label id="labelMedium" class="prioLabelImg" for="medium${task.id}">
                                     Medium
                                     <img src="./img/Mobile/AddTask/mediumIconAddTask.png" />
@@ -281,7 +284,7 @@ function taskCardEditHTML(task) {
 
                             <div class="prioRadio">
                                 <input class="inputLow" type="radio" id="low${task.id}" name="priority${task.id}" value="Low"
-                                ${task.priority.value === "Low" ? "checked" : ""} hidden >
+                                ${task.prio.value === "Low" ? "checked" : ""} hidden >
                                 <label id="labelLow" class="prioLabelImg" for="low${task.id}">
                                     Low
                                     <img src="./img/Mobile/AddTask/lowIconAddTask.png" />

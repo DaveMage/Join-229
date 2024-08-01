@@ -134,6 +134,13 @@ function displayMoveToMenu(taskId) {
     taskElement.innerHTML += menuMoveToHtml(taskId);
 }
 
+function closeMoveToMenu(taskId) {
+    let existingMenu = document.getElementById('moveToMenu' + taskId);
+    if (existingMenu) {
+        existingMenu.remove();
+    }
+}
+
 
 /**
  * Moves a task to a new status based on the provided status and taskId.
@@ -759,7 +766,7 @@ async function saveEditTask(taskId) {
                 description: formData.description,
                 assigned: formData.assigned,
                 date: formData.date,
-                priority: formData.priority,
+                prio: formData.priority,
                 category: formData.category,
                 status: formData.status
             });
