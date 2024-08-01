@@ -30,12 +30,30 @@ function displayNoTasksProgress() {
 };
 
 
+function menuMoveToHtml(taskId) {
+    return /*html*/ `
+    <div class="menuMoveTo" id="moveToMenu${taskId}">
+        <span class="menuMoveToText">Move to</span>
+        <div class="menuMoveToContainer">
+            <div class="menuMoveToItem" onclick="event.stopPropagation();moveToClick('open', '${taskId}')">To do</div>
+            <div class="menuMoveToItem" onclick="event.stopPropagation();moveToClick('inProgress', '${taskId}')">In progress</div>
+            <div class="menuMoveToItem" onclick="event.stopPropagation();moveToClick('awaitFeedback', '${taskId}')">Await feedback</div>
+            <div class="menuMoveToItem" onclick="event.stopPropagation();moveToClick('done', '${taskId}')">Done</div>
+        </div>
+    </div>
+    `;
+};
+
+
 function taskCardHTML(task) {
   return /* html */ `
     <div class="taskCard" ${task.status} id=${task.id} draggable="true"
     ondragstart="startDragging(event, '${task.id}')" onclick="displayOverviewTaskCard('${task.id}')">
         <div class="taskCardMain">
-            ${taskCardCategoryHTML(task)}
+            <div class="taskCardCategoryImg">
+                ${taskCardCategoryHTML(task)}
+                <img src="./img/Mobile/Board/3dotsMenu32px.png" onclick="event.stopPropagation(); displayMoveToMenu('${task.id}')">
+            </div>
         <div class="taskCardTitleDescriptionContainer">
             <div class="taskCardTitle">${task.title}</div>
             <div class="taskCardDescription">${task.description}</div>
