@@ -117,6 +117,54 @@ async function moveTo(status) {
 
 
 /**
+ * Displays the move-to menu for a given task.
+ * If the menu already exists, it is removed.
+ * 
+ * @param {string} taskId - The ID of the task element.
+ */
+function displayMoveToMenu(taskId) {
+    let taskElement = document.getElementById(taskId);
+    let existingMenu = document.getElementById('moveToMenu' + taskId);
+
+    if (existingMenu) {
+        existingMenu.remove();
+        return;
+    }
+
+    taskElement.innerHTML += menuMoveToHtml(taskId);
+}
+
+
+/**
+ * Moves a task to a new status based on the provided status and taskId.
+ * @param {string} status - The new status of the task.
+ * @param {string} taskId - The ID of the task to be moved.
+ * @returns {Promise<void>} - A promise that resolves when the task is successfully moved.
+ */
+async function moveToClick(status, taskId) {
+    try {
+        let userId = await getUserId();
+        let guestLoggedIn = localStorage.getItem('guestLoggedIn');
+
+        if (guestLoggedIn === 'true') {
+            userId = '-O-Mr5g8976g5-yCxVK8';
+        }
+        const task = tasks.find(t => t.id === taskId);
+
+        if (task) {
+            task.status = status;
+            updateBoardHtml();
+            await putData('/users/' + userId + '/tasks/' + taskId, task);
+        } else {
+            console.error('Task not found with ID:', taskId);
+        }
+    } catch (error) {
+        console.error('Error in moveTo:', error);
+    }
+}
+
+
+/**
  * Updates the HTML content of the task board based on the status of each task.
  *
  * This function iterates through each task, categorizing them by their status,
