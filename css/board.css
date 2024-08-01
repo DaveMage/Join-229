@@ -166,7 +166,12 @@ main {
   border-radius: 100%;
   background-color: #d1d1d1;  
 }
-
+.moveToHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
 
 .menuMoveTo{
   border: 1ps solid rgba(0, 0, 0, 0.15);
