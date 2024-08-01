@@ -343,5 +343,3 @@ function handlePageRedirection() {
         window.location.reload();
     }
 }
-
-
