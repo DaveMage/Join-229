@@ -33,7 +33,10 @@ function displayNoTasksProgress() {
 function menuMoveToHtml(taskId) {
     return /*html*/ `
     <div class="menuMoveTo" id="moveToMenu${taskId}">
-        <span class="menuMoveToText">Move to</span>
+            <div class="moveToHeader">
+                <span class="menuMoveToText">Move to</span>
+                <img src="./img/Mobile/Board/closeTask.png" onclick="event.stopPropagation(); closeMoveToMenu('${taskId}')">
+            </div>
         <div class="menuMoveToContainer">
             <div class="menuMoveToItem" onclick="event.stopPropagation();moveToClick('open', '${taskId}')">To do</div>
             <div class="menuMoveToItem" onclick="event.stopPropagation();moveToClick('inProgress', '${taskId}')">In progress</div>
