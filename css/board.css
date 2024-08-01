@@ -239,6 +239,10 @@ main {
   word-wrap: break-word;
 }
 
+.taskCardOverviewDescription {
+  word-wrap: break-word;
+}
+
 .subtaskText {
   font-size: 12px;
 }
