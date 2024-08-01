@@ -766,7 +766,7 @@ async function saveEditTask(taskId) {
                 description: formData.description,
                 assigned: formData.assigned,
                 date: formData.date,
-                priority: formData.priority,
+                prio: formData.priority,
                 category: formData.category,
                 status: formData.status
             });
