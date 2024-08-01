@@ -315,6 +315,12 @@ async function saveTask(taskStatus) {
 }
 
 
+/**
+* Handles the addition of a task card by removing it if it already exists.
+*
+* This function checks if an HTML element with the ID 'addTaskChard' exists in the document.
+* If it does, the element is removed from the DOM.
+*/
 function handleAddTaskChard() {
     if (document.getElementById('addTaskChard')) {
         document.getElementById('addTaskChard').remove();
@@ -322,6 +328,13 @@ function handleAddTaskChard() {
 }
 
 
+/**
+ * Handles page redirection based on the current pathname.
+ *
+ * This function checks the current pathname of the window's location:
+ * - If the pathname is '/addTask.html', it redirects the user to '/board.html'.
+ * - If the pathname is '/board.html', it displays a success message and reloads the page.
+ */
 function handlePageRedirection() {
     if (window.location.pathname === '/addTask.html') {
         window.location.href = '/board.html';
