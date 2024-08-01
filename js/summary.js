@@ -142,7 +142,7 @@ function countDoneTasks(tasks) {
  * @returns {number} The number of urgent tasks.
  */
 function countUrgentTasks(tasks) {
-    return tasks.filter(task => task.priority.value === 'Urgent').length;
+    return tasks.filter(task => task.prio.value === 'Urgent').length;
 }
 
 
@@ -238,7 +238,7 @@ async function displayCountAllTasks() {
 async function displayDeadline() {
     let tasks = await getTask();
     let deadlineDate = document.getElementById('deadlineDate');
-    let urgentTasks = tasks.filter(task => task.priority.value === 'Urgent');
+    let urgentTasks = tasks.filter(task => task.prio.value === 'Urgent');
     let getDeadline = urgentTasks.map(task => new Date(task.date));
     let sortedDeadline = getDeadline.sort((a, b) => a - b);
     let earliestDeadline = sortedDeadline[0];
@@ -288,7 +288,7 @@ function countDoneTasks(tasks) {
 
 
 function countUrgentTasks(tasks) {
-    return tasks.filter(task => task.priority.value === 'Urgent').length;
+    return tasks.filter(task => task.prio.value === 'Urgent').length;
 };
 
 
