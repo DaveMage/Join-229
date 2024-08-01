@@ -29,6 +29,7 @@ function openAddContact() {
         document.getElementById('contactMain').innerHTML += addContactHtml();
     }
     disableCreateContactButton();
+    addEventListenersCreateContact();
 }
 
 
@@ -39,7 +40,25 @@ function openAddContact() {
  * It prevents the default form submission behavior and provides functionality for handling 'Enter' key presses,
  * specifically adding subtasks when the 'Enter' key is pressed in the subtask input field.
  */
-function addEventListeners() {
+function addEventListenersCreateContact() {
+    const form = document.getElementById('contactFormAddContact');
+
+    if (form) {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+        });
+
+        form.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter' && event.target.type !== 'textarea') {
+                event.preventDefault();
+                return false;
+            }
+        });
+    }
+}
+
+
+function addEventListenersEditContact() {
     const form = document.getElementById('editContactFormAddContact');
 
     if (form) {
@@ -373,7 +392,7 @@ function openEditContact(contactId) {
         container.innerHTML += contactEditForm(contact);
     }
 
-    addEventListeners();
+    addEventListenersEditContact();
 }
 
 
