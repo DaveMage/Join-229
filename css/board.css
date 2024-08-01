@@ -192,8 +192,6 @@ main {
   gap: 4px;
   display: flex;
   flex-direction: column;
-
-  
 }
 
 .menuMoveToContainer{
@@ -208,7 +206,6 @@ main {
   border: 1px solid #d1d1d1;
   border-radius: 10px;
   font-size: 14px;
-
 }
 
 .menuMoveToItem:hover{
