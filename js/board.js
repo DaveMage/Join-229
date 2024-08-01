@@ -134,6 +134,13 @@ function displayMoveToMenu(taskId) {
     taskElement.innerHTML += menuMoveToHtml(taskId);
 }
 
+function closeMoveToMenu(taskId) {
+    let existingMenu = document.getElementById('moveToMenu' + taskId);
+    if (existingMenu) {
+        existingMenu.remove();
+    }
+}
+
 
 /**
  * Moves a task to a new status based on the provided status and taskId.
