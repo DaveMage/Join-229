@@ -236,6 +236,7 @@ main {
 
 .taskCardDescription {
   color: #a8a8a8;
+  word-wrap: break-word;
 }
 
 .subtaskText {
