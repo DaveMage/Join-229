@@ -382,7 +382,7 @@ body {
 }
 
 .customDropdownAssigned {
-  height: 200px;
+  max-height: 200px;
   overflow: auto;
   z-index: 1;
   margin-top: -10px;
