@@ -866,11 +866,15 @@ function goToAddTask() {
  * @param {string} taskStatus - The status of the task to be added, used to determine its placement or styling.
  */
 function addNewTaskOnBoard(taskStatus) {
-    let main = document.getElementById('mainBoard');
-    main.innerHTML += addNewTaskOnBoardHtml(taskStatus);
-    clearForm();
-    dateThreshold();
-    addEventListeners();
+    if (window.innerWidth < 1100) {
+        goToAddTask();
+    } else {
+        let main = document.getElementById('mainBoard');
+        main.innerHTML += addNewTaskOnBoardHtml(taskStatus);
+        clearForm();
+        dateThreshold();
+        addEventListeners();
+    }
 }
 
 
