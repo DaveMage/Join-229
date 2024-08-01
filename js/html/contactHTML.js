@@ -41,9 +41,7 @@ function addContactHtml() {
 function addContactDesktop() {
   return /* html */`
     <div class="background" id="background">
-
       <div class="contactEditDesktopBody" id="floatBackground">
-
         <div class="contactEditDesktopLeft">
           <img  class="logo55px" src="./img/Desktop/contact/logo55px.png" />
           <div class="contactEditDesktopText">
@@ -80,12 +78,8 @@ function addContactDesktop() {
             </form>
           </div>            
         </div>
-
       </div>
-
     </div>
-
-    
   `;
 };
 
