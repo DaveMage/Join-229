@@ -399,6 +399,7 @@ function toggleEditAssignedDropdown(taskId) {
         icon.style.transform = "rotate(0deg)";
         document.removeEventListener("click", handleClickOutsideEdit);
         // openEditTask(taskId)
+        // saveEditTaskonCard(taskId)
     }
 
     displayAssignedDropdown(task);
