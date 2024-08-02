@@ -516,6 +516,7 @@ main {
   max-width: 525px;
   min-width: 280px;
   margin: 0 16px;
+  max-height: 90vh;
   z-index: 902;
 }
 
