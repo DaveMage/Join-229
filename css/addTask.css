@@ -260,6 +260,11 @@ body {
   align-items: center;
   justify-content: space-between;
   background-color: #f6f7f8;
+  position: absolute;
+  bottom: 76px;
+  right: 0;
+  left: 0;
+  padding: 8px 16px;
 }
 
 .addTaskBtnContainer p,
@@ -442,10 +447,10 @@ body {
 
   .addTaskBtnContainer {
     position: absolute;
-    bottom: 80px;
-    width: 100%;
-    padding: 12px 40px 12px 0;
-    padding-right: 40px;
+    bottom: 76px;
+    left: 0;
+    right: 0;
+    padding: 8px 16px;    
     z-index: 200;
   }
 
