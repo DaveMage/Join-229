@@ -359,6 +359,12 @@ function taskCardEditHTML(task) {
     `;
 }
 
+/**
+ * Generates the HTML for displaying the assigned dropdown.
+ * 
+ * @param {Object} task - The task object.
+ * @returns {string} - The HTML string for the assigned dropdown.
+ */
 function displayAssignedDropdown(task) {
     let assignedDropdownHtml = "";
 
@@ -375,7 +381,7 @@ function displayAssignedDropdown(task) {
                 <p data-value="${contacts[i].name}" class="contactName" id="contactName${contacts[i].id}">${contacts[i].name}</p>
             </label>
             <input class="assignedCheckbox" type="checkbox" id="assignedCheckbox${contacts[i].id}" name="contact${contacts[i].id}" data-value="${contacts[i].id}"
-            ${isChecked} onchange="changeBgColorAssignedItem('${contacts[i].id}'); updateSelectedAssignedAndInputField('${task.id}')">
+            ${isChecked} onchange="changeBgColorAssignedItem('${contacts[i].id}'); updateSelectedAssignedAndInputField('${task.id}');updateProfileIcons('${task.id}')">
         </div>
     `;
     }

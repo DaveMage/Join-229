@@ -738,6 +738,28 @@ function getEditFormData(taskId, currentTask) {
 }
 
 
+function updateProfileIcons(taskId) {
+    const assignedCheckboxes = document.querySelectorAll(`#editAssignedDropdown .assignedCheckbox`);
+    const assignedContacts = [];
+    
+    assignedCheckboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            const contactId = checkbox.getAttribute('data-value');
+            const contact = contacts.find(contact => contact.id === contactId);
+            assignedContacts.push(contact);
+        }
+    });
+
+    // Find the task by id and update its assigned contacts
+    const task = tasks.find(task => task.id === taskId);
+    task.assigned = assignedContacts;
+
+    // Update the profile icons container
+    const profileIconContainer = document.getElementById('profileIconAssingedContainer');
+    profileIconContainer.innerHTML = displayAssignedProfileIcons(task);
+}
+
+
 /**
  * Saves the edited task details and updates the task data on the server.
  *
