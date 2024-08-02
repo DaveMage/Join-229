@@ -245,6 +245,9 @@ main {
 .taskCardDescription {
   color: #a8a8a8;
   word-wrap: break-word;
+  height: 50px;
+  overflow: auto;
+  
 }
 
 .taskCardOverviewDescription {
