@@ -1,5 +1,5 @@
 function displayNoTasksToDo() {
-  return /*html*/ `
+    return /*html*/ `
         <div class="noTasks">
             <p class="noTasksText">No tasks To do</p>
         </div>`;
@@ -7,7 +7,7 @@ function displayNoTasksToDo() {
 
 
 function displayNoTasksDone() {
-  return /*html*/ `
+    return /*html*/ `
         <div class="noTasks">
             <p class="noTasksText">No tasks Done</p>
         </div>`;
@@ -15,7 +15,7 @@ function displayNoTasksDone() {
 
 
 function displayNoTasksFeedback() {
-  return /*html*/ `
+    return /*html*/ `
         <div class="noTasks">
             <p class="noTasksText">No tasks Await feedback</p>
         </div>`;
@@ -23,7 +23,7 @@ function displayNoTasksFeedback() {
 
 
 function displayNoTasksProgress() {
-  return /*html*/ `
+    return /*html*/ `
         <div class="noTasks">
             <p class="noTasksText">No tasks In progress</p>
         </div>`;
@@ -49,7 +49,7 @@ function menuMoveToHtml(taskId) {
 
 
 function taskCardHTML(task) {
-  return /* html */ `
+    return /* html */ `
     <div class="taskCard" ${task.status} id=${task.id} draggable="true"
     ondragstart="startDragging(event, '${task.id}')" onclick="displayOverviewTaskCard('${task.id}')">
         <div class="taskCardMain">
@@ -75,62 +75,62 @@ function taskCardHTML(task) {
 
 
 function taskCardCategoryHTML(task) {
-  let categoryColor = "";
-  let categoryText = "";
-  if (task.category) {
-    if (task.category === "Technical Task") {
-      categoryColor = 'style="background-color: #1FD7C1"';
-    } else {
-      categoryColor = 'style="background-color: #0038FF"';
+    let categoryColor = "";
+    let categoryText = "";
+    if (task.category) {
+        if (task.category === "Technical Task") {
+            categoryColor = 'style="background-color: #1FD7C1"';
+        } else {
+            categoryColor = 'style="background-color: #0038FF"';
+        }
+        categoryText = `<div id="editCardCategory" class="taskCardCategory" ${categoryColor}>${task.category}</div>`;
     }
-    categoryText = `<div id="editCardCategory" class="taskCardCategory" ${categoryColor}>${task.category}</div>`;
-  }
-  return categoryText;
+    return categoryText;
 };
 
 
 function overviewTaskCardCategoryHTML(task) {
-  let categoryColor = "";
-  let categoryText = "";
-  if (task.category) {
-    if (task.category === "Technical Task") {
-      categoryColor = 'style="background-color: #1FD7C1"';
-    } else {
-      categoryColor = 'style="background-color: #0038FF"';
+    let categoryColor = "";
+    let categoryText = "";
+    if (task.category) {
+        if (task.category === "Technical Task") {
+            categoryColor = 'style="background-color: #1FD7C1"';
+        } else {
+            categoryColor = 'style="background-color: #0038FF"';
+        }
+        categoryText = `<div id="editCardCategory" class="taskCardCategory fsize23 px4y24" ${categoryColor}>${task.category}</div>`;
     }
-    categoryText = `<div id="editCardCategory" class="taskCardCategory fsize23 px4y24" ${categoryColor}>${task.category}</div>`;
-  }
-  return categoryText;
+    return categoryText;
 };
 
 
 function assingedProfileIconHtml(task) {
-  // Überprüfen, ob task.assigned leer ist
-  if (!task.assigned || task.assigned.length === 0) {
-    return "";
-  }
-  let assignedProfilesHtml = "";
-  for (let i = 0; i < task.assigned.length; i++) {
-    if (task.assigned[i]) {
-      assignedProfilesHtml += /*html*/ `          
+    // Überprüfen, ob task.assigned leer ist
+    if (!task.assigned || task.assigned.length === 0) {
+        return "";
+    }
+    let assignedProfilesHtml = "";
+    for (let i = 0; i < task.assigned.length; i++) {
+        if (task.assigned[i]) {
+            assignedProfilesHtml += /*html*/ `          
                 <div class="taskCardProfileIcon" style="background-color:${task.assigned[i].profileColor};">
                 ${task.assigned[i].initials}</div>`;
+        }
     }
-  }
-  return assignedProfilesHtml;
+    return assignedProfilesHtml;
 };
 
 
 function subtaskProgressbarHTML(task) {
-  let subtaskContentHtml = "";
+    let subtaskContentHtml = "";
 
-  if (task.subtasks && task.subtasks.length > 0) {
-    let completedSubtasks = task.subtasks.filter(
-      (subtask) => subtask.completed
-    ).length;
-    const progressPercentage = (completedSubtasks / task.subtasks.length) * 100;
+    if (task.subtasks && task.subtasks.length > 0) {
+        let completedSubtasks = task.subtasks.filter(
+            (subtask) => subtask.completed
+        ).length;
+        const progressPercentage = (completedSubtasks / task.subtasks.length) * 100;
 
-    subtaskContentHtml = /*html*/ `
+        subtaskContentHtml = /*html*/ `
         <div class="taskCardSubtaskContainer">
             <div class="subtaskProgressbar">
                 <div class="subtaskProgressbarFill" id="progressbar${task.id}" style="width: ${progressPercentage}%;"></div>
@@ -140,12 +140,12 @@ function subtaskProgressbarHTML(task) {
         `;
     }
 
-  return subtaskContentHtml;
+    return subtaskContentHtml;
 };
 
 
 function overviewTaskCardHTML(task) {
-  return /* html */ `
+    return /* html */ `
     <div class="background" id="taskCardOverviewBackground">
         <div class="taskCardOverviewBody" id="taskCardOverviewBodyId">
             <div class="taskCardOverviewMain">
@@ -192,15 +192,15 @@ function overviewTaskCardHTML(task) {
 
 
 function overviewTaskCardAssignedHtml(task) {
-  if (!task.assigned || task.assigned.length === 0) {
-    return "";
-  }
+    if (!task.assigned || task.assigned.length === 0) {
+        return "";
+    }
 
-  let assignedProfilesHtml = "";
+    let assignedProfilesHtml = "";
 
-  for (let i = 0; i < task.assigned.length; i++) {
-    if (task.assigned[i]) {
-      assignedProfilesHtml += /*html*/ `          
+    for (let i = 0; i < task.assigned.length; i++) {
+        if (task.assigned[i]) {
+            assignedProfilesHtml += /*html*/ `          
         <div class="taskCardOverviewContact">
             <div class="taskCardOverviewProfileIcon profileIcon42" style="background-color:${task.assigned[i].profileColor};">
                 ${task.assigned[i].initials}
@@ -209,30 +209,30 @@ function overviewTaskCardAssignedHtml(task) {
                 ${task.assigned[i].name}
             </p>
         </div>`;
+        }
     }
-  }
-  return assignedProfilesHtml;
+    return assignedProfilesHtml;
 };
 
 
 function overviewTaskCardSubtaskHtml(task) {
-  let subtaskItemsHtml = "";
-  if (!task.subtasks || task.subtasks.length === 0) {
-    return "";
-  }
+    let subtaskItemsHtml = "";
+    if (!task.subtasks || task.subtasks.length === 0) {
+        return "";
+    }
 
-  for (let i = 0; i < task.subtasks.length; i++) {
-    let subtaskItem = task.subtasks[i];
-    let subtaskItemHtml = /* html */ `
+    for (let i = 0; i < task.subtasks.length; i++) {
+        let subtaskItem = task.subtasks[i];
+        let subtaskItemHtml = /* html */ `
             <div class="taskCardOverviewSubtask" onclick="toggleSubtask(${i}, '${task.id}')">
                 <input type="checkbox" name="subtaskItem${i}" class="subtaskEditTask" id="subtaskItem${i}" ${subtaskItem.completed ? "checked" : ""}>
                 <label class="subtaskItemInTask" for="subtaskItem${i}" onclick="toggleSubtask(${i}, '${task.id}')">${subtaskItem.name}</label>
             </div>
         `;
-    subtaskItemsHtml += subtaskItemHtml;
-  }
+        subtaskItemsHtml += subtaskItemHtml;
+    }
 
-  return subtaskItemsHtml;
+    return subtaskItemsHtml;
 };
 
 
@@ -360,15 +360,15 @@ function taskCardEditHTML(task) {
 }
 
 function displayAssignedDropdown(task) {
-  let assignedDropdownHtml = "";
+    let assignedDropdownHtml = "";
 
-  const assignedIds = task.assigned ? task.assigned.map((contact) => contact.id) : [];
+    const assignedIds = task.assigned ? task.assigned.map((contact) => contact.id) : [];
 
-  for (let i = 0; i < contacts.length; i++) {
+    for (let i = 0; i < contacts.length; i++) {
 
-    const isChecked = assignedIds.includes(contacts[i].id) ? "checked" : "";
+        const isChecked = assignedIds.includes(contacts[i].id) ? "checked" : "";
 
-    assignedDropdownHtml += /*html*/ `
+        assignedDropdownHtml += /*html*/ `
         <div class="assignedItem" id="wrapper${contacts[i].id}">
             <label class="assignedIconNameContainer" for="assignedCheckbox${contacts[i].id}" class="customDropdownItem">
                 <div class="profileIcon" style="background-color:${contacts[i].profileColor};">${contacts[i].initials}</div>
@@ -378,61 +378,63 @@ function displayAssignedDropdown(task) {
             ${isChecked} onchange="changeBgColorAssignedItem('${contacts[i].id}'); updateSelectedAssignedAndInputField('${task.id}')">
         </div>
     `;
-  }
+    }
 
-  return assignedDropdownHtml;
+    return assignedDropdownHtml;
 };
 
 
 function toggleEditAssignedDropdown(taskId) {
-  let task = tasks.find((task) => task.id === taskId);
-  let dropdown = document.getElementById("editAssignedDropdown");
-  let icon = document.getElementById("assignedIcon");
+    let task = tasks.find((task) => task.id === taskId);
+    let dropdown = document.getElementById("editAssignedDropdown");
+    let icon = document.getElementById("assignedIcon");
 
-  dropdown.classList.toggle("show");
-  if (dropdown.classList.contains("show")) {
-    icon.style.transform = "rotate(180deg)";
-    setTimeout(() => {
-      document.addEventListener("click", handleClickOutsideEdit);
-    }, 0);
-  } else {
-    icon.style.transform = "rotate(0deg)";
-    document.removeEventListener("click", handleClickOutsideEdit);
-  }
+    dropdown.classList.toggle("show");
+    if (dropdown.classList.contains("show")) {
+        icon.style.transform = "rotate(180deg)";
+        setTimeout(() => {
+            document.addEventListener("click", handleClickOutsideEdit);
+        }, 0);
+    } else {
+        icon.style.transform = "rotate(0deg)";
+        document.removeEventListener("click", handleClickOutsideEdit);
+        // openEditTask(taskId)
+    }
 
-  displayAssignedDropdown(task);
+    displayAssignedDropdown(task);
+    // displayAssignedProfileIcons(task)
 };
 
 
 function handleClickOutsideEdit(event) {
-  let dropdown = document.getElementById("editAssignedDropdown");
-  let icon = document.getElementById("assignedIcon");
+    let dropdown = document.getElementById("editAssignedDropdown");
+    let icon = document.getElementById("assignedIcon");
 
-  if (!dropdown.contains(event.target) && !icon.contains(event.target)) {
-    dropdown.classList.remove("show");
-    icon.style.transform = "rotate(0deg)";
-    document.removeEventListener("click", handleClickOutsideEdit);
-  }
+    if (!dropdown.contains(event.target) && !icon.contains(event.target)) {
+        dropdown.classList.remove("show");
+        icon.style.transform = "rotate(0deg)";
+        document.removeEventListener("click", handleClickOutsideEdit);
+    }
 };
 
 
 function changeBgColorAssignedItem(contactId) {
-  let assignedCheckbox = document.getElementById(`assignedCheckbox${contactId}`);
-  let contactName = document.getElementById(`contactName${contactId}`);
-  let assignedItem = assignedCheckbox.closest(".assignedItem");
-  
-  assignedItem.style.backgroundColor = assignedCheckbox.checked ? "#2A3647" : "#fff";
-  contactName.style.color = assignedCheckbox.checked ? "#fff" : "#000";
-  assignedCheckbox.style.backgroundImage = assignedCheckbox.checked ? "url(./img/Mobile/Board/checkButtonMobileChecked.png)" : "";
+    let assignedCheckbox = document.getElementById(`assignedCheckbox${contactId}`);
+    let contactName = document.getElementById(`contactName${contactId}`);
+    let assignedItem = assignedCheckbox.closest(".assignedItem");
+
+    assignedItem.style.backgroundColor = assignedCheckbox.checked ? "#2A3647" : "#fff";
+    contactName.style.color = assignedCheckbox.checked ? "#fff" : "#000";
+    assignedCheckbox.style.backgroundImage = assignedCheckbox.checked ? "url(./img/Mobile/Board/checkButtonMobileChecked.png)" : "";
 };
 
 
 function displaySubtasksHTML(task) {
-  let subtaskHtml = "";
+    let subtaskHtml = "";
 
-  if (task.subtasks && task.subtasks.length > 0) {
-    for (let i = 0; i < task.subtasks.length; i++) {
-      subtaskHtml += /*html*/ `
+    if (task.subtasks && task.subtasks.length > 0) {
+        for (let i = 0; i < task.subtasks.length; i++) {
+            subtaskHtml += /*html*/ `
             <li class="subtaskItem">
                 <input type="text" class="subtaskItemInput" value="${task.subtasks[i].name}"  id="subtaskEditInput${task.id}-${i}">            
                     <div class="subtaskItemIconContainer">
@@ -442,27 +444,27 @@ function displaySubtasksHTML(task) {
                     </div>
             </li>
         `;
+        }
     }
-  }
 
-  return subtaskHtml;
+    return subtaskHtml;
 };
 
 
 function displayAssignedProfileIcons(task) {
-  let profileIconHtml = "";
-  if (task.assigned && task.assigned.length > 0) {
-    for (let i = 0; i < task.assigned.length; i++) {
-      profileIconHtml += /*html*/ `
+    let profileIconHtml = "";
+    if (task.assigned && task.assigned.length > 0) {
+        for (let i = 0; i < task.assigned.length; i++) {
+            profileIconHtml += /*html*/ `
             <div class="profileIcon" style="background-color:${task.assigned[i].profileColor};">${task.assigned[i].initials}</div>`;
+        }
     }
-  }
-  return profileIconHtml;
+    return profileIconHtml;
 };
 
 
 function addNewTaskOnBoardHtml(taskStatus) {
-  return /*html*/ `
+    return /*html*/ `
         <div class="floatingAddTask" id="addTaskChard">
             <div class="addTaskBoardDesktop" id="forAnimationFloating">
                 <div class="headerAddTaskOnBoard">
@@ -583,7 +585,7 @@ function addNewTaskOnBoardHtml(taskStatus) {
 
 
 function successfullyTaskDesktopHtml() {
-  return /* html */ `
+    return /* html */ `
       <div class="backgroundSuccessfullyMessage" id="background">
       <div id="conctactSuccessfully" class="successfullyMessage slideInRightDesktop">
       Task added to board
