@@ -34,7 +34,7 @@ function menuMoveToHtml(taskId) {
     return /*html*/ `
     <div class="menuMoveTo" id="moveToMenu${taskId}">
             <div class="moveToHeader">
-                <span class="menuMoveToText">Move to</span>
+                <span class="menuMoveToText">move to:</span>
                 <img src="./img/Mobile/Board/closeTask.png" onclick="event.stopPropagation(); closeMoveToMenu('${taskId}')">
             </div>
         <div class="menuMoveToContainer">

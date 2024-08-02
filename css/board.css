@@ -176,12 +176,14 @@ main {
 .moveToHeader img{
   cursor: pointer;
   height: 24px;
+  filter: invert(1);
 }
 
 .menuMoveTo{
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+  background-color: #2a3647;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 20px 0 20px 20px;
   width: fit-content;
   padding:  8px;
   position: absolute;
@@ -192,6 +194,8 @@ main {
   gap: 4px;
   display: flex;
   flex-direction: column;
+  background-color: #2a3647;
+  color: #cdcdcd;
 }
 
 .menuMoveToContainer{
@@ -202,15 +206,19 @@ main {
 
 .menuMoveToItem{
   padding: 4px 8px;
-  cursor: pointer;
-  border: 1px solid #d1d1d1;
-  border-radius: 10px;
+  cursor: pointer;  
+  color: #cdcdcd;
   font-size: 14px;
 }
 
 .menuMoveToItem:hover{
-  background-color: #d1d1d1;
-  border-radius: 10px;
+  background-color: #2a3d59;
+  color: #ffffff;
+}
+
+.menuMoveToItem:active{
+  background-color: #2a3d59;
+  color: #ffffff;
 }
 
 
