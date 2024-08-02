@@ -292,6 +292,11 @@ async function displayTaskCard() {
     let awaitFeedback = document.getElementById('feedbackContainer');
     let done = document.getElementById('doneContainer');
 
+    toDo.innerHTML = '';
+    inProgress.innerHTML = '';
+    awaitFeedback.innerHTML = '';
+    done.innerHTML = '';
+
     await getTask().then(tasks => {
         for (let i = 0; i < tasks.length; i++) {
             let task = tasks[i];

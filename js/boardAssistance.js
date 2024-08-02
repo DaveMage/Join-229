@@ -31,7 +31,7 @@ async function saveEditTask(taskId) {
                 status: formData.status
             });
             closeEditTask();
-            window.location.reload();
+            displayTaskCard();
         } catch (error) {
             console.error('Error updating task:', error);
         }
@@ -61,12 +61,11 @@ async function saveEditTask(taskId) {
                 status: formData.status
             });
             closeEditTask();
-            window.location.reload();
+            displayTaskCard();
         } catch (error) {
             console.error('Error updating task:', error);
         }
     }
-    updateBoardHtml();
 }
 
 
