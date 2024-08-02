@@ -1128,6 +1128,20 @@ display: block;
   }
 }
 
+@media (max-width: 430px) {
+  .prioRadioContainer {
+    justify-content: space-around;
+  }
+
+  .editTextPrio {
+    display: none;
+  }
+
+  .prioLabelImg {
+    width: 66px;
+  }
+}
+
 @media (max-width: 470px) {
   .subtaskItemInput {
     width: 70%;

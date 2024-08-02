@@ -268,7 +268,7 @@ function taskCardEditHTML(task) {
                                 <input class="inputUrgent" type="radio" id="urgent${task.id}" name="priority${task.id}" value="Urgent"
                                     ${task.prio.value === "Urgent" ? "checked" : ""} hidden >
                                 <label id="labelUrgent" class="prioLabelImg" for="urgent${task.id}">
-                                    Urgent
+                                    <span class="editTextPrio">Urgent</span>
                                     <img src="./img/Mobile/AddTask/urgentIconAddTask.png" />
                                 </label>
                             </div>
@@ -277,7 +277,7 @@ function taskCardEditHTML(task) {
                                 <input class="inputMedium" type="radio" id="medium${task.id}" name="priority${task.id}" value="Medium"
                                     ${task.prio.value === "Medium" ? "checked" : ""} hidden >
                                 <label id="labelMedium" class="prioLabelImg" for="medium${task.id}">
-                                    Medium
+                                    <span class="editTextPrio">Medium</span>
                                     <img src="./img/Mobile/AddTask/mediumIconAddTask.png" />
                                 </label>
                             </div>
@@ -286,7 +286,7 @@ function taskCardEditHTML(task) {
                                 <input class="inputLow" type="radio" id="low${task.id}" name="priority${task.id}" value="Low"
                                 ${task.prio.value === "Low" ? "checked" : ""} hidden >
                                 <label id="labelLow" class="prioLabelImg" for="low${task.id}">
-                                    Low
+                                    <span class="editTextPrio">Low</span>
                                     <img src="./img/Mobile/AddTask/lowIconAddTask.png" />
                                 </label>
                             </div>
