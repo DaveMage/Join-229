@@ -879,6 +879,10 @@ display: block;
     scrollbar-width: none;
   }
 
+  #movoToMenuImg{
+    display: none;
+  }
+
   .headerBoardMobile {
     display: none;
   }

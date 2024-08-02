@@ -55,7 +55,7 @@ function taskCardHTML(task) {
         <div class="taskCardMain">
             <div class="taskCardCategoryImg">
                 ${taskCardCategoryHTML(task)}
-                <img src="./img/Mobile/Board/3dotsMenu32px.png" onclick="event.stopPropagation(); displayMoveToMenu('${task.id}')">
+                <img id="movoToMenuImg" src="./img/Mobile/Board/3dotsMenu32px.png" onclick="event.stopPropagation(); displayMoveToMenu('${task.id}')">
             </div>
         <div class="taskCardTitleDescriptionContainer">
             <div class="taskCardTitle">${task.title}</div>
