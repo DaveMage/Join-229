@@ -1168,7 +1168,7 @@ display: block;
 
 /* Animationen */
 
-@keyframes slideIn {
+/* @keyframes slideIn {
   from {
     transform: translateX(100vw);
   }
@@ -1176,7 +1176,7 @@ display: block;
   to {
     transform: translateX(0);
   }
-}
+} */
 
 @keyframes slideOut {
   from {
