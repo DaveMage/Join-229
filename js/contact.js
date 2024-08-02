@@ -321,7 +321,14 @@ async function deleteContact(contactId) {
     }
     try {
         await deleteData('/users/' + userId + '/contacts/' + contactId);
-        document.getElementById('contactViewDesktop').style.display = 'none';
+        if(document.getElementById('contactViewDesktop')) {
+            document.getElementById('contactViewDesktop').style.display = 'none';
+        }
+        if(document.getElementById('contactViewContainer' + contactId)) {
+            goToContacts();
+            closeOption();
+        }
+
         await getContacts();
         displayContacts(contacts);
         
