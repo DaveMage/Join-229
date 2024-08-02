@@ -301,7 +301,6 @@ function selectAssigned() {
     });
     let inputAssigned = document.getElementById('addTaskFormAssignedInput');
     inputAssigned.value = selectedAssigned.length > 0 ? 'An: ' + selectedAssigned.map(c => c.name).join(', ') : '';
-
     return selectedAssigned;
 }
 

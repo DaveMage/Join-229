@@ -166,6 +166,12 @@ function displayMoveToMenu(taskId) {
     taskElement.innerHTML += menuMoveToHtml(taskId);
 }
 
+
+/**
+ * Closes the 'Move To' menu for a given task by removing the menu element from the DOM.
+ *
+ * @param {string} taskId - The ID of the task for which the 'Move To' menu should be closed.
+ */
 function closeMoveToMenu(taskId) {
     let existingMenu = document.getElementById('moveToMenu' + taskId);
     if (existingMenu) {
