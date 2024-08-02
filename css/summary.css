@@ -92,7 +92,8 @@ h1 {
 }
 
 .aboveContentTodo:hover div {
-  filter: invert(89%) sepia(89%) saturate(0%) hue-rotate(281deg) brightness(111%) contrast(112%);
+  filter: invert(89%) sepia(89%) saturate(0%) hue-rotate(281deg)
+    brightness(111%) contrast(112%);
 }
 
 .summaryBoxContent {
@@ -150,7 +151,8 @@ h1 {
 }
 
 .aboveContentDone:hover div {
-  filter: invert(89%) sepia(89%) saturate(0%) hue-rotate(281deg) brightness(111%) contrast(112%);
+  filter: invert(89%) sepia(89%) saturate(0%) hue-rotate(281deg)
+    brightness(111%) contrast(112%);
 }
 
 .middleBoxContent {
@@ -337,7 +339,7 @@ h1 {
   }
 
   .mainContentBox {
-    height: 100%;
+    height: 100vh;
     width: 100%;
   }
 
@@ -462,7 +464,10 @@ h1 {
 
 @media screen and (max-width: 420px) {
   .mainContainer {
-    margin-bottom: 100px;
+    height: calc(100vh - 160px);
+    overflow-y: scroll;
+    padding-bottom: 16px;
+    scrollbar-width: none;
   }
 }
 
