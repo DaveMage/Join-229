@@ -391,7 +391,7 @@ async function deleteTask(taskId) {
     try {
         await deleteData('/users/' + userId + '/tasks/' + taskId);
         closeTaskCardOverview();
-        window.location.reload();
+        displayTaskCard();
     } catch (error) {
         console.error('Error deleting task:', error);
     }
